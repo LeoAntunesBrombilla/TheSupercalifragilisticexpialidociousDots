@@ -7,9 +7,12 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 let &t_ut=''
 filetype on
 syntax on
+syntax enable
 filetype plugin indent on
 filetype plugin on
 autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
@@ -90,14 +93,13 @@ set viminfo='100,<9999,s100
 " =============================================================================
 " COLOR-SCHEME
 " =============================================================================
-set background=dark
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
+
+set background=dark
 colorscheme gruvbox
+" color gruvbox
 set termguicolors
-
-
-"let
 
 
 " =============================================================================

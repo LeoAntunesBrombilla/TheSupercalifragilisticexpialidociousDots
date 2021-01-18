@@ -56,12 +56,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # PS1='\[\e]0;\u@\h: \w\a\]\[\033[4m\]\[\033[32m\]\u\[\033[0m\]\[\033[96m\]@\[\033[5m\]\[\033[33m\]\h\[\033[37m\]:\[\033[3m\]\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    PS1='\[\e]0;\u@\h: \w\a\]\[\033[4m\]\[\033[32m\]\u\[\033[0m\]\[\033[96m\]@\[\033[5m\]\[\033[33m\]\h\[\033[37m\]:\[\033[3m\]\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1="\[\e]0;\u@\h: \w\a\]\[\033[4m\]\[\033[32m\]\u\[\033[0m\]\[\033[96m\]@\[\033[5m\]\[\033[33m\]\h\[\033[37m\]:\[\033[3m\]\[\033[01;34m\]\w\[\033[00m\]\$ \[\033[00m\]"
 fi
 unset color_prompt force_color_prompt
 
@@ -203,9 +204,10 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
 alias ........="cd ../../../../../../.."
-
+alias scd='cd ~'
 
 alias q="exit"
+alias LS="ls"
 alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
 alias 2getip="hostname -I | awk '{print $1}'"
 alias co="cd out/; lh; cd .."
@@ -219,6 +221,8 @@ alias clea="clear"
 alias clearls="clear; ls"
 alias cearl="clear"
 alias cler="clear"
+alias CLEAR="clear"
+alias lcear="clear"
 alias clar="clear"
 alias cearls="clear"
 alias pww="pwd"
@@ -268,6 +272,9 @@ alias ual="lua"
 alias aul="lua"
 alias wlua="rlwrap lua"
 
+#date formats
+alias simple_date='date +"%d-%m-%y"'
+
 # Git aliases
 alias ggs="git status"
 alias ggch="git checkout"
@@ -313,4 +320,5 @@ fi
 export SDKMAN_DIR="/home/sebas5758/.sdkman"
 [[ -s "/home/sebas5758/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sebas5758/.sdkman/bin/sdkman-init.sh"
 
+# for kitty support
 source <(kitty + complete setup bash)

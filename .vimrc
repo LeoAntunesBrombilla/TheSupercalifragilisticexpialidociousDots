@@ -142,6 +142,11 @@ map <C-S-Down> <C-w>J
 map <C-S-Up> <C-w>K
 map <C-S-Right> <C-w>L
 
+" alternative if ctrl+shift+<arrow_key> does not work in current terminal
+" map <leader>q <C-w>H
+" map <leader>a <C-w>J
+" map <leader>d <C-w>K
+" map <leader>e <C-w>L
 " deleting with arrows and backspace
 inoremap <C-w> <C-\><C-o>dB
 inoremap <C-BS> <C-\><C-o>db

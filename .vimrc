@@ -25,25 +25,31 @@ autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'gruvbox-community/gruvbox'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'vim-utils/vim-man'
-Plug 'mbbill/undotree'
-Plug 'majutsushi/tagbar'
-Plug 'ryanoasis/vim-devicons'
-Plug 'cskeeters/javadoc.vim'
-Plug 'Dinduks/vim-java-get-set'
-Plug 'tpope/vim-commentary'
-Plug 'sheerun/vim-polyglot'
+"-------------------=== Other ===-------------------------------
+    Plug 'vim-utils/vim-man'
+    Plug 'majutsushi/tagbar'
 
-"personalization
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'vim-airline/vim-airline'
+"-------------------=== Code/Project navigation ===-------------
+    Plug 'mbbill/undotree'
+    Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+"-------------------=== Languages support ===-------------------
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'sheerun/vim-polyglot'
+    Plug 'tpope/vim-commentary'
+    Plug 'Dinduks/vim-java-get-set'
+    Plug 'cskeeters/javadoc.vim'
+    Plug 'ryanoasis/vim-devicons'
+
+"-------------------=== Personalization ===-----------------------------
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'powerline/powerline'
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -77,7 +83,7 @@ set number
 set shell=bash
 set hidden
 set cmdheight=1
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -261,3 +267,16 @@ map <Tab> :NERDTreeToggle<CR>
 " =============================================================================
 nnoremap <F5> :UndotreeToggle<CR>
 
+" =============================================================================
+" USERDEFINED-COMMANDS
+" =============================================================================
+command -nargs=1 Sl /\%V<args><CR>
+
+
+" =============================================================================
+" AIRLINE-CONFIGURATION
+" =============================================================================
+let g:airline_theme='minimalist' " this affects vim-airline's theme
+let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'
+let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
+let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown

@@ -222,6 +222,8 @@ alias clearls="clear; ls"
 alias cearl="clear"
 alias cler="clear"
 alias CLEAR="clear"
+alias cleer="clear"
+alias clearr="clear"
 alias lcear="clear"
 alias clar="clear"
 alias cearls="clear"
@@ -274,6 +276,14 @@ alias wlua="rlwrap lua"
 
 #date formats
 alias simple_date='date +"%d-%m-%y"'
+
+#viewing and editing config files
+alias ef_kitty='vim ~/.config/kitty/kitty.conf'
+alias ef_bash='vim ~/.bashrc'
+alias ef_vim='vim ~/.vimrc'
+alias ct_bash="cat ~/.bashrc"
+alias ct_vim="cat ~/.vimrc"
+alias ct_kitty="cat ~/.config/kitty/kitty.conf"
 
 # Git aliases
 alias ggs="git status"

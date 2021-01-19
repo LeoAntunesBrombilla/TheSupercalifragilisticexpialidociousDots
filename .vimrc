@@ -18,7 +18,6 @@ filetype plugin on
 autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 
 
-
 " =============================================================================
 " PLUGINS
 " =============================================================================
@@ -93,9 +92,6 @@ set ignorecase
 set smartcase
 set viminfo='100,<9999,s100
 
-
-
-
 " =============================================================================
 " COLOR-SCHEME
 " =============================================================================
@@ -107,12 +103,9 @@ colorscheme gruvbox
 " color gruvbox
 set termguicolors
 
-
 " =============================================================================
 " KEY-BINDINGS
 " =============================================================================
-
-
 " moving between tabs with leader key
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -162,7 +155,6 @@ noremap! <C-h> <C-w>
 map <leader>wr :set wrap<CR>
 map <leader>nwr :set nowrap<CR>
 
-
 " =============================================================================
 " COC-EXTENSIONS
 " =============================================================================
@@ -193,9 +185,13 @@ let g:coc_global_extensions = [
   \ 'coc-lists',
   \ 'coc-translator',
   \ 'coc-spell-checker',
+  \ 'coc-cspell-dicts',
   \ 'coc-tabnine',
   \ ]
 
+"-------------------=== coc-cspell-dicts ===-------------------------------
+" cSpellExt.enableDictionaries": ["spanish"]
+" cSpell.language": en,es"
 
 " =============================================================================
 " GOYO
@@ -230,7 +226,6 @@ let g:limelight_conceal_guifg = '#777777'
 ":Limelight! = turn off limelight
 ":Limelight!! = turn on/off
 
-
 " =============================================================================
 " .JAVA FILES
 " =============================================================================
@@ -253,14 +248,11 @@ map <leader>gs :InsertBothGetterSetter<CR>
 map <leader>se :InsertSetterOnly<CR>
 map <leader>ge :InsertGetterOnly<CR>
 
-
-
 " =============================================================================
 " NERDTREE
 " =============================================================================
 map <F2> :NERDTreeToggle<CR>
 map <Tab> :NERDTreeToggle<CR>
-
 
 " =============================================================================
 " UNDOTREE
@@ -272,7 +264,6 @@ nnoremap <F5> :UndotreeToggle<CR>
 " =============================================================================
 command -nargs=1 Sl /\%V<args><CR>
 
-
 " =============================================================================
 " AIRLINE-CONFIGURATION
 " =============================================================================
@@ -280,3 +271,5 @@ let g:airline_theme='minimalist' " this affects vim-airline's theme
 let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'
 let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
 let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown
+
+

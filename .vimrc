@@ -1,6 +1,6 @@
 
 " =============================================================================
-" GENERAL-SETTINGS
+" GENERAL-SETTINGS:
 " =============================================================================
 
 if $COLORTERM == 'gnome-terminal'
@@ -19,7 +19,7 @@ autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 
 
 " =============================================================================
-" PLUGINS
+" PLUGINS:
 " =============================================================================
 
 call plug#begin('~/.vim/plugged')
@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
 "-------------------=== Other ===-------------------------------
     Plug 'vim-utils/vim-man'
     Plug 'majutsushi/tagbar'
+    Plug 'Yggdroot/indentLine'
 
 "-------------------=== Code/Project navigation ===-------------
     Plug 'mbbill/undotree'
@@ -53,7 +54,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " =============================================================================
-" SETTINGS
+" SETTINGS:
 " =============================================================================
 
 set tabstop=4
@@ -93,7 +94,7 @@ set smartcase
 set viminfo='100,<9999,s100
 
 " =============================================================================
-" COLOR-SCHEME
+" COLOR SCHEME:
 " =============================================================================
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
@@ -104,7 +105,7 @@ colorscheme gruvbox
 set termguicolors
 
 " =============================================================================
-" KEY-BINDINGS
+" KEY BINDINGS:
 " =============================================================================
 " moving between tabs with leader key
 noremap <leader>1 1gt
@@ -156,7 +157,7 @@ map <leader>wr :set wrap<CR>
 map <leader>nwr :set nowrap<CR>
 
 " =============================================================================
-" COC-EXTENSIONS
+" COC EXTENSIONS:
 " =============================================================================
 
 let g:coc_global_extensions = [
@@ -194,7 +195,7 @@ let g:coc_global_extensions = [
 " cSpell.language": en,es"
 
 " =============================================================================
-" GOYO
+" GOYO:
 " =============================================================================
 map <leader>gy :Goyo<CR>
 
@@ -205,7 +206,7 @@ let g:goyo_linenr = 0
 
 
 " =============================================================================
-" LIMELIGHT
+" LIMELIGHT:
 " =============================================================================
 map <leader>ll :Limelight!!<CR>
 
@@ -226,21 +227,28 @@ let g:limelight_conceal_guifg = '#777777'
 ":Limelight! = turn off limelight
 ":Limelight!! = turn on/off
 
+
 " =============================================================================
-" .JAVA FILES
+" IndentLine:
+" =============================================================================
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_color_term = 239
+
+" =============================================================================
+" JAVA FILES:
 " =============================================================================
 au BufEnter *.java :highlight java_class cterm=bold,italic
 au BufEnter *.java :match java_class /class/
 
 
 " =============================================================================
-" TAGBAR
+" TAGBAR:
 " =============================================================================
 map <S-Tab> :TagbarOpenAutoClose<CR>
 let g:tagbar_autofocus = 1 "move cursor to tagbar as soon as it's toggled
 
 " =============================================================================
-" JAVA-GETTER-SETTER
+" JAVA GETTER SETTER:
 " =============================================================================
 
 map <leader>sg :InsertBothGetterSetter<CR>
@@ -249,23 +257,23 @@ map <leader>se :InsertSetterOnly<CR>
 map <leader>ge :InsertGetterOnly<CR>
 
 " =============================================================================
-" NERDTREE
+" NERDTREE:
 " =============================================================================
 map <F2> :NERDTreeToggle<CR>
 map <Tab> :NERDTreeToggle<CR>
 
 " =============================================================================
-" UNDOTREE
+" UNDOTREE:
 " =============================================================================
 nnoremap <F5> :UndotreeToggle<CR>
 
 " =============================================================================
-" USERDEFINED-COMMANDS
+" USERDEFINED COMMANDS:
 " =============================================================================
 command -nargs=1 Sl /\%V<args><CR>
 
 " =============================================================================
-" AIRLINE-CONFIGURATION
+" AIRLINE CONFIGURATION:
 " =============================================================================
 let g:airline_theme='minimalist' " this affects vim-airline's theme
 let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo -e "\nComputer status information:\n"
+echo -e "----------↓↓----------\n"
+
+acpi -i #battery and extra info
+acpi -a #ac adapter
+acpi -t #thermal temperature
+
+echo -e "\n---Colling-Information\n"
+acpi -c
+
+echo -e "\n\nNOTE: type 'acpi -V' to see more detailed information"

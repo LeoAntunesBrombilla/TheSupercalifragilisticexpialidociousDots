@@ -1,0 +1,88 @@
+#!/bin/bash
+
+#sve = System Variable Exemplifier
+#This script executes whatever file you tell regardless of in which directory it's currently in.
+
+
+script_help=$( cat << EOF
+
+This script executes whatever file you tell regardless of
+in which directory it's currently in. In order or execution,
+it will: receive arg, find out/, get into out and run arg.
+
+Usages:
+    #1: $0 <java_executable>
+    #2: $0 -c <out_dir|nothing>
+Arguments:
+    -h,--help       See this help message.
+    -c,--compile    Compile all .java files in current dir into
+                    current dir or a given dir a a subargument.
+Example:
+    #1: $0 animals.Duck
+    explanation: it will execute the Duck.class that belongs to
+    the package animals.
+
+EOF
+)
+
+OUT_DICT=out
+
+recurse_dirs() {
+
+files_array=$(find . -type f -name "*.java") #find all files with the .java extension
+test_array=()
+
+for j in "${files_array[@]}"; do #this is because files on $files_array can't be accessed one by one
+    test_array+=($j)
+done
+
+echo -e "\n\t--------Files--------\n"
+#note: the emoji is for orientating the user in case the error output is huge
+if [[ -z "$out" ]]; then #var is empty, therefore no out dir was given
+    for file in "${test_array[@]}"; do
+        echo -e "🍉 compiling:\t$file"; `javac $file`
+    done
+else #var has something, dir was given
+    for file in "${test_array[@]}"; do
+        echo -e "🍉 compiling:\t$file"; `javac $file -d $out`
+    done
+fi
+
+echo -e "\n\neverything was compiled successfully!"
+}
+
+if [[ -n "$1" ]]; then
+    case "$1" in
+        -h|--help)
+            echo "$script_help"
+            exit 0
+            ;;
+        -c|--compile)
+            out=$2
+            recurse_dirs
+            exit 0
+            ;;
+        *)
+            i=0
+            file=$1
+            #echo "arg 1 = $1" #works
+            #it will try to find out/ 18 times, this so as to avoid overloading the ram
+            #trying to find an unexistent out/. Of course this number can be increased
+
+            while [[ $i -le 18 ]]; do
+                if [[ -d "$OUT_DICT" ]]; then #out found
+                    cd $OUT_DICT
+                    java $file
+                    break
+                else #out not found
+                    cd ..
+                    i=$((i+1))
+                fi
+            done
+            exit 0
+            ;;
+    esac
+    shift
+else
+    echo -e "This script needs at least one argument to work.\nType '$0 -h' or '$0 --help' for help "
+fi

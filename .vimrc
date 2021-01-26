@@ -26,7 +26,8 @@ call plug#begin('~/.vim/plugged')
 
 "-------------------=== Other ===-------------------------------
     Plug 'vim-utils/vim-man'
-    Plug 'majutsushi/tagbar'
+    " Plug 'majutsushi/tagbar'
+    Plug 'Konfekt/FastFold'
     Plug 'Yggdroot/indentLine'
 
 "-------------------=== Code/Project navigation ===-------------
@@ -72,6 +73,8 @@ set modelines=0
 set nowrap
 set backspace=indent,eol,start
 set ttyfast
+set lazyredraw
+set regexpengine=1      "vim 7.4 introduced weaker regex and setting that option will revert it to the older
 set laststatus=2
 set showmode
 set showcmd
@@ -244,8 +247,8 @@ au BufEnter *.java :match java_class /class/
 " =============================================================================
 " TAGBAR:
 " =============================================================================
-map <S-Tab> :TagbarOpenAutoClose<CR>
-let g:tagbar_autofocus = 1 "move cursor to tagbar as soon as it's toggled
+" map <S-Tab> :TagbarOpenAutoClose<CR>
+" let g:tagbar_autofocus = 1 "move cursor to tagbar as soon as it's toggled
 
 " =============================================================================
 " JAVA GETTER SETTER:
@@ -279,5 +282,3 @@ let g:airline_theme='minimalist' " this affects vim-airline's theme
 let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'
 let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
 let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown
-
-

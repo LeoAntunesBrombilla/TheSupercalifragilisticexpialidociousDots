@@ -75,6 +75,7 @@ set backspace=indent,eol,start
 set ttyfast
 set lazyredraw
 set regexpengine=1      "vim 7.4 introduced weaker regex and setting that option will revert it to the older
+set synmaxcol=300               " arbitrary number < 3000 (default value)
 set laststatus=2
 set showmode
 set showcmd
@@ -282,3 +283,5 @@ let g:airline_theme='minimalist' " this affects vim-airline's theme
 let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'
 let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
 let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown
+
+

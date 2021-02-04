@@ -119,17 +119,33 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#this is for desplaying tree view on Git
+# =============================================================================
+# GitHub & Git
+# =============================================================================
+
+#-------------------=== Git aliases ===-------------------------------
 alias 1tree='git log --all --decorate --oneline --graph'
 alias 2tree='git log --all --decorate --graph'
+alias ggs="git status"
+alias ggch="git checkout"
+alias ggpush="git push origin main"
+alias ggpull="git pull origin main"
 
-#aliases for xclip
+
+# =============================================================================
+# XCLIP
+# =============================================================================
+
+#-------------------=== aliases ===-------------------------------
 alias 'c=xclip' #copy
-#alias cc='xclip -selection clipboard'
 alias 'cc=xclip -selection clipboard' #copy to clipboard
 alias 'v=xclip -o' #paste
 
-#aliases for changing cursor
+# =============================================================================
+# CHANGING CURSOR
+# =============================================================================
+
+#-------------------=== aliases ===-------------------------------
 alias line='echo -e "\033[5 q"'         #blinking pipe bar
 alias nbline='echo -e "\033[6 q"'       #not blinking pipe bar
 alias block='echo -e "\033[1 q"'        #blinking block
@@ -137,14 +153,19 @@ alias nbblock='echo -e "\033[2 q"'      #not blinking block
 alias uscore='echo -e "\033[3 q"'       #blinking underscore
 alias nbuscore='echo -e "\033[4 q"'     #not blinking underscore
 
-#
+
+#-------------------=== nums info ===-------------------------------
 # 1 is the blinky block cursor
 # 2 is the default (non-blinky) block cursor
 # 3 is blinky underscore
 # 4 fixed underscore
 # 5 pipe bar (blinking)
 # 6 fixed pipe bar
-#
+
+
+# =============================================================================
+# C-NET.ORG
+# =============================================================================
 
 #This for easy access on https://paste.c-net.org/
 
@@ -179,12 +200,25 @@ pasteget()
     fi
 }
 
-#-----#
-#java aliases
 
+# =============================================================================
+# JAVA
+# =============================================================================
+
+#-------------------=== aliases ===-------------------------------
 alias cjava='update-alternatives --config java' #change java version
 alias scjava='sudo update-alternatives --config java' #change java version
 
+#-------------------=== classpath(s) ===-------------------------------
+#classpath for java (refer to linode for more info)
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export PATH=$PATH:$JAVA_HOME/bin
+
+# =============================================================================
+# TERMINAL(S) MANAGEMENT
+# =============================================================================
+
+#-------------------=== aliases ===-------------------------------
 #terminal aliases
 #change default terminal
 alias ctrm='update-alternatives --config x-terminal-emulator'
@@ -192,56 +226,7 @@ alias sctrm='sudo update-alternatives --config x-terminal-emulator'
 # you can add kitty (terminal) as an option with the following command
 # `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
 
-#classpath for java (refer to linode for more info)
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-export PATH=$PATH:$JAVA_HOME/bin
-
-#for cd-ing backwards
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-alias .......="cd ../../../../../.."
-alias ........="cd ../../../../../../.."
-alias scd='cd ~'
-
-alias q="exit"
-alias LS="ls"
-alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
-alias 2getip="hostname -I | awk '{print $1}'"
-alias co="cd out/; lh; cd .."
-alias cls="clear"
-alias clera="clear"
-alias clrea="clear"
-alias clra="clear"
-alias celar="clear"
-alias cear="clear"
-alias clea="clear"
-alias clearls="clear; ls"
-alias cearl="clear"
-alias cler="clear"
-alias CLEAR="clear"
-alias cleer="clear"
-alias clearr="clear"
-alias lcear="clear"
-alias clar="clear"
-alias cearls="clear"
-alias pww="pwd"
-alias getfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
-alias getfanmode="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
-alias gfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
-
-#And some for commonly used variations of ls (and typos):
-alias ll="ls -l"
-alias lo="ls -o"
-alias lh="ls -lh"
-alias la="ls -la"
-alias sl="ls"
-#alias l="ls"
-alias s="ls"
-
-
+#-------------------=== others ===-------------------------------
 #for having 10,000 of history
 export HISTFILESIZE=20000
 export HISTSIZE=10000
@@ -251,6 +236,68 @@ shopt -s cmdhist
 # Ignore duplicates, ls without options and builtin commands
 HISTCONTROL=ignoredups
 export HISTIGNORE="&:ls:[bf]g:exit"
+
+#-------------------=== cd(s) ===-------------------------------
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias ........="cd ../../../../../../.."
+#date formats
+alias simple_date='date +"%d-%m-%y"'
+
+
+#-------------------=== clear ===-------------------------------
+alias cls="clear"
+alias rlcea="clear"
+alias lcea="clear"
+alias caler="clear"
+alias ceaar="clear"
+alias slcea="clear"
+alias cealr="clear"
+alias elar="clear"
+alias earls="clear"
+alias cclear="clear"
+alias clera="clear"
+alias clrea="clear"
+alias clra="clear"
+alias celar="clear"
+alias celalr="clear"
+alias cear="clear"
+alias clea="clear"
+alias cls="clear; ls"
+alias cearl="clear"
+alias cler="clear"
+alias CLEAR="clear"
+alias cleer="clear"
+alias clearr="clear"
+alias lcear="clear"
+alias clar="clear"
+alias cearls="clear"
+
+alias q="exit"
+alias LS="ls"
+alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
+alias 2getip="hostname -I | awk '{print $1}'"
+alias vom="vim"
+alias co="cd out/; lh; cd .."
+alias pww="pwd"
+alias getfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+alias getfanmode="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+alias gfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+
+#And some for commonly used variations of ls (and typos):
+alias ll="ls -l"
+alias lo="ls -o"
+alias lh="ls -lha"
+alias la="ls -la"
+alias sl="ls"
+#alias l="ls"
+alias s="ls"
+
+
 
 #mn: if you can't remember something use:
 #history | grep foo
@@ -268,26 +315,48 @@ alias dicts="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
 #rsync
 alias rsync_code="sudo rsync -av /home/sebas5758/code/ code1/"
 
-#lua aliases
+# =============================================================================
+# LUA
+# =============================================================================
+
+#-------------------=== aliases ===-------------------------------
 alias lau="lua"
 alias ual="lua"
 alias aul="lua"
 alias wlua="rlwrap lua"
 
-#date formats
-alias simple_date='date +"%d-%m-%y"'
 
-#viewing and editing config files
+# =============================================================================
+# VIEWING & EDITING FILES
+# =============================================================================
+
+#-------------------=== Terminal Editors ===-------------------------------
+alias nv='nvim'
+
+#-------------------=== w/ Vim ===-------------------------------
+
+alias ef_systemd='sudo vim /etc/systemd/system.conf'
 alias ef_kitty='vim ~/.config/kitty/kitty.conf'
 alias ef_bash='vim ~/.bashrc'
 alias ef_vim='vim ~/.vimrc'
+alias ef_nvim='~/.config/nvim/init.vim'
+
+#-------------------=== w/ Nvim ===-------------------------------
+
+alias efn_systemd='sudo nvim /etc/systemd/system.conf'
+alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
+alias efn_bash='nvim ~/.bashrc'
+alias efn_vim='nvim ~/.vimrc'
+alias efn_nvim='nvim ~/.config/nvim/init.vim'
+
+#-------------------=== Cat-ting ===-------------------------------
+
 alias ct_bash="cat ~/.bashrc"
 alias ct_vim="cat ~/.vimrc"
 alias ct_kitty="cat ~/.config/kitty/kitty.conf"
+alias ct_nvim='cat ~/.config/kitty/kitty.conf'
 
 # Git aliases
-alias ggs="git status"
-alias ggch="git checkout"
 
 # setterm -foreground green -store
 #

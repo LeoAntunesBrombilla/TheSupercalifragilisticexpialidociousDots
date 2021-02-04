@@ -27,3 +27,5 @@ TO-DO:
             +,i dotfiles to be sited:
         +,4 refresh.sh -- to finish install
 
+Notes:
+    + createa a semi link using: `ln -s <full_original_name_path> <path_to_it_if_wanted/semylink>`

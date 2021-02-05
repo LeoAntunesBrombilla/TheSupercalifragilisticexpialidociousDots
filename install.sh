@@ -31,7 +31,7 @@ EOF
 
 #-------------------=== script ===-------------------------------
 
-function ProgressBar() {
+function ProgressBar() {    #progress bar indicator
     # Process data
         let _progress=(${1}*100/${2}*100)/100
         let _done=(${_progress}*4)/10
@@ -67,11 +67,11 @@ function update_files() {   #updates .dotfiles cat-ting current ones into the on
     # `cat ~/.inputrc > dotfiles/user/.inputrc`; `cat ~/.profile > dotfiles/user/.profile`            #user
 }
 
-function semylink_creator() {
+function semylink_creator() {   #create semylink for the .dotfiles
     :
 }
 
-function install_utils() {
+function install_utils() {  #install the preconfigured list of files
     read -t 10 -n 1 -s -r -p "'${lines_packages}' utilities will be installed/upgraded, press any key to continue"
 
     counter=1
@@ -86,7 +86,6 @@ function install_utils() {
 
         sudo apt-get install $line
 
-        sleep 0.1
         echo -e "\n🎉'$line' was successfully installed/upgraded!🎉\n\n"
         counter=$((counter+1))
     done < $installed_packages

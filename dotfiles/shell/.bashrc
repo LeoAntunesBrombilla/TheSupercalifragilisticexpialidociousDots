@@ -130,6 +130,8 @@ alias ggs="git status"
 alias ggch="git checkout"
 alias ggpush="git push origin main"
 alias ggpull="git pull origin main"
+alias ggremote="git remote -v"  # check all remotes
+alias ggbranch="git branch -v"  # check all branches
 
 
 # =============================================================================
@@ -236,7 +238,7 @@ shopt -s cmdhist
 # Ignore duplicates, ls without options and builtin commands
 HISTCONTROL=ignoredups
 export HISTIGNORE="&:ls:[bf]g:exit"
-
+alias tmp="cd /tmp"
 #-------------------=== cd(s) ===-------------------------------
 alias ..="cd .."
 alias ...="cd ../.."
@@ -278,6 +280,7 @@ alias clar="clear"
 alias cearls="clear"
 
 alias q="exit"
+alias ks="ls"
 alias LS="ls"
 alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
 alias 2getip="hostname -I | awk '{print $1}'"

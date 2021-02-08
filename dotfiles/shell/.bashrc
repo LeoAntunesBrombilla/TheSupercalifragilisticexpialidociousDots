@@ -254,6 +254,7 @@ alias simple_date='date +"%d-%m-%y"'
 #-------------------=== clear ===-------------------------------
 alias cls="clear"
 alias rlcea="clear"
+alias caelr="clear"
 alias lcea="clear"
 alias caler="clear"
 alias ceaar="clear"
@@ -290,6 +291,12 @@ alias pww="pwd"
 alias getfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
 alias getfanmode="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
 alias gfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+
+# fan modes:
+#    + 2 = silent
+#    + 0 = balance
+#    + 1 = turbo
+
 
 #And some for commonly used variations of ls (and typos):
 alias ll="ls -l"

@@ -2,6 +2,8 @@
 
 #-------------------=== configs ===-------------------------------
 this_script=`basename "$0"`
+my_bin="bin/"
+local_bin="/usr/local/bin"
 hashtag="#"     # needed for progress bar
 installed_packages="apt_manual_list.txt"
 lines_packages=`wc -l $installed_packages | awk '{ print $1 }'`
@@ -116,6 +118,56 @@ function install_utils() {  #install the preconfigured list of files
     echo ""
 }
 
+function create_bin_semylinks() {
+
+    bin_link="/usr/local/bin/"
+    cd bin/
+
+    dir_files=$(find "`pwd`" -type d)
+    common_files=$(find "`pwd`" -type f)
+
+    files_array=()
+    dirs_array=()
+    declare -A list_files=()
+    declare -A list_dirs=()
+
+
+    # to do tomorrow:
+        # it's being added '.' and '..' dirs, with causes things like "/bin/bin", and like so ya gotta implement if statements for that
+        # remove all files "/usr/local/bin"
+        # commit advances before testing so as not to screw up the bin
+
+
+
+    for i in "${common_files[@]}"; do
+        files_array+=($i)
+    done
+
+    for i in "${dir_files[@]}"; do
+        files_array+=($i)
+    done
+
+    for file in "${files_array[@]}"; do
+        base_name=$(basename "$file")
+        designated_path="/usr/local/bin/$base_name"
+        # echo "basename = $base_name"
+
+        #["original_file_path"]="dotfiles_repo_copy"
+        list_files+=(["$designated_path"]="$file")
+        # echo "file = $file"
+    done
+
+    for key in ${!list_files[@]}; do
+        echo -e "designated location = $key;\trepo path = ${list_files[$key]}"
+
+    done
+
+
+    # for file in *; do
+    #     echo "$file"
+    # done
+}
+
 if [[ -n "$1" ]]; then
     case "$1" in
         -h|--help)
@@ -169,6 +221,18 @@ if [[ -n "$1" ]]; then
                     ;;
             esac
 
+            exit 0
+            ;;
+        -sb|--sync-bin)
+            sudo rsync -av --exclude '.' --exclude '..' /usr/local/bin $my_bin
+            # cd /usr/local/bin
+            # for file in *; do
+            #     echo "file = $file"
+            # done
+            exit 0
+            ;;
+        -cbs|--create-bin-semylinks)
+            create_bin_semylinks
             exit 0
             ;;
         *)

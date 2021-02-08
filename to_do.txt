@@ -16,6 +16,7 @@ TO-DO:
             +,j install each package one by one
             +,j confugure corresponsing packages (e.g. luaver)
             +,j make list of installed packages to update current installed_packages.txt
+            +,j install and sync current bin
         +,i refresh.sh
         +,i my_bin/ -- my /usr/local/bin #files to be moved basically
     + order of execution
@@ -26,6 +27,7 @@ TO-DO:
         +,3 mv (cp(?)) .dotfiles to their corresponding locations
             +,i dotfiles to be sited:
         +,4 refresh.sh -- to finish install
+    + add ability to install listed ppa packages
 
 Notes:
     + createa a semi link using: `ln -s <full_original_name_path> <path_to_it_if_wanted/semylink>`

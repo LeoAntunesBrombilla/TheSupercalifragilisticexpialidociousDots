@@ -58,6 +58,7 @@ function devicons_get_filetype_symbol {
 		[lhs]=
 		[lua]=
 		[java]=
+        [kt]=
 		[sh]=
 		[fish]=
 		[ml]=λ

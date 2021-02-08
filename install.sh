@@ -225,10 +225,6 @@ if [[ -n "$1" ]]; then
             ;;
         -sb|--sync-bin)
             sudo rsync -av --exclude '.' --exclude '..' /usr/local/bin $my_bin
-            # cd /usr/local/bin
-            # for file in *; do
-            #     echo "file = $file"
-            # done
             exit 0
             ;;
         -cbs|--create-bin-semylinks)
@@ -245,3 +241,4 @@ else
     echo -e "This file needs at least one argument to execute. Run ./$this_script --help to see which are the available commands\n"
     exit 1
 fi
+

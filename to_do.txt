@@ -1,4 +1,5 @@
 
+Description:
 
 Basically, the idea is to create a repository with my dotfiles that I can clone to a new machine and use an "install.sh" script to
 install all the "dependencies" and packages that I want. Basically just configuring the the system for myself based off of config file (.<file> #most of the time)

@@ -213,8 +213,12 @@ alias scjava='sudo update-alternatives --config java' #change java version
 
 #-------------------=== classpath(s) ===-------------------------------
 #classpath for java (refer to linode for more info)
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-export PATH=$PATH:$JAVA_HOME/bin
+_MY_JAVA="$(which java)"
+if [ -e "${_MY_JAVA}" ]; then
+    export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
+    export PATH=$PATH:$JAVA_HOME/bin
+fi
+unset _MY_JAVA
 
 # =============================================================================
 # TERMINAL(S) MANAGEMENT

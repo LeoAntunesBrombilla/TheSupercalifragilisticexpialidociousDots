@@ -207,12 +207,19 @@ pasteget()
 # JAVA
 # =============================================================================
 
+# visit this links in case you want to install java:
+#   https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-18-04/
+
+
 #-------------------=== aliases ===-------------------------------
 alias cjava='update-alternatives --config java' #change java version
 alias scjava='sudo update-alternatives --config java' #change java version
 
 #-------------------=== classpath(s) ===-------------------------------
 #classpath for java (refer to linode for more info)
+# in case you are getting an error or something with this whenever you open a new terminal session
+# it's because you don't have java installed, and like so, this symblink does not work. If this is
+# your case comment out the line below this comment.
 _MY_JAVA="$(which java)"
 if [ -e "${_MY_JAVA}" ]; then
     export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
@@ -260,6 +267,8 @@ alias cls="clear"
 alias rlcea="clear"
 alias cle="clear"
 alias rclear="clear"
+alias celr="clear"
+alias clerr="clear"
 alias rclea="clear"
 alias lcas="clear"
 alias clearcd="clear"

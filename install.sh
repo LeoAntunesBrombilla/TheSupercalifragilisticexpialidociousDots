@@ -227,7 +227,7 @@ if [[ -n "$1" ]]; then
             sudo rsync -av --exclude '.' --exclude '..' /usr/local/bin $my_bin
             exit 0
             ;;
-        -cbs|--create-bin-semylinks)
+        -cbs|--create-bin-semylinks) # not working yet
             create_bin_semylinks
             exit 0
             ;;

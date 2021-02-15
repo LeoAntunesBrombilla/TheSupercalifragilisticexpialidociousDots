@@ -109,6 +109,9 @@ set incsearch
 set ignorecase
 set smartcase
 set viminfo='100,<9999,s100
+" 2000000
+" https://github.com/styled-components/vim-styled-components/issues/28
+set mmp=2500
 
 " =============================================================================
 " COLOR SCHEME:

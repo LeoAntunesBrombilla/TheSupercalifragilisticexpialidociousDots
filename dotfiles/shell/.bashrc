@@ -62,7 +62,16 @@ if [ "$color_prompt" = yes ]; then
     # PS1='\[\e]0;\u@\h: \w\a\]\[\033[4m\]\[\033[32m\]\u\[\033[0m\]\[\033[96m\]@\[\033[5m\]\[\033[33m\]\h\[\033[37m\]:\[\033[3m\]\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    PS1="\[\e]0;\u@\h: \w\a\]\[\033[4m\]\[\033[32m\]\u\[\033[0m\]\[\033[96m\]@\[\033[5m\]\[\033[33m\]\h\[\033[37m\]:\[\033[3m\]\[\033[01;34m\]\w\[\033[00m\]\$ \[\033[00m\]"
+    # PS1="\e[1;34m\e[3;29m\w\e[0m\e[0m \e[1;37m>\e[0m "
+
+    # $USER@$DEVICE: <dir>$ <prompt>
+    # PS1="\[\e]0;\u@\h: \w\a\]\[\033[4m\]\[\033[32m\]\u\[\033[0m\]\[\033[96m\]@\[\033[5m\]\[\033[33m\]\h\[\033[37m\]:\[\033[3m\]\[\033[01;34m\]\w\[\033[00m\]\$ \[\033[00m\]"
+
+    # <dir> > <prompt>
+    PS1="\[\033[01;32m\]\w\[\033[00m\]\[\033[01;39m\] >\[\033[00m\] "
+    # PS1="\e[1;34m\e[3;32m\w\e[0m\e[0m \e[1;39m> \e[0m"
+    # PS1="\e[1;34m\e[3;32m\w\e[0m\e[0m > "
+    # PS1="\[\e]0;\u@\h: \w\a\]\e[1;34m\e[3;32m\w\e[0m\e[0m > "
 fi
 unset color_prompt force_color_prompt
 
@@ -236,6 +245,7 @@ unset _MY_JAVA
 #change default terminal
 alias ctrm='update-alternatives --config x-terminal-emulator'
 alias sctrm='sudo update-alternatives --config x-terminal-emulator'
+alias dtct_key="xev -event keyboard"
 # you can add kitty (terminal) as an option with the following command
 # `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
 
@@ -268,6 +278,14 @@ alias rlcea="clear"
 alias cle="clear"
 alias rclear="clear"
 alias celr="clear"
+alias eclar="clear"
+alias earl="clear"
+alias ear="clear"
+alias sclear="clear"
+alias ealr="clear"
+alias lsclear="clear"
+alias cearlc="clear"
+alias earlcea="clear"
 alias clerr="clear"
 alias rclea="clear"
 alias lcas="clear"
@@ -288,6 +306,9 @@ alias elar="clear"
 alias earls="clear"
 alias cclear="clear"
 alias clera="clear"
+alias cleraa="clear"
+alias clearra="clear"
+alias claer="clear"
 alias clrea="clear"
 alias clra="clear"
 alias celar="clear"
@@ -299,6 +320,7 @@ alias cearl="clear"
 alias cler="clear"
 alias CLEAR="clear"
 alias cleer="clear"
+alias cearlce="clear"
 alias clearr="clear"
 alias lcear="clear"
 alias cealrc="clear"

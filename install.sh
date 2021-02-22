@@ -224,7 +224,21 @@ if [[ -n "$1" ]]; then
             exit 0
             ;;
         -sb|--sync-bin)
-            sudo rsync -av --exclude '.' --exclude '..' /usr/local/bin $my_bin
+            # sudo rsync -av --exclude '.' --exclude '..' /usr/local/bin $my_bin
+
+            origin_dir="`pwd`/bin"
+            destination_dir="/usr/local/bin"
+
+            cd $origin_dir
+
+            for file in *; do
+                orig_file="$origin_dir/$file"
+                dest_file="$destination_dir/$file"
+
+                # echo -e "Original File = $orig_file\nDestination File = $dest_file\n\n"
+                `ln -s $orig_file $dest_file`
+            done
+
             exit 0
             ;;
         -cbs|--create-bin-semylinks) # not working yet

@@ -6,6 +6,7 @@ my_bin="bin/"
 local_bin="/usr/local/bin"
 hashtag="#"     # needed for progress bar
 installed_packages="apt_manual_list.txt"
+to_install_apps=("Kotlin" "Java (8 & 11)" "Python" "Node.js & NPM" "All!")
 lines_packages=`wc -l $installed_packages | awk '{ print $1 }'`
 declare -A files=(
     #["original_file_path"]="dotfiles_repo_copy"
@@ -39,6 +40,79 @@ EOF
 )
 
 #-------------------=== script ===-------------------------------
+
+function install_nodejs() {
+
+    cmds=(
+        "sudo apt update"
+        "sudo apt install apt-transport-https curl ca-certificates software-properties-common"
+        "curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -"
+        "sudo apt-get install -y nodejs"
+    )
+
+    for cmd in "${cmds[@]}"; do
+        eval $cmd
+    done
+
+    # test it with
+    # $ node -v
+    # $ npm -v
+
+    # https://techstorm.io/node-js-install-latest-node-js-and-npm-on-ubuntu-20-10/
+
+}
+
+function install_kotlin() {
+
+    cmds=(
+        "cd $HOME"
+        "curl -s https://get.sdkman.io | bash"
+        # "sudo $HOME/.sdkman/bin/sdkman-init.sh"
+        "sdk install kotlin"    # default one
+    )
+
+    for cmd in "${cmds[@]}"; do
+        eval $cmd
+    done
+
+    # https://aster.cloud/2019/05/28/how-to-install-run-kotlin-in-ubuntu/
+
+}
+
+function install_java() {
+
+    cmds=(
+        "sudo apt-get install openjdk-11-jdk"
+        "sudo apt-get install openjdk-11-jre"
+        "sudo apt-get install openjdk-8-jre"
+        "sudo apt-get install openjdk-8-jdk"
+    )
+
+    #             for app in "${to_install_apps[@]}"; do
+    for cmd in "${cmds[@]}"; do
+        eval $cmd
+    done
+
+    # https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-18-04/
+
+}
+
+function install_python() {
+
+    cmds=(
+        "sudo apt install software-properties-common"
+        "sudo apt install python3.9"
+    )
+
+    for cmd in "${cmds[@]}"; do
+        eval $cmd
+    done
+
+    # https://techstorm.io/python-3-9-how-to-install-on-ubuntu-20-10/
+}
+
+
+
 
 function ProgressBar() {    #progress bar indicator
     # Process data
@@ -243,6 +317,36 @@ if [[ -n "$1" ]]; then
             ;;
         -cbs|--create-bin-semylinks) # not working yet
             create_bin_semylinks
+            exit 0
+            ;;
+        -ia|--install-apps)
+
+            counter=0
+
+            for app in "${to_install_apps[@]}"; do
+                echo "$counter) $app"
+                counter=$((counter+1))
+            done
+
+            echo ""
+            read -p "Type here: " u_input
+
+            if [[ "$u_input" == "4" ]]; then
+                echo "Installing them all..."
+                install_java; install_nodejs; install_kotlin; install_python
+            elif [[ "$u_input" == "0" ]]; then
+                echo "Installing kotlin"
+                install_kotlin
+            elif [[ "$u_input" == "1" ]]; then
+                echo "Installing java..."
+                install_java
+            elif [[ "$u_input" == "2" ]]; then
+                echo "Installing Python3.9..."
+                install_python
+            elif [[ "$u_input" == "3" ]]; then
+                echo "Installing Node.js & NPM..."
+                install_nodejs
+            fi
             exit 0
             ;;
         *)

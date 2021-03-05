@@ -251,6 +251,7 @@ unset _MY_JAVA
 alias ctrm='update-alternatives --config x-terminal-emulator'
 alias sctrm='sudo update-alternatives --config x-terminal-emulator'
 alias dtct_key="xev -event keyboard"
+alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
 # you can add kitty (terminal) as an option with the following command
 # `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
 
@@ -282,9 +283,11 @@ alias cls="clear"
 alias rlcea="clear"
 alias cle="clear"
 alias rclear="clear"
+alias ceear="clear"
 alias celr="clear"
 alias eclar="clear"
 alias earl="clear"
+alias clsad="clear"
 alias ear="clear"
 alias sclear="clear"
 alias ealr="clear"
@@ -339,6 +342,7 @@ alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
 alias 2getip="hostname -I | awk '{print $1}'"
 alias vom="vim"
 alias co="cd out/; lh; cd .."
+alias hl="lh"
 alias pww="pwd"
 alias getfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
 alias getfanmode="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"

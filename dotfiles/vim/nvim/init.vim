@@ -56,6 +56,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Dinduks/vim-java-get-set'
     Plug 'cskeeters/javadoc.vim'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'vim-scripts/dbext.vim'
 
 "-------------------=== Personalization ===-----------------------------
     Plug 'junegunn/goyo.vim'
@@ -181,34 +182,34 @@ map <leader>nwr :set nowrap<CR>
 " =============================================================================
 
 let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-clangd',
-  \ 'coc-css',
-  \ 'coc-cssmodules',
-  \ 'coc-emmet',
-  \ 'coc-highlight',
-  \ 'coc-git',
-  \ 'coc-gist',
-  \ 'coc-html',
-  \ 'coc-java',
-  \ 'coc-markdownlint',
-  \ 'coc-python',
-  \ 'coc-sh',
-  \ 'coc-lua',
-  \ 'coc-kotlin-dev',
-  \ 'coc-emoji-shortcodes',
-  \ 'coc-marketplace',
-  \ 'coc-lists',
-  \ 'coc-translator',
-  \ 'coc-spell-checker',
-  \ 'coc-cspell-dicts',
-  \ 'coc-tabnine',
-  \ ]
+    \ 'coc-snippets',
+    \ 'coc-pairs',
+    \ 'coc-tsserver',
+    \ 'coc-eslint',
+    \ 'coc-prettier',
+    \ 'coc-json',
+    \ 'coc-clangd',
+    \ 'coc-css',
+    \ 'coc-cssmodules',
+    \ 'coc-emmet',
+    \ 'coc-highlight',
+    \ 'coc-git',
+    \ 'coc-gist',
+    \ 'coc-html',
+    \ 'coc-java',
+    \ 'coc-markdownlint',
+    \ 'coc-python',
+    \ 'coc-sh',
+    \ 'coc-lua',
+    \ 'coc-kotlin-dev',
+    \ 'coc-marketplace',
+    \ 'coc-lists',
+    \ 'coc-translator',
+    \ 'coc-spell-checker',
+    \ 'coc-cspell-dicts',
+    \ 'coc-tabnine',
+    \ 'coc-sql'
+\ ]
 
 "-------------------=== coc-cspell-dicts ===-------------------------------
 " cSpellExt.enableDictionaries": ["spanish"]

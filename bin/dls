@@ -65,7 +65,7 @@ function devicons_get_filetype_symbol {
 		[mli]=λ
 		[diff]=
 		[db]=
-		[sql]=
+		[sql]=
 		[dump]=
 		[clj]=
 		[cljc]=

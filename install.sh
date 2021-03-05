@@ -6,7 +6,7 @@ my_bin="bin/"
 local_bin="/usr/local/bin"
 hashtag="#"     # needed for progress bar
 installed_packages="apt_manual_list.txt"
-to_install_apps=("Kotlin" "Java (8 & 11)" "Python" "Node.js & NPM" "All!")
+to_install_apps=("Kotlin" "Java (8 & 11)" "Python" "Node.js & NPM" "Hack Nerd Font" "All!")
 lines_packages=`wc -l $installed_packages | awk '{ print $1 }'`
 declare -A files=(
     #["original_file_path"]="dotfiles_repo_copy"
@@ -40,6 +40,18 @@ EOF
 )
 
 #-------------------=== script ===-------------------------------
+
+function install_hack_nerdfont() {
+
+    cmds=(
+        "sudo apt-get install fonts-hack-ttf"
+    )
+
+    for cmd in "${cmds[@]}"; do
+        eval $cmd
+    done
+}
+
 
 function install_nodejs() {
 
@@ -315,25 +327,25 @@ if [[ -n "$1" ]]; then
 
             exit 0
             ;;
-        -cbs|--create-bin-semylinks) # not working yet
-            create_bin_semylinks
-            exit 0
-            ;;
         -ia|--install-apps)
 
             counter=0
 
+            echo -e "\t----Menu----"
             for app in "${to_install_apps[@]}"; do
-                echo "$counter) $app"
+                echo -e "\t$counter) $app"
                 counter=$((counter+1))
             done
 
             echo ""
             read -p "Type here: " u_input
 
-            if [[ "$u_input" == "4" ]]; then
+            if [[ "$u_input" == "5" ]]; then
                 echo "Installing them all..."
                 install_java; install_nodejs; install_kotlin; install_python
+            elif [[ "$u_input" == "4" ]]; then
+                echo "Installing 'Hack Nerd Font'"
+                install_hack_nerdfont
             elif [[ "$u_input" == "0" ]]; then
                 echo "Installing kotlin"
                 install_kotlin
@@ -346,6 +358,8 @@ if [[ -n "$1" ]]; then
             elif [[ "$u_input" == "3" ]]; then
                 echo "Installing Node.js & NPM..."
                 install_nodejs
+            else
+                echo -e "Exiting..."; exit 0
             fi
             exit 0
             ;;

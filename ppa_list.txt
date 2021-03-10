@@ -1,0 +1,6 @@
+atareao/telegram
+cappelikan/ppa
+audio-recorder/ppa
+apt-fast/stable
+kdenlive/kdenlive-stable
+graphics-drivers/ppa

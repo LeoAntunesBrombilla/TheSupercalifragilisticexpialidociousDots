@@ -1,0 +1,19 @@
+
+
+1. purge the ppa
+2. remove ppa
+3. remove the app (--autoremove)
+
+
+Example with KdenLive:
+
+Uninstall:
+To purge the PPA as well as downgrade Kdenlive package, run command in terminal:
+
+sudo apt install ppa-purge && sudo ppa-purge ppa:kdenlive/kdenlive-stable
+To remove the PPA only, run command:
+
+sudo add-apt-repository --remove ppa:kdenlive/kdenlive-stable
+And to remove Kdenlive, run command:
+
+sudo apt remove --autoremove kdenlive kdenlive-data

@@ -252,6 +252,7 @@ alias ctrm='update-alternatives --config x-terminal-emulator'
 alias sctrm='sudo update-alternatives --config x-terminal-emulator'
 alias dtct_key="xev -event keyboard"
 alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
+alias rm_crash='echo -e "\nThe following crashes were found and will now be removed:"; ls -l /var/crash/; sleep 1; sudo rm /var/crash/* && echo -e "\nMessage (OK): Succesfully cleared crashes!\nExit Status: $?" || echo -e "\nMessage (FAILED): No crashes were removed because A. there where none and/or B. You do not have permissions over this directory\nExit Status: $?"'
 # you can add kitty (terminal) as an option with the following command
 # `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
 
@@ -283,6 +284,7 @@ alias cls="clear"
 alias rlcea="clear"
 alias cle="clear"
 alias rclear="clear"
+alias lscelar="clear"
 alias ceear="clear"
 alias celr="clear"
 alias eclar="clear"

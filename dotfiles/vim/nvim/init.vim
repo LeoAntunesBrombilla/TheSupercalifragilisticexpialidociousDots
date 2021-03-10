@@ -39,7 +39,6 @@ call plug#begin('~/.vim/plugged')
 
 "-------------------=== Other ===-------------------------------
     Plug 'vim-utils/vim-man'
-    " Plug 'majutsushi/tagbar'
     Plug 'Konfekt/FastFold'
     Plug 'Yggdroot/indentLine'
 
@@ -88,7 +87,7 @@ set nowrap
 set backspace=indent,eol,start
 set ttyfast
 set lazyredraw
-set regexpengine=1      "vim 7.4 introduced weaker regex and setting that option will revert it to the older
+set regexpengine=1              "vim 7.4 introduced weaker regex and setting that option will revert it to the older
 set synmaxcol=300               " arbitrary number < 3000 (default value)
 set laststatus=2
 set showmode
@@ -102,6 +101,7 @@ set shell=bash
 set hidden
 set cmdheight=1
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+"
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -168,9 +168,11 @@ map <C-S-Right> <C-w>L
 " map <leader>a <C-w>J
 " map <leader>d <C-w>K
 " mp <leader>e <C-w>L
+
+
 " deleting with arrows and backspace
-inoremap <C-w> <C-\><C-o>dB
-inoremap <C-BS> <C-\><C-o>db
+" inoremap <C-w> <C-\><C-o>dB
+" inoremap <C-BS> <C-\><C-o>db
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
 
@@ -255,6 +257,12 @@ let g:limelight_conceal_guifg = '#777777'
 let g:indentLine_defaultGroup = 'SpecialKey'
 let g:indentLine_color_term = 239
 
+" to prevent it from hiding MARKDOWN and .json symbols
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+" refer to this thread: https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
+
 " =============================================================================
 " JAVA FILES:
 " =============================================================================
@@ -292,6 +300,12 @@ nnoremap <F5> :UndotreeToggle<CR>
 " USERDEFINED COMMANDS:
 " =============================================================================
 " command -nargs=1 Sl /\%V<args><CR>
+
+" =============================================================================
+" SQL:
+" =============================================================================
+let g:omni_sql_no_default_maps = 1
+" https://stackoverflow.com/questions/24931088/disable-omnicomplete-or-ftplugin-or-something-in-vim
 
 " =============================================================================
 " AIRLINE CONFIGURATION:

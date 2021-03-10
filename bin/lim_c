@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+while true; do
+    if curl -s -m 1 www.msftncsi.com/ncsi.txt > /dev/null ; then
+        echo ok
+    else
+        echo connection is limited
+    fi
+   sleep 4
+done

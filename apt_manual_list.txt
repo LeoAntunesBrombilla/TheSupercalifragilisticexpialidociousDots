@@ -19,6 +19,7 @@ diffutils
 dkms
 e2fsprogs
 efibootmgr
+espeak
 exuberant-ctags
 fakeroot
 findutils
@@ -108,6 +109,7 @@ shim-signed
 simplescreenrecorder
 software-properties-common
 swh-plugins
+telegram
 thunderbird-locale-en
 thunderbird-locale-en-us
 tldr

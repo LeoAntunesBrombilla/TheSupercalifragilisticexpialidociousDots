@@ -6,6 +6,43 @@ install all the "dependencies" and packages that I want. Basically just configur
 
 This is a little project idea for my dotfile repo:
 
+Basic .dotfiles strucure:
+
+    1. install.sh                                       (1/2)
+    2. install pkgs (e.g. from apt-get)                 (yes)
+    3. add main-stream repos for the OS                 (yes)
+    4. configure shortcuts (e.g. for gnome)             (no)
+    5. install drivers                                  (yes)
+    6. update and upgrade                               (no)
+    7. bin symlinks                                     (yes)
+    8. install and configure terminal                   (no)
+    9. install extensions                               (no)
+    10. install external apps                           (no)
+        + google-chrome
+        + mysql workbench
+        + tlauncher
+        + kvm
+    11. install external stuff                          (yes)
+        + lua
+            +,i luaver
+        + java
+            +,i jvm
+            +,i jre
+        + python
+        + nodejs                                        (no)
+    12. configure theme, cursor, appearance, shell      (no)
+    14. configure wallpaper                             (yes)
+    15. install term_fonts                              (no)
+    16. a UI                                            (yes)
+    17. add all PPA repositories from a .txt file       (yes)
+    18. install noti                                    (yes)
+    19. generate apt-manual  list                       (yes)
+    17. install all                                     (no)
+
+In order of execution:
+
+
+
 TO-DO:
     + Releard GitHub basics
     + Rewatch dotfiles repo
@@ -15,7 +52,7 @@ TO-DO:
         +,i installed_packages.txt
         +,i install.sh
             +,j install each package one by one
-            +,j confugure corresponsing packages (e.g. luaver)
+            +,j configure corresponding packages (e.g. luaver)
             +,j make list of installed packages to update current installed_packages.txt
             +,j install and sync current bin
         +,i refresh.sh

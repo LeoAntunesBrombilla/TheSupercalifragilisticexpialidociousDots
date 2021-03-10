@@ -121,7 +121,7 @@ In this repository you'll find an installation script called `install.sh`, which
 | Update [dot]files                   | yes             | `-uf`, `--update-files`                   |
 | Give permissions                    | yes             | `-gp`, `--give-permissions`               |
 
-The script manual can be found in /docs/install_manual.md
+The script manual can be found in [/docs/install_manual.md](https://github.com/kdav5758/.dotfiles/blob/dev/docs/install_manual.md)
 
 ### Installation Order
 Because of the nature of Linux itself, sometimes there are some prerequisites you must follow before installing something; for example: before installing `mainline` kernel update util present in the `apt_manual_list.txt` file, you must first add the PPA, which can be done by running `bash install.sh --add-ppas`. That's why if you want install every single thing that you can using the `install.sh` script, I'd recommend you doing so in the order I recommend/the one you consider.
@@ -160,7 +160,7 @@ As of March, using the `--install-apps` flag can be used to install the followin
 | Extra: font (Hack)      | yes             |
 
 ### Create Icons
-Some apps like `btnx` and TLauncher require you to create an icon, since they where installed/built from source!
+Some apps like `btnx-config` and TLauncher require you to create an icon, since they where installed/built from source!
 
 ## Gnome Extensions
 The following are a list of my personal favorite gnome-extensions

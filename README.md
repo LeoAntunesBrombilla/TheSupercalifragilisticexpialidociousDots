@@ -148,6 +148,7 @@ As of March, using the `--install-apps` flag can be used to install the followin
 | Kotlin                  | yes             |
 | Java                    | yes             |
 | Python                  | yes             |
+| Lua                     | no              |
 | Node.js                 | yes             |
 | Google                  | yes             |
 | Noti                    | yes             |
@@ -160,7 +161,22 @@ As of March, using the `--install-apps` flag can be used to install the followin
 | Extra: font (Hack)      | yes             |
 
 ### Create Icons
-Some apps like `btnx-config` and TLauncher require you to create an icon, since they where installed/built from source!
+Some apps like `MySql Workbench` and `TLauncher` require you to create an icon, since they where installed/built from source! For that, we'll use `alacarte`/`main-menu`, for creating the a "new Item". Open it >> "New Item" >> add the following data for each app:
+
+
+**TLauncher**
+Name: TLauncher
+Command: java -jar <path_to_jar_executable>
+Comment: Minecraft Launcher
+Icon: <select_icon_from_"~/Pictures/app_icons`">
+
+**MySql Workbench**
+(note: this one is already added, just search it up and edit it)
+Name: MySQL Workbench
+Command: env GTK_THEME='Adwaita-dark' mysql-workbench %f
+Comment: MySQL Database Design, Administration and Development Tool
+Icon: <leave_default>
+
 
 ## Gnome Extensions
 The following are a list of my personal favorite gnome-extensions

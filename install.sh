@@ -68,6 +68,16 @@ apps2[9"MySql"]="install_mysql"                  ;   orders+=(9"MySql")
 apps2[10"TLauncher"]="install_tlauncher"         ;   orders+=(10"TLauncher")
 apps2[11"KVM"]="install_kvm"                     ;   orders+=(11"KVM")
 apps2[12"btnx & btnx-config"]="install_btnx"     ;   orders+=(12"btnx & btnx-config")
+apps2[13"Themes"]="install_themes"               ;   orders+=(13"Themes")
+
+declare -A themes                                ;   declare -a orders_themes;
+themes[0"Cursor"]="install_cursor"               ;   orders_themes+=(0"Cursor")
+
+
+function install_theme() {
+    :
+}
+
 
 function install_kotlin() {
 
@@ -310,6 +320,11 @@ function install_apps() {
 }
 
 #-------------------=== install_apps ===-------------------------------
+
+
+declare -A apps1                                 ;   declare -a orders1;
+apps2[11"KVM"]="install_kvm"                     ;   orders+=(11"KVM")
+
 
 
 #-------------------=== script ===-------------------------------

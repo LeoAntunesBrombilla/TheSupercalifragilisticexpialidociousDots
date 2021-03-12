@@ -165,17 +165,20 @@ Some apps like `MySql Workbench` and `TLauncher` require you to create an icon, 
 
 
 **TLauncher**
-Name: TLauncher
-Command: java -jar <path_to_jar_executable>
-Comment: Minecraft Launcher
-Icon: <select_icon_from_"~/Pictures/app_icons`">
+
+* Name: TLauncher
+* Command: java -jar <path_to_jar_executable>
+* Comment: Minecraft Launcher
+* Icon: <select_icon_from_"~/Pictures/app_icons`">
 
 **MySql Workbench**
+
 (note: this one is already added, just search it up and edit it)
-Name: MySQL Workbench
-Command: env GTK_THEME='Adwaita-dark' mysql-workbench %f
-Comment: MySQL Database Design, Administration and Development Tool
-Icon: <leave_default>
+
+* Name: MySQL Workbench
+* Command: env GTK_THEME='Adwaita-dark' mysql-workbench %f
+* Comment: MySQL Database Design, Administration and Development Tool
+* Icon: <leave_default>
 
 
 ## Gnome Extensions

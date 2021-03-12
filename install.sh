@@ -5,23 +5,40 @@ this_script=`basename "$0"`
 my_bin="bin/"
 local_bin="/usr/local/bin"
 hashtag="#"     # needed for progress bar
+dash="--------------------------------------------"
+
 installed_packages="apt_manual_list.txt"
 lines_packages=`wc -l $installed_packages | awk '{ print $1 }'`
 PPAs="ppa_list.txt"
 lines_PPAs=`wc -l $PPAs | awk '{ print $1 }'`
 declare -A files=(
     #["original_file_path"]="dotfiles_repo_copy"
-    ["~/.config/nvim/init.vim"]="dotfiles/vim/nvim/init.vim"
+    ["~/config/nvim/init.vim"]="dotfiles/vim/nvim/init.vim"
     ["~/.vimrc"]="dotfiles/vim/vim/.vimrc"
     ["~/.bashrc"]="dotfiles/shell/.bashrc"
     # ["~/.config/kitty/kitty.conf"]="dotfiles/kitty/kitty.conf"
     ["~/.config/kitty"]="dotfiles/kitty/kitty"
-    ["~/.config/noti"]="dotfiles/noti"
+    ["~/.config/noti"]="dotfiles/noti/noti"
     ["~/.inputrc"]="dotfiles/user/.inputrc"
     ["~/.profile"]="dotfiles/user/.profile"
     ["~/.gitconfig"]="dotfiles/git/.gitconfig"
     ["~/.zshrc"]="dotfiles/shell/.zshrc"
 )
+
+#declare -A files=(
+#    #["original_file_path"]="dotfiles_repo_copy"
+#    ["$HOME/.config/nvim/init.vim"]="dotfiles/vim/nvim/init.vim"
+#    ["$HOME/.vimrc"]="dotfiles/vim/vim/.vimrc"
+#    ["$HOME/.bashrc"]="dotfiles/shell/.bashrc"
+#    # ["~/.config/kitty/kitty.conf"]="dotfiles/kitty/kitty.conf"
+#    ["$HOME/.config/kitty"]="dotfiles/kitty/kitty"
+#    ["$HOME/.config/noti"]="dotfiles/noti"
+#    ["$HOME/.inputrc"]="dotfiles/user/.inputrc"
+#    ["$HOME/.profile"]="dotfiles/user/.profile"
+#    ["$HOME/.gitconfig"]="dotfiles/git/.gitconfig"
+#    ["$HOME/.zshrc"]="dotfiles/shell/.zshrc"
+#)
+
 
 declare -A fonts=(
     #["<font_name>"]="<link_to_ttf_file>"
@@ -446,30 +463,41 @@ function update_files() {   #updates .dotfiles cat-ting current ones into the on
     # `cat ~/.inputrc > dotfiles/user/.inputrc`; `cat ~/.profile > dotfiles/user/.profile`            #user
 }
 
-
 function dotfiles_symlinks() {   #create semylink for the .dotfiles
 
     _end="${#files[@]}"
     counter=1
 
-    for key in ${!files[@]}; do         # original file=$sm; final_dest=$key
-        sm="`pwd`/${files[${key}]}"
-        smc="ln -s $sm $key"
-        echo "key = $key"
-        if [[ -d "$key" ]]; then        # file exists and is a dir
-            rm_original="rm -R $key"
-        elif [[ -f "$key" ]]; then      # file exists and is a normal file
-            rm_original="rm $key"
+    for key in ${!files[@]}; do
+        repo_f="`pwd`/${files[$key]}"
+        destination_f=${key//"~/"/"$HOME/"}
+        rm_cmd="rm $destination_f"
+        ln_cmd="ln -s $repo_f $destination_f"
+
+        if [[ -f "$destination_f" || -L "$destination_f" ]]; then   # natural file or symlink and exists
+            rm_cmd="rm $destination_f"
+            ln_cmd="ln -s $repo_f $destination_f"
+
+            echo -e "$dash\nremoving '$destination_f'..."
+            eval $rm_cmd
+            echo -e "creating symlinks from '$repo_f' to '$destination_f'..."
+            eval $ln_cmd
+            echo -e "$dash\n"
+
+        elif [[ -d "$destination_f" ]]; then    # directory and exists
+            rm_cmd="rm -R $destination_f"
+            ln_cmd="ln -s $repo_f $destination_f"
+
+            echo -e "$dash\nremoving '$destination_f'..."
+            eval $rm_cmd
+            echo -e "creating symlinks from '$repo_f' to '$destination_f'..."
+            eval $ln_cmd
+            echo -e "$dash\n"
+
         else
-            echo "file is neither a directory nor a normal file"
+            :
+            # echo -e "\nThe file you are trying to create a symlink from is not properly supported by the script, please raise an issue on the GitHub repository or edit the ./install.sh script on your own (dotfiles_symlinks function)"
         fi
-        echo -e "removing $key..."
-        # eval $rm_original
-        # echo -e "creating semylink of $sm into $key..."
-        # eval $smc
-        # ProgressBar ${counter} ${_end}
-        # echo -e "\n"
-        # counter=$((counter+1))
     done
 
     echo ""

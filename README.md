@@ -115,7 +115,7 @@ In this repository you'll find an installation script called `install.sh`, which
 | Install Theme                       | not ready       | `-it`, `--install-theme`                  |
 | Generate apt-manual list            | yes             | `-gl`, `--generate-list`                  |
 | Generate bin symlinks               | yes             | `-bs`, `--bin-symlinks`                   |
-| Generate dotfiles symlinks          | not ready       | `-ds`, `--dotfiles-symlinks`              |
+| Generate dotfiles symlinks          | yes             | `-ds`, `--dotfiles-symlinks`              |
 | Add main-stream repos (Ubuntu)      | yes             | `-ar`, `--add-repos`                      |
 | Add PPAs                            | yes             | `-ap`, `--add-ppas`                       |
 | Update [dot]files                   | yes             | `-uf`, `--update-files`                   |

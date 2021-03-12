@@ -220,9 +220,15 @@ $ ls ~/.local/share/gnome-shell/extensions/
 
 ### Dash to Panel configuration
 <p align="center">
-  <img src="https://i.imgur.com/8MCbnRV.png" alt="Sublime's custom image"/>
+  <img src="https://i.imgur.com/8MCbnRV.png" alt="Dash-to-panel gnome extension config"/>
 </p>
 <!-- ![Dash-to-Panel Style section](https://i.imgur.com/8MCbnRV.png) -->
+
+### Caffeine
+<p align="center">
+  <img src="https://i.imgur.com/UXNKC6I.png" alt="Caffeine gnome extension config"/>
+</p>
+
 
 
 ## Reporting Issues

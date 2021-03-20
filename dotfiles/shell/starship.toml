@@ -1,0 +1,79 @@
+# disable = true;   module is deactivated
+# disable = false;  module is enabled
+
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+[line_break]
+disabled = true
+
+[character]
+# success_symbol = "[➜](bold green)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[✗](bold red)"
+
+[cmd_duration]
+disabled = true
+
+[directory]
+truncation_symbol = "…/"
+truncate_to_repo = true
+style = "bold cyan"
+read_only = " 🔒"
+home_symbol = "~"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+always_show_remote = false
+disabled = false
+
+[git_state]
+style = "bold yellow"
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[ PICKING](${style})"
+merge = "[ MERGING](${style})"
+rebase = "[ REBASING](${style})"
+revert = "[ REVERTING](${style})"
+bisect = "[ BISECTING](${style})"
+am_or_rebase = "[喝AM/REBASE](${style})"
+am = "[鉶AM](${style})"
+disabled = false
+
+[git_status]
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+style = "bold red"
+disabled = false
+
+[hostname]
+disabled = true
+
+[java]
+symbol = " "
+style = "red dimmed"
+format = "$symbol[${version} ](${style})"
+disabled = false
+
+[kotlin]
+symbol = "🅺 "
+style = "bold blue"
+kotlin_binary = "kotlinc"
+format = "$symbol[${version} ](${style})"
+disabled = false
+
+[lua]
+format = "$symbol[${version} ](${style})"
+symbol = " "
+style = "bold blue"
+lua_binary = "lua"
+disbled = false
+

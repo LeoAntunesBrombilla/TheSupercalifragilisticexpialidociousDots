@@ -14,6 +14,7 @@ lines_PPAs=`wc -l $PPAs | awk '{ print $1 }'`
 declare -A files=(
     #["original_file_path"]="dotfiles_repo_copy"
     ["~/config/nvim/init.vim"]="dotfiles/vim/nvim/init.vim"
+    ["~/.config/starship.toml"]="dotfiles/shell/starship.toml"
     ["~/.vimrc"]="dotfiles/vim/vim/.vimrc"
     ["~/.bashrc"]="dotfiles/shell/.bashrc"
     # ["~/.config/kitty/kitty.conf"]="dotfiles/kitty/kitty.conf"

@@ -288,6 +288,7 @@ alias simple_date='date +"%d-%m-%y"'
 alias cls="clear"
 alias rlcea="clear"
 alias cle="clear"
+alias ecla="clear"
 alias rclear="clear"
 alias lscelar="clear"
 alias ceear="clear"

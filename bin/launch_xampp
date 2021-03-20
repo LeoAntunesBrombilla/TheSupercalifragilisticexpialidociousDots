@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gksu="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS"
+`$gksu /opt/lampp/manager-linux-x64.run`
+# `pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS /opt/lampp/manager-linux-x64.run`

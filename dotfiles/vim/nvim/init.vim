@@ -13,6 +13,7 @@ let &t_ut=''
 filetype on
 syntax on
 syntax enable
+" syntax sync minlines=20
 filetype plugin indent on
 filetype plugin on
 autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
@@ -41,12 +42,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-utils/vim-man'
     Plug 'Konfekt/FastFold'
     Plug 'Yggdroot/indentLine'
+    " Plug 'jez/vim-superman'
 
 "-------------------=== Code/Project navigation ===-------------
     Plug 'mbbill/undotree'
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " Plug 'tpope/vim-fugitive'       " for commiting github files
 
 "-------------------=== Languages support ===-------------------
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -54,8 +57,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'Dinduks/vim-java-get-set'
     Plug 'cskeeters/javadoc.vim'
-    Plug 'ryanoasis/vim-devicons'
     Plug 'vim-scripts/dbext.vim'
+    " Plug 'artur-shaik/vim-javacomplete2'      " issues with slowness
 
 "-------------------=== Personalization ===-----------------------------
     Plug 'junegunn/goyo.vim'
@@ -64,6 +67,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'powerline/powerline'
     Plug 'gruvbox-community/gruvbox'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -103,7 +107,8 @@ set cmdheight=1
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 "
 " Encoding
-set encoding=utf-8
+" set encoding=utf-8
+set encoding=UTF-8
 set fileencoding=utf-8
 set hlsearch
 set incsearch
@@ -199,6 +204,7 @@ let g:coc_global_extensions = [
     \ 'coc-gist',
     \ 'coc-html',
     \ 'coc-java',
+    \ 'coc-java-debug',
     \ 'coc-markdownlint',
     \ 'coc-python',
     \ 'coc-sh',
@@ -299,7 +305,12 @@ nnoremap <F5> :UndotreeToggle<CR>
 " =============================================================================
 " USERDEFINED COMMANDS:
 " =============================================================================
-" command -nargs=1 Sl /\%V<args><CR>
+" https://stackoverflow.com/questions/3878692/how-to-create-an-alias-for-a-command-in-vim
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Wq wq
+cnoreabbrev WQ wq
+cnoreabbrev wQ wq
 
 " =============================================================================
 " SQL:
@@ -314,4 +325,18 @@ let g:airline_theme='minimalist' " this affects vim-airline's theme
 let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'
 let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
 let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown
+
+" =============================================================================
+" Vim JavacComplete2:
+" =============================================================================
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
+" nmap <leader>jR <Plug>(JavaComplete-Imports-RemovVeUnused)
+" nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
+" nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+
+
+
+
+
 

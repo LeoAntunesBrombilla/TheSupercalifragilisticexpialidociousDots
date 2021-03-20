@@ -69,3 +69,12 @@ TO-DO:
 
 Notes:
     + createa a semi link using: `ln -s <full_original_name_path> <path_to_it_if_wanted/semylink>`
+
+
+ADD:
+
+    + install all apps option
+    + bug after adding ppas
+    + command install kotlin not found when doing (--install-apps)
+    + error while processing node.js
+    + ocs install needs to be added to the --install-apps list

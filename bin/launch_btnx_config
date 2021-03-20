@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gksu="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS"
+`$gksu btnx-config`

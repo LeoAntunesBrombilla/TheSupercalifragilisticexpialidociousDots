@@ -80,7 +80,7 @@ apps2[4"Node.js"]="install_nodejs"               ;   orders+=(4"Node.js")
 apps2[5"Font"]="install_font"                    ;   orders+=(5"Font")
 apps2[6"Google"]="install_google"                ;   orders+=(6"Google")
 apps2[7"Noti"]="install_noti"                    ;   orders+=(7"Noti")
-apps2[8"Telegram"]="Telegram"                    ;   orders+=(8"Telegram")
+apps2[8"Telegram"]="install_telegram"            ;   orders+=(8"Telegram")
 apps2[9"MySql"]="install_mysql"                  ;   orders+=(9"MySql")
 apps2[10"TLauncher"]="install_tlauncher"         ;   orders+=(10"TLauncher")
 apps2[11"KVM"]="install_kvm"                     ;   orders+=(11"KVM")
@@ -348,8 +348,7 @@ apps2[11"KVM"]="install_kvm"                     ;   orders+=(11"KVM")
 
 function permissions() {
 
-    sudo chmod +w /usr/local/bin/
-    sudo chmod +r /usr/local/bin/
+    sudo chmod 777 /usr/local/bin/
 }
 
 function install_nvidia_drivers() {
@@ -495,6 +494,10 @@ function dotfiles_symlinks() {   #create semylink for the .dotfiles
             echo -e "$dash\n"
 
         else
+            echo -e "$dash\nfile '$destination_f' does not exist, yet..."
+            echo -e "creating symlinks from '$repo_f' to '$destination_f'..."
+            eval $ln_cmd
+            echo -e "$dash\n"
             :
             # echo -e "\nThe file you are trying to create a symlink from is not properly supported by the script, please raise an issue on the GitHub repository or edit the ./install.sh script on your own (dotfiles_symlinks function)"
         fi

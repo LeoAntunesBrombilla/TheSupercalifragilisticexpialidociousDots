@@ -249,10 +249,15 @@ unset _MY_JAVA
 #terminal aliases
 #change default terminal
 alias ctrm='update-alternatives --config x-terminal-emulator'
+alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS'
+alias gksudo='gksu'
 alias sctrm='sudo update-alternatives --config x-terminal-emulator'
 alias dtct_key="xev -event keyboard"
 alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
+alias eco='echo'
 alias rm_crash='echo -e "\nThe following crashes were found and will now be removed:"; ls -l /var/crash/; sleep 1; sudo rm /var/crash/* && echo -e "\nMessage (OK): Succesfully cleared crashes!\nExit Status: $?" || echo -e "\nMessage (FAILED): No crashes were removed because A. there where none and/or B. You do not have permissions over this directory\nExit Status: $?"'
+
+
 # you can add kitty (terminal) as an option with the following command
 # `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
 
@@ -392,6 +397,8 @@ alias lau="lua"
 alias ual="lua"
 alias aul="lua"
 alias wlua="rlwrap lua"
+alias xampp='gksu /opt/lampp/manager-linux-x64.run'
+alias mp='mvn package'
 
 
 # =============================================================================
@@ -401,13 +408,20 @@ alias wlua="rlwrap lua"
 #-------------------=== Terminal Editors ===-------------------------------
 alias nv='nvim'
 
+#-------------------=== Exa ===-------------------------------
+alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'
+alias ef='fe'
+alias fl='exa -F'
+
+
 #-------------------=== w/ Vim ===-------------------------------
 
 alias ef_systemd='sudo vim /etc/systemd/system.conf'
 alias ef_kitty='vim ~/.config/kitty/kitty.conf'
 alias ef_bash='vim ~/.bashrc'
 alias ef_vim='vim ~/.vimrc'
-alias ef_nvim='~/.config/nvim/init.vim'
+alias ef_nvim='vim ~/.config/nvim/init.vim'
+alias ef_ss='vim ~/.config/starship.toml'
 
 #-------------------=== w/ Nvim ===-------------------------------
 
@@ -416,6 +430,7 @@ alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
 alias efn_bash='nvim ~/.bashrc'
 alias efn_vim='nvim ~/.vimrc'
 alias efn_nvim='nvim ~/.config/nvim/init.vim'
+alias efn_ss='nvim ~/.config/starship.toml'
 
 #-------------------=== Cat-ting ===-------------------------------
 
@@ -467,5 +482,37 @@ fi
 export SDKMAN_DIR="/home/sebas5758/.sdkman"
 [[ -s "/home/sebas5758/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sebas5758/.sdkman/bin/sdkman-init.sh"
 
+#-------------------=== Kitty ===-------------------------------
 # for kitty support
 source <(kitty + complete setup bash)
+
+#-------------------=== Starship ===-------------------------------
+# for starship shell prompt support
+
+_MY_STARSHIP="$(which starship)"
+if [ -e "${_MY_STARSHIP}" ]; then
+
+    eval "$(starship init bash)"
+
+    function set_win_title() {
+        win_tittle=${PWD/"$HOME"/"~"}
+        echo -ne "\033]0; $win_tittle \007"
+        # exanples:
+            # $(basename $PWD)
+            # $USER
+            # $HOSTNAME
+            # $PWD
+            # normal_text
+    }
+
+    starship_precmd_user_func="set_win_title"
+else
+    # starship is not installed, but can be installed with:
+    # `curl -fsSL https://starship.rs/install.sh | bash`
+    :
+fi
+unset _MY_STARSHIP
+
+
+
+

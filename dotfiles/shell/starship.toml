@@ -61,7 +61,7 @@ disabled = true
 symbol = " "
 style = "red dimmed"
 format = "$symbol[${version} ](${style})"
-disabled = false
+disabled = true
 
 [kotlin]
 symbol = "🅺 "

@@ -18,8 +18,11 @@ if [[ -f $relative_classpaths ]]; then
         if [[ $counter = $lines_sessions ]]; then
             # echo "reached..."
             cmd=${cmd/":<.>"/" $project"}
-            eval $cmd
+            # echo -e "cmd = $cmd\ncmd2 = $cmd2"
+            eval_it=true
+            break
         else
+            # continue
             :
         fi
 
@@ -29,4 +32,8 @@ else
     echo -e "\nIn order to run this script, you will need to have a relative classpath file,\nwhich is used for storing the classpaths of the project in matter.\n(NOTE: must be located at the projects and root dir and should be called '.classpaths')"
 fi
 
-
+if [[ "$eval_it" == "true" ]]; then
+    eval $cmd
+else
+    echo -e "There was an error while trying to execute the command '$cmd'"
+fi

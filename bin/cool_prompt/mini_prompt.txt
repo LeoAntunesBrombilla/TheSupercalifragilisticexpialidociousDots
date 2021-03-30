@@ -1,0 +1,27 @@
+
+
+TO-DO:
+
+    + show pwd (k)
+    + prompt (n)
+        +,i starship's prompt
+    + exit status checking
+        d: change color and symbol
+    + current git branch (buggy)
+    + username and hostname when connecter
+    + show username and hostname when connecter via ssh
+    + name main func __init
+    + configure directory shown by shell on top (look at starship documentation > advanced configuration > set window title)
+
+ANNOTATIONS:
+
+    + what makes is blink/take too long, is the fact that it's checking
+        for the github branch
+    + what made xelabash so slow, was that the fact that it showed the github branch
+        . All in all, all i had to do was to comment out every line in the code
+        that showed the github branch or said `git` somewhere
+    + using the conventional $(__git_ps1) command to get current branch
+        is laggy, so use the func then from
+        https://thucnc.medium.com/how-to-show-current-git-branch-with-colors-in-bash-prompt-380d05a24745
+
+

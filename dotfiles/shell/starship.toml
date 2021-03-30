@@ -26,7 +26,7 @@ home_symbol = "~"
 symbol = " "
 style = "bold purple"
 always_show_remote = false
-disabled = false
+disabled = true
 
 [git_state]
 style = "bold yellow"

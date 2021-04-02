@@ -17,6 +17,7 @@ declare -A files=(
     ["~/.config/starship.toml"]="dotfiles/shell/starship.toml"
     ["~/.vimrc"]="dotfiles/vim/vim/.vimrc"
     ["~/.bashrc"]="dotfiles/shell/.bashrc"
+    ["~/.shell_aliases"]="dotfiles/shell/.shell_aliases"
     # ["~/.config/kitty/kitty.conf"]="dotfiles/kitty/kitty.conf"
     ["~/.config/kitty"]="dotfiles/kitty/kitty"
     ["~/.config/noti"]="dotfiles/noti/noti"

@@ -18,6 +18,8 @@ if [[ -f $relative_classpaths ]]; then
         if [[ $counter = $lines_sessions ]]; then
             # echo "reached..."
             cmd=${cmd/":<.>"/" $project"}
+            # cmd example:
+                # java -cp target/cats-app-1.0-SNAPSHOT.jar:libs/* com.my-company.app.App
             # echo -e "cmd = $cmd\ncmd2 = $cmd2"
             eval_it=true
             break

@@ -10,14 +10,14 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+# HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+# shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+# HISTSIZE=1000
+# HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -65,57 +65,12 @@ function set-title() {
   PS1=${ORIG}${TITLE}
 }
 
-# function set_win_title() {
-#     # win_tittle=${PWD/"$HOME"/"~"}
-#     echo -ne "\033]0; ${PWD/"$HOME"/"~"} \007"
-#     # exanples:
-#         # $(basename $PWD)
-#         # $USER
-#         # $HOSTNAME
-#         # $PWD
-#         # normal_text
-# }
-
-
-# # Colors
-# light_green="\[\e[1;32m\]"
-# light_red="\[\e[1;31m\]"
-# yellow="\[\e[0;33m\]"
-# gray="\[\e[0;37m\]"
-# reset="\[\e[m\]"
-# title1='echo -en "\033]0; $("pwd") \a"'
-# # Customize prompt
-# prompt_command() {
-#     local status="$?"
-#     local status_color=""
-
-#     if [ $status != 0 ]; then
-#         status_color=$light_red
-#     else
-#         status_color=$light_green
-#     fi
-#     # dir1=`pwd`
-#     # title=`xtitle`
-#     # export PS1="`set_win_title`[${yellow}\w${reset}]${gray}${reset} ${status_color}λ${reset} "
-#     export PS1="[${yellow}\w${reset}]${gray}${reset} ${status_color}λ${reset} "
-#     # export PS1="`xtitle -t $dir1`[${yellow}\w${reset}]${gray}${reset} ${status_color}λ${reset} "
-# }
-# export GIT_PS1_SHOWDIRTYSTATE=1
-# export PROMPT_COMMAND=prompt_command
-
-# export PROMPT_COMMAND=prompt_command
-
-# echo -en "\033]0; $("pwd") \a"
-
-# source /usr/local/bin/polyglot.sh
-
-
 # =============================================================================
 # MiniPrompt
 # =============================================================================
 
 #-------------------=== aliases ===-------------------------------
-alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt.sh'
+alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt'
 alias odf='source /usr/local/bin/MiniPrompt*/scripts/on_da_fly.sh'
 
 #-------------------=== vars ===-------------------------------
@@ -130,13 +85,17 @@ if [[ "$MINIPROMPT_ENABLED" == "true" ]]; then
     # check if current shell is interactive
     # if .bashrc doesn't do this by default, uncomment the line below and comment the line that only says source /usr/local/bin/MiniPrompt*/mini_prompt.sh
     # [[ $- == *i* ]] && source /usr/local/bin/MiniPrompt*/mini_prompt.sh || echo -e "You are currently not in an interactive shell, thus MiniPrompt can't load"
-    source /usr/local/bin/MiniPrompt*/mini_prompt.sh
+    source /usr/local/bin/MiniPrompt*/mini_prompt
+    source /usr/local/bin/MiniPrompt*/scripts/extras.sh
 elif [[ "$MINIPROMPT_ENABLED" == "false" ]]; then
     # don't source it
     if [ "$color_prompt" = yes ]; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     else
+        # set again variables that MiniPrompt remaps
         PS1="\[\033[01;32m\]\w\[\033[00m\]\[\033[01;39m\] >\[\033[00m\] "
+        HISTCONTROL=ignoredups
+        shopt -s histappend
     fi
     unset color_prompt force_color_prompt
 
@@ -199,32 +158,29 @@ alias sync_miniprompt='sudo rm -R -f /usr/local/bin/MiniPrompt; sudo rsync -av /
 #     ;;
 # esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+## enable color support of ls and also add handy aliases
+#if [ -x /usr/bin/dircolors ]; then
+#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#    alias ls='ls --color=auto'
+#    #alias dir='dir --color=auto'
+#    #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+#    alias grep='grep --color=auto'
+#    alias fgrep='fgrep --color=auto'
+#    alias egrep='egrep --color=auto'
+#fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+if [ -f ~/.shell_aliases ]; then
+    source ~/.shell_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -238,50 +194,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# =============================================================================
-# GitHub & Git
-# =============================================================================
-
-#-------------------=== Git aliases ===-------------------------------
-alias 1tree='git log --all --decorate --oneline --graph'
-alias 2tree='git log --all --decorate --graph'
-alias ggs="git status"
-alias ggch="git checkout"
-alias ggpush="git push origin main"
-alias ggpull="git pull origin main"
-alias ggremote="git remote -v"  # check all remotes
-alias ggbranch="git branch -v"  # check all branches
 
 
-# =============================================================================
-# XCLIP
-# =============================================================================
-
-#-------------------=== aliases ===-------------------------------
-alias 'c=xclip' #copy
-alias 'cc=xclip -selection clipboard' #copy to clipboard
-alias 'v=xclip -o' #paste
-
-# =============================================================================
-# CHANGING CURSOR
-# =============================================================================
-
-#-------------------=== aliases ===-------------------------------
-alias line='echo -e "\033[5 q"'         #blinking pipe bar
-alias nbline='echo -e "\033[6 q"'       #not blinking pipe bar
-alias block='echo -e "\033[1 q"'        #blinking block
-alias nbblock='echo -e "\033[2 q"'      #not blinking block
-alias uscore='echo -e "\033[3 q"'       #blinking underscore
-alias nbuscore='echo -e "\033[4 q"'     #not blinking underscore
 
 
-#-------------------=== nums info ===-------------------------------
-# 1 is the blinky block cursor
-# 2 is the default (non-blinky) block cursor
-# 3 is blinky underscore
-# 4 fixed underscore
-# 5 pipe bar (blinking)
-# 6 fixed pipe bar
+
 
 
 # =============================================================================
@@ -290,7 +207,7 @@ alias nbuscore='echo -e "\033[4 q"'     #not blinking underscore
 
 #This for easy access on https://paste.c-net.org/
 
-pastebin()
+function pastebin()
 {
     local url='https://paste.c-net.org/'
     if (( $# )); then
@@ -305,7 +222,7 @@ pastebin()
         curl -s --data-binary @- "$url"
     fi
 }
-pasteget()
+function pasteget()
 {
     local url='https://paste.c-net.org/'
     if (( $# )); then
@@ -321,23 +238,6 @@ pasteget()
     fi
 }
 
-# =============================================================================
-# PYTHON
-# =============================================================================
-
-alias python="python3.8"
-
-# =============================================================================
-# JAVA
-# =============================================================================
-
-# visit this links in case you want to install java:
-#   https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-18-04/
-
-
-#-------------------=== aliases ===-------------------------------
-alias cjava='update-alternatives --config java' #change java version
-alias scjava='sudo update-alternatives --config java' #change java version
 
 #-------------------=== classpath(s) ===-------------------------------
 #classpath for java (refer to linode for more info)
@@ -351,21 +251,6 @@ if [ -e "${_MY_JAVA}" ]; then
 fi
 unset _MY_JAVA
 
-# =============================================================================
-# TERMINAL(S) MANAGEMENT
-# =============================================================================
-
-#-------------------=== aliases ===-------------------------------
-#terminal aliases
-#change default terminal
-alias ctrm='update-alternatives --config x-terminal-emulator'
-alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS'
-alias gksudo='gksu'
-alias sctrm='sudo update-alternatives --config x-terminal-emulator'
-alias dtct_key="xev -event keyboard"
-alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
-alias eco='echo'
-alias rm_crash='echo -e "\nThe following crashes were found and will now be removed:"; ls -l /var/crash/; sleep 1; sudo rm /var/crash/* && echo -e "\nMessage (OK): Succesfully cleared crashes!\nExit Status: $?" || echo -e "\nMessage (FAILED): No crashes were removed because A. there where none and/or B. You do not have permissions over this directory\nExit Status: $?"'
 
 
 # you can add kitty (terminal) as an option with the following command
@@ -375,219 +260,13 @@ alias rm_crash='echo -e "\nThe following crashes were found and will now be remo
 #for having 10,000 of history
 export HISTFILESIZE=20000
 export HISTSIZE=10000
-shopt -s histappend
+# shopt -s histappend
 # Combine multiline commands into one in history
 shopt -s cmdhist
 # Ignore duplicates, ls without options and builtin commands
-HISTCONTROL=ignoredups
+# HISTCONTROL=ignoredups
 export HISTIGNORE="&:ls:[bf]g:exit"
-alias tmp="cd /tmp"
-#-------------------=== cd(s) ===-------------------------------
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-alias .......="cd ../../../../../.."
-alias ........="cd ../../../../../../.."
-#date formats
-alias simple_date='date +"%d-%m-%y"'
 
-
-#-------------------=== clear ===-------------------------------
-alias cls="clear"
-alias rlcea="clear"
-alias cle="clear"
-alias ecla="clear"
-alias rclear="clear"
-alias lscelar="clear"
-alias tre="clear"
-alias ceear="clear"
-alias celr="clear"
-alias eclar="clear"
-alias earl="clear"
-alias clsad="clear"
-alias ear="clear"
-alias sclear="clear"
-alias ealr="clear"
-alias lsclear="clear"
-alias cearlc="clear"
-alias earlcea="clear"
-alias clerr="clear"
-alias rclea="clear"
-alias lcas="clear"
-alias clearcd="clear"
-alias ckear="clear"
-alias cela="clear"
-alias earlc="clear"
-alias clearlce="clear"
-alias lear="clear"
-alias caelr="clear"
-alias lcea="clear"
-alias rclea="clear"
-alias caler="clear"
-alias ceaar="clear"
-alias slcea="clear"
-alias cealr="clear"
-alias elar="clear"
-alias earls="clear"
-alias cclear="clear"
-alias clera="clear"
-alias cleraa="clear"
-alias clearra="clear"
-alias claer="clear"
-alias clrea="clear"
-alias clra="clear"
-alias celar="clear"
-alias celalr="clear"
-alias cear="clear"
-alias clea="clear"
-alias cls="clear; ls"
-alias cearl="clear"
-alias cler="clear"
-alias CLEAR="clear"
-alias cleer="clear"
-alias cearlce="clear"
-alias clearr="clear"
-alias lcear="clear"
-alias cealrc="clear"
-alias clar="clear"
-alias cearls="clear"
-
-alias q="exit"
-alias ks="ls"
-alias LS="ls"
-alias 1getip="ip route get 1.2.3.4 | awk '{print $7}'"
-alias 2getip="hostname -I | awk '{print $1}'"
-alias vom="vim"
-alias co="cd out/; lh; cd .."
-alias hl="lh"
-alias pww="pwd"
-alias getfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
-alias getfanmode="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
-alias gfm="cat /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
-
-# fan modes:
-#    + 2 = silent
-#    + 0 = balance
-#    + 1 = turbo
-
-
-#And some for commonly used variations of ls (and typos):
-alias ll="ls -l"
-alias lo="ls -o"
-alias lh="ls -lha"
-alias la="ls -la"
-alias sl="ls"
-alias l='ls -CF'
-alias s="ls"
-
-
-
-#mn: if you can't remember something use:
-#history | grep foo
-#this is for searching for 'foo'
-
-# This is GOLD for finding out what is taking so much space on your drives!
-alias diskspace="du -S | sort -n -r |more"
-
-# Command line mplayer movie watching for the win.
-#alias mp="mplayer -fs"
-
-# Show me the size (sorted) of only the folders in this directory
-alias dicts="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
-
-#rsync
-alias rsync_code="sudo rsync -av /home/sebas5758/code/ code1/"
-
-# =============================================================================
-# Terminal General
-# =============================================================================
-alias so='source'
-alias tuf_info='sudo dmidecode | grep "BIOS Inf\|Board Inf" -A 3'
-
-# =============================================================================
-# LUA
-# =============================================================================
-
-#-------------------=== aliases ===-------------------------------
-alias lau="lua"
-alias ual="lua"
-alias aul="lua"
-alias wlua="rlwrap lua"
-alias xampp='gksu /opt/lampp/manager-linux-x64.run'
-alias mp='mvn package'
-alias wq='wmctrl -r 'Alacritty' -b toggle,fullscreen'
-
-## =============================================================================
-## MiniPrompt
-## =============================================================================
-
-##-------------------=== aliases ===-------------------------------
-#alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt.sh'
-#alias odf='source /usr/local/bin/MiniPrompt*/scripts/on_da_fly.sh'
-
-##-------------------=== vars ===-------------------------------
-#MINIPROMPT_ENABLED=true
-
-##-------------------=== resources ===-------------------------------
-
-#if [[ "$MINIPROMPT_ENABLED" == "true" ]]; then
-#    # source the file
-#    # check if current shell is interactive
-#    [[ $- == *i* ]] && source /usr/local/bin/MiniPrompt*/mini_prompt.sh || echo -e "You are currently not in an interactive shell, thus MiniPrompt can't load"
-#elif [[ "$MINIPROMPT_ENABLED" == "false" ]]; then
-#    # don't source it
-#    PS1="\[\033[01;32m\]\w\[\033[00m\]\[\033[01;39m\] >\[\033[00m\] "
-#else
-#    echo -e "Configuration variable 'MINIPROMPT_ENABLED' was set to '$MINIPROMPT_ENABLED', which is not a valid value. It can either be set to 'true' or 'false' in the ~/.bashrc file."
-#fi
-
-#alias sync_miniprompt='sudo rm -R -f /usr/local/bin/MiniPrompt; sudo rsync -av /home/sebas5758/code/github_p/MiniPrompt/ /usr/local/bin/MiniPrompt'
-
-# =============================================================================
-# VIEWING & EDITING FILES
-# =============================================================================
-
-#-------------------=== rust-bat ===-------------------------------
-alias bca='batcat'
-
-#-------------------=== Terminal Editors ===-------------------------------
-alias nv='nvim'
-
-#-------------------=== Exa ===-------------------------------
-alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'
-alias ef='fe'
-alias fl='exa -F'
-
-
-#-------------------=== w/ Vim ===-------------------------------
-
-alias ef_systemd='sudo vim /etc/systemd/system.conf'
-alias ef_kitty='vim ~/.config/kitty/kitty.conf'
-alias ef_bash='vim ~/.bashrc'
-alias ef_vim='vim ~/.vimrc'
-alias ef_nvim='vim ~/.config/nvim/init.vim'
-alias ef_ss='vim ~/.config/starship.toml'
-
-#-------------------=== w/ Nvim ===-------------------------------
-
-alias efn_systemd='sudo nvim /etc/systemd/system.conf'
-alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
-alias efn_bash='nvim ~/.bashrc'
-alias efn_vim='nvim ~/.vimrc'
-alias efn_nvim='nvim ~/.config/nvim/init.vim'
-alias efn_ss='nvim ~/.config/starship.toml'
-alias efn_ala='nvim ~/.config/alacritty/alacritty.yml'
-
-#-------------------=== Cat-ting ===-------------------------------
-
-alias ct_bash="cat ~/.bashrc"
-alias ct_vim="cat ~/.vimrc"
-alias ct_kitty="cat ~/.config/kitty/kitty.conf"
-alias ct_nvim='cat ~/.config/kitty/kitty.conf'
-
-# Git aliases
 
 # setterm -foreground green -store
 #

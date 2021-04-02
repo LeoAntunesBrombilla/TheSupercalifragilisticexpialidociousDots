@@ -5,8 +5,9 @@
 " =============================================================================
 
 if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
+    set t_Co=256
 endif
+
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 let &t_ut=''
@@ -57,7 +58,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'Dinduks/vim-java-get-set'
     Plug 'cskeeters/javadoc.vim'
-    Plug 'vim-scripts/dbext.vim'
+    " Plug 'vim-scripts/dbext.vim'
     " Plug 'artur-shaik/vim-javacomplete2'      " issues with slowness
 
 "-------------------=== Personalization ===-----------------------------
@@ -68,6 +69,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'gruvbox-community/gruvbox'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ryanoasis/vim-devicons'
+    " Plug 'vim-scripts/DrawIt'
 
 call plug#end()
 
@@ -118,6 +120,18 @@ set viminfo='100,<9999,s100
 " 2000000
 " https://github.com/styled-components/vim-styled-components/issues/28
 set mmp=2500
+
+" folds
+set foldmethod=syntax
+set nofoldenable
+set foldlevel=99
+
+" using folds:
+" zo - opens folds
+" zc - closes fold
+" zm - increases auto fold depth
+" zr - reduces auto fold depth
+" zR - unfold all
 
 " =============================================================================
 " COLOR SCHEME:

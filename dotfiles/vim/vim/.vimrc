@@ -29,24 +29,28 @@ call plug#begin('~/.vim/plugged')
     " Plug 'majutsushi/tagbar'
     Plug 'Konfekt/FastFold'
     Plug 'Yggdroot/indentLine'
+    Plug 'tpope/vim-eunuch'
 
 "-------------------=== Code/Project navigation ===-------------
     Plug 'mbbill/undotree'
-    Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " Plug 'scrooloose/nerdtree'
+    " Plug 'Xuyuanp/nerdtree-git-plugin'
+    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "-------------------=== Languages support ===-------------------
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'sheerun/vim-polyglot'
     Plug 'tpope/vim-commentary'
-    Plug 'Dinduks/vim-java-get-set'
-    Plug 'cskeeters/javadoc.vim'
     Plug 'ryanoasis/vim-devicons'
+
+    "-------------------=== Java Plugins ===-------------------
+        Plug 'Dinduks/vim-java-get-set'
+        Plug 'cskeeters/javadoc.vim'
 
 "-------------------=== Personalization ===-----------------------------
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
+    Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'vim-airline/vim-airline'
     Plug 'powerline/powerline'
     Plug 'gruvbox-community/gruvbox'
@@ -180,6 +184,7 @@ let g:coc_global_extensions = [
   \ 'coc-gist',
   \ 'coc-html',
   \ 'coc-java',
+  \ 'coc-java-debug',
   \ 'coc-markdownlint',
   \ 'coc-python',
   \ 'coc-sh',
@@ -263,8 +268,8 @@ map <leader>ge :InsertGetterOnly<CR>
 " =============================================================================
 " NERDTREE:
 " =============================================================================
-map <F2> :NERDTreeToggle<CR>
-map <Tab> :NERDTreeToggle<CR>
+" map <F2> :NERDTreeToggle<CR>
+" map <Tab> :NERDTreeToggle<CR>
 
 " =============================================================================
 " UNDOTREE:
@@ -274,7 +279,7 @@ nnoremap <F5> :UndotreeToggle<CR>
 " =============================================================================
 " USERDEFINED COMMANDS:
 " =============================================================================
-command -nargs=1 Sl /\%V<args><CR>
+" command -nargs=1 Sl /\%V<args><CR>
 
 " =============================================================================
 " AIRLINE CONFIGURATION:

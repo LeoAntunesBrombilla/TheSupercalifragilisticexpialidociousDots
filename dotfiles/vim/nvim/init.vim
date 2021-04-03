@@ -43,14 +43,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-utils/vim-man'
     Plug 'Konfekt/FastFold'
     Plug 'Yggdroot/indentLine'
-    " Plug 'jez/vim-superman'
+    Plug 'tpope/vim-eunuch'
 
 "-------------------=== Code/Project navigation ===-------------
     Plug 'mbbill/undotree'
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    " Plug 'tpope/vim-fugitive'       " for commiting github files
+    Plug 'mg979/vim-visual-multi'
 
 "-------------------=== Languages support ===-------------------
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -58,8 +58,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'Dinduks/vim-java-get-set'
     Plug 'cskeeters/javadoc.vim'
-    " Plug 'vim-scripts/dbext.vim'
-    " Plug 'artur-shaik/vim-javacomplete2'      " issues with slowness
 
 "-------------------=== Personalization ===-----------------------------
     Plug 'junegunn/goyo.vim'
@@ -69,7 +67,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'gruvbox-community/gruvbox'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ryanoasis/vim-devicons'
-    " Plug 'vim-scripts/DrawIt'
 
 call plug#end()
 
@@ -141,7 +138,6 @@ let g:gruvbox_bold=1
 
 set background=dark
 colorscheme gruvbox
-" color gruvbox
 set termguicolors
 
 " =============================================================================
@@ -310,6 +306,11 @@ map <leader>ge :InsertGetterOnly<CR>
 " =============================================================================
 map <F2> :NERDTreeToggle<CR>
 map <Tab> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 " =============================================================================
 " UNDOTREE:
@@ -341,13 +342,31 @@ let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
 let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown
 
 " =============================================================================
+" VimVisualMulti:
+" =============================================================================
+
+let g:VM_default_mappings = 0
+let g:VM_maps = {}
+let g:VM_maps["Add Cursor Up"] = '<C-Up>'
+let g:VM_maps["Add Cursor Down"] = '<C-Down>'
+
+" Add Cursor Down       <C-Down>    create cursors vertically
+" Add Cursor Up         <C-Up>      ,,       ,,      ,,
+
+" =============================================================================
 " Vim JavacComplete2:
 " =============================================================================
+" let g:JavaComplete_EnableDefaultMappings = 0
 " autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
 " nmap <leader>jR <Plug>(JavaComplete-Imports-RemovVeUnused)
 " nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
 " nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+
+
+
+
+
 
 
 

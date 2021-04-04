@@ -47,17 +47,25 @@ call plug#begin('~/.vim/plugged')
 
 "-------------------=== Code/Project navigation ===-------------
     Plug 'mbbill/undotree'
+    Plug 'honza/vim-snippets'
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
     Plug 'mg979/vim-visual-multi'
+    " Plug 'davidhalter/jedi-vim'
 
 "-------------------=== Languages support ===-------------------
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'sheerun/vim-polyglot'
     Plug 'tpope/vim-commentary'
-    Plug 'Dinduks/vim-java-get-set'
-    Plug 'cskeeters/javadoc.vim'
+    Plug 'nvim-treesitter/nvim-treesitter'
+
+    "-------------------=== Java ===-------------------
+        Plug 'Dinduks/vim-java-get-set'
+        Plug 'cskeeters/javadoc.vim'
+        " Plug 'artur-shaik/vim-javacomplete2'
 
 "-------------------=== Personalization ===-----------------------------
     Plug 'junegunn/goyo.vim'
@@ -280,11 +288,39 @@ let g:vim_markdown_conceal_code_blocks = 0
 " refer to this thread: https://vi.stackexchange.com/questions/7258/how-do-i-prevent-vim-from-hiding-symbols-in-markdown-and-json
 
 " =============================================================================
-" JAVA FILES:
+" JAVA:
 " =============================================================================
-au BufEnter *.java :highlight java_class cterm=bold,italic
-au BufEnter *.java :match java_class /class/
+    " =============================================================================
+    " JAVA FILES:
+    " =============================================================================
+        au BufEnter *.java :highlight java_class cterm=bold,italic
+        au BufEnter *.java :match java_class /class/
 
+    " =============================================================================
+    " JAVA GETTER SETTER:
+    " =============================================================================
+        map <leader>sg :InsertBothGetterSetter<CR>
+        map <leader>gs :InsertBothGetterSetter<CR>
+        map <leader>se :InsertSetterOnly<CR>
+        map <leader>ge :InsertGetterOnly<CR>
+
+    " =============================================================================
+    " ABBREVIATIONS:
+    " =============================================================================
+        " iab sop System.out.println(<Left><Right><Right>;<Left><Left><C-R>=Eatchar('\s')<CR>
+        au FileType java :iab sopl System.out.println()<Left><Right>;<Left><Left><C-R>=Eatchar('\s')<CR>
+        au FileType java :iab sopf System.out.printf()<Left><Right>;<Left><Left><C-R>=Eatchar('\s')<CR>
+        au FileType java :iab jis import static ;<Left><C-R>=Eatchar('\s')<CR>
+        au FileType java :iab ji import ;<Left><C-R>=Eatchar('\s')<CR>
+        au FileType java :iab jp package ;<Left><C-R>=Eatchar('\s')<CR>
+        " au FileType java
+        " iab tfc public class TestClss()<Space>{<Left> ;<Left><C-R>=Eatchar('\s')<CR>
+        " iab tfc1 public class TestClss()<Space>{<Left><Right><CR><CR><Up><Up><Down><Tab><Tab><BS><C-R>=Eatchar('\s')<CR>
+        " iab tes2 import {<Left><Right><C-R>=Eatchar('\s')<CR>
+        " iab testc public class TestClass()<Space>{<CR>}<C-R>=Eatchar('\s')<CR>
+        " iab cl class ClassName(object):<CR><Tab>"""docstring for ClassName"""<CR>def __init__(self, arg):<CR><Tab>super(ClassName, self).__init__()<CR>self.arg = arg
+        " iabbr cl class ClassName(object):<CR><Tab>"""docstring for ClassName"""<CR>def __init__(self, arg):<CR><Tab>super(ClassName, self).__init__()<CR>self.arg = arg
+        " <C-R>=Eatchar('\s')<CR>
 
 " =============================================================================
 " TAGBAR:
@@ -292,14 +328,7 @@ au BufEnter *.java :match java_class /class/
 " map <S-Tab> :TagbarOpenAutoClose<CR>
 " let g:tagbar_autofocus = 1 "move cursor to tagbar as soon as it's toggled
 
-" =============================================================================
-" JAVA GETTER SETTER:
-" =============================================================================
 
-map <leader>sg :InsertBothGetterSetter<CR>
-map <leader>gs :InsertBothGetterSetter<CR>
-map <leader>se :InsertSetterOnly<CR>
-map <leader>ge :InsertGetterOnly<CR>
 
 " =============================================================================
 " NERDTREE:
@@ -311,7 +340,11 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
-
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeShowLineNumbers=1
+let NERDTreeShowHidden=1
+" let NERDTreeNodeDelimiter="😀"       "smiley face
 " =============================================================================
 " UNDOTREE:
 " =============================================================================
@@ -354,19 +387,87 @@ let g:VM_maps["Add Cursor Down"] = '<C-Down>'
 " Add Cursor Up         <C-Up>      ,,       ,,      ,,
 
 " =============================================================================
+" CocSnippets:
+" =============================================================================
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+
+" =============================================================================
 " Vim JavacComplete2:
 " =============================================================================
-" let g:JavaComplete_EnableDefaultMappings = 0
-" autocmd FileType java setlocal omnifunc=javacomplete#Complete
-" nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
-" nmap <leader>jR <Plug>(JavaComplete-Imports-RemovVeUnused)
-" nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
-" nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+" if (&ft=='java')
+"     " -------------------=== settings ===-------------------------------
+"     " autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"     let g:JavaComplete_EnableDefaultMappings = 0
+"     let g:JavaComplete_CheckServerVersionAtStartup = 0 " Check server version on startup. Can be disabled on slow start, or infinite recompilation. By default it is 1.
+"     let g:JavaComplete_MavenRepositoryDisable = 1 " don't append classpath with libraries specified in pom.xml of your project. By default is 0.
+"     let g:JavaComplete_UseFQN = 0 " use full qualified name in completions description. By default is 0.
+"     let g:JavaComplete_ClosingBrace = 0 " add close brace automatically, when complete method declaration. Disable if it conflicts with another plugins.
+"     let g:JavaComplete_StaticImportsAtTop = 1 " imports sorting with static imports at the top. By default this is 0.
+"     let g:JavaComplete_ImportOrder = ['java.', 'javax.', 'com.', 'org.', 'net.'] " Specifies the order of import groups, when use packageName sorting type
+"     let g:JavaComplete_CompletionResultSort = 1 " Sort completion results alphabetically.
+"     let g:JavaComplete_IgnoreErrorMsg = 1 " When it is greater than 0, the error message will be ignored. By default it is 0.
+"     let g:JavaComplete_CheckServerVersionAtStartup = 0 " Check server version on startup. Can be disabled on slow start, or infinite recompilation. By default it is 1.
+"      let g:JavaComplete_JavaviLogLevel = 'debug' " enables server side logging (log4j logging levels).
 
+"     " -------------------=== mappings ===-------------------------------
+"     nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
+"     nmap <leader>jR <Plug>(JavaComplete-Imports-RemovVeUnused)
+"     nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
+"     nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+"     nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
 
+"     nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
+"     nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+"     nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+"     nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+"     nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
+"     nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
+"     nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
+"     nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
 
+"     vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+"     vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+"     vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+" endif
 
+" =============================================================================
+" FUNCTIONS:
+" =============================================================================
 
+" consume the space typed after an abbreviation:
+func Eatchar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunc
+" =============================================================================
+" ABBREVIATIONS:
+" =============================================================================
+" iabbr <silent> 2sop System.out.println()<c-r>=Eatchar('\m\s\<bar>/')<cr>
+" iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
+" https://stackoverflow.com/questions/27662593/is-it-possible-to-abbreviate-two-words-in-vim-by-using-the-command-ab
+" :help abbreviations
+
+" special chars
+" <Left> moves cursor to the left
+" <Right> moves cursor to the right
+" you get the idea...
+" <C-[> deletes <Space> behind cursor and moves cursor to the left (basically moves two positions) (leaves you in commad line mode)
+" <C-]> deletes <Space> in front of cursor and moves cursor to the right (basically moves two positions) (leaves you in command line mode)
+" <C-R>=Eatchar('\s')<CR> to remove trailing white space
 
 
 

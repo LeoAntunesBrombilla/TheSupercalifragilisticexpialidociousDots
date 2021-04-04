@@ -352,3 +352,4 @@ source <(kitty + complete setup bash)
 # starship_precmd_user_func="set_win_title"
 
 
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH

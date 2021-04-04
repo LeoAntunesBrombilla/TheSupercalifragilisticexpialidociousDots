@@ -335,3 +335,4 @@ fi
 ##    echo -en "\e]PFFFFFFF" #white
 ##    clear #for background artifacting
 ##fi
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH

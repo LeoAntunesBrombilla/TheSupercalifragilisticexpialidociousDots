@@ -33,9 +33,9 @@ call plug#begin('~/.vim/plugged')
 
 "-------------------=== Code/Project navigation ===-------------
     Plug 'mbbill/undotree'
-    " Plug 'scrooloose/nerdtree'
-    " Plug 'Xuyuanp/nerdtree-git-plugin'
-    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "-------------------=== Languages support ===-------------------
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -268,8 +268,8 @@ map <leader>ge :InsertGetterOnly<CR>
 " =============================================================================
 " NERDTREE:
 " =============================================================================
-" map <F2> :NERDTreeToggle<CR>
-" map <Tab> :NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
+map <Tab> :NERDTreeToggle<CR>
 
 " =============================================================================
 " UNDOTREE:

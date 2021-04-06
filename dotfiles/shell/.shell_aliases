@@ -9,11 +9,11 @@ alias 2tree='git log --all --decorate --graph'
 
 alias ggs="git status"
 alias ggch="git checkout"
-alias gaa="git add -A"
-alias gcm="git commit -am"
-
+alias ggaa="git add -A"
+alias ggcm="git commit -am"
 alias ggsh="git push origin"
 alias ggll="git pull origin"
+
 alias ggremote="git remote -v"  # check all remotes
 alias ggbranch="git branch -v"  # check all branches
 

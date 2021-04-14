@@ -23,11 +23,11 @@ MINIPROMPT_ENABLED=true
 
 # >>> MiniPrompt initialize >>>
 if [[ "$MINIPROMPT_ENABLED" == "true" ]]; then
-    # source the file
-
     # check if current shell is interactive
     # if .bashrc doesn't do this by default, uncomment the line below and comment the line that only says source /usr/local/bin/MiniPrompt*/mini_prompt.sh
     # [[ $- == *i* ]] && source /usr/local/bin/MiniPrompt*/mini_prompt.sh || echo -e "You are currently not in an interactive shell, thus MiniPrompt can't load"
+    
+    # source the files
     source /usr/local/bin/MiniPrompt*/mini_prompt
     source /usr/local/bin/MiniPrompt*/scripts/extras.sh
 elif [[ "$MINIPROMPT_ENABLED" == "false" ]]; then
@@ -352,4 +352,4 @@ source <(kitty + complete setup bash)
 # starship_precmd_user_func="set_win_title"
 
 
-export PATH=$HOME/.config/nvcode/utils/bin:$PATH
+# export PATH=$HOME/.config/nvcode/utils/bin:$PATH

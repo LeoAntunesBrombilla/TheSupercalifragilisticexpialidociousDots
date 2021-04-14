@@ -1,14 +1,19 @@
 #!/usr/bin/env lua
 
 --require 't5'
+-- this is a test comment
 
+
+-- test comment
+-- test comment
 --tables
 city = {}
 city.name = "Seattle"
 city.population = 10000
 city.mayor = "Klark McDonald"
 
-
+-- test comment
+-- test comment
 --[[io.write('Hello, what is your name? ')
 local name = io.read()
 io.write('Nice to meet you, ', name, '!\n')--]]

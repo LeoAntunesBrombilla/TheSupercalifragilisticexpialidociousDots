@@ -22,41 +22,41 @@ autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 " PLUGINS:
 " =============================================================================
 
-call plug#begin('~/.vim/plugged')
+"call plug#begin('~/.vim/plugged')
 
-"-------------------=== Other ===-------------------------------
-    Plug 'vim-utils/vim-man'
-    " Plug 'majutsushi/tagbar'
-    Plug 'Konfekt/FastFold'
-    Plug 'Yggdroot/indentLine'
-    Plug 'tpope/vim-eunuch'
+""-------------------=== Other ===-------------------------------
+"    Plug 'vim-utils/vim-man'
+"    " Plug 'majutsushi/tagbar'
+"    Plug 'Konfekt/FastFold'
+"    Plug 'Yggdroot/indentLine'
+"    Plug 'tpope/vim-eunuch'
 
-"-------------------=== Code/Project navigation ===-------------
-    Plug 'mbbill/undotree'
-    Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+""-------------------=== Code/Project navigation ===-------------
+"    Plug 'mbbill/undotree'
+"    Plug 'scrooloose/nerdtree'
+"    Plug 'Xuyuanp/nerdtree-git-plugin'
+"    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-"-------------------=== Languages support ===-------------------
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'sheerun/vim-polyglot'
-    Plug 'tpope/vim-commentary'
-    Plug 'ryanoasis/vim-devicons'
+""-------------------=== Languages support ===-------------------
+"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"    Plug 'sheerun/vim-polyglot'
+"    Plug 'tpope/vim-commentary'
+"    Plug 'ryanoasis/vim-devicons'
 
-    "-------------------=== Java Plugins ===-------------------
-        Plug 'Dinduks/vim-java-get-set'
-        Plug 'cskeeters/javadoc.vim'
+"    "-------------------=== Java Plugins ===-------------------
+"        Plug 'Dinduks/vim-java-get-set'
+"        Plug 'cskeeters/javadoc.vim'
 
-"-------------------=== Personalization ===-----------------------------
-    Plug 'junegunn/goyo.vim'
-    Plug 'junegunn/limelight.vim'
-    Plug 'nvim-treesitter/nvim-treesitter'
-    Plug 'vim-airline/vim-airline'
-    Plug 'powerline/powerline'
-    Plug 'gruvbox-community/gruvbox'
-    Plug 'vim-airline/vim-airline-themes'
+""-------------------=== Personalization ===-----------------------------
+"    Plug 'junegunn/goyo.vim'
+"    Plug 'junegunn/limelight.vim'
+"    Plug 'nvim-treesitter/nvim-treesitter'
+"    Plug 'vim-airline/vim-airline'
+"    Plug 'powerline/powerline'
+"    Plug 'gruvbox-community/gruvbox'
+"    Plug 'vim-airline/vim-airline-themes'
 
-call plug#end()
+"call plug#end()
 
 " =============================================================================
 " SETTINGS:

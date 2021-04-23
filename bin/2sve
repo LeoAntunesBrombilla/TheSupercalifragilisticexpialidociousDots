@@ -6,7 +6,7 @@
 # TO-DO
 #   + on recurse_dirs2() -- make it so that any file with 'Main' on its name will get compiled at the end, cuz else it's going to cause error
 #   + make it so that $temp_cp can be edited using this scritpt
-#       +,i remove one of the entries
+#      +,i remove one of the entries
 #       +,i add an entry
 #   + fix bugs
 #       +,i if entry if removed and entry is last of entries then the entry before that one will have an collon, which is something that will cause an error to the parser
@@ -82,14 +82,14 @@ EOF
 function recurse_dirs1() {
 
     # readarray -t  assArrayCP2< <(jq -r '.[]' $compiled_list)
-    files_array=$(find . -type f -name "*.kt") #find all files with the .kt (kotlin) extension
+    files_array=$(find . -type f -name "*.kt") #find all files with the .kt (kotlin) exte
     test_array=()
 
     sub_str1="main"
     sub_str2="Main"
     c_line=1
 
-    for j in "${files_array[@]}"; do #this is because files on $files_array can't be accessed one by one
+    for j in "${files_array[@]}"; do #this is because files on $files_array can't one by one
         test_array+=($j)
     done
 
@@ -107,7 +107,7 @@ function recurse_dirs1() {
                 # echo -e "found!; the line number is $c_line"
                 compiled_list="${dir_sessions}session$c_line/compiled_list.json"
                 compiled_list_tmp="${dir_sessions}session$c_line/compiled_list_tmp.json"
-                # echo -e "\ncompiled list = $compiled_list\ncompiled list tmp = $compiled_list_tmp"
+                # echo -e "\ncompiled list = $compiled_list\ncompiled list tmp = $compiled_"
                 break
             else
                 if [[ $c_line == $lines_sessions ]]; then

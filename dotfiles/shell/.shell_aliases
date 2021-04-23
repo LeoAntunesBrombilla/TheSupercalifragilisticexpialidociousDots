@@ -224,7 +224,7 @@ alias wq='wmctrl -r 'Alacritty' -b toggle,fullscreen'
 alias bca='batcat'
 
 #-------------------=== Terminal Editors ===-------------------------------
-alias nv='nvim'
+alias nv='/usr/local/bin/nvim.appimage'
 
 #-------------------=== Exa ===-------------------------------
 alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'

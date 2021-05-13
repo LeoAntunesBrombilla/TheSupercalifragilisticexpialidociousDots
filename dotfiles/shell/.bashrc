@@ -16,6 +16,10 @@ esac
 alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt'
 alias odf='source /usr/local/bin/MiniPrompt*/scripts/on_da_fly.sh'
 
+
+# load xresources file
+# xrdb merge ~/xresources
+
 #-------------------=== vars ===-------------------------------
 MINIPROMPT_ENABLED=true
 
@@ -197,11 +201,6 @@ fi
 
 
 
-
-
-
-
-
 # =============================================================================
 # C-NET.ORG
 # =============================================================================
@@ -302,8 +301,6 @@ fi
 #references:
 #https://askubuntu.com/questions/147462/how-can-i-change-the-tty-colors
 
-[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-[ -s ~/.luaver/completions/luaver.bash ] && . ~/.luaver/completions/luaver.bash
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -314,42 +311,19 @@ export SDKMAN_DIR="/home/sebas5758/.sdkman"
 # for kitty support
 source <(kitty + complete setup bash)
 
-#-------------------=== Starship ===-------------------------------
-# for starship shell prompt support
-
-# _MY_STARSHIP="$(which starship)"
-# if [ -e "${_MY_STARSHIP}" ]; then
-
-#     eval "$(starship init bash)"
-
-#     function set_win_title() {
-#         win_tittle=${PWD/"$HOME"/"~"}
-#         echo -ne "\033]0; $win_tittle \007"
-#         # exanples:
-#             # $(basename $PWD)
-#             # $USER
-#             # $HOSTNAME
-#             # $PWD
-#             # normal_text
-#     }
-
-#     starship_precmd_user_func="set_win_title"
-# else
-#     # starship is not installed, but can be installed with:
-#     # `curl -fsSL https://starship.rs/install.sh | bash`
-#     :
-# fi
-# unset _MY_STARSHIP
-
-# source "${XDG_DATA_HOME:-~/.local/share}/xelabash/xela.bash"
-# source ~/.local/share/xelabash/xela.bash
-
-# PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
 
-    # eval "$(starship init bash)"
+# luaver
+alias lv='luaver'
 
-# starship_precmd_user_func="set_win_title"
-
-
-# export PATH=$HOME/.config/nvcode/utils/bin:$PATH
+# load luaver
+alias llv='[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver; [ -s ~/.luaver/completions/luaver.bash ] && . ~/.luaver/completions/luaver.bash'
+# case ${?} in
+# 	0)
+# 		echo -e "\n-----------------------------------------"
+# 		echo -e "Entry added successfully"
+# 		;;
+# 	*)
+# 		echo -e "\n\nAn error ocurred while adding the entry, check '$this_scrpt -h' for help."
+# 		;;
+# esac

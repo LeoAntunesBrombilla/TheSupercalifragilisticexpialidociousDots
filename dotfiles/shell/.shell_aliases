@@ -224,7 +224,9 @@ alias wq='wmctrl -r 'Alacritty' -b toggle,fullscreen'
 alias bca='batcat'
 
 #-------------------=== Terminal Editors ===-------------------------------
-alias nv='/usr/local/bin/nvim.appimage'
+# alias nv='/usr/local/bin/nvim.appimage'
+alias nv='nvim'
+# alias nvim='nv'
 
 #-------------------=== Exa ===-------------------------------
 alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'
@@ -260,3 +262,11 @@ alias ct_bash="cat ~/.bashrc"
 alias ct_vim="cat ~/.vimrc"
 alias ct_kitty="cat ~/.config/kitty/kitty.conf"
 alias ct_nvim='cat ~/.config/kitty/kitty.conf'
+
+
+
+alias load="kill -USR1 $(pidof st)"
+alias use="xrdb merge"
+
+
+alias appit="/usr/local/bin/appimagetool-x86_64.AppImage"

@@ -22,7 +22,9 @@ autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 " PLUGINS:
 " =============================================================================
 
-"call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
+
+	Plug 'akinsho/nvim-toggleterm.lua'
 
 ""-------------------=== Other ===-------------------------------
 "    Plug 'vim-utils/vim-man'
@@ -56,7 +58,7 @@ autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 "    Plug 'gruvbox-community/gruvbox'
 "    Plug 'vim-airline/vim-airline-themes'
 
-"call plug#end()
+call plug#end()
 
 " =============================================================================
 " SETTINGS:
@@ -104,11 +106,11 @@ set viminfo='100,<9999,s100
 " =============================================================================
 " COLOR SCHEME:
 " =============================================================================
-let g:gruvbox_italic=1
-let g:gruvbox_bold=1
+" let g:gruvbox_italic=1
+" let g:gruvbox_bold=1
 
-set background=dark
-colorscheme gruvbox
+" set background=dark
+" colorscheme gruvbox
 " color gruvbox
 set termguicolors
 

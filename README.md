@@ -10,5 +10,5 @@
   <b>🐧 Pocco81's configuration files 🐧</b>
 </p>
 
-# Thanks for dropping by!
+### Thanks for dropping by!
 

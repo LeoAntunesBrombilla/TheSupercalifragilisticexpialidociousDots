@@ -2,7 +2,7 @@
   <img
     src="resources/imgs/repo_logo.png"
     alt="My Profile picture"
-	width="350"
+	width="295"
     />
 </p>
 

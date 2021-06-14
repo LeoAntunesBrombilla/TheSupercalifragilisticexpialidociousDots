@@ -1,3 +1,0 @@
-
-The images are hosted in imgur: https://imgur.com/a/3jVHdiP
-they can be both installde and configured using the `install.sh` script with the `--install-wallpapers`

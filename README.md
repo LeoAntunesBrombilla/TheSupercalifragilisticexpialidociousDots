@@ -1,9 +1,10 @@
-# Home Sweet Home :coffee:
+# Eye candy ~ :coffee:
 
 <p align="center">
   <img
-    src="imgs/black_whale.png"
-    alt="Logo"
+    src="resources/imgs/black_whale.png"
+    alt="My Profile picture"
+	width="70%"
     />
 </p>
 

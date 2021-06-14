@@ -1,9 +1,0 @@
-telegram:
-  token: 1660545155:AAEyoD400mo8Lvu_NLg12fDVCzLsLt1dRJc
-  chatId: '1050594355'
-say:
-  voice: Sebastian
-espeak:
-  voiceName: english-us
-speechsynthesizer:
-  voice: Espeak

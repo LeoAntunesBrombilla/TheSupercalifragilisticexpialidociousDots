@@ -1,0 +1,66 @@
+
+
+
+" =============================================================================
+" SETTINGS:
+" =============================================================================
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set noshiftround
+set smartindent
+set mouse=a
+set noswapfile
+set scrolloff=5
+set noerrorbells
+set visualbell
+set clipboard=unnamedplus
+set modelines=0
+set nowrap
+set backspace=indent,eol,start
+set ttyfast
+set lazyredraw
+set regexpengine=1              "vim 7.4 introduced weaker regex and setting that option will revert it to the older
+set synmaxcol=300               " arbitrary number < 3000 (default value)
+set laststatus=2
+set showmode
+set showcmd
+set cursorline
+set matchpairs+=<:>
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+set number
+set shell=bash
+set hidden
+set cmdheight=1
+"
+" Encoding
+set encoding=UTF-8
+set fileencoding=utf-8
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set viminfo='100,<9999,s100
+" 2000000
+" https://github.com/styled-components/vim-styled-components/issues/28
+set mmp=2500
+
+" folds
+set foldmethod=syntax
+set nofoldenable
+set foldlevel=99
+set guicursor=i-c-ci:ver25,o-v-ve:hor20,cr-sm-n-r:block
+
+
+
+" using folds:
+" zo - opens folds
+" zc - closes fold
+" zm - increases auto fold depth
+" zr - reduces auto fold depth
+" zR - unfold all
+
+set clipboard+=ideaput

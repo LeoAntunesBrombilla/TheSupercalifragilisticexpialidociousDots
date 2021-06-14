@@ -1,8 +1,6 @@
-# Eye candy ~ :coffee:
-
 <p align="center">
   <img
-    src="resources/imgs/black_whale.png"
+    src="resources/imgs/repo_logo.png"
     alt="My Profile picture"
 	width="400"
     />

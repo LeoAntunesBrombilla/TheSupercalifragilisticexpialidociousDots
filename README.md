@@ -4,7 +4,7 @@
   <img
     src="resources/imgs/black_whale.png"
     alt="My Profile picture"
-	width="70%"
+	width="200"
     />
 </p>
 

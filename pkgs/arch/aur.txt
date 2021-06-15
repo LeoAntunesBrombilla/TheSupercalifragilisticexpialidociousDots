@@ -1,0 +1,6 @@
+brave-nightly-bin
+chrome-gnome-shell
+gnome-shell-pomodoro
+nerd-fonts-complete
+ocs-url
+virtualbox-ext-oracle

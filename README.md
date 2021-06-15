@@ -12,3 +12,9 @@
 
 ### Thanks for dropping by!
 
+
+
+# TODO
++ Make a list of packages for each distro (Arch, Fedora, Ubuntu)
++ And functionality for generating symlinks
++ Add installer for Nvim (properly implemented)

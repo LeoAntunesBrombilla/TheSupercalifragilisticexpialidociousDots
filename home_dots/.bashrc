@@ -238,18 +238,29 @@ function pasteget()
     fi
 }
 
-
-#-------------------=== classpath(s) ===-------------------------------
-#classpath for java (refer to linode for more info)
-# in case you are getting an error or something with this whenever you open a new terminal session
-# it's because you don't have java installed, and like so, this symblink does not work. If this is
-# your case comment out the line below this comment.
 _MY_JAVA="$(which java)"
 if [ -e "${_MY_JAVA}" ]; then
     export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
     export PATH=$PATH:$JAVA_HOME/bin
 fi
 unset _MY_JAVA
+
+_MY_JDTLS="$HOME/Downloads/eclipse.jdt.ls"
+if [ -e "${_MY_JDTLS}" ]; then
+    export PATH=$PATH:$_MY_JDTLS
+fi
+unset _MY_JDTLS
+
+_MY_NODE="$(which node)"
+if [ -e "${_MY_NODE}" ]; then
+	export NODE_PATH="$HOME/.npm-packages/bin:$HOME/.node_modules/bin"
+    export PATH=$PATH:$NODE_PATH
+fi
+unset _MY_NODE
+
+local_bin="$HOME/.local/bin"
+
+export PATH=$PATH:$local_bin
 
 
 
@@ -327,3 +338,6 @@ alias llv='[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver; [ -s ~/.luaver/complet
 # 		echo -e "\n\nAn error ocurred while adding the entry, check '$this_scrpt -h' for help."
 # 		;;
 # esac
+
+alias luamake=/home/sebas5758/.config/lua-language-server/3rd/luamake/luamake
+

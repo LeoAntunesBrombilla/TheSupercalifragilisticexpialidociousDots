@@ -15,7 +15,6 @@
 
 require('nd-modules.nd-vars.init')
 vim.cmd('luafile ~/.config/nvim/nd-settings.lua')
--- error is here!
 require('nd-modules.init')
 require('nd-plugins.init')
 require('nd-lsp.init')

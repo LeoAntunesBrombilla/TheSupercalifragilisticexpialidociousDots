@@ -4,6 +4,7 @@ PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 HOME_DOTS="$PARENT_PATH/home_dots/"
 DOT_CONFIG="$PARENT_PATH/.config/"
 USER_CONFIG="$HOME/.config/"
+RESOURCES="$PARENT_PATH/resources/"
 PKGS="$PARENT_PATH/pkgs/"
 THIS=$(basename "$0")
 PFX="~~~~~~~~~~~~ "
@@ -422,6 +423,22 @@ function assert_linux() {
 
 }
 
+
+function copy_resources() {
+
+	prompt -i "INFO: Checking passed parameter..."
+	if [[ "$1" == "w" ]]; then
+		cp -r "${RESOURCES}wallpapers" "$HOME/Pictures"
+		prompt -s "OKAY: Wallpapers successfully copied to $HOME/Pictures!"
+	elif [[ "$1" == "i" ]]; then
+		cp -r "${RESOURCES}icons" "$HOME/Pictures"
+		prompt -s "OKAY: Icons successfully copied to $HOME/Pictures!"
+	else
+		prompt -e "ERROR: Option not recognized"
+	fi
+
+}
+
 __init_colors
 
 if [[ -n "$1" ]]; then
@@ -432,10 +449,6 @@ if [[ -n "$1" ]]; then
 				exit 0
 				;;
 			-lp|--link-program)
-
-				prompt -w "Some of the commands need sudo permission to run."
-				read -sp "Type your password: " u_password
-
 				if [[ "$2" ]]; then
 					local_programs=${2//[[:blank:]]/}
 					IFS=',' read -ra user_programs <<< "$local_programs"
@@ -454,6 +467,13 @@ if [[ -n "$1" ]]; then
 					link_dots
 				else
 					prompt -e "ERROR: Unsuported operating system"
+				fi
+				;;
+			-r|--resources)
+				if [[ "$2" ]]; then
+					copy_resources $2
+				else
+					prompt -e "ERROR: You must provide at least one argument"
 				fi
 				;;
 			-?*)

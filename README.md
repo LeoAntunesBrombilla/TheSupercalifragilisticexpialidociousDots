@@ -12,9 +12,7 @@
 
 ### Thanks for dropping by!
 
-<!-- <img src="https://raw.githubusercontent.com/Pocco81/TheSupercalifragilisticexpialidociousDots/dev/resources/imgs/final_gnome_rice.png" alt="img" align="right" width="300px"> -->
-<img src="https://raw.githubusercontent.com/Pocco81/TheSupercalifragilisticexpialidociousDots/dev/resources/imgs/home_sweet_home.png" alt="img" align="right" width="350px">
-<img src="https://raw.githubusercontent.com/Pocco81/TheSupercalifragilisticexpialidociousDots/dev/resources/imgs/truezen_nvim.png" alt="img" align="right" width="350px">
+<img src="https://raw.githubusercontent.com/Pocco81/TheSupercalifragilisticexpialidociousDots/dev/resources/imgs/gnome_nvim.png" alt="img" align="right" width="300px">
 
 This is my personal collection of configuration files.
 
@@ -32,7 +30,7 @@ Here are some details about my setup:
 
 
 # TODO
-+ Make a list of packages for each distro (Arch, Fedora, Ubuntu)
 + And functionality for generating symlinks
 + Add installer for Nvim (properly implemented)
++ Finish installer script
 

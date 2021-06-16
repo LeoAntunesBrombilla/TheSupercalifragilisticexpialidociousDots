@@ -328,7 +328,7 @@ function install_arch() {
 	complex_heading "Installing Arch packages from the AUR..."
 
 	while read pkg; do
-		prompt -i "~~> Checking is the package $pkg is installed..."
+		prompt -i "~~> Checking if the package $pkg is installed..."
 		if (assert_arch_package $pkg); then
 			prompt -s "\tOKAY: Package is installed, skipping it..."
 		else
@@ -347,7 +347,7 @@ function install_arch() {
 			prompt -s "\tOKAY: Package is installed, skipping it..."
 		else
 			prompt -w "\tWARNING: Package is not installed, installing it..."
-			sudo pacman -S --noconfirm $pkg
+			echo $u_password | sudo pacman -S --noconfirm $pkg
 		fi
 		echo
 	done < $arch_pacman_packages
@@ -419,6 +419,10 @@ if [[ -n "$1" ]]; then
 				exit 0
 				;;
 			-lp|--link-program)
+
+				prompt -w "Some of the commands need sudo permission to run."
+				read -sp "Type your password: " u_password
+
 				if [[ "$2" ]]; then
 					local_programs=${2//[[:blank:]]/}
 					IFS=',' read -ra user_programs <<< "$local_programs"

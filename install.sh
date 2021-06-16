@@ -314,8 +314,8 @@ function install_all() {
 		prompt -s "OKAY: Luaver is already installed"
 	else
 		prompt -w "WARNING: Luaver is not installed, installing it..."
-		curl -fsSL https://raw.githubusercontent.com/dhavalkapil/luaver/master/install.sh | sh -s - -r v1.1.0
-		source $HOME/.bashrc
+		# curl -fsSL https://raw.githubusercontent.com/dhavalkapil/luaver/master/install.sh | sh -s - -r v1.1.0
+		# source $HOME/.bashrc
 	fi
 
 }
@@ -333,7 +333,7 @@ function install_arch() {
 			prompt -s "\tOKAY: Package is installed, skipping it..."
 		else
 			prompt -w "\tWARNING: Package is not installed, installing it..."
-			yay -S $pkg
+			yay -S $pkg; sleep 3
 		fi
 		echo
 	done < $arch_aur_packages

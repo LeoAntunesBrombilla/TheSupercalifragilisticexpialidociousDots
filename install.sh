@@ -325,20 +325,6 @@ function install_arch() {
 	arch_aur_packages="${PKGS}arch/aur.txt"
 	arch_pacman_packages="${PKGS}arch/official_repo.txt"
 
-	complex_heading "Installing Arch packages from the AUR..."
-
-	while read pkg; do
-		prompt -i "~~> Checking if the package $pkg is installed..."
-		if (assert_arch_package $pkg); then
-			prompt -s "\tOKAY: Package is installed, skipping it..."
-		else
-			prompt -w "\tWARNING: Package is not installed, installing it..."
-			yay -S $pkg; sleep 5
-		fi
-		echo
-	done < $arch_aur_packages
-
-	echo
 	complex_heading "Installing Arch packages from the official repo..."
 
 	while read pkg; do
@@ -351,6 +337,37 @@ function install_arch() {
 		fi
 		echo
 	done < $arch_pacman_packages
+
+	echo
+	complex_heading "Installing Arch packages from the AUR..."
+
+	aur_pkgs=()
+
+	while read pkg; do
+		# prompt -i "~~> Checking if the package $pkg is installed..."
+		# if (assert_arch_package $pkg); then
+		# 	prompt -s "\tOKAY: Package is installed, skipping it..."
+		# else
+		# 	prompt -w "\tWARNING: Package is not installed, installing it..."
+		# 	yay -S $pkg
+		# fi
+		# echo
+		aur_pkgs+=($pkg)
+	done < $arch_aur_packages
+
+
+	for pkg in "${aur_pkgs[@]}"; do
+		prompt -i "~~> Checking if the package $pkg is installed..."
+		if (assert_arch_package $pkg); then
+			prompt -s "\tOKAY: Package is installed, skipping it..."
+		else
+			prompt -w "\tWARNING: Package is not installed, installing it..."
+			yay -S $pkg
+		fi
+		echo
+	done
+
+	echo
 }
 
 

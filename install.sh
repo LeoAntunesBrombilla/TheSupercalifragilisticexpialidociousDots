@@ -333,7 +333,7 @@ function install_arch() {
 			prompt -s "\tOKAY: Package is installed, skipping it..."
 		else
 			prompt -w "\tWARNING: Package is not installed, installing it..."
-			yay -S $pkg; sleep 3
+			yay -S $pkg; sleep 5
 		fi
 		echo
 	done < $arch_aur_packages

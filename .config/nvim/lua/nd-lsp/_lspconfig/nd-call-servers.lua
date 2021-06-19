@@ -6,6 +6,7 @@ local list_language_servers = {
 	ls_prefix.."efm-general-ls",
 	ls_prefix.."lua-ls",
 	ls_prefix.."bash-ls",
+	ls_prefix.."perl-ls",
 	-- ls_prefix.."clangd-ls",
 	ls_prefix.."css-ls",
 	ls_prefix.."elm-ls",

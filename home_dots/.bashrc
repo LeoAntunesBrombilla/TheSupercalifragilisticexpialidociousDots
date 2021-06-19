@@ -263,6 +263,14 @@ local_bin="$HOME/.local/bin"
 export PATH=$PATH:$local_bin
 
 
+_MY_VIM="$(which vim)"
+if [ -e "${_MY_VIM}" ]; then
+	export EDITOR='vim'
+	export VISUAL='vim'
+fi
+unset _MY_VIM
+
+
 
 # you can add kitty (terminal) as an option with the following command
 # `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
@@ -320,7 +328,14 @@ export SDKMAN_DIR="/home/sebas5758/.sdkman"
 
 #-------------------=== Kitty ===-------------------------------
 # for kitty support
-source <(kitty + complete setup bash)
+
+
+_MY_KITTY="$(which kitty)"
+if [ -e "${_MY_KITTY}" ]; then
+	source <(kitty + complete setup bash)
+fi
+unset _MY_KITTY
+
 
 
 

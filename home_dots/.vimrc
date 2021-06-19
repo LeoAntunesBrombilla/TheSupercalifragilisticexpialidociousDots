@@ -15,50 +15,12 @@ syntax on
 syntax enable
 filetype plugin indent on
 filetype plugin on
-autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
+" autocmd FileType c,cpp,cs,java,kotlin setlocal commentstring=//%s
 
 
 " =============================================================================
 " PLUGINS:
 " =============================================================================
-
-call plug#begin('~/.vim/plugged')
-
-	Plug 'akinsho/nvim-toggleterm.lua'
-
-""-------------------=== Other ===-------------------------------
-"    Plug 'vim-utils/vim-man'
-"    " Plug 'majutsushi/tagbar'
-"    Plug 'Konfekt/FastFold'
-"    Plug 'Yggdroot/indentLine'
-"    Plug 'tpope/vim-eunuch'
-
-""-------------------=== Code/Project navigation ===-------------
-"    Plug 'mbbill/undotree'
-"    Plug 'scrooloose/nerdtree'
-"    Plug 'Xuyuanp/nerdtree-git-plugin'
-"    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-""-------------------=== Languages support ===-------------------
-"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"    Plug 'sheerun/vim-polyglot'
-"    Plug 'tpope/vim-commentary'
-"    Plug 'ryanoasis/vim-devicons'
-
-"    "-------------------=== Java Plugins ===-------------------
-"        Plug 'Dinduks/vim-java-get-set'
-"        Plug 'cskeeters/javadoc.vim'
-
-""-------------------=== Personalization ===-----------------------------
-"    Plug 'junegunn/goyo.vim'
-"    Plug 'junegunn/limelight.vim'
-"    Plug 'nvim-treesitter/nvim-treesitter'
-"    Plug 'vim-airline/vim-airline'
-"    Plug 'powerline/powerline'
-"    Plug 'gruvbox-community/gruvbox'
-"    Plug 'vim-airline/vim-airline-themes'
-
-call plug#end()
 
 " =============================================================================
 " SETTINGS:
@@ -166,129 +128,5 @@ noremap! <C-h> <C-w>
 map <leader>wr :set wrap<CR>
 map <leader>nwr :set nowrap<CR>
 
-" =============================================================================
-" COC EXTENSIONS:
-" =============================================================================
-
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-clangd',
-  \ 'coc-css',
-  \ 'coc-cssmodules',
-  \ 'coc-emmet',
-  \ 'coc-highlight',
-  \ 'coc-git',
-  \ 'coc-gist',
-  \ 'coc-html',
-  \ 'coc-java',
-  \ 'coc-java-debug',
-  \ 'coc-markdownlint',
-  \ 'coc-python',
-  \ 'coc-sh',
-  \ 'coc-lua',
-  \ 'coc-kotlin-dev',
-  \ 'coc-emoji-shortcodes',
-  \ 'coc-marketplace',
-  \ 'coc-lists',
-  \ 'coc-translator',
-  \ 'coc-spell-checker',
-  \ 'coc-cspell-dicts',
-  \ 'coc-tabnine',
-  \ ]
-
-"-------------------=== coc-cspell-dicts ===-------------------------------
-" cSpellExt.enableDictionaries": ["spanish"]
-" cSpell.language": en,es"
-
-" =============================================================================
-" GOYO:
-" =============================================================================
-map <leader>gy :Goyo<CR>
-
-" let
-let g:goyo_width = 120
-let g:goyo_height = 85
-let g:goyo_linenr = 0
-
-
-" =============================================================================
-" LIMELIGHT:
-" =============================================================================
-map <leader>ll :Limelight!!<CR>
-
-"limelight configs
-" Default: 0.5
-let g:limelight_default_coefficient = 0.7
-let g:limelight_paragraph_span = 1
-
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-"note: :Limelight = turn on limelight
-":Limelight! = turn off limelight
-":Limelight!! = turn on/off
-
-
-" =============================================================================
-" IndentLine:
-" =============================================================================
-let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_color_term = 239
-
-" =============================================================================
-" JAVA FILES:
-" =============================================================================
-au BufEnter *.java :highlight java_class cterm=bold,italic
-au BufEnter *.java :match java_class /class/
-
-
-" =============================================================================
-" TAGBAR:
-" =============================================================================
-" map <S-Tab> :TagbarOpenAutoClose<CR>
-" let g:tagbar_autofocus = 1 "move cursor to tagbar as soon as it's toggled
-
-" =============================================================================
-" JAVA GETTER SETTER:
-" =============================================================================
-
-map <leader>sg :InsertBothGetterSetter<CR>
-map <leader>gs :InsertBothGetterSetter<CR>
-map <leader>se :InsertSetterOnly<CR>
-map <leader>ge :InsertGetterOnly<CR>
-
-" =============================================================================
-" NERDTREE:
-" =============================================================================
-map <F2> :NERDTreeToggle<CR>
-map <Tab> :NERDTreeToggle<CR>
-
-" =============================================================================
-" UNDOTREE:
-" =============================================================================
-nnoremap <F5> :UndotreeToggle<CR>
-
-" =============================================================================
-" USERDEFINED COMMANDS:
-" =============================================================================
-" command -nargs=1 Sl /\%V<args><CR>
-
-" =============================================================================
-" AIRLINE CONFIGURATION:
-" =============================================================================
-let g:airline_theme='minimalist' " this affects vim-airline's theme
-let g:airline_powerline_fonts = 1 " affects the style, if deleted it will look 'boxy'
-let g:airline#extensions#tabline#enabled = 1 " let vim-airline diplay the tabs
-let g:airline#extensions#tabline#formatter = 'unique_tail' " the way the tabs are shown
 
 

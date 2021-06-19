@@ -65,7 +65,7 @@ return require("packer").startup(
         --------------------------=== Debugging ===--------------------------
             use {"mfussenegger/nvim-dap", opt = true}
             use {"nvim-telescope/telescope-dap.nvim", opt = true}
-            use {"theHamsta/nvim-dap-virtual-text", opt = true}
+            -- use {"theHamsta/nvim-dap-virtual-text", opt = true}
 			use {"mfussenegger/nvim-dap-python", opt = true}
 			use {"jbyuki/one-small-step-for-vimkind", opt = true}
 
@@ -89,8 +89,6 @@ return require("packer").startup(
 			use {"sbdchd/neoformat", opt = true}
 
 		--------------------------=== Lang support ===--------------------------
-        	use {"scalameta/nvim-metals", opt = true}
-			use {"akinsho/flutter-tools.nvim", opt = true}
 			use {"simrat39/rust-tools.nvim", opt = true}
 			use {"folke/lua-dev.nvim", opt = true}
 			use {"mfussenegger/nvim-jdtls", opt = true}
@@ -115,6 +113,7 @@ return require("packer").startup(
             use {"lewis6991/gitsigns.nvim", opt = true}
 			use {"editorconfig/editorconfig-vim", opt = true}
 			use {"sudormrfbin/cheatsheet.nvim", opt = true}
+			use {"cuducos/yaml.nvim", opt = true, ft = {"yaml"}, config = function() require("yaml_nvim").init() end}
 
         --------------------------=== Note taking ===--------------------------
             use {"reedes/vim-pencil", opt = true}
@@ -130,8 +129,7 @@ return require("packer").startup(
         	use {"junegunn/limelight.vim", opt = true}
             use {"yuttie/comfortable-motion.vim", opt = true}
             use {"norcalli/nvim-base16.lua", opt = true}
-			use {"Pocco81/TrueZen.nvim", branch = "dev", opt = true}
-			use {"Pocco81/AbbrevMan.nvim", branch = "dev", opt = true}
+			use {"Pocco81/TrueZen.nvim", branch = "dev-mode-ataraxis", opt = true}
 			use {"Pocco81/DAPInstall", branch = "dev"}
 			use {"Pocco81/NoCLC.nvim", branch = "dev"}
 			use {"p00f/nvim-ts-rainbow", opt = true}
@@ -170,7 +168,7 @@ return require("packer").startup(
             --------=== (Require) Debugging
 			require_plugin("nvim-dap")
 			require_plugin("telescope-dap.nvim")
-			require_plugin("nvim-dap-virtual-text")
+			-- require_plugin("nvim-dap-virtual-text")
 			require_plugin("mfussenegger/nvim-dap-python")
 			require_plugin("one-small-step-for-vimkind")
 
@@ -188,8 +186,6 @@ return require("packer").startup(
 			require_plugin("neoformat")
 
             --------=== (Require) Lang support
-			require_plugin("nvim-metals")
-			require_plugin("flutter-tools.nvim")
 			require_plugin("rust-tools.nvim")
 			require_plugin("lua-dev.nvim")
 			require_plugin("nvim-jdtls")
@@ -211,7 +207,7 @@ return require("packer").startup(
 			require_plugin("cheatsheet.nvim")
 			require_plugin("telescope-fzy-native")
 			require_plugin("tagbar")
-
+			require_plugin("yaml.nvim")
 
             --------=== (Require) Note Taking
 			require_plugin("vim-pencil")
@@ -228,7 +224,6 @@ return require("packer").startup(
 			require_plugin("TrueZen.nvim")
 			require_plugin("nvim-ts-rainbow")
 			require_plugin("DAPInstall.nvim")
-			require_plugin("AbbrevMan.nvim")
 			require_plugin("HighStr.nvim")
 			require_plugin("NoCLC.nvim")
 			require_plugin("close-buffers.vim")

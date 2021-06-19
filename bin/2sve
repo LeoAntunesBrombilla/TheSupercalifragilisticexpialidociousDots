@@ -104,10 +104,8 @@ function recurse_dirs1() {
         while read -r line; do
             # echo "current line = $c_line\ttotal lines = $lines_file"
             if [[ "$line" == "$out" ]]; then
-                # echo -e "found!; the line number is $c_line"
                 compiled_list="${dir_sessions}session$c_line/compiled_list.json"
                 compiled_list_tmp="${dir_sessions}session$c_line/compiled_list_tmp.json"
-                # echo -e "\ncompiled list = $compiled_list\ncompiled list tmp = $compiled_"
                 break
             else
                 if [[ $c_line == $lines_sessions ]]; then

@@ -12,7 +12,6 @@
 #    + give it a short name, like 'jcomp.sh' (Note: if the script is on /usr/local/bin it won't need the .sh extension)
 #
 
-
 script_help=$(cat << EOF
 
 usage #1: $0 [-s] [java_code] [main_class]
@@ -36,6 +35,7 @@ Example:
             $0 .. Main.java
 	#2: --just-compile some .java files:
 		$0 -jc . MyCode.java Main.java
+
 Notes:
     #1: Tf executed with sudo (-s), user will be prompted to type
         its sudo password.

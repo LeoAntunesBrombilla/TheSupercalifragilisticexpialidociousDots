@@ -7,37 +7,37 @@ true_zen.setup(
     {
         true_false_commands = true,
         cursor_by_mode = false,
-        -- bottom = {
-        --     hidden_laststatus = 0,
-        --     hidden_ruler = false,
-        --     hidden_showmode = false,
-        --     hidden_showcmd = false,
-        --     hidden_cmdheight = 1,
-        --     shown_laststatus = 2,
-        --     shown_ruler = true,
-        --     shown_showmode = false,
-        --     shown_showcmd = false,
-        --     shown_cmdheight = 1
-        -- },
+        bottom = {
+            hidden_laststatus = 0,
+            hidden_ruler = false,
+            hidden_showmode = false,
+            hidden_showcmd = false,
+            hidden_cmdheight = 1,
+            shown_laststatus = 2,
+            shown_ruler = true,
+            shown_showmode = false,
+            shown_showcmd = false,
+            shown_cmdheight = 1
+        },
         top = {
             hidden_showtabline = 0,
             shown_showtabline = 2
         },
-        -- left = {
-        --     hidden_number = false,
-        --     hidden_relativenumber = false,
-        --     hidden_signcolumn = "no",
-        --     shown_number = true,
-        --     shown_relativenumber = false,
-        --     shown_signcolumn = "no"
-        -- },
+        left = {
+            hidden_number = false,
+            hidden_relativenumber = false,
+            hidden_signcolumn = "no",
+            shown_number = true,
+            shown_relativenumber = false,
+            shown_signcolumn = "no"
+        },
         ataraxis = {
             ideal_writing_area_width = 0,
             just_do_it_for_me = true,
             left_padding = 25,
             right_padding = 25,
-            top_padding = 2,
-            bottom_padding = 2,
+            top_padding = 1,
+            bottom_padding = 1,
             custome_bg = "",
             disable_bg_configuration = false,
             disable_fillchars_configuration = false,
@@ -54,8 +54,6 @@ true_zen.setup(
         },
         minimalist = {
             store_and_restore_settings = true,
-            -- show_vals_to_read = {}
-
             show_vals_to_read = {
                 "shown_showtabline"
             }

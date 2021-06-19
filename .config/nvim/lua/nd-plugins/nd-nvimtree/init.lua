@@ -87,35 +87,6 @@ vim.api.nvim_set_keymap(
 
 g.nvim_tree_bindings = {
 
-	-- default mappings
-	-- ["<CR>"]           = tree_cb("edit"),
-	-- ["s"]              = tree_cb("edit"),
-	-- ["<2-LeftMouse>"]  = tree_cb("edit"),
-	-- ["c"] = tree_cb("cd"),
-	-- ["<C-]>"]          = tree_cb("cd"),
-	-- ["s"]          = tree_cb("vsplit"),
-	-- ["S"]          = tree_cb("split"),
-	-- ["<CR>"]          = tree_cb("tabnew"),
-	-- ["<"]              = tree_cb("prev_sibling"),
-	-- [">"]              = tree_cb("next_sibling"),
-	-- ["<BS>"]           = tree_cb("close_node"),
-	-- ["<S-CR>"]         = tree_cb("close_node"),
-	-- ["<Tab>"]          = tree_cb("preview"),
-	-- ["I"]              = tree_cb("toggle_ignored"),
-	-- ["H"]              = tree_cb("toggle_dotfiles"),
-	-- ["R"]              = tree_cb("refresh"),
-	-- ["a"]              = tree_cb("create"),
-	-- ["d"]              = tree_cb("remove"),
-	-- ["r"]              = tree_cb("rename"),
-	-- ["<C-r>"]          = tree_cb("full_rename"),
-	-- ["x"]              = tree_cb("cut"),
-	-- ["c"]              = tree_cb("copy"),
-	-- ["p"]              = tree_cb("paste"),
-	-- ["[c"]             = tree_cb("prev_git_item"),
-	-- ["]c"]             = tree_cb("next_git_item"),
-	-- ["-"]              = tree_cb("dir_up"),
-	-- ["q"]              = tree_cb("close")
-
     ["s"] = get_lua_cb("vsplit"),
     ["S"] = get_lua_cb("split"),
     ["<BS>"] = get_lua_cb("close_node"),

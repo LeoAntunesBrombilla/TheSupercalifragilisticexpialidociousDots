@@ -1,7 +1,25 @@
 
 vim.o.termguicolors = true
+local cmd = vim.cmd
+local colors = require("nd-modules.nd-palettes.onedark")
 
--- local cmd = vim.cmd
+local white = colors.white
+local darker_black = colors.darker_black
+local black = colors.black
+local black2 = colors.black2
+local one_bg = colors.one_bg
+local one_bg2 = colors.one_bg2
+local one_bg3 = colors.one_bg3
+local light_grey = colors.light_grey
+local grey = colors.grey
+local grey_fg = colors.grey_fg
+local red = colors.red
+local line = colors.line
+local green = colors.green
+local nord_blue = colors.nord_blue
+local blue = colors.blue
+local yellow = colors.yellow
+local purple = colors.purple
 
 -- colors for active , inactive buffer tabs
 require "bufferline".setup {
@@ -25,41 +43,41 @@ require "bufferline".setup {
 		offsets = {{filetype = "NvimTree", text = "Explorer"}},
 		always_show_bufferline = false		-- hide buffer if there are less than one
     },
-	highlights = {
-		background = {					-- inactive tab color
-			guifg = comment_fg,
-			guibg = "#282c34"
-		},
-		buffer_selected = {				-- active tab color
-			guifg = normal_fg,
-			guibg = "#3A3E44",
-			gui = "bold"
-		},
-		fill = {						-- bufferline's background color
-			guifg = comment_fg,
-			guibg = "#282c34"
-		},
-		separator_visible = {
-			guifg = "#282c34",
-			guibg = "#282c34"
-		},
-		separator_selected = {
-			guifg = "#282c34",
-			guibg = "#282c34"
-		},
-		separator = {						-- separator color. first one is the thin line; second one is the thick one
-			guifg = "#393b43",
-			guibg = "#282c34"
-		},
-		indicator_selected = {				-- separator when tab is active color
-			guifg = "#1da8f2",
-			guibg = "#3A3E44"
-		},
-		modified_selected = {				-- color when modified right hand side of the tab
-			guifg = string_fg,
-			guibg = "#3A3E44"
-		}
-	}
+	-- highlights = {
+	-- 	background = {					-- inactive tab color
+	-- 		guifg = comment_fg,
+	-- 		guibg = "#282c34"
+	-- 	},
+	-- 	buffer_selected = {				-- active tab color
+	-- 		guifg = normal_fg,
+	-- 		guibg = "#3A3E44",
+	-- 		gui = "bold"
+	-- 	},
+	-- 	fill = {						-- bufferline's background color
+	-- 		guifg = comment_fg,
+	-- 		guibg = "#282c34"
+	-- 	},
+	-- 	separator_visible = {
+	-- 		guifg = "#282c34",
+	-- 		guibg = "#282c34"
+	-- 	},
+	-- 	separator_selected = {
+	-- 		guifg = "#282c34",
+	-- 		guibg = "#282c34"
+	-- 	},
+	-- 	separator = {						-- separator color. first one is the thin line; second one is the thick one
+	-- 		guifg = "#393b43",
+	-- 		guibg = "#282c34"
+	-- 	},
+	-- 	indicator_selected = {				-- separator when tab is active color
+	-- 		guifg = "#1da8f2",
+	-- 		guibg = "#3A3E44"
+	-- 	},
+	-- 	modified_selected = {				-- color when modified right hand side of the tab
+	-- 		guifg = string_fg,
+	-- 		guibg = "#3A3E44"
+	-- 	}
+	-- }
 }
 
 local opt = {silent = true}
@@ -106,4 +124,39 @@ vim.api.nvim_set_keymap("n","<leader>bd",[[<Cmd>BufferLineSortByDirectory<CR>]],
 vim.api.nvim_set_keymap("n","<leader>bl",[[<Cmd>BufferLineSortByExtension<CR>]], opt)
 
 
+local function fg_bg(group, fgcol, bgcol)
+    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+end
+
+
+fg_bg("BufferLineFill", grey_fg, black2)
+fg_bg("BufferLineBackground", light_grey, black2)
+
+fg_bg("BufferLineBufferVisible", light_grey, black2)
+fg_bg("BufferLineBufferSelected", white, black)
+
+cmd "hi BufferLineBufferSelected gui=bold"
+
+-- tabs
+fg_bg("BufferLineTab", light_grey, one_bg3)
+fg_bg("BufferLineTabSelected", black2, nord_blue)
+fg_bg("BufferLineTabClose", red, black)
+
+fg_bg("BufferLineIndicator", black2, black2)
+fg_bg("BufferLineIndicatorSelected", black, black)
+
+-- separators
+fg_bg("BufferLineSeparator", line, black2)
+fg_bg("BufferLineSeparatorVisible", line, black2)
+fg_bg("BufferLineSeparatorSelected", black, black2)
+
+-- modified buffers
+fg_bg("BufferLineModified", red, black2)
+fg_bg("BufferLineModifiedVisible", red, black2)
+fg_bg("BufferLineModifiedSelected", green, black)
+
+-- close buttons
+fg_bg("BufferLineCLoseButtonVisible", light_grey, black2)
+fg_bg("BufferLineCLoseButton", light_grey, black2)
+fg_bg("BufferLineCLoseButtonSelected", red, black)
 

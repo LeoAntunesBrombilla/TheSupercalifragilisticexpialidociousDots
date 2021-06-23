@@ -53,22 +53,42 @@ return require("packer").startup(
 
         -- Autocomplete
         use {"hrsh7th/nvim-compe", opt = true}
-        use {"alvan/vim-closetag", opt = true}
         use {"hrsh7th/vim-vsnip", opt = true}
         use {"rafamadriz/friendly-snippets", opt = true}
-        use {"windwp/nvim-autopairs", opt = true}
+        use {
+            "windwp/nvim-autopairs",
+            opt = true,
+            event = "CursorMoved",
+            config = function()
+                require("nd-plugins.nd-autopairs.init")
+            end
+        }
+        use {
+            "windwp/nvim-ts-autotag",
+            opt = true,
+            ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
+            config = function()
+                require("nd-plugins.nd-autotag.init")
+            end
+        }
 
         --------------------------=== Debugging ===--------------------------
         use {"mfussenegger/nvim-dap", opt = true}
         use {"nvim-telescope/telescope-dap.nvim", opt = true}
         -- use {"theHamsta/nvim-dap-virtual-text", opt = true}
-        use {"mfussenegger/nvim-dap-python", opt = true}
+        use {
+            "mfussenegger/nvim-dap-python",
+            opt = true,
+            ft = "python"
+        }
         use {"jbyuki/one-small-step-for-vimkind", opt = true}
 
         --------------------------=== Syntax ===--------------------------
 
-        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-        use {"windwp/nvim-ts-autotag", opt = true}
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate"
+        }
 
         --------------------------=== Personalization ===--------------------------
 
@@ -90,7 +110,13 @@ return require("packer").startup(
             opt = true,
             event = "CursorMoved"
         }
-        use {"sbdchd/neoformat", opt = true}
+        use {
+            "sbdchd/neoformat",
+            opt = true,
+            cmd = "Neoformat"
+        }
+
+        -- {"weilbith/nvim-floating-tag-preview", cmd = {"Ptag", "Ptselect", "Ptjump", "Psearch", "Pedit"}, opt = true}
 
         --------------------------=== Lang support ===--------------------------
         use {
@@ -169,10 +195,9 @@ return require("packer").startup(
         require_plugin("lspkind-nvim")
         require_plugin("nvim-floating-tag-preview")
         require_plugin("nvim-compe")
-        require_plugin("vim-closetag")
         require_plugin("vim-vsnip")
         require_plugin("friendly-snippets")
-        require_plugin("nvim-autopairs")
+        -- require_plugin("nvim-autopairs")
         -- require_plugin("completion-nvim")
         -- require_plugin("vim-vsnip-integ")
         -- require_plugin("ultisnips")
@@ -182,20 +207,20 @@ return require("packer").startup(
         require_plugin("nvim-dap")
         require_plugin("telescope-dap.nvim")
         -- require_plugin("nvim-dap-virtual-text")
-        require_plugin("mfussenegger/nvim-dap-python")
+        -- require_plugin("mfussenegger/nvim-dap-python")
         require_plugin("one-small-step-for-vimkind")
 
         --------=== (Require) Syntax
         require_plugin("nvim-treesitter")
-        require_plugin("nvim-ts-autotag")
+        -- require_plugin("nvim-ts-autotag")
 
         --------=== (Require) Personalization
         require_plugin("nvim-web-devicons")
         require_plugin("nvim-colorizer.lua")
 
         --------=== (Require) Text Manipulation
-        require_plugin("vim-visual-multi")
-        require_plugin("neoformat")
+        -- require_plugin("vim-visual-multi")
+        -- require_plugin("neoformat")
 
         --------=== (Require) Lang support
         -- require_plugin("rust-tools.nvim")

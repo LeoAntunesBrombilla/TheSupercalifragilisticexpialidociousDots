@@ -32,10 +32,9 @@ end
 
 vim.cmd("autocmd BufWritePost plugins.lua PackerCompile") -- Auto compile when there are changes in plugins.lua
 
-
 -- NOTES:
--- Plugins without events are loaded at startup
--- Plugins with events are optional and loaded when certain event occurs
+-- Plugins without events are loaded at startup and may be optional
+-- Plugins with events are optional and loaded when certain events occurs
 
 return require("packer").startup(
     function(use)
@@ -43,11 +42,13 @@ return require("packer").startup(
         use "wbthomason/packer.nvim"
 
         ----------------------------=== Major Dependencies ===--------------------------
+
         use {"nvim-lua/popup.nvim", opt = true}
         use {"nvim-telescope/telescope.nvim", opt = true}
         use {"nvim-lua/plenary.nvim", opt = true} -- major dependency
 
         ----------------------------=== LSP ===--------------------------
+
         use {
             "neovim/nvim-lspconfig",
             opt = true,
@@ -70,7 +71,7 @@ return require("packer").startup(
             config = function()
                 require("nd-plugins.nd-compe.init")
 
-                -- don't lazy load it or else experience at startup will be a pain in the ass
+                -- don't lazy load it or else experience at startup will be a pain in the a$$
                 -- require('nd-plugins.nd-vsnip.init')
             end
         }
@@ -82,7 +83,6 @@ return require("packer").startup(
                 require("nd-plugins.nd-autotag.init")
             end
         }
-        -- use {"norcalli/snippets.nvim", opt = true}
         use {"hrsh7th/vim-vsnip", opt = true}
         use {"rafamadriz/friendly-snippets", opt = true}
         use {
@@ -95,15 +95,29 @@ return require("packer").startup(
         }
 
         --------------------------=== Debugging ===--------------------------
-        use {"mfussenegger/nvim-dap", opt = true}
+
+        use {
+            "mfussenegger/nvim-dap",
+            opt = true,
+            config = function()
+                require("nd-plugins.nd-dap.init")
+            end
+        }
         use {"nvim-telescope/telescope-dap.nvim", opt = true}
-        -- use {"theHamsta/nvim-dap-virtual-text", opt = true}
+        use {
+            "Pocco81/DAPInstall",
+            branch = "dev",
+            opt = true,
+            config = function()
+                require("nd-plugins.nd-dapinstall.init")
+            end
+        }
+        use {"jbyuki/one-small-step-for-vimkind", opt = true}
         use {
             "mfussenegger/nvim-dap-python",
             opt = true,
             ft = "python"
         }
-        use {"jbyuki/one-small-step-for-vimkind", opt = true}
 
         --------------------------=== Syntax ===--------------------------
 
@@ -114,6 +128,7 @@ return require("packer").startup(
                 require("nd-plugins.nd-treesitter.init")
             end
         }
+        use {"norcalli/nvim-base16.lua", opt = true}
 
         --------------------------=== Personalization ===--------------------------
 
@@ -132,14 +147,6 @@ return require("packer").startup(
 
         --------------------------=== Text Manipulation ===--------------------------
 
-        -- use {"terrortylor/nvim-comment", opt = true}
-        use {
-            "terrortylor/nvim-comment",
-            opt = true,
-            config = function()
-                require("nd-plugins.nd-nvimcomment.init")
-            end
-        }
         use {
             "tpope/vim-commentary",
             opt = true,
@@ -150,9 +157,13 @@ return require("packer").startup(
             opt = true,
             event = "CursorMoved"
         }
-        use {"sbdchd/neoformat", opt = true}
+        use {
+            "sbdchd/neoformat",
+            opt = true
+        }
 
         --------------------------=== Lang support ===--------------------------
+
         use {
             "simrat39/rust-tools.nvim",
             opt = true,
@@ -163,7 +174,19 @@ return require("packer").startup(
             opt = true,
             ft = "lua"
         }
-        use {"mfussenegger/nvim-jdtls", opt = true}
+        use {
+            "mfussenegger/nvim-jdtls",
+            opt = true,
+            ft = "java"
+        }
+        use {
+            "cuducos/yaml.nvim",
+            opt = true,
+            ft = {"yaml"},
+            config = function()
+                require("yaml_nvim").init()
+            end
+        }
 
         --------------------------=== Project/Code Navigation ===--------------------------
 
@@ -175,20 +198,26 @@ return require("packer").startup(
             "lukas-reineke/indent-blankline.nvim",
             branch = "lua",
             opt = true,
-            event = "BufRead",
+            event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-indentblankline.init")
             end
         } -- Indent guides for Neovim
         use {
-			"mbbill/undotree",
-			opt = true,
-			keys = "<F5>",	-- custome mapping
-			config = function ()
-				require('nd-plugins.nd-undotree.init')
-			end
-		}
-        use {"kosayoda/nvim-lightbulb", opt = true}
+            "mbbill/undotree",
+            opt = true,
+            keys = "<F5>", -- custome mapping
+            config = function()
+                require("nd-plugins.nd-undotree.init")
+            end
+        }
+        use {
+            "kosayoda/nvim-lightbulb",
+            opt = true,
+            config = function()
+                require("nd-plugins.nd-lightbulb.init")
+            end
+        }
         use {"folke/lsp-colors.nvim", opt = true}
         use {
             "folke/trouble.nvim",
@@ -208,15 +237,6 @@ return require("packer").startup(
         }
         use {"lewis6991/gitsigns.nvim", opt = true}
         use {"editorconfig/editorconfig-vim", opt = true}
-        -- use {"sudormrfbin/cheatsheet.nvim", opt = true}
-        use {
-            "cuducos/yaml.nvim",
-            opt = true,
-            ft = {"yaml"},
-            config = function()
-                require("yaml_nvim").init()
-            end
-        }
 
         --------------------------=== Note taking ===--------------------------
         use {
@@ -232,8 +252,12 @@ return require("packer").startup(
             opt = true,
             cmd = "StartupTime"
         }
+        use {
+            "vim-utils/vim-man",
+            opt = true,
+            cmd = "Man"
+        }
         use {"907th/vim-auto-save", opt = true}
-        use {"vim-utils/vim-man", opt = true}
 
         --------------------------=== Coffee and Chill ===--------------------------
 
@@ -248,28 +272,23 @@ return require("packer").startup(
         use {
             "yuttie/comfortable-motion.vim",
             opt = true,
-			event = "VimEnter",
-			config = function ()
-				require('nd-plugins.nd-comfortablemotion.init')
-			end
+            event = "VimEnter",
+            config = function()
+                require("nd-plugins.nd-comfortablemotion.init")
+            end
         }
-        use {"norcalli/nvim-base16.lua", opt = true}
         use {
             "Pocco81/TrueZen.nvim",
             branch = "dev-mode-ataraxis",
             opt = true
         }
         use {
-            "Pocco81/DAPInstall",
-            branch = "dev"
+            "Pocco81/NoCLC.nvim",
+            branch = "dev",
+            config = function()
+                require("nd-plugins.nd-noclc.init")
+            end
         }
-        use {
-			"Pocco81/NoCLC.nvim",
-			branch = "dev",
-			config = function ()
-				require('nd-plugins.nd-noclc.init')
-			end
-		}
         use {
             "Pocco81/HighStr.nvim",
             branch = "dev",
@@ -311,6 +330,7 @@ return require("packer").startup(
 
         --------=== (Require) Syntax
         require_plugin("nvim-treesitter")
+        require_plugin("nvim-base16.lua")
         -- require_plugin("nvim-ts-autotag")
 
         --------=== (Require) Personalization
@@ -318,14 +338,14 @@ return require("packer").startup(
         require_plugin("nvim-colorizer.lua")
 
         --------=== (Require) Text Manipulation
-        require_plugin("nvim-comment")
         -- require_plugin("vim-visual-multi")
         require_plugin("neoformat")
 
         --------=== (Require) Lang support
-        require_plugin("rust-tools.nvim")
-        require_plugin("lua-dev.nvim")
-        require_plugin("nvim-jdtls")
+        -- require_plugin("rust-tools.nvim")
+        -- require_plugin("lua-dev.nvim")
+        -- require_plugin("nvim-jdtls")
+        -- require_plugin("yaml.nvim")
 
         --------=== (Require) Project/Code Navigation
         require_plugin("dashboard-nvim")
@@ -333,7 +353,7 @@ return require("packer").startup(
         require_plugin("galaxyline.nvim")
         -- require_plugin("indent-blankline.nvim")
         -- require_plugin("undotree")
-        require_plugin("nvim-lightbulb")
+        -- require_plugin("nvim-lightbulb")
         require_plugin("lsp-colors.nvim")
         -- require_plugin("trouble.nvim")
         require_plugin("nvim-tree.lua")
@@ -342,7 +362,6 @@ return require("packer").startup(
         require_plugin("editorconfig-vim")
         require_plugin("telescope-fzy-native")
         -- require_plugin("tagbar")
-        -- require_plugin("yaml.nvim")
 
         --------=== (Require) Note Taking
         -- require_plugin("vim-pencil")
@@ -350,12 +369,11 @@ return require("packer").startup(
         --------=== (Require) Extra
         require_plugin("startuptime.vim")
         require_plugin("vim-auto-save")
-        require_plugin("vim-man")
+        -- require_plugin("vim-man")
 
         --------=== (Require) Coffee and Chill
         -- require_plugin("limelight.vim")
         -- require_plugin("comfortable-motion.vim")
-        require_plugin("nvim-base16.lua")
         require_plugin("TrueZen.nvim")
         require_plugin("DAPInstall.nvim")
         -- require_plugin("HighStr.nvim")

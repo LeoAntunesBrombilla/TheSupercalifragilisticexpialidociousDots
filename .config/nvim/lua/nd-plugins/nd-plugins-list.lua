@@ -134,6 +134,14 @@ return require("packer").startup(
             opt = true,
             ft = "java"
         }
+        use {
+            "cuducos/yaml.nvim",
+            opt = true,
+            ft = {"yaml"},
+            config = function()
+                require("yaml_nvim").init()
+            end
+        }
 
         --------------------------=== Project/Code Navigation ===--------------------------
 
@@ -152,21 +160,21 @@ return require("packer").startup(
         use {"preservim/tagbar", opt = true}
         use {"lewis6991/gitsigns.nvim", opt = true}
         use {"editorconfig/editorconfig-vim", opt = true}
-        use {
-            "cuducos/yaml.nvim",
-            opt = true,
-            ft = {"yaml"},
-            config = function()
-                require("yaml_nvim").init()
-            end
-        }
 
         --------------------------=== Note taking ===--------------------------
-        use {"reedes/vim-pencil", opt = true}
+        use {
+            "reedes/vim-pencil",
+            opt = true,
+            cmd = {"Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil"}
+        }
 
         --------------------------=== Extra ===--------------------------
 
-        use {"tweekmonster/startuptime.vim", opt = true}
+        use {
+            "tweekmonster/startuptime.vim",
+            opt = true,
+            cmd = "StartupTime"
+        }
         use {"907th/vim-auto-save", opt = true}
         use {"vim-utils/vim-man", opt = true}
 
@@ -242,13 +250,13 @@ return require("packer").startup(
         require_plugin("editorconfig-vim")
         require_plugin("telescope-fzy-native")
         require_plugin("tagbar")
-        require_plugin("yaml.nvim")
+        -- require_plugin("yaml.nvim")
 
         --------=== (Require) Note Taking
-        require_plugin("vim-pencil")
+        -- require_plugin("vim-pencil")
 
         --------=== (Require) Extra
-        require_plugin("startuptime.vim")
+        -- require_plugin("startuptime.vim")
         require_plugin("vim-auto-save")
         require_plugin("vim-man")
 

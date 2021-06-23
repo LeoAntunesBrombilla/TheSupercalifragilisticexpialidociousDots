@@ -1,5 +1,3 @@
-
-
 local cmd = vim.cmd
 
 ----------------------------=== Mappings ===--------------------------
@@ -17,9 +15,7 @@ cmd([[smap <expr> <C-s>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      :
 cmd([[imap <expr> <C-e> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-e>']])
 cmd([[smap <expr> <C-e> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-e>']])
 
-
--- Load Vsnip at startup because else it's just pure pair to source it on demand
+-- Load Vsnip at startup because else it's just pure pain to source it on demand
 vim.api.nvim_exec([[
 	autocmd FileType * call vsnip#get_complete_items(bufnr())
 ]], false)
-

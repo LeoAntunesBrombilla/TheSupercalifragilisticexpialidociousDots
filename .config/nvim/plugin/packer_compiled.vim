@@ -46,7 +46,7 @@ local function save_profiles(threshold)
   _G._packer.profile_output = results
 end
 
-time("Luarocks path setup", true)
+time([[Luarocks path setup]], true)
 local package_path_str = "/home/sebas5758/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/sebas5758/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/sebas5758/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/sebas5758/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
 local install_cpath_pattern = "/home/sebas5758/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
@@ -57,25 +57,21 @@ if not string.find(package.cpath, install_cpath_pattern, 1, true) then
   package.cpath = package.cpath .. ';' .. install_cpath_pattern
 end
 
-time("Luarocks path setup", false)
-time("try_loadstring definition", true)
+time([[Luarocks path setup]], false)
+time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
 
-time("try_loadstring definition", false)
-time("Defining packer_plugins", true)
+time([[try_loadstring definition]], false)
+time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["AbbrevMan.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/AbbrevMan.nvim"
-  },
   DAPInstall = {
     loaded = true,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/DAPInstall"
@@ -118,11 +114,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/editorconfig-vim"
-  },
-  ["flutter-tools.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/flutter-tools.nvim"
   },
   ["friendly-snippets"] = {
     loaded = false,
@@ -220,11 +211,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-dap-python"
   },
-  ["nvim-dap-virtual-text"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-dap-virtual-text"
-  },
   ["nvim-floating-tag-preview"] = {
     commands = { "Ptag", "Ptselect", "Ptjump", "Psearch", "Pedit" },
     loaded = false,
@@ -251,11 +237,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
   },
-  ["nvim-metals"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-metals"
-  },
   ["nvim-tree.lua"] = {
     loaded = false,
     needs_bufread = false,
@@ -269,6 +250,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag"
+  },
+  ["nvim-ts-rainbow"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = false,
@@ -382,20 +368,33 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
+  },
+  ["yaml.nvim"] = {
+    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\14yaml_nvim\frequire\0" },
+    loaded = false,
+    needs_bufread = true,
+    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/yaml.nvim"
   }
 }
 
-time("Defining packer_plugins", false)
+time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
-time("Defining lazy-load commands", true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file Psearch lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Psearch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Pedit lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Pedit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+time([[Defining lazy-load commands]], true)
 vim.cmd [[command! -nargs=* -range -bang -complete=file Ptag lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Ptag", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Ptselect lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Ptselect", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Ptjump lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Ptjump", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-time("Defining lazy-load commands", false)
+vim.cmd [[command! -nargs=* -range -bang -complete=file Psearch lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Psearch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Pedit lua require("packer.load")({'nvim-floating-tag-preview'}, { cmd = "Pedit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+time([[Defining lazy-load commands]], false)
 
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType yaml ++once lua require("packer.load")({'yaml.nvim'}, { ft = "yaml" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 END

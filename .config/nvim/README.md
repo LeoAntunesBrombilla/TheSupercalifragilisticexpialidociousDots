@@ -26,6 +26,38 @@ in lua.
 | `F3`        | Visual | Highlight visual selection                           |
 | `F4`        | Visual | Remove highlight from visual selection               |
 
+## External programs:
+
+### Checkers
++ Shellcheck
+```lua
+sudo pacman -Ss shellcheck
+```
+
+### Formatters and linters:
++ Prettier (Yaml, Json, Javascript, HTML, CSS)
+```
+sudo npm install -g prettier
+```
+
++ Python:
+```
+pip3 install --user flake8
+pip3 install --user yapf
+```
+
++ Lua:
+```
+luarocks install --server=https://luarocks.org/dev luaformatter
+```
+
+### LSPs
++ EFM server
+In order for linters and formatters to work you will need to install efm-langserver
+```lua
+:LspInstall efm
+```
+
 # Install In One Command!
 
 Make sure you have the newest version of Neovim (0.5).

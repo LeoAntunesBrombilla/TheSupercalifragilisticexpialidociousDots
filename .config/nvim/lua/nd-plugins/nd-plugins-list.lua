@@ -294,6 +294,7 @@ return require("packer").startup(
             branch = "dev",
             opt = true,
             cmd = {"HSHighlight", "HSRmHighlight"},
+            keys = {"<F3>", "<F4>"}, -- custome mapping
             config = function()
                 require("nd-plugins.nd-highstr.init")
             end

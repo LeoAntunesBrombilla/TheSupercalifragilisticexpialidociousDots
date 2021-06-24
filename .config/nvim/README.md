@@ -1,16 +1,10 @@
-
-
-
-```
-         ) (             _   _ _   _______     _ _       _     _    __       _
-				(    )          | \ | | | | |  _  \   | (_)     | |   | |  / _|     | |
-       ____(___         |  \| | | | | | | |___| |_  __ _| |__ | |_| |_ _   _| |
-		_|`--------`|       | . ` | | | | | | / _ \ | |/ _` | '_ \| __|  _| | | | |
-	 (C|          |__     | |\  \ \_/ / |/ /  __/ | | (_| | | | | |_| | | |_| | |
- /` `\          /  `\   \_| \_/\___/|___/ \___|_|_|\__, |_| |_|\__|_|  \__,_|_|
- \    `========`    /                               __/ |
-	`'--------------'`                                |___/
-```
+<p align="center">
+    <img
+        width="360"
+        src="https://raw.githubusercontent.com/Pocco81/TheSupercalifragilisticexpialidociousDots/dev/.config/nvim/resources/logo_nvdelightful.png"
+        alt="NVDelightful Logo"
+    />
+</p>
 
 [![GitHub
 license](https://img.shields.io/github/license/ChristianChiarulli/LunarVim)](https://github.com/ChristianChiarulli/LunarVim/blob/master/LICENSE)

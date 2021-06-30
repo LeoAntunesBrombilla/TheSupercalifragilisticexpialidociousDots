@@ -36,9 +36,9 @@ require "compe".setup {
 -- speeden up compe :D
 local g = vim.g
 
--- Comment the ones that you don't want to be loaded
+-- Comment the ones that you want to be loaded
 -- g.loaded_compe_calc				= 0
--- g.loaded_compe_emoji			= 0
+g.loaded_compe_emoji			= 0
 g.loaded_compe_luasnip = 0
 g.loaded_compe_nvim_lua = 0
 -- g.loaded_compe_path				= 0

@@ -245,6 +245,15 @@ return require("packer").startup(
             cmd = {"Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil"}
         }
 
+        use {
+            "folke/todo-comments.nvim",
+            opt = true,
+			event = "VimEnter",
+            config = function()
+                require("nd-plugins.nd-todocomments.init")
+            end
+        }
+
         --------------------------=== Extra ===--------------------------
 
         use {
@@ -279,8 +288,12 @@ return require("packer").startup(
         }
         use {
             "Pocco81/TrueZen.nvim",
-            branch = "dev-mode-ataraxis",
-            opt = true
+            branch = "dev-refactor",
+            opt = true,
+			event = "VimEnter",
+			config = function ()
+				require("nd-plugins.nd-truezen.init2")
+			end
         }
         use {
             "Pocco81/NoCLC.nvim",
@@ -375,7 +388,7 @@ return require("packer").startup(
         --------=== (Require) Coffee and Chill
         -- require_plugin("limelight.vim")
         -- require_plugin("comfortable-motion.vim")
-        require_plugin("TrueZen.nvim")
+        -- require_plugin("TrueZen.nvim")
         require_plugin("DAPInstall.nvim")
         -- require_plugin("HighStr.nvim")
         -- require_plugin("NoCLC.nvim")

@@ -358,19 +358,13 @@ return require("packer").startup(
         require_plugin("lspsaga.nvim")
         require_plugin("nvim-lspinstall")
         require_plugin("lspkind-nvim")
-        -- require_plugin("nvim-floating-tag-preview")
-        -- require_plugin("rest.nvim")
-        -- require_plugin("nvim-compe")
-        -- require_plugin("vim-closetag")
         require_plugin("snippets.nvim")
         require_plugin("vim-vsnip")
         require_plugin("friendly-snippets")
-        -- require_plugin("nvim-autopairs")
 
         --------=== (Require) Debugging
         require_plugin("nvim-dap")
         require_plugin("telescope-dap.nvim")
-        -- require_plugin("nvim-dap-virtual-text")
         require_plugin("mfussenegger/nvim-dap-python")
         require_plugin("one-small-step-for-vimkind")
 
@@ -378,54 +372,36 @@ return require("packer").startup(
         require_plugin("nvim-treesitter")
         require_plugin("nvim-base16.lua")
         require_plugin("vim-kitty")
-        -- require_plugin("nvim-ts-autotag")
 
         --------=== (Require) Personalization
         require_plugin("nvim-web-devicons")
         require_plugin("nvim-colorizer.lua")
 
         --------=== (Require) Text Manipulation
-        -- require_plugin("vim-visual-multi")
         require_plugin("neoformat")
 
         --------=== (Require) Lang support
-        -- require_plugin("rust-tools.nvim")
-        -- require_plugin("lua-dev.nvim")
-        -- require_plugin("nvim-jdtls")
-        -- require_plugin("yaml.nvim")
 
         --------=== (Require) Project/Code Navigation
         require_plugin("dashboard-nvim")
         require_plugin("nvim-bufferline.lua")
         require_plugin("galaxyline.nvim")
-        -- require_plugin("indent-blankline.nvim")
-        -- require_plugin("undotree")
-        -- require_plugin("nvim-lightbulb")
         require_plugin("lsp-colors.nvim")
-        -- require_plugin("trouble.nvim")
         require_plugin("nvim-tree.lua")
         require_plugin("nvim-bqf")
         require_plugin("gitsigns.nvim")
         require_plugin("editorconfig-vim")
         require_plugin("telescope-fzy-native")
-        -- require_plugin("tagbar")
 
         --------=== (Require) Note Taking
         -- require_plugin("vim-pencil")
 
         --------=== (Require) Extra
         require_plugin("startuptime.vim")
-        -- require_plugin("vim-auto-save")
-        -- require_plugin("AutoSave.nvim")
-        -- require_plugin("vim-man")
 
         --------=== (Require) Coffee and Chill
-        -- require_plugin("limelight.vim")
-        -- require_plugin("comfortable-motion.vim")
         require_plugin("TrueZen.nvim")
         require_plugin("DAPInstall.nvim")
-        -- require_plugin("HighStr.nvim")
-        -- require_plugin("NoCLC.nvim")
         require_plugin("close-buffers.vim")
         require_plugin("nvim-bufferline.lua")
     end

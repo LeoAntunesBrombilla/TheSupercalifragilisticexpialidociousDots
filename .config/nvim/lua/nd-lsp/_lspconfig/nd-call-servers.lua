@@ -17,7 +17,7 @@ local list_language_servers = {
 	-- ls_prefix.."emmet-ls",
 	ls_prefix.."go-ls",
 	ls_prefix.."html-ls",
-	ls_prefix.."java-ls",
+	-- ls_prefix.."java-ls",
 	ls_prefix.."json-ls",
 	ls_prefix.."js-ts-ls",
 	ls_prefix.."kotlin-ls",

@@ -223,10 +223,9 @@ alias wq='wmctrl -r 'Alacritty' -b toggle,fullscreen'
 alias bca='batcat'
 
 #-------------------=== Terminal Editors ===-------------------------------
-alias nv='/usr/local/bin/nvim.appimage'
+# alias nv='/usr/local/bin/nvim.appimage'
+alias e='nvim'
 # alias test_echo='echo $@ > test.txt'
-# alias nv='nvim'
-# alias nvim='nv'
 
 #-------------------=== Exa ===-------------------------------
 alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'
@@ -248,14 +247,14 @@ alias ef_sa='vim ~/.shell_aliases'
 #-------------------=== w/ Nvim ===-------------------------------
 
 alias efn_systemd='sudo nvim /etc/systemd/system.conf'
-alias efn_kitty='nv ~/.config/kitty/kitty.conf'
-alias efn_bash='nv ~/.bashrc'
-alias efn_vim='nv ~/.vimrc'
-alias efn_nvim='nv ~/.config/nvim/init.lua'
-alias efn_sa='nv ~/.shell_aliases'
+alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
+alias efn_bash='nvim ~/.bashrc'
+alias efn_vim='nvim ~/.vimrc'
+alias efn_nvim='nvim ~/.config/nvim/init.lua'
+alias efn_sa='nvim ~/.shell_aliases'
 # alias efn_ss='nvim ~/.config/starship.toml'
-alias efn_ala='nv ~/.config/alacritty/alacritty.yml'
-alias efn_sa='nv ~/.shell_aliases'
+alias efn_ala='nvim ~/.config/alacritty/alacritty.yml'
+alias efn_sa='nvim ~/.shell_aliases'
 
 #-------------------=== Cat-ting ===-------------------------------
 alias ct_bash="cat ~/.bashrc"

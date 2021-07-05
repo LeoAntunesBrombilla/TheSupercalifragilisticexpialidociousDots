@@ -1,8 +1,6 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
--- vim._update_package_paths()
-
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -130,6 +128,11 @@ return require("packer").startup(
         }
         use {"norcalli/nvim-base16.lua", opt = true}
 
+        use {
+            "fladson/vim-kitty",
+            opt = true
+        }
+
         --------------------------=== Personalization ===--------------------------
 
         -- Icons
@@ -194,9 +197,31 @@ return require("packer").startup(
         use {"akinsho/nvim-bufferline.lua", opt = true}
         use {"glepnir/galaxyline.nvim", opt = true}
         use {"nvim-telescope/telescope-fzy-native.nvim", opt = true}
+		use {
+			"wfxr/minimap.vim",
+			opt = true,
+			event = "BufRead",
+            config = function()
+                require("nd-plugins.nd-minimap.init")
+            end
+		}
+		use {
+			"Xuyuanp/scrollbar.nvim",
+			opt = true,
+			event = "BufRead",
+			-- config = function ()
+			-- vim.api.nvim_exec([[
+			-- augroup ScrollbarInit
+			-- 	autocmd!
+			-- 	autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+			-- 	autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+			-- 	autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+			-- augroup end
+			-- ]],false)
+		-- end
+		}
         use {
             "lukas-reineke/indent-blankline.nvim",
-            branch = "lua",
             opt = true,
             event = "VimEnter",
             config = function()
@@ -248,7 +273,7 @@ return require("packer").startup(
         use {
             "folke/todo-comments.nvim",
             opt = true,
-			event = "VimEnter",
+            event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-todocomments.init")
             end
@@ -266,7 +291,15 @@ return require("packer").startup(
             opt = true,
             cmd = "Man"
         }
-        use {"907th/vim-auto-save", opt = true}
+
+		use {"Pocco81/AutoSave.nvim",
+			branch = "dev",
+			opt = true,
+			event = "VimEnter",
+			config = function ()
+				require("nd-plugins.nd-autosave.init")
+			end
+		}
 
         --------------------------=== Coffee and Chill ===--------------------------
 
@@ -288,12 +321,11 @@ return require("packer").startup(
         }
         use {
             "Pocco81/TrueZen.nvim",
-            branch = "dev-refactor",
+            branch = "dev",
             opt = true,
-			event = "VimEnter",
-			config = function ()
-				require("nd-plugins.nd-truezen.init2")
-			end
+            config = function()
+                require("nd-plugins.nd-truezen.init")
+            end
         }
         use {
             "Pocco81/NoCLC.nvim",
@@ -345,6 +377,7 @@ return require("packer").startup(
         --------=== (Require) Syntax
         require_plugin("nvim-treesitter")
         require_plugin("nvim-base16.lua")
+        require_plugin("vim-kitty")
         -- require_plugin("nvim-ts-autotag")
 
         --------=== (Require) Personalization
@@ -382,13 +415,14 @@ return require("packer").startup(
 
         --------=== (Require) Extra
         require_plugin("startuptime.vim")
-        require_plugin("vim-auto-save")
+        -- require_plugin("vim-auto-save")
+        -- require_plugin("AutoSave.nvim")
         -- require_plugin("vim-man")
 
         --------=== (Require) Coffee and Chill
         -- require_plugin("limelight.vim")
         -- require_plugin("comfortable-motion.vim")
-        -- require_plugin("TrueZen.nvim")
+        require_plugin("TrueZen.nvim")
         require_plugin("DAPInstall.nvim")
         -- require_plugin("HighStr.nvim")
         -- require_plugin("NoCLC.nvim")

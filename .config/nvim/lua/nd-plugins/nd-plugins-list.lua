@@ -323,6 +323,7 @@ return require("packer").startup(
             "Pocco81/TrueZen.nvim",
             branch = "dev",
             opt = true,
+			event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-truezen.init")
             end
@@ -400,7 +401,6 @@ return require("packer").startup(
         require_plugin("startuptime.vim")
 
         --------=== (Require) Coffee and Chill
-        require_plugin("TrueZen.nvim")
         require_plugin("DAPInstall.nvim")
         require_plugin("close-buffers.vim")
         require_plugin("nvim-bufferline.lua")

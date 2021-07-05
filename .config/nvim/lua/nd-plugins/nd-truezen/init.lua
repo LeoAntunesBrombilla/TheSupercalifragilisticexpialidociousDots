@@ -1,6 +1,5 @@
 local true_zen = require("true-zen")
 
--- setup for TrueZen.nvim
 true_zen.setup({
 	ui = {
 		bottom = {
@@ -56,6 +55,7 @@ true_zen.setup({
 	}
 })
 
+
 true_zen.before_mode_ataraxis_on = function ()
 	require("no-clc.modules.cursorline.init").main(false)
 end
@@ -63,17 +63,3 @@ end
 true_zen.after_mode_ataraxis_off = function ()
 	require("no-clc.modules.cursorline.init").main(true)
 end
-
--- print("got here")
--- vim.cmd("autocmd BufWinEnter * lua require'true-zen.main'.main(4, 'on')")
-
--- vim.cmd([[autocmd BufWinEnter * execute "lua require'true-zen.main'.main(4, 'on')"]])
-
--- works, but now gotta pass the config
--- vim.cmd([[autocmd VimEnter * if exists("#BufWinEnter") | execute "lua require'true-zen.main'.main(4, 'on')" | endif]])
--- vim.cmd([[autocmd WinEnter * echo "lol2"]])
--- vim.cmd("autocmd VimEnter * call win_gotoid(g:truezen_main_window)")
-
--- cmd("")
--- cmd("autocmd VimEnter * wincmd l")
--- vim.cmd("autocmd VimEnter * TZAtaraxis")

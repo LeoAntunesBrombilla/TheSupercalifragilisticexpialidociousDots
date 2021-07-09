@@ -8,10 +8,15 @@ alias 2tree='git log --all --decorate --graph'
 
 alias ggs="git status"
 alias ggch="git checkout"
-alias ggaa="git add -A"
 alias ggcm="git commit -am"
 alias ggsh="git push origin"
 alias ggll="git pull origin"
+
+alias ggpc="git push origin $(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
+
+alias ggaa="git add -A"
+# alias ggca="git commit -am \"$1\""
+
 
 alias ggremote="git remote -v"  # check all remotes
 alias ggbranch="git branch -v"  # check all branches

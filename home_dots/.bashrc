@@ -258,6 +258,13 @@ if [ -e "${_MY_NODE}" ]; then
 fi
 unset _MY_NODE
 
+_MY_CARGO="$(which cargo)"
+if [ -e "${_MY_CARGO}" ]; then
+	export CARGO_BIN_PATH="$HOME/.cargo/bin"
+    export PATH=$PATH:$CARGO_BIN_PATH
+fi
+unset _MY_CARGO
+
 local_bin="$HOME/.local/bin"
 
 export PATH=$PATH:$local_bin

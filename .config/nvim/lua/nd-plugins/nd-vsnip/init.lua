@@ -16,6 +16,6 @@ cmd([[imap <expr> <C-e> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '
 cmd([[smap <expr> <C-e> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-e>']])
 
 -- Load Vsnip at startup because else it's just pure pain to source it on demand
-vim.api.nvim_exec([[
-	autocmd FileType * call vsnip#get_complete_items(bufnr())
-]], false)
+-- vim.api.nvim_exec([[
+	-- autocmd FileType * call vsnip#get_complete_items(bufnr())
+-- ]], false)

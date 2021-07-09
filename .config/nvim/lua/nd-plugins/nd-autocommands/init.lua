@@ -36,10 +36,9 @@ utils.define_augroups({
         {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'VimLeavePre', '*', 'set title set titleold='}
+        {'VimLeavePre', '*', 'set title set titleold='},
+        -- {'FileType', '*', 'call vsnip#get_complete_items(bufnr())'},
 
-        -- {'User', 'GoyoLeave', 'lua require(\'galaxyline\').disable_galaxyline()'},
-        -- {'User', 'GoyoEnter', 'lua require(\'galaxyline\').galaxyline_augroup()'},
     },
     -- _java = {
     --     {'FileType', 'java', 'luafile ~/.config/nvim/lua/lsp/java-ls.lua'},
@@ -57,9 +56,6 @@ utils.define_augroups({
         {'BufWinEnter', '.sol', 'setlocal filetype=solidity'}, {'BufRead', '*.sol', 'setlocal filetype=solidity'},
         {'BufNewFile', '*.sol', 'setlocal filetype=solidity'}
     },
-	-- _tz_minimalist = {
-	-- 	{'VimEnter', '*', 'TZMinimalist'}
-	-- },
     _gemini = {
         {'BufWinEnter', '.gmi', 'setlocal filetype=markdown'}, {'BufRead', '*.gmi', 'setlocal filetype=markdown'},
         {'BufNewFile', '*.gmi', 'setlocal filetype=markdown'}

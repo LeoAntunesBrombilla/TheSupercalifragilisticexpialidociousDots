@@ -42,47 +42,67 @@ return require("packer").startup(
         ----------------------------=== Major Dependencies ===--------------------------
 
         use {"nvim-lua/popup.nvim", opt = true}
-        use {"nvim-telescope/telescope.nvim", opt = true}
         use {"nvim-lua/plenary.nvim", opt = true} -- major dependency
+
+        use {
+			"nvim-telescope/telescope.nvim",
+			opt = true,
+			event = "VimEnter",
+			config = function ()
+				require("nd-plugins.nd-telescope.init")
+			end
+		}
 
         ----------------------------=== LSP ===--------------------------
 
-        use {
-            "neovim/nvim-lspconfig",
-            opt = true,
-            event = "BufRead"
-        }
-        use {"glepnir/lspsaga.nvim", opt = true}
+        use {"neovim/nvim-lspconfig"}
+
         use {"kabouzeid/nvim-lspinstall", opt = true}
-        use {"onsails/lspkind-nvim", opt = true}
+
         use {
-            "weilbith/nvim-floating-tag-preview",
-            cmd = {"Ptag", "Ptselect", "Ptjump", "Psearch", "Pedit"},
+			"onsails/lspkind-nvim",
+			opt = true,
+			event = "VimEnter"
+		}
+
+        use {
+            "glepnir/lspsaga.nvim",
             opt = true
         }
 
-        -- Autocomplete
+        use {
+            "kosayoda/nvim-lightbulb",
+            opt = true,
+			after = "nvim-lspconfig",
+            config = function()
+                require("nd-plugins.nd-lightbulb.init")
+            end
+        }
+
+
         use {
             "hrsh7th/nvim-compe",
-            -- opt = true,
             event = "InsertEnter",
             config = function()
                 require("nd-plugins.nd-compe.init")
+            end
+        }
 
-                -- don't lazy load it or else experience at startup will be a pain in the a$$
-                -- require('nd-plugins.nd-vsnip.init')
-            end
-        }
         use {
-            "windwp/nvim-ts-autotag",
-            opt = true,
-            ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
-            config = function()
-                require("nd-plugins.nd-autotag.init")
-            end
-        }
-        use {"hrsh7th/vim-vsnip", opt = true}
-        use {"rafamadriz/friendly-snippets", opt = true}
+			"hrsh7th/vim-vsnip",
+			opt = true,
+			event = "BufEnter",
+			config = function ()
+
+				vim.cmd([[autocmd FileType * call vsnip#get_complete_items(bufnr())]])
+				require("nd-plugins.nd-vsnip.init")
+			end,
+			requires = {
+				{"rafamadriz/friendly-snippets", opt = true}
+			}
+		}
+
+
         use {
             "windwp/nvim-autopairs",
             opt = true,
@@ -97,23 +117,37 @@ return require("packer").startup(
         use {
             "mfussenegger/nvim-dap",
             opt = true,
+            event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-dap.init")
             end
         }
-        use {"nvim-telescope/telescope-dap.nvim", opt = true}
+        use {
+            "nvim-telescope/telescope-dap.nvim",
+            opt = true,
+            after = "nvim-dap"
+        }
+
         use {
             "Pocco81/DAPInstall",
             branch = "dev",
             opt = true,
+            after = "nvim-dap",
             config = function()
                 require("nd-plugins.nd-dapinstall.init")
             end
         }
-        use {"jbyuki/one-small-step-for-vimkind", opt = true}
+
+        use {
+            "jbyuki/one-small-step-for-vimkind",
+            opt = true,
+            after = "nvim-dap"
+        }
+
         use {
             "mfussenegger/nvim-dap-python",
             opt = true,
+            after = "nvim-dap",
             ft = "python"
         }
 
@@ -126,26 +160,23 @@ return require("packer").startup(
                 require("nd-plugins.nd-treesitter.init")
             end
         }
-        use {"norcalli/nvim-base16.lua", opt = true}
 
-        use {
-            "fladson/vim-kitty",
-            opt = true
-        }
+        use {"norcalli/nvim-base16.lua", opt = true}
 
         --------------------------=== Personalization ===--------------------------
 
-        -- Icons
         use {
             "kyazdani42/nvim-web-devicons",
             opt = true
         }
 
-        -- Colors!
         use {
             "norcalli/nvim-colorizer.lua",
             opt = true,
-            cmd = "ColorizerToggle"
+            event = "BufRead",
+            config = function()
+                require("nd-plugins.nd-colorizer.init")
+            end
         }
 
         --------------------------=== Text Manipulation ===--------------------------
@@ -160,66 +191,111 @@ return require("packer").startup(
             opt = true,
             event = "CursorMoved"
         }
+
         use {
             "sbdchd/neoformat",
-            opt = true
+            opt = true,
+            cmd = "Neoformat"
         }
 
-        --------------------------=== Lang support ===--------------------------
+        --------------------------=== Lang Specific ===--------------------------
 
         use {
             "simrat39/rust-tools.nvim",
             opt = true,
             ft = "rust"
         }
+
+        use {
+            "windwp/nvim-ts-autotag",
+            opt = true,
+            ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
+            config = function()
+                require("nd-plugins.nd-autotag.init")
+            end
+        }
+
         use {
             "folke/lua-dev.nvim",
             opt = true,
             ft = "lua"
         }
+
         use {
             "mfussenegger/nvim-jdtls",
             opt = true,
             ft = "java"
         }
+
         use {
             "cuducos/yaml.nvim",
             opt = true,
-            ft = {"yaml"},
+            ft = "yaml",
             config = function()
                 require("yaml_nvim").init()
             end
         }
 
+        use {
+            "fladson/vim-kitty",
+            opt = true,
+            ft = "kitty"
+        }
+
+        use {
+            "lervag/vimtex",
+            opt = true,
+            ft = "tex",
+            config = function()
+                require("nd-plugins.nd-vimtex.init")
+            end
+        }
+
+        use {
+            "elixir-editors/vim-elixir",
+            opt = true,
+            ft = {"elixir", "eelixir", "euphoria3"}
+        }
+
         --------------------------=== Project/Code Navigation ===--------------------------
 
-        use {"ChristianChiarulli/dashboard-nvim", opt = true}
-        use {"akinsho/nvim-bufferline.lua", opt = true}
-        use {"glepnir/galaxyline.nvim", opt = true}
-        use {"nvim-telescope/telescope-fzy-native.nvim", opt = true}
-		use {
-			"wfxr/minimap.vim",
-			opt = true,
-			event = "BufRead",
+        use {
+            "ChristianChiarulli/dashboard-nvim",
+            opt = true,
+			after = "telescope.nvim",
+            event = "BufWinEnter",
             config = function()
-                require("nd-plugins.nd-minimap.init")
+                require("nd-plugins.nd-dashboard.init")
             end
-		}
-		use {
-			"Xuyuanp/scrollbar.nvim",
+        }
+
+        use {
+			"akinsho/nvim-bufferline.lua",
 			opt = true,
-			event = "BufRead",
-			-- config = function ()
-			-- vim.api.nvim_exec([[
-			-- augroup ScrollbarInit
-			-- 	autocmd!
-			-- 	autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
-			-- 	autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-			-- 	autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-			-- augroup end
-			-- ]],false)
-		-- end
+			event = "BufWinEnter",
+			config = function ()
+				require("nd-plugins.nd-bufferline.init")
+			end
 		}
+
+        use {
+			"glepnir/galaxyline.nvim",
+			opt = true,
+			event = "BufWinEnter",
+			config = function ()
+				require("nd-plugins.nd-galaxyline.lines.bubbles")
+			end
+		}
+
+        use {
+			"kyazdani42/nvim-tree.lua",
+			opt = true,
+			event = "BufWinEnter",
+			config = function ()
+				require("nd-plugins.nd-nvimtree.init")
+			end
+		}
+
         use {
             "lukas-reineke/indent-blankline.nvim",
             opt = true,
@@ -227,7 +303,8 @@ return require("packer").startup(
             config = function()
                 require("nd-plugins.nd-indentblankline.init")
             end
-        } -- Indent guides for Neovim
+        }
+
         use {
             "mbbill/undotree",
             opt = true,
@@ -236,22 +313,23 @@ return require("packer").startup(
                 require("nd-plugins.nd-undotree.init")
             end
         }
+
         use {
-            "kosayoda/nvim-lightbulb",
+            "folke/lsp-colors.nvim",
             opt = true,
+            event = "VimEnter",
             config = function()
-                require("nd-plugins.nd-lightbulb.init")
+                require("nd-plugins.nd-lspcolors.init")
             end
         }
-        use {"folke/lsp-colors.nvim", opt = true}
+
         use {
             "folke/trouble.nvim",
             opt = true,
             cmd = {"Trouble", "TroubleClose", "TroubleToggle", "TroubleRefresh"}
         }
-        use {"kyazdani42/nvim-tree.lua", opt = true}
-        use "kevinhwang91/rnvimr"
-        use {"kevinhwang91/nvim-bqf", opt = true}
+
+
         use {
             "preservim/tagbar",
             opt = true,
@@ -260,8 +338,20 @@ return require("packer").startup(
                 require("nd-plugins.nd-tagbar.init")
             end
         }
-        use {"lewis6991/gitsigns.nvim", opt = true}
-        use {"editorconfig/editorconfig-vim", opt = true}
+        use {
+            "lewis6991/gitsigns.nvim",
+            opt = true,
+            event = "BufRead",
+            config = function()
+                require("nd-plugins.nd-gitsigns.init")
+            end
+        }
+
+        use {
+            "editorconfig/editorconfig-vim",
+            opt = true,
+            event = "VimEnter"
+        }
 
         --------------------------=== Note taking ===--------------------------
         use {
@@ -273,44 +363,41 @@ return require("packer").startup(
         use {
             "folke/todo-comments.nvim",
             opt = true,
-            event = "VimEnter",
+            event = "BufRead",
             config = function()
                 require("nd-plugins.nd-todocomments.init")
             end
         }
 
-        --------------------------=== Extra ===--------------------------
+        --------------------------=== Utilities  ===--------------------------
 
         use {
             "tweekmonster/startuptime.vim",
             opt = true,
             cmd = "StartupTime"
         }
-        use {
-            "vim-utils/vim-man",
-            opt = true,
-            cmd = "Man"
-        }
 
-		use {"Pocco81/AutoSave.nvim",
-			branch = "dev",
-			opt = true,
-			event = "VimEnter",
-			config = function ()
-				require("nd-plugins.nd-autosave.init")
-			end
-		}
+        use {
+            "Pocco81/AutoSave.nvim",
+            branch = "dev",
+            opt = true,
+            event = "VimEnter",
+            config = function()
+                require("nd-plugins.nd-autosave.init")
+            end
+        }
 
         --------------------------=== Coffee and Chill ===--------------------------
 
         use {
             "junegunn/limelight.vim",
             opt = true,
-            keys = "<leader>ll",
+            keys = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-limelight.init")
             end
         }
+
         use {
             "yuttie/comfortable-motion.vim",
             opt = true,
@@ -319,90 +406,47 @@ return require("packer").startup(
                 require("nd-plugins.nd-comfortablemotion.init")
             end
         }
+
         use {
             "Pocco81/TrueZen.nvim",
             branch = "dev",
             opt = true,
-			event = "VimEnter",
+            event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-truezen.init")
             end
         }
-        use {
-            "Pocco81/NoCLC.nvim",
-            branch = "dev",
-            config = function()
-                require("nd-plugins.nd-noclc.init")
-            end
-        }
+
         use {
             "Pocco81/HighStr.nvim",
             branch = "dev",
             opt = true,
             cmd = {"HSHighlight", "HSRmHighlight"},
-            keys = {"<F3>", "<F4>"}, -- custome mapping
+            keys = {"<F3>", "<F4>"}, -- custome mappings
             config = function()
                 require("nd-plugins.nd-highstr.init")
             end
         }
-        use {"Asheq/close-buffers.vim", opt = true}
+
+        use {
+            "Asheq/close-buffers.vim",
+            opt = true,
+            event = "BufWinEnter",
+            config = function()
+                require("nd-plugins.nd-closebuffers.init")
+            end
+        }
 
         --------------------------=== Require The Plugins ===--------------------------
 
         --------=== (Require) Major Dependencies
         require_plugin("plenary.nvim")
-        require_plugin("telescope.nvim")
         require_plugin("popup.nvim")
-
-        --------=== (Require) LSP
         require_plugin("nvim-lspconfig")
-        require_plugin("lspsaga.nvim")
         require_plugin("nvim-lspinstall")
-        require_plugin("lspkind-nvim")
-        require_plugin("snippets.nvim")
-        require_plugin("vim-vsnip")
-        require_plugin("friendly-snippets")
-
-        --------=== (Require) Debugging
-        require_plugin("nvim-dap")
-        require_plugin("telescope-dap.nvim")
-        require_plugin("mfussenegger/nvim-dap-python")
-        require_plugin("one-small-step-for-vimkind")
-
-        --------=== (Require) Syntax
         require_plugin("nvim-treesitter")
+        require_plugin("lspsaga.nvim")
         require_plugin("nvim-base16.lua")
-        require_plugin("vim-kitty")
-
-        --------=== (Require) Personalization
         require_plugin("nvim-web-devicons")
-        require_plugin("nvim-colorizer.lua")
-
-        --------=== (Require) Text Manipulation
-        require_plugin("neoformat")
-
-        --------=== (Require) Lang support
-
-        --------=== (Require) Project/Code Navigation
-        require_plugin("dashboard-nvim")
-        require_plugin("nvim-bufferline.lua")
-        require_plugin("galaxyline.nvim")
-        require_plugin("lsp-colors.nvim")
-        require_plugin("nvim-tree.lua")
-        require_plugin("nvim-bqf")
-        require_plugin("gitsigns.nvim")
-        require_plugin("editorconfig-vim")
-        require_plugin("telescope-fzy-native")
-
-        --------=== (Require) Note Taking
-        -- require_plugin("vim-pencil")
-
-        --------=== (Require) Extra
-        require_plugin("startuptime.vim")
-
-        --------=== (Require) Coffee and Chill
-        require_plugin("DAPInstall.nvim")
-        require_plugin("close-buffers.vim")
-        require_plugin("nvim-bufferline.lua")
     end
 )

@@ -1,11 +1,3 @@
---[[
-O is the global options object
-
-Formatters and linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
 
 -- general
 O.auto_complete = true
@@ -14,24 +6,15 @@ O.auto_close_tree = 0
 O.wrap_lines = false
 O.timeoutlen = 100
 
--- dashboard
--- O.dashboard.custom_header = {""}
--- O.dashboard.footer = {""}
-
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "all"
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 
-
 O.clang.diagnostics.virtual_text = true
 O.clang.diagnostics.signs = false
 O.clang.diagnostics.underline = false
 
--- python
--- add things like O.python.formatter.yapf.exec_path
--- add things like O.python.linter.flake8.exec_path
--- add things like O.python.formatter.isort.exec_path
 O.python.formatter = 'yapf'
 -- O.python.linter = 'flake8'
 O.python.isort = true
@@ -53,11 +36,4 @@ O.lua.autoformat = false
 O.tsserver.formatter = 'prettier'
 O.tsserver.linter = nil
 O.tsserver.autoformat = true
-
--- json
-O.json.autoformat = true
-
--- ruby
-O.ruby.autoformat = true
--- create custom autocommand field (This would be easy with lua)
 

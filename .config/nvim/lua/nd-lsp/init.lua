@@ -1,3 +1,5 @@
 require("nd-lsp._lspinstall.init")
 require("nd-lsp._lspconfig.init")
+require("nd-lsp._lspsignature.init")
 require("nd-lsp._lsppictograms.init")
+-- require("nd-lsp._lspcolors.init")

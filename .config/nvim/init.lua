@@ -16,7 +16,6 @@ require("nd-modules.nd-vars.init")
 cmd("luafile ~/.config/nvim/nd-settings.lua")
 require("nd-modules.init")
 require("nd-plugins.init")
-require("nd-lsp.init")
 
 -- TODO is there a way to do this without vimscript
 cmd("source ~/.config/nvim/vimscript/functions.vim")

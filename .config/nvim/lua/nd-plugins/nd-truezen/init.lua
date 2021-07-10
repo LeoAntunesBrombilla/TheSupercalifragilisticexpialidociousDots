@@ -39,10 +39,10 @@ true_zen.setup({
 	integrations = {
 		vim_gitgutter = false,
 		galaxyline = true,
-		tmux = false,
+		tmux = true,
 		gitsigns = false,
 		nvim_bufferline = true,
-		limelight = true,
+		limelight = false,
 		vim_airline = false,
 		vim_powerline = false,
 		vim_signify = false,
@@ -55,12 +55,3 @@ true_zen.setup({
 		cursor_by_mode = false,
 	}
 })
-
-
-true_zen.before_mode_ataraxis_on = function ()
-	require("no-clc.modules.cursorline.init").main(false)
-end
-
-true_zen.after_mode_ataraxis_off = function ()
-	require("no-clc.modules.cursorline.init").main(true)
-end

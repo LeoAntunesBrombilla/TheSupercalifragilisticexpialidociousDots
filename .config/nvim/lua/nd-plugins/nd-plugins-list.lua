@@ -13,7 +13,6 @@ local function require_plugin(plugin)
     local plugin_prefix = fn.stdpath("data") .. "/site/pack/packer/opt/"
 
     local plugin_path = plugin_prefix .. plugin .. "/"
-    --	print('test '..plugin_path)
     local ok, err, code = os.rename(plugin_path, plugin_path)
     if not ok then
         if code == 13 then
@@ -30,55 +29,59 @@ end
 
 vim.cmd("autocmd BufWritePost plugins.lua PackerCompile") -- Auto compile when there are changes in plugins.lua
 
--- NOTES:
--- Plugins without events are loaded at startup and may be optional
--- Plugins with events are optional and loaded when certain events occurs
+-- NOTE: Plugins with `opt = true` will not be loaded at startup but only by events, commands, key, etc..
+-- NOTE: Plugins that don't have the `opt = true` opt can be loaded at startup but not at certain events, commands, keys, etc...
+-- NOTE: If a plugin has `opt = true/false`, then the plugin it requires are also true/false
+-- NOTE: this means that if within a plugin you require = {other plugin} and set that other plugin to optional, it won't load and the dependency will break
 
 return require("packer").startup(
     function(use)
-        -- Packer can manage itself as an optional plugin
         use "wbthomason/packer.nvim"
 
         ----------------------------=== Major Dependencies ===--------------------------
 
-        use {"nvim-lua/popup.nvim", opt = true}
-        use {"nvim-lua/plenary.nvim", opt = true} -- major dependency
-
         use {
-			"nvim-telescope/telescope.nvim",
-			opt = true,
-			event = "VimEnter",
-			config = function ()
-				require("nd-plugins.nd-telescope.init")
-			end
-		}
+            "nvim-telescope/telescope.nvim",
+            requires = {
+                {"nvim-lua/popup.nvim"},
+                {"nvim-lua/plenary.nvim"},
+                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
+                {"nvim-telescope/telescope-media-files.nvim"}
+            },
+            cmd = "Telescope",
+            config = function()
+                require("nd-plugins.nd-telescope.init")
+            end
+        }
 
         ----------------------------=== LSP ===--------------------------
 
-        use {"neovim/nvim-lspconfig"}
-
-        use {"kabouzeid/nvim-lspinstall", opt = true}
+        use {
+            "neovim/nvim-lspconfig",
+            opt = false,
+            requires = {
+                {"kabouzeid/nvim-lspinstall"},
+                {"ray-x/lsp_signature.nvim"}
+            },
+            config = function()
+                require("nd-lsp.init")
+            end
+        }
 
         use {
-			"onsails/lspkind-nvim",
+			"glepnir/lspsaga.nvim",
 			opt = true,
 			event = "VimEnter"
 		}
 
         use {
-            "glepnir/lspsaga.nvim",
-            opt = true
-        }
-
-        use {
             "kosayoda/nvim-lightbulb",
             opt = true,
-			after = "nvim-lspconfig",
+            after = "nvim-lspconfig",
             config = function()
                 require("nd-plugins.nd-lightbulb.init")
             end
         }
-
 
         use {
             "hrsh7th/nvim-compe",
@@ -89,19 +92,17 @@ return require("packer").startup(
         }
 
         use {
-			"hrsh7th/vim-vsnip",
-			opt = true,
-			event = "BufEnter",
-			config = function ()
-
-				vim.cmd([[autocmd FileType * call vsnip#get_complete_items(bufnr())]])
-				require("nd-plugins.nd-vsnip.init")
-			end,
-			requires = {
-				{"rafamadriz/friendly-snippets", opt = true}
-			}
-		}
-
+            "hrsh7th/vim-vsnip",
+            opt = true,
+            event = "BufEnter",
+            config = function()
+                vim.cmd([[autocmd FileType * call vsnip#get_complete_items(bufnr())]])
+                require("nd-plugins.nd-vsnip.init")
+            end,
+            requires = {
+                {"rafamadriz/friendly-snippets", opt = true}
+            }
+        }
 
         use {
             "windwp/nvim-autopairs",
@@ -165,10 +166,7 @@ return require("packer").startup(
 
         --------------------------=== Personalization ===--------------------------
 
-        use {
-            "kyazdani42/nvim-web-devicons",
-            opt = true
-        }
+        use {"kyazdani42/nvim-web-devicons"}
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -262,7 +260,7 @@ return require("packer").startup(
         use {
             "ChristianChiarulli/dashboard-nvim",
             opt = true,
-			after = "telescope.nvim",
+            after = "telescope.nvim",
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-dashboard.init")
@@ -270,31 +268,32 @@ return require("packer").startup(
         }
 
         use {
-			"akinsho/nvim-bufferline.lua",
-			opt = true,
-			event = "BufWinEnter",
-			config = function ()
-				require("nd-plugins.nd-bufferline.init")
-			end
-		}
+            "akinsho/nvim-bufferline.lua",
+            opt = true,
+            event = "BufWinEnter",
+            config = function()
+                require("nd-plugins.nd-bufferline.init")
+            end
+        }
 
         use {
-			"glepnir/galaxyline.nvim",
-			opt = true,
-			event = "BufWinEnter",
-			config = function ()
-				require("nd-plugins.nd-galaxyline.lines.bubbles")
-			end
-		}
+            "glepnir/galaxyline.nvim",
+            opt = true,
+            event = "BufWinEnter",
+            config = function()
+                require("nd-plugins.nd-galaxyline.lines.bubbles")
+            end
+        }
 
         use {
-			"kyazdani42/nvim-tree.lua",
-			opt = true,
-			event = "BufWinEnter",
-			config = function ()
-				require("nd-plugins.nd-nvimtree.init")
-			end
-		}
+            "kyazdani42/nvim-tree.lua",
+            opt = true,
+            after = "nvim-web-devicons",
+            event = "BufWinEnter",
+            config = function()
+                require("nd-plugins.nd-nvimtree.init")
+            end
+        }
 
         use {
             "lukas-reineke/indent-blankline.nvim",
@@ -315,20 +314,10 @@ return require("packer").startup(
         }
 
         use {
-            "folke/lsp-colors.nvim",
-            opt = true,
-            event = "VimEnter",
-            config = function()
-                require("nd-plugins.nd-lspcolors.init")
-            end
-        }
-
-        use {
             "folke/trouble.nvim",
             opt = true,
             cmd = {"Trouble", "TroubleClose", "TroubleToggle", "TroubleRefresh"}
         }
-
 
         use {
             "preservim/tagbar",
@@ -411,7 +400,7 @@ return require("packer").startup(
             "Pocco81/TrueZen.nvim",
             branch = "dev",
             opt = true,
-            event = "BufWinEnter",
+            event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-truezen.init")
             end
@@ -439,14 +428,7 @@ return require("packer").startup(
 
         --------------------------=== Require The Plugins ===--------------------------
 
-        --------=== (Require) Major Dependencies
-        require_plugin("plenary.nvim")
-        require_plugin("popup.nvim")
-        require_plugin("nvim-lspconfig")
-        require_plugin("nvim-lspinstall")
-        require_plugin("nvim-treesitter")
-        require_plugin("lspsaga.nvim")
+        --------=== (Require) LSP
         require_plugin("nvim-base16.lua")
-        require_plugin("nvim-web-devicons")
     end
 )

@@ -1,6 +1,3 @@
-
-
-
 vim.lsp.protocol.CompletionItemKind = {
     "   (Text) ",
     "   (Method)",

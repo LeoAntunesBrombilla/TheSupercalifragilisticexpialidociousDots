@@ -258,7 +258,7 @@ return require("packer").startup(
         --------------------------=== Project/Code Navigation ===--------------------------
 
         use {
-            "ChristianChiarulli/dashboard-nvim",
+            "glepnir/dashboard-nvim",
             opt = true,
             after = "telescope.nvim",
             event = "BufWinEnter",

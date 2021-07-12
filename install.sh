@@ -47,7 +47,7 @@ declare -A dots=(
 	["$HOME_DOTS.bashrc"]="$HOME/.bashrc"
 	["${HOME_DOTS}.zshrc"]="${HOME}/.zshrc"
 	["${HOME_DOTS}xresources"]="${HOME}/xresources"
-	["${HOME_DOTS}tmux.conf"]="${HOME}/tmux.conf"
+	["${HOME_DOTS}.tmux.conf"]="${HOME}/.tmux.conf"
 )
 
 # supported_distros=("arch" "fedora" "ubuntu")
@@ -126,7 +126,6 @@ function crt_symlink() {
 }
 
 function link_dots() {
-    counter=0
     for dot in "${!dots[@]}"; do
 
 		# dot = origin

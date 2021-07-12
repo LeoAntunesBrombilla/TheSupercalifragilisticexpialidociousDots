@@ -2,7 +2,7 @@
 # GitHub & Git
 # =============================================================================
 
-#-------------------=== Git aliases ===-------------------------------
+#-------------------=== Git ===-------------------------------
 alias 1tree='git log --all --decorate --oneline --graph'
 alias 2tree='git log --all --decorate --graph'
 
@@ -11,30 +11,36 @@ alias ggch="git checkout"
 alias ggcm="git commit -am"
 alias ggsh="git push origin"
 alias ggll="git pull origin"
-
 alias ggpc="git push origin $(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
-
 alias ggaa="git add -A"
-# alias ggca="git commit -am \"$1\""
-
 
 alias ggremote="git remote -v"  # check all remotes
 alias ggbranch="git branch -v"  # check all branches
 
-# =============================================================================
-# XCLIP
-# =============================================================================
 
-#-------------------=== aliases ===-------------------------------
+#-------------------=== Xclip ===-------------------------------
 alias 'c=xclip' #copy
 alias 'cc=xclip -selection clipboard' #copy to clipboard
 alias 'v=xclip -o' #paste
 
-# =============================================================================
-# CHANGING CURSOR
-# =============================================================================
+#-------------------=== Neofetch ===-------------------------------
+alias nfetch='neofetch --ascii --source $HOME/.config/neofetch/logos/arch_ascii.txt'
 
-#-------------------=== aliases ===-------------------------------
+#-------------------=== Utilities ===-------------------------------
+
+# General
+
+alias ctrm='update-alternatives --config x-terminal-emulator'
+alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS'
+alias gksudo='gksu'
+alias sctrm='sudo update-alternatives --config x-terminal-emulator'
+alias dtct_key="xev -event keyboard"
+alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
+alias eco='echo'
+alias rm_crash='echo -e "\nThe following crashes were found and will now be removed:"; ls -l /var/crash/; sleep 1; sudo rm /var/crash/* && echo -e "\nMessage (OK): Succesfully cleared crashes!\nExit Status: $?" || echo -e "\nMessage (FAILED): Nothing removed"'
+
+# changing cursor shape
+
 alias line='echo -e "\033[5 q"'         #blinking pipe bar
 alias nbline='echo -e "\033[6 q"'       #not blinking pipe bar
 alias block='echo -e "\033[1 q"'        #blinking block
@@ -50,39 +56,22 @@ alias nbuscore='echo -e "\033[4 q"'     #not blinking underscore
 # 5 pipe bar (blinking)
 # 6 fixed pipe bar
 
-# =============================================================================
-# PYTHON
-# =============================================================================
 
-alias python="python3.8"
+#-------------------=== Python ===-------------------------------
+alias pthn="python3.8"
 
-# =============================================================================
-# JAVA
-# =============================================================================
 
+#-------------------=== Java ===-------------------------------
 # visit this links in case you want to install java:
 #   https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-18-04/
 
-
-#-------------------=== aliases ===-------------------------------
 alias cjava='update-alternatives --config java' #change java version
 alias scjava='sudo update-alternatives --config java' #change java version
 
-# =============================================================================
-# TERMINAL(S) MANAGEMENT
-# =============================================================================
 
 #-------------------=== aliases ===-------------------------------
 #terminal aliases
 #change default terminal
-alias ctrm='update-alternatives --config x-terminal-emulator'
-alias gksu='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS'
-alias gksudo='gksu'
-alias sctrm='sudo update-alternatives --config x-terminal-emulator'
-alias dtct_key="xev -event keyboard"
-alias get_gtk='gsettings get org.gnome.desktop.interface gtk-theme'
-alias eco='echo'
-alias rm_crash='echo -e "\nThe following crashes were found and will now be removed:"; ls -l /var/crash/; sleep 1; sudo rm /var/crash/* && echo -e "\nMessage (OK): Succesfully cleared crashes!\nExit Status: $?" || echo -e "\nMessage (FAILED): Nothing removed"'
 
 #-------------------=== cd(s) ===-------------------------------
 alias ..="cd .."
@@ -254,7 +243,7 @@ alias ef_sa='vim ~/.shell_aliases'
 
 alias efn_systemd='sudo nvim /etc/systemd/system.conf'
 alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
-alias efn_bash='nvim ~/.bashrc'
+alias efn_sh='nvim ~/.bashrc'
 alias efn_vim='nvim ~/.vimrc'
 alias efn_nvim='nvim ~/.config/nvim/init.lua'
 alias efn_sa='nvim ~/.shell_aliases'
@@ -269,10 +258,12 @@ alias ct_kitty="cat ~/.config/kitty/kitty.conf"
 alias ct_nvim='cat ~/.config/kitty/kitty.conf'
 
 
+#-------------------=== Kitty ===-------------------------------
+alias icat="kitty +kitten icat"
 
+
+#-------------------=== Others ===-------------------------------
 alias load="kill -USR1 $(pidof st)"
 alias use="xrdb merge"
-
-
 alias appit="/usr/local/bin/appimagetool-x86_64.AppImage"
 

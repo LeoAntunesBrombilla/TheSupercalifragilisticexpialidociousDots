@@ -37,7 +37,8 @@ utils.define_augroups({
         {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'VimLeavePre', '*', 'set title set titleold='},
+		-- {'VimLeave', '*', [[call system('printf '%b' '\033[5 q'')]]}
+        -- {'VimLeavePre', '*', 'set title set titleold='},
         -- {'FileType', '*', 'call vsnip#get_complete_items(bufnr())'},
 
     },

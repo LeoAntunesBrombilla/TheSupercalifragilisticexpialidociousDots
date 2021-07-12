@@ -76,6 +76,8 @@ cmd "set cursorline"
 cmd "set guicursor=i-c-ci:ver25,o-v-ve:hor20,cr-sm-n-r:block"
 -- refer to `:help 'guicursor'`
 
+-- restore to vertical bar after cursr after leaving vim, useful for tmux
+cmd([[au VimLeave * set guicursor=a:ver24]])
 -- coffe and confort mappings
 -- cmd("set noruler")		-- disable ruler at bottom
 -- cmd("noshowmode")		-- disable showing mode
@@ -86,6 +88,8 @@ cmd "set guicursor=i-c-ci:ver25,o-v-ve:hor20,cr-sm-n-r:block"
 cmd "set foldmethod=syntax"
 cmd "set nofoldenable"
 cmd "set foldlevel=99"
+
+
 
 --[[
     using folds:

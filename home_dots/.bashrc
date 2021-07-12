@@ -238,6 +238,15 @@ function pasteget()
     fi
 }
 
+
+# ----------------------------=== My Stuff ===--------------------------
+
+_MY_KITTY="$(which kitty)"
+if [ -e "${_MY_KITTY}" ]; then
+	source <(kitty + complete setup bash)
+fi
+unset _MY_KITTY
+
 _MY_JAVA="$(which java)"
 if [ -e "${_MY_JAVA}" ]; then
     export JAVA_HOME=$(dirname $(dirname $(readlink -f "${_MY_JAVA}")))
@@ -278,88 +287,39 @@ fi
 unset _MY_VIM
 
 
-
-# you can add kitty (terminal) as an option with the following command
-# `sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50`
-
 #-------------------=== others ===-------------------------------
-#for having 10,000 of history
 export HISTFILESIZE=20000
 export HISTSIZE=10000
-# shopt -s histappend
-# Combine multiline commands into one in history
 shopt -s cmdhist
-# Ignore duplicates, ls without options and builtin commands
-# HISTCONTROL=ignoredups
 export HISTIGNORE="&:ls:[bf]g:exit"
-
-
-# setterm -foreground green -store
-#
-#if [ "$TERM" = "linux" ]; then
-#    echo -en "\e]P0232323" #black
-#    echo -en "\e]P82B2B2B" #darkgrey
-#    echo -en "\e]P1D75F5F" #darkred
-#    echo -en "\e]P9E33636" #red
-#    echo -en "\e]P287AF5F" #darkgreen
-#    echo -en "\e]PA98E34D" #green
-#    echo -en "\e]P3D7AF87" #brown
-#    echo -en "\e]PBFFD75F" #yellow
-#    echo -en "\e]P48787AF" #darkblue
-#    echo -en "\e]PC7373C9" #blue
-#    echo -en "\e]P5BD53A5" #darkmagenta
-#    echo -en "\e]PDD633B2" #magenta
-#    echo -en "\e]P65FAFAF" #darkcyan
-#    echo -en "\e]PE44C9C9" #cyan
-#    echo -en "\e]P7E5E5E5" #lightgrey
-#    echo -en "\e]PFFFFFFF" #white
-#    clear #for background artifacting
-#fi
-
-#to check which terminal you are using type:
-#echo "$TERM"
 
 #everything inside here will run whenever a tty window is opened
 if [ "$TERM" = "linux" ]; then
     setterm -foreground green -store
 fi
-
 #references:
 #https://askubuntu.com/questions/147462/how-can-i-change-the-tty-colors
-
-
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/sebas5758/.sdkman"
 [[ -s "/home/sebas5758/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sebas5758/.sdkman/bin/sdkman-init.sh"
 
-#-------------------=== Kitty ===-------------------------------
-# for kitty support
-
-
-_MY_KITTY="$(which kitty)"
-if [ -e "${_MY_KITTY}" ]; then
-	source <(kitty + complete setup bash)
-fi
-unset _MY_KITTY
-
-
-
-
 # luaver
 alias lv='luaver'
-
-# load luaver
 alias llv='[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver; [ -s ~/.luaver/completions/luaver.bash ] && . ~/.luaver/completions/luaver.bash'
-# case ${?} in
-# 	0)
-# 		echo -e "\n-----------------------------------------"
-# 		echo -e "Entry added successfully"
-# 		;;
-# 	*)
-# 		echo -e "\n\nAn error ocurred while adding the entry, check '$this_scrpt -h' for help."
-# 		;;
-# esac
 
 alias luamake=/home/sebas5758/.config/lua-language-server/3rd/luamake/luamake
 
+
+
+
+# ----------- Cursor
+# set default cursor to blinking pipe
+printf '%b' '\033[5 q'
+
+# \033[5 q			#blinking pipe bar
+# \033[6 q			#not blinking pipe bar
+# \033[1 q			#blinking block
+# \033[2 q			#not blinking block
+# \033[3 q			#blinking underscore
+# \033[4 q			#not blinking underscore

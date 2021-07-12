@@ -10,10 +10,10 @@ vim.api.nvim_exec([[
 ]], false)
 
 -- better window movement
-api.nvim_set_keymap('n', '<S-Left>', '<C-w>h', {silent = true})
-api.nvim_set_keymap('n', '<S-Down>', '<C-w>j', {silent = true})
-api.nvim_set_keymap('n', '<S-Up>', '<C-w>k', {silent = true})
-api.nvim_set_keymap('n', '<S-Right>', '<C-w>l', {silent = true})
+api.nvim_set_keymap('n', '<C-S-Left>', '<C-w>h', {silent = true})
+api.nvim_set_keymap('n', '<C-S-Down>', '<C-w>j', {silent = true})
+api.nvim_set_keymap('n', '<C-S-Up>', '<C-w>k', {silent = true})
+api.nvim_set_keymap('n', '<C-S-Right>', '<C-w>l', {silent = true})
 
 -- resize windows with arrows
 api.nvim_set_keymap('n', '<A-j>', ':resize -2<CR>', {silent = true})

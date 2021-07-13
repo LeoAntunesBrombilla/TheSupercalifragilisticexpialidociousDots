@@ -26,10 +26,10 @@ Here are some details about my setup:
 + **Editor**: [Neovim](https://github.com/neovim/neovim/)
 + **Browser**: [Brave Nightly](https://brave.com/)
 + **Term Prompt**: [MiniPrompt](https://github.com/Pocco81/MiniPrompt)
-
-
++ **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 
 # TODO
++ Add tmux to the screenshots
 + And functionality for generating symlinks
 + Add installer for Nvim (properly implemented)
 + Finish installer script

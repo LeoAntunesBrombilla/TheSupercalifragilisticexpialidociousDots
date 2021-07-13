@@ -18,13 +18,13 @@ This is my personal collection of configuration files.
 
 Here are some details about my setup:
 
++ **OS**: [Arch Linux](https://archlinux.org/)
 + **DE**: [Gnome](https://www.gnome.org)
 + **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
-+ **OS**: [Arch Linux](https://archlinux.org/)
 + **Shell**: [bash](https://github.com/bminor/bash)
-+ **Terminal**: [kitty](https://github.com/kovidgoyal/kitty/)
 + **Editor**: [Neovim](https://github.com/neovim/neovim/)
 + **Browser**: [Brave Nightly](https://brave.com/)
++ **Terminal**: [kitty](https://github.com/kovidgoyal/kitty/)
 + **Term Prompt**: [MiniPrompt](https://github.com/Pocco81/MiniPrompt)
 + **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 

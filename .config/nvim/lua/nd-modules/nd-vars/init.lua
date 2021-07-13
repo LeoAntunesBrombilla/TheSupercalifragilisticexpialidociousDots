@@ -1,7 +1,10 @@
+local fn = vim.fn
 
-DATA_PATH = vim.fn.stdpath('data')
-CACHE_PATH = vim.fn.stdpath('cache')
-CONFIG_PATH = vim.fn.stdpath('config')
+DATA_PATH = fn.stdpath('data')
+CACHE_PATH = fn.stdpath('cache')
+CONFIG_PATH = fn.stdpath('config')
+TERMINAL = fn.expand("$TERMINAL")
+USER = fn.expand("$USER")
 
 O = {
     auto_close_tree = 0,

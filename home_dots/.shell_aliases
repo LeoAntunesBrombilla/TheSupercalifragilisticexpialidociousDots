@@ -245,11 +245,12 @@ alias efn_systemd='sudo nvim /etc/systemd/system.conf'
 alias efn_kitty='nvim ~/.config/kitty/kitty.conf'
 alias efn_sh='nvim ~/.bashrc'
 alias efn_vim='nvim ~/.vimrc'
-alias efn_nvim='nvim ~/.config/nvim/init.lua'
+alias efn_nv='nvim ~/.config/nvim/init.lua'
 alias efn_sa='nvim ~/.shell_aliases'
-# alias efn_ss='nvim ~/.config/starship.toml'
+alias efn_tm='nvim ~/.tmux.conf'
 alias efn_ala='nvim ~/.config/alacritty/alacritty.yml'
 alias efn_sa='nvim ~/.shell_aliases'
+# alias efn_ss='nvim ~/.config/starship.toml'
 
 #-------------------=== Cat-ting ===-------------------------------
 alias ct_bash="cat ~/.bashrc"

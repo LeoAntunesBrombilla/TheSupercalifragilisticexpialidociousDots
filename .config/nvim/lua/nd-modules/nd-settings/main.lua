@@ -43,8 +43,8 @@ cmd "set backspace=indent,eol,start" -- eventually fix this
 cmd "set listchars=tab:›\\ ,trail:•,extends:#,nbsp:."
 -- cmd [[set fillchars=fold:·,foldopen:-,foldclose:+,foldsep:\|]]
 ------------------------=== Syntax ===--------------------------
-cmd "syntax enable"
-cmd "syntax on"
+-- cmd "syntax enable"
+-- cmd "syntax on"
 cmd "set wrap"
 -- cmd "highlight Comment cterm=italic gui=italic" -- set comments in italics
 cmd "set list"

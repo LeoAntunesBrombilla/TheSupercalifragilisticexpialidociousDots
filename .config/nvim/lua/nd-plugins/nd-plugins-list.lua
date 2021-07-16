@@ -398,7 +398,7 @@ return require("packer").startup(
 
         use {
             "Pocco81/TrueZen.nvim",
-            branch = "dev",
+            branch = "dev-mode-ataraxis",
             opt = true,
             event = "VimEnter",
             config = function()

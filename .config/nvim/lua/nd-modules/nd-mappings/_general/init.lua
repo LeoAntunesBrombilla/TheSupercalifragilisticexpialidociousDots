@@ -1,8 +1,7 @@
-
-
-api.nvim_set_keymap('n', '-', ':RnvimrToggle<CR>', {noremap = true, silent = true})
-
 -- Better nav for omnicomplete
+
+
+
 cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
 cmd('inoremap <expr> <c-k> (\"\\<C-p>\")')
 
@@ -13,14 +12,6 @@ api.nvim_set_keymap("n", "<C-a>", [[<Cmd> %y+<CR>]], {noremap = true, silent = t
 
 -- Leader key is <Space>
 vim.g.mapleader = " "
-
--- gotta move this somewhere else
-vim.g.auto_save = 1
-
--- I hate escape
--- api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true, silent = true})
--- api.nvim_set_keymap('i', 'kj', '<ESC>', {noremap = true, silent = true})
--- api.nvim_set_keymap('i', 'jj', '<ESC>', {noremap = true, silent = true})
 
 -- wq (write and quit)
 cmd "cnoreabbrev W w"

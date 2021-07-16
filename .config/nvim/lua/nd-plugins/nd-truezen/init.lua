@@ -24,7 +24,7 @@ true_zen.setup({
 			right_padding = 32,
 			top_padding = 2,
 			bottom_padding = 2,
-			ideal_writing_area_width = 0,
+			ideal_writing_area_width = {30, 90, "max"},
 			just_do_it_for_me = true,
 			keep_default_fold_fillchars = true,
 			custome_bg = "",

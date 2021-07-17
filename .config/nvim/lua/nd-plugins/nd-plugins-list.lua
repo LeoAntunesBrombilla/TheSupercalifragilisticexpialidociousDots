@@ -159,10 +159,17 @@ return require("packer").startup(
             run = ":TSUpdate",
             config = function()
                 require("nd-plugins.nd-treesitter.init")
-            end
+            end,
         }
 
-        use {"norcalli/nvim-base16.lua", opt = true}
+        use {
+			"norcalli/nvim-base16.lua",
+			opt = true,
+			after = "nvim-tree.lua",
+			config = function ()
+				require("nd-plugins.nd-colorscheme.nd-base16.init")
+			end
+		}
 
         --------------------------=== Personalization ===--------------------------
 
@@ -398,12 +405,13 @@ return require("packer").startup(
 
         use {
             "Pocco81/TrueZen.nvim",
-            branch = "dev-mode-ataraxis",
+            branch = "dev",
             opt = true,
             event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-truezen.init")
-            end
+            end,
+			disable = false
         }
 
         use {
@@ -429,6 +437,6 @@ return require("packer").startup(
         --------------------------=== Require The Plugins ===--------------------------
 
         --------=== (Require) LSP
-        require_plugin("nvim-base16.lua")
+        -- require_plugin("nvim-base16.lua")
     end
 )

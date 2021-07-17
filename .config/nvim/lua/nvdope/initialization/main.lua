@@ -144,6 +144,7 @@ return require("packer").startup(
         use {
 			"norcalli/nvim-base16.lua",
 			opt = true,
+			after = "nvim-tree.lua",
 			disable = plugs.ui.base16
 		}
 
@@ -416,6 +417,6 @@ return require("packer").startup(
 
         --------------------------=== Require The Plugins ===--------------------------
 
-        packer_util.require_plugin("nvim-base16.lua")
+        -- packer_util.require_plugin("nvim-base16.lua")
     end
 )

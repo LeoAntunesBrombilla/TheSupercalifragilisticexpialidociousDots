@@ -11,131 +11,124 @@ Cfg = {
         }
     },
     settings = {
-		globals = {
-			mapleader = " ",
-		},
-
-		global_options = {
-			t_Co = "256",
-			pumheight = 10, -- pop up menu height
-			fileencoding = "utf-8", -- the encoding written to a file
-			conceallevel = 0, -- so that `` is visible in markdown files
-		},
-
-		options = {
-			inccommand = "split",
-			encoding = "UTF-8",
-			colorcolumn = "99999", -- fixes indentline for now
-			splitbelow = true, -- force all horizontal splits to go below current window
-			splitright = true, -- force all vertical splits to go to the right of current window
-			updatetime = 300, -- faster completion
-			clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-			backup = false, -- creates a backup file
-			writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-			guicursor = {"i-c-ci:ver25", "o-v-ve:hor20", "cr-sm-n-r:block"},
-			backspace = {"indent", "eol", "start"}, -- table
-			iskeyword = {"-"},
-			shortmess = {c = true}, --table insert
-			listchars = [[tab:› ,trail:•,extends:#,nbsp:.]], -- table
-			matchpairs = {"<:>"}, --table insert
-			termguicolors = true, -- set term gui colors (most terminals support this)
-			errorbells = false,
-			swapfile = false, -- creates a swapfile
-			shell = "bash",
-			cmdheight = 1, -- more space in the neovim command line for displaying messages
-			signcolumn = "no", -- always show the sign column, otherwise it would shift the text each time
-			tabstop = 4, -- insert 2 spaces for a tab
-			shiftwidth = 4, -- the number of spaces inserted for each indentation
-			softtabstop = 4,
-			list = true,
-			wrap = true, -- display lines as one long line
-			showcmd = true,
-			showmode = false, -- we don't need to see things like -- INSERT -- anymore
-			mouse = "a", -- allow the mouse to be used in neovim
-			number = true, -- set numbered lines
-			relativenumber = false, -- set relative numbered lines
-			numberwidth = 2, -- set number column width to 2 {default 4}
-			lazyredraw = true,
-			scrolloff = 8, -- is one of my fav
-			modelines = 0,
-			hidden = true, -- required to keep multiple buffers and open multiple buffers
-			ttyfast = true,
-			hlsearch = true,
-			incsearch = true,
-			ignorecase = true,
-			smartcase = true,
-			ruler = true,
-			cursorline = true, -- highlight the current line
-			cursorcolumn = false,
-			foldmethod = "syntax",
-			foldenable = false,
-			foldlevel = 99
-			-- showtabline = 2, -- always show tabs
-		},
-
-
+        globals = {
+            mapleader = " "
+        },
+        global_options = {
+            t_Co = "256",
+            pumheight = 10, -- pop up menu height
+            fileencoding = "utf-8", -- the encoding written to a file
+            conceallevel = 0 -- so that `` is visible in markdown files
+        },
+        options = {
+            inccommand = "split",
+            encoding = "UTF-8",
+            colorcolumn = "99999", -- fixes indentline for now
+            splitbelow = true, -- force all horizontal splits to go below current window
+            splitright = true, -- force all vertical splits to go to the right of current window
+            updatetime = 300, -- faster completion
+            clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+            backup = false, -- creates a backup file
+            writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+            guicursor = {"i-c-ci:ver25", "o-v-ve:hor20", "cr-sm-n-r:block"},
+            backspace = {"indent", "eol", "start"}, -- table
+            iskeyword = {"-"},
+            shortmess = {c = true}, --table insert
+            listchars = [[tab:› ,trail:•,extends:#,nbsp:.]], -- table
+            matchpairs = {"<:>"}, --table insert
+            termguicolors = true, -- set term gui colors (most terminals support this)
+            errorbells = false,
+            swapfile = false, -- creates a swapfile
+            shell = "bash",
+            cmdheight = 1, -- more space in the neovim command line for displaying messages
+            signcolumn = "no", -- always show the sign column, otherwise it would shift the text each time
+            tabstop = 4, -- insert 2 spaces for a tab
+            shiftwidth = 4, -- the number of spaces inserted for each indentation
+            softtabstop = 4,
+            list = true,
+            wrap = true, -- display lines as one long line
+            showcmd = true,
+            showmode = false, -- we don't need to see things like -- INSERT -- anymore
+            mouse = "a", -- allow the mouse to be used in neovim
+            number = true, -- set numbered lines
+            relativenumber = false, -- set relative numbered lines
+            numberwidth = 2, -- set number column width to 2 {default 4}
+            lazyredraw = true,
+            scrolloff = 8, -- is one of my fav
+            modelines = 0,
+            hidden = true, -- required to keep multiple buffers and open multiple buffers
+            ttyfast = true,
+            hlsearch = true,
+            incsearch = true,
+            ignorecase = true,
+            smartcase = true,
+            ruler = true,
+            cursorline = true, -- highlight the current line
+            cursorcolumn = false,
+            foldmethod = "syntax",
+            foldenable = false,
+            foldlevel = 99
+            -- showtabline = 2, -- always show tabs
+        }
     },
     plugins = {
         lsp = {
-            lspconfig = true,
-            lspinstall = true,
-            lspsignature = true,
+            lspconfig = false,
+            lspinstall = false,
+            lspsignature = false,
             lspsaga = false,
-            gitsigns = true,
-			language_servers = {
-
-			},
+            gitsigns = false,
+            language_servers = {}
         },
         debug = {
-            dap = false,
-            dap_install = false
+            dap = true,
+            dap_install = true
         },
         ui = {
-            treesitter = true,
-            web_devicons = true,
-            colorizer = true,
-            galaxyline = true,
-            twilight = true,
-            tree = true,
-            bufferline = true,
-            indent_blankline = true,
-            base16 = true,
-            dashboard = true
+            treesitter = false,
+            web_devicons = false,
+            colorizer = false,
+            galaxyline = false,
+            twilight = false,
+            tree = false,
+            bufferline = false,
+            indent_blankline = false,
+            base16 = false,
+            dashboard = false
         },
         tools = {
-            compe = true,
-            vsnip = true,
-            telescope = true,
-            friendly_snippets = true,
-            close_buffers = true,
-            neoformat = true,
-            pencil = true,
-            autopairs = true,
-            vvm = true,
-            undotree = true,
-            trouble = false
+            compe = false,
+            vsnip = false,
+            telescope = false,
+            friendly_snippets = false,
+            close_buffers = false,
+            neoformat = false,
+            pencil = false,
+            autopairs = false,
+            vvm = false,
+            undotree = false,
+            trouble = true
         },
         utils = {
-            startuptime = true,
-            autosave = true,
-            tagbar = true,
-            todo_comments = true,
-            commentary = true,
-            highstr = true,
-            comfortable_motion = true,
-            truezen = true
+            startuptime = false,
+            autosave = false,
+            tagbar = false,
+            todo_comments = false,
+            commentary = false,
+            highstr = false,
+            comfortable_motion = false,
+            truezen = false
         },
         extensions = {
-            lua_dev = true,
-            yaml = true,
-            kitty = true,
-            ts_autotag = true,
-            editorconfig = true
-        },
+            lua_dev = false,
+            yaml = false,
+            kitty = false,
+            ts_autotag = false,
+            editorconfig = false
+        }
     },
     mappings = {
         -- syntax: {<vim_mode>, <keybinding>, <command>, <opts>}
-
         -- general
         {"n", "<C-a>", [[<Cmd> %y+<CR>]], {noremap = true, silent = true}},
         -- better window movement
@@ -154,42 +147,55 @@ Cfg = {
         -- indentate text
         {"v", "<", "<gv", {noremap = true, silent = true}},
         {"v", ">", ">gv", {noremap = true, silent = true}},
-		-- ctrl+backspace to delete word
-		{"i", "<C-BS>", "<C-w>", {noremap = true, silent = true}},
-		{"i", "<C-h>", "<C-w>", {noremap = true, silent = true}},
+        -- ctrl+backspace to delete word
+        {"i", "<C-BS>", "<C-w>", {noremap = true, silent = true}},
+        {"i", "<C-h>", "<C-w>", {noremap = true, silent = true}},
+        -- nvim-tree
+        {"n", "<C-e>", "NvimTreeToggle<CR>", {noremap = true, silent = true}},
+        -- bufferline
+        {"n", "<PageUp>", [[<Cmd>BufferLineCycleNext<CR>]], {silent = true}},
+        {"n", "<PageDown>", [[<Cmd>BufferLineCyclePrev<CR>]], {silent = true}},
+        {"i", "<PageUp>", [[<Cmd>BufferLineCycleNext<CR>]], {silent = true}},
+        {"i", "<PageDown>", [[<Cmd>BufferLineCyclePrev<CR>]], {silent = true}},
+        {"n", "<C-PageUp>", [[<Cmd>BufferLineMoveNext<CR>]], {silent = true}},
+        {"n", "<C-PageDown>", [[<Cmd>BufferLineMovePrev<CR>]], {silent = true}},
+        {"n", "<S-b>", ":New ", {silent = true}},
+        {"n", "<S-e>", [[<Cmd>BufferLinePick<CR>]], {silent = true}},
+        {"n", "<leader>bd", [[<Cmd>BufferLineSortByDirectory<CR>]], {silent = true}},
+        {"n", "<leader>bl", [[<Cmd>BufferLineSortByExtension<CR>]], {silent = true}}
     },
     abbreviations = {
-		{"cnoreabbrev", "W", "w"},
-		{"cnoreabbrev", "Q", "q"},
-		{"cnoreabbrev", "Wq", "wq"},
-		{"cnoreabbrev", "Wqq", "wq"},
-		{"cnoreabbrev", "WQ", "wq"},
-		{"cnoreabbrev",  "wQ", "wq"},
-	},
-	autocmds = {
+        {"cnoreabbrev", "W", "w"},
+        {"cnoreabbrev", "Q", "q"},
+        {"cnoreabbrev", "Wq", "wq"},
+        {"cnoreabbrev", "Wqq", "wq"},
+        {"cnoreabbrev", "WQ", "wq"},
+        {"cnoreabbrev", "wQ", "wq"}
+    },
+    autocmds = {
         -- syntax: {<event>, <pattern>, <command>}
 
-		_general = {
-			{'VimLeave', '*', 'set guicursor=a:ver24'} -- use if on tmux
-		},
-		_dashboard = {
-			{'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'},
-			{'FileType', 'dashboard', 'setlocal showtabline=0 nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= '},
-		},
-		_markdown = {
-			{'FileType', 'markdown', 'setlocal wrap spell'},
-		},
-		_lsp = {
-			{'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'}
-		},
-		_text = {
-			{'FileType', 'text', 'setlocal wrap spell'},
-		}
-	},
-
-    higroups = {
-
-	},
-
+        _general = {
+            {"VimLeave", "*", "set guicursor=a:ver24"} -- use if on tmux
+        },
+        _dashboard = {
+            {"FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>"},
+            {
+                "FileType",
+                "dashboard",
+                "setlocal showtabline=0 nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= "
+            }
+        },
+        _markdown = {
+            {"FileType", "markdown", "setlocal wrap spell"}
+        },
+        _lsp = {
+            {"FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>"}
+        },
+        _text = {
+            {"FileType", "text", "setlocal wrap spell"}
+        }
+    },
+    higroups = {},
     snippets = {}
 }

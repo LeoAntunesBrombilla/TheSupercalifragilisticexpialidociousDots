@@ -25,7 +25,9 @@ cmd "cnoreabbrev wQ wq"
 -- " deleting with arrows and backspace
 -- " inoremap <C-w> <C-\><C-o>dB
 -- " inoremap <C-BS> <C-\><C-o>db
+
 cmd "noremap! <C-BS> <C-w>"
 cmd "noremap! <C-h> <C-w>"
+
 -- cmd "inoremap <C-BS> <C-w>"
 -- cmd "inoremap <C-h> <C-w>"

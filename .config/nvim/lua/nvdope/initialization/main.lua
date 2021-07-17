@@ -1,7 +1,7 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
-local packer_util = require("lua.nvdope.utils.packer")
-
+local packer_util = require("nvdope.utils.packer")
+local plugs = Cfg.plugins
 
 local install_path = DATA_PATH .. "/site/pack/packer/start/packer.nvim"
 
@@ -25,7 +25,7 @@ return require("packer").startup(
             requires = {
                 {
 					"kabouzeid/nvim-lspinstall",
-					disable = Cfg.plugins.lsp.lspinstall
+					disable = plugs.lsp.lspinstall
 				},
             },
             config = function()
@@ -33,7 +33,7 @@ return require("packer").startup(
 				require("nvdope.initialization.lsp.lsp_config.init")
 				require("nvdope.initialization.lsp.lsp_pictograms.init")
             end,
-			disable = Cfg.plugins.lsp.lspconfig
+			disable = plugs.lsp.lspconfig
         }
 
         use {
@@ -43,7 +43,7 @@ return require("packer").startup(
 			config = function ()
 				require("nvdope.initialization.lsp.lsp_saga.init")
 			end,
-			disable = Cfg.plugins.lsp.lspsaga
+			disable = plugs.lsp.lspsaga
 		}
 
 		use {
@@ -53,7 +53,7 @@ return require("packer").startup(
 			config = function ()
 				require("nvdope.initialization.lsp.lsp_signature.init")
 			end,
-			disable = Cfg.plugins.lsp.lspsignature
+			disable = plugs.lsp.lspsignature
 		}
 
         ----------------------------=== Major Dependencies ===--------------------------
@@ -67,7 +67,8 @@ return require("packer").startup(
             cmd = "Telescope",
             config = function()
                 require("nd-plugins.nd-telescope.init")
-            end
+            end,
+			disable = plugs.tools.telescope
         }
 
         ----------------------------=== LSP ===--------------------------
@@ -78,7 +79,8 @@ return require("packer").startup(
             event = "InsertEnter",
             config = function()
                 require("nd-plugins.nd-compe.init")
-            end
+            end,
+			disable = plugs.tools.telescope
         }
 
         use {
@@ -90,8 +92,9 @@ return require("packer").startup(
                 require("nd-plugins.nd-vsnip.init")
             end,
             requires = {
-                {"rafamadriz/friendly-snippets", opt = true}
-            }
+                {"rafamadriz/friendly-snippets", opt = true, disable = plugs.tools.friendly_snippets}
+            },
+			disable = plugs.tools.vsnip
         }
 
         use {
@@ -100,7 +103,8 @@ return require("packer").startup(
             event = "CursorMoved",
             config = function()
                 require("nd-plugins.nd-autopairs.init")
-            end
+            end,
+			disable = plugs.tools.autopairs
         }
 
         --------------------------=== Debugging ===--------------------------
@@ -111,7 +115,8 @@ return require("packer").startup(
             event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-dap.init")
-            end
+            end,
+			disable = plugs.debug.dap
         }
 
         use {
@@ -121,7 +126,8 @@ return require("packer").startup(
             after = "nvim-dap",
             config = function()
                 require("nd-plugins.nd-dapinstall.init")
-            end
+            end,
+			disable = plugs.debug.dap_install
         }
 
         --------------------------=== Syntax ===--------------------------
@@ -131,14 +137,22 @@ return require("packer").startup(
             run = ":TSUpdate",
             config = function()
                 require("nd-plugins.nd-treesitter.init")
-            end
+            end,
+			disable = plugs.ui.treesitter
         }
 
-        use {"norcalli/nvim-base16.lua", opt = true}
+        use {
+			"norcalli/nvim-base16.lua",
+			opt = true,
+			disable = plugs.ui.base16
+		}
 
         --------------------------=== Personalization ===--------------------------
 
-        use {"kyazdani42/nvim-web-devicons"}
+        use {
+			"kyazdani42/nvim-web-devicons",
+			disable = plugs.ui.web_devicons
+		}
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -146,7 +160,8 @@ return require("packer").startup(
             event = "BufRead",
             config = function()
                 require("nd-plugins.nd-colorizer.init")
-            end
+            end,
+			disable = plugs.ui.colorizer
         }
 
         --------------------------=== Text Manipulation ===--------------------------
@@ -154,18 +169,21 @@ return require("packer").startup(
         use {
             "tpope/vim-commentary",
             opt = true,
-            keys = "gc"
+            keys = "gc",
+			disable = plugs.utils.commentary
         }
         use {
             "mg979/vim-visual-multi",
             opt = true,
-            event = "CursorMoved"
+            event = "CursorMoved",
+			disable = plugs.tools.vvm
         }
 
         use {
             "sbdchd/neoformat",
             opt = true,
-            cmd = "Neoformat"
+            cmd = "Neoformat",
+			disable = plugs.tools.neoformat
         }
 
         --------------------------=== Lang Specific ===--------------------------
@@ -176,13 +194,15 @@ return require("packer").startup(
             ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
             config = function()
                 require("nd-plugins.nd-autotag.init")
-            end
+            end,
+			disable = plugs.extensions.ts_autotag
         }
 
         use {
             "folke/lua-dev.nvim",
             opt = true,
-            ft = "lua"
+            ft = "lua",
+			disable = plugs.extensions.lua_dev
         }
 
         use {
@@ -191,13 +211,15 @@ return require("packer").startup(
             ft = "yaml",
             config = function()
                 require("yaml_nvim").init()
-            end
+            end,
+			disable = plugs.extensions.yaml
         }
 
         use {
             "fladson/vim-kitty",
             opt = true,
-            ft = "kitty"
+            ft = "kitty",
+			disable = plugs.extensions.kitty
         }
 
         --------------------------=== Project/Code Navigation ===--------------------------
@@ -209,7 +231,8 @@ return require("packer").startup(
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-dashboard.init")
-            end
+            end,
+			disable = plugs.ui.dashboard
         }
 
         use {
@@ -218,7 +241,8 @@ return require("packer").startup(
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-bufferline.init")
-            end
+            end,
+			disable = plugs.ui.bufferline
         }
 
         use {
@@ -227,7 +251,8 @@ return require("packer").startup(
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-galaxyline.lines.bubbles")
-            end
+            end,
+			disable = plugs.ui.galaxyline
         }
 
         use {
@@ -237,7 +262,8 @@ return require("packer").startup(
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-nvimtree.init")
-            end
+            end,
+			disable = plugs.ui.nvimtree
         }
 
         use {
@@ -246,7 +272,8 @@ return require("packer").startup(
             event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-indentblankline.init")
-            end
+            end,
+			disable = plugs.ui.indent_blankline
         }
 
         use {
@@ -255,13 +282,15 @@ return require("packer").startup(
             keys = "<F5>", -- custome mapping
             config = function()
                 require("nd-plugins.nd-undotree.init")
-            end
+            end,
+			disable = plugs.tools.undotree
         }
 
         use {
             "folke/trouble.nvim",
             opt = true,
-            cmd = {"Trouble", "TroubleClose", "TroubleToggle", "TroubleRefresh"}
+            cmd = {"Trouble", "TroubleClose", "TroubleToggle", "TroubleRefresh"},
+			disable = plugs.tools.trouble
         }
 
         use {
@@ -270,7 +299,8 @@ return require("packer").startup(
             event = "BufRead",
             config = function()
                 require("nd-plugins.nd-tagbar.init")
-            end
+            end,
+			disable = plugs.utils.tagbar
         }
 
         use {
@@ -279,20 +309,24 @@ return require("packer").startup(
             event = "BufRead",
             config = function()
                 require("nd-plugins.nd-gitsigns.init")
-            end
+            end,
+			disable = plugs.lsp.gitsigns
         }
 
         use {
             "editorconfig/editorconfig-vim",
             opt = true,
-            event = "VimEnter"
+            event = "VimEnter",
+			disable = plugs.extensions.editorconfig
         }
 
         --------------------------=== Note taking ===--------------------------
         use {
             "reedes/vim-pencil",
             opt = true,
-            cmd = {"Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil"}
+            cmd = {"Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil"},
+			disable = plugs.tools.pencil
+
         }
 
         use {
@@ -301,7 +335,8 @@ return require("packer").startup(
             event = "BufRead",
             config = function()
                 require("nd-plugins.nd-todocomments.init")
-            end
+            end,
+			disable = plugs.utils.todo_comments
         }
 
         --------------------------=== Utilities  ===--------------------------
@@ -309,7 +344,8 @@ return require("packer").startup(
         use {
             "tweekmonster/startuptime.vim",
             opt = true,
-            cmd = "StartupTime"
+            cmd = "StartupTime",
+			disable = plugs.utils.startuptime
         }
 
         use {
@@ -319,7 +355,8 @@ return require("packer").startup(
             event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-autosave.init")
-            end
+            end,
+			disable = plugs.utils.autosave
         }
 
         --------------------------=== Coffee and Chill ===--------------------------
@@ -330,7 +367,8 @@ return require("packer").startup(
             keys = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-limelight.init")
-            end
+            end,
+			disable = plugs.ui.twilight
         }
 
         use {
@@ -339,7 +377,8 @@ return require("packer").startup(
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-comfortablemotion.init")
-            end
+            end,
+			disable = plugs.utils.comfortable_motion
         }
 
         use {
@@ -349,7 +388,8 @@ return require("packer").startup(
             event = "VimEnter",
             config = function()
                 require("nd-plugins.nd-truezen.init")
-            end
+            end,
+			disable = plugs.utils.truezen
         }
 
         use {
@@ -360,7 +400,8 @@ return require("packer").startup(
             keys = {"<F3>", "<F4>"}, -- custome mappings
             config = function()
                 require("nd-plugins.nd-highstr.init")
-            end
+            end,
+			disable = plugs.utils.highstr
         }
 
         use {
@@ -369,7 +410,8 @@ return require("packer").startup(
             event = "BufWinEnter",
             config = function()
                 require("nd-plugins.nd-closebuffers.init")
-            end
+            end,
+			disable = plugs.tools.close_buffers
         }
 
         --------------------------=== Require The Plugins ===--------------------------

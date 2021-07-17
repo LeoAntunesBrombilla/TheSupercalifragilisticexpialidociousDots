@@ -1,9 +1,9 @@
-local prefix = "nvdope.runlevel"
+local prefix = "nvdope.runlevel."
 
 local runlevel_modules = {
     "abbreviations",
 	"mappings",
-    "autocmds",
+    "autocmds"
 	-- "snippets"
 }
 

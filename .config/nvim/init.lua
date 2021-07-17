@@ -44,24 +44,24 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
-local sys_components = {
+local sys_modules = {
     "nvd_settings",
-    "nvdope.core"
+    "nvdope.core",
     -- "nvdope.initialization",
-    -- "nvdope.runlevel",
+    "nvdope.runlevel",
 }
 
-for i = 1, #sys_components, 1 do
-    local ok, res = xpcall(require, debug.traceback, sys_components[i])
+for i = 1, #sys_modules, 1 do
+    local ok, res = xpcall(require, debug.traceback, sys_modules[i])
     if not (ok) then
-        print("NVDope [E0]: There was an error loading the component '" .. sys_components[i] .. "' -->")
+        print("NVDope [E0]: There was an error loading the module '" .. sys_modules[i] .. "' -->")
         print(res)
     end
 end
 
 require("nd-modules.nd-vars.init")
 cmd("luafile ~/.config/nvim/nd-settings.lua")
-require("nd-modules.init")
+-- require("nd-modules.init")
 require("nd-plugins.init")
 
 -- TODO is there a way to do this without vimscript

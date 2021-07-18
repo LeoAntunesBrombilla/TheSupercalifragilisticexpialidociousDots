@@ -150,13 +150,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
   },
-  ["limelight.vim"] = {
-    config = { "\27LJ\1\2<\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0!nd-plugins.nd-limelight.init\frequire\0" },
-    keys = { { "", "BufWinEnter" } },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/limelight.vim"
-  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
@@ -212,36 +205,16 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-compe"
   },
   ["nvim-dap"] = {
-    after = { "nvim-dap-python", "DAPInstall", "telescope-dap.nvim", "one-small-step-for-vimkind" },
+    after = { "DAPInstall" },
     config = { "\27LJ\1\0026\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\27nd-plugins.nd-dap.init\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-dap"
   },
-  ["nvim-dap-python"] = {
-    load_after = {
-      ["nvim-dap"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-dap-python"
-  },
-  ["nvim-jdtls"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-jdtls"
-  },
-  ["nvim-lightbulb"] = {
-    config = { "\27LJ\1\2<\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0!nd-plugins.nd-lightbulb.init\frequire\0" },
-    load_after = {},
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-lightbulb"
-  },
   ["nvim-lspconfig"] = {
-    after = { "nvim-lightbulb" },
+    config = { "\27LJ\1\2+\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\16nd-lsp.init\frequire\0" },
     loaded = true,
-    only_config = true
+    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
@@ -268,14 +241,6 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
-  },
-  ["one-small-step-for-vimkind"] = {
-    load_after = {
-      ["nvim-dap"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/one-small-step-for-vimkind"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -306,22 +271,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/tagbar"
   },
-  ["telescope-dap.nvim"] = {
-    load_after = {
-      ["nvim-dap"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/telescope-dap.nvim"
-  },
-  ["telescope-fzf-native.nvim"] = {
-    loaded = true,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
-  },
-  ["telescope-media-files.nvim"] = {
-    loaded = true,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
-  },
   ["telescope.nvim"] = {
     after = { "dashboard-nvim" },
     commands = { "Telescope" },
@@ -342,6 +291,13 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/trouble.nvim"
   },
+  ["twilight.nvim"] = {
+    config = { "\27LJ\1\0027\0\0\3\1\2\0\0064\0\0\0+\1\0\0%\2\1\0$\1\2\1>\0\2\1G\0\1\0\0\0\18twilight.init\frequire\0" },
+    keys = { { "", "BufWinEnter" } },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/twilight.nvim"
+  },
   undotree = {
     config = { "\27LJ\1\2;\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0 nd-plugins.nd-undotree.init\frequire\0" },
     keys = { { "", "<F5>" } },
@@ -354,11 +310,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-commentary"
-  },
-  ["vim-elixir"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-elixir"
   },
   ["vim-kitty"] = {
     loaded = false,
@@ -383,12 +334,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
   },
-  vimtex = {
-    config = { "\27LJ\1\0029\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\30nd-plugins.nd-vimtex.init\frequire\0" },
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/vimtex"
-  },
   ["yaml.nvim"] = {
     config = { "\27LJ\1\0026\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\tinit\14yaml_nvim\frequire\0" },
     loaded = false,
@@ -409,103 +354,91 @@ time([[Config for nvim-treesitter]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-if vim.fn.exists(":HSHighlight") == 0 then
+if vim.fn.exists(":HSHighlight") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file HSHighlight lua require("packer.load")({'HighStr.nvim'}, { cmd = "HSHighlight", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":TroubleRefresh") == 0 then
+if vim.fn.exists(":TroubleRefresh") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file TroubleRefresh lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleRefresh", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":SoftPencil") == 0 then
+if vim.fn.exists(":SoftPencil") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file SoftPencil lua require("packer.load")({'vim-pencil'}, { cmd = "SoftPencil", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":HardPencil") == 0 then
+if vim.fn.exists(":HardPencil") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file HardPencil lua require("packer.load")({'vim-pencil'}, { cmd = "HardPencil", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":TroubleToggle") == 0 then
+if vim.fn.exists(":TroubleToggle") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file TroubleToggle lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":StartupTime") == 0 then
+if vim.fn.exists(":StartupTime") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":Pencil") == 0 then
+if vim.fn.exists(":Pencil") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file Pencil lua require("packer.load")({'vim-pencil'}, { cmd = "Pencil", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":Neoformat") == 0 then
+if vim.fn.exists(":Neoformat") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file Neoformat lua require("packer.load")({'neoformat'}, { cmd = "Neoformat", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":HSRmHighlight") == 0 then
+if vim.fn.exists(":HSRmHighlight") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file HSRmHighlight lua require("packer.load")({'HighStr.nvim'}, { cmd = "HSRmHighlight", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":TroubleClose") == 0 then
+if vim.fn.exists(":TroubleClose") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file TroubleClose lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleClose", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":TogglePencil") == 0 then
+if vim.fn.exists(":TogglePencil") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file TogglePencil lua require("packer.load")({'vim-pencil'}, { cmd = "TogglePencil", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":Telescope") == 0 then
+if vim.fn.exists(":Telescope") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":NoPencil") == 0 then
+if vim.fn.exists(":NoPencil") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file NoPencil lua require("packer.load")({'vim-pencil'}, { cmd = "NoPencil", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
-if vim.fn.exists(":Trouble") == 0 then
+if vim.fn.exists(":Trouble") ~= 2 then
 vim.cmd [[command! -nargs=* -range -bang -complete=file Trouble lua require("packer.load")({'trouble.nvim'}, { cmd = "Trouble", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 end
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> BufWinEnter <cmd>lua require("packer.load")({'limelight.vim'}, { keys = "BufWinEnter", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <F5> <cmd>lua require("packer.load")({'undotree'}, { keys = "<lt>F5>", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> BufWinEnter <cmd>lua require("packer.load")({'twilight.nvim'}, { keys = "BufWinEnter", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <F5> <cmd>lua require("packer.load")({'undotree'}, { keys = "<lt>F5>", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType svelte ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "svelte" }, _G.packer_plugins)]]
-vim.cmd [[au FileType euphoria3 ++once lua require("packer.load")({'vim-elixir'}, { ft = "euphoria3" }, _G.packer_plugins)]]
-vim.cmd [[au FileType java ++once lua require("packer.load")({'nvim-jdtls'}, { ft = "java" }, _G.packer_plugins)]]
-vim.cmd [[au FileType python ++once lua require("packer.load")({'nvim-dap-python'}, { ft = "python" }, _G.packer_plugins)]]
-vim.cmd [[au FileType elixir ++once lua require("packer.load")({'vim-elixir'}, { ft = "elixir" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex'}, { ft = "tex" }, _G.packer_plugins)]]
 vim.cmd [[au FileType lua ++once lua require("packer.load")({'lua-dev.nvim'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vue ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "vue" }, _G.packer_plugins)]]
-vim.cmd [[au FileType phtml ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "phtml" }, _G.packer_plugins)]]
+vim.cmd [[au FileType svelte ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "svelte" }, _G.packer_plugins)]]
 vim.cmd [[au FileType xml ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "xml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType eelixir ++once lua require("packer.load")({'vim-elixir'}, { ft = "eelixir" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType kitty ++once lua require("packer.load")({'vim-kitty'}, { ft = "kitty" }, _G.packer_plugins)]]
 vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType yaml ++once lua require("packer.load")({'yaml.nvim'}, { ft = "yaml" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust-tools.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
 vim.cmd [[au FileType xhtml ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "xhtml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType phtml ++once lua require("packer.load")({'nvim-ts-autotag'}, { ft = "phtml" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'tagbar', 'nvim-colorizer.lua', 'todo-comments.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'nvim-autopairs', 'vim-visual-multi'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'tagbar', 'nvim-colorizer.lua', 'gitsigns.nvim', 'todo-comments.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-tree.lua', 'dashboard-nvim', 'galaxyline.nvim', 'close-buffers.vim', 'nvim-bufferline.lua'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'galaxyline.nvim', 'close-buffers.vim', 'nvim-tree.lua', 'dashboard-nvim', 'nvim-bufferline.lua'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'AutoSave.nvim', 'indent-blankline.nvim', 'nvim-dap', 'editorconfig-vim', 'comfortable-motion.vim', 'lspsaga.nvim', 'TrueZen.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'AutoSave.nvim', 'indent-blankline.nvim', 'nvim-dap', 'TrueZen.nvim', 'editorconfig-vim', 'comfortable-motion.vim', 'lspsaga.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'vim-vsnip'}, { event = "BufEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-elixir/ftdetect/elixir.vim]], true)
-vim.cmd [[source /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-elixir/ftdetect/elixir.vim]]
-time([[Sourcing ftdetect script at: /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-elixir/ftdetect/elixir.vim]], false)
 time([[Sourcing ftdetect script at: /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-kitty/ftdetect/kitty.vim]], true)
 vim.cmd [[source /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-kitty/ftdetect/kitty.vim]]
 time([[Sourcing ftdetect script at: /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vim-kitty/ftdetect/kitty.vim]], false)
-time([[Sourcing ftdetect script at: /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]], true)
-vim.cmd [[source /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]]
-time([[Sourcing ftdetect script at: /home/sebas5758/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 

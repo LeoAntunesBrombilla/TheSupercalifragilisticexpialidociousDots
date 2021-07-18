@@ -1,5 +1,3 @@
-
-
 local g = vim.g
 local api = vim.api
 

@@ -77,7 +77,6 @@ Cfg = {
             lspinstall = false,
             lspsignature = false,
             lspsaga = false,
-            gitsigns = false,
             language_servers = {}
         },
         debug = {
@@ -97,6 +96,7 @@ Cfg = {
             dashboard = false
         },
         tools = {
+            gitsigns = false,
             compe = false,
             vsnip = false,
             telescope = false,
@@ -120,6 +120,7 @@ Cfg = {
             truezen = false
         },
         extensions = {
+			rust_tools = false,
             lua_dev = false,
             yaml = false,
             kitty = false,
@@ -162,7 +163,27 @@ Cfg = {
         {"n", "<S-b>", ":New ", {silent = true}},
         {"n", "<S-e>", [[<Cmd>BufferLinePick<CR>]], {silent = true}},
         {"n", "<leader>bd", [[<Cmd>BufferLineSortByDirectory<CR>]], {silent = true}},
-        {"n", "<leader>bl", [[<Cmd>BufferLineSortByExtension<CR>]], {silent = true}}
+        {"n", "<leader>bl", [[<Cmd>BufferLineSortByExtension<CR>]], {silent = true}},
+        --compe
+        {"i", "<Tab>", "v:lua.tab_complete()", {expr = true}},
+        {"s", "<Tab>", "v:lua.tab_complete()", {expr = true}},
+        {"i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}},
+        {"s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}},
+        -- close buffers
+        {"n", "<A-q>", [[:Bdelete this<CR>]], {noremap = true, silent = true}},
+        -- autopairs
+        {"i", "<CR>", "v:lua.MUtils.completion_confirm()", {expr = true, noremap = true}},
+        -- undotree
+        {"n", "<F5>", "UndotreeToggle<CR>", {noremap = true, silent = true}},
+        -- tagbar
+        {"n", "<A-w>", "TagbarToggle<CR>", {noremap = true, silent = true}},
+        -- highstr
+        {"v", "<F3>", ":<c-u>HSHighlight<CR>", {noremap = true, silent = true}},
+        {"v", "<F4>", ":<c-u>HSRmHighlight<CR>", {noremap = true, silent = true}},
+		-- comfortable_motion
+		{"n", "<ScrollWheelDown>", ":call comfortable_motion#flick(10)<CR>", {silent = true}},
+		{"n", "<ScrollWheelUp>", ":call comfortable_motion#flick(-10)<CR>", {silent = true}},
+
     },
     abbreviations = {
         {"cnoreabbrev", "W", "w"},

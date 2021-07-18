@@ -1,5 +1,3 @@
-
-
 vim.api.nvim_exec([[
 	let g:VM_default_mappings = 0
 	let g:VM_maps = {}

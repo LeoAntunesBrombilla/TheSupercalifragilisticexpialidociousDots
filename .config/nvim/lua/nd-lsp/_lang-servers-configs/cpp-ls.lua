@@ -1,5 +1,0 @@
-
-
-
-require'lspconfig'["cpp"].setup{}
-

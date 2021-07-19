@@ -2,7 +2,6 @@ local prefix = "nvdope.core."
 
 local core_components = {
     "config",
-    "system"
 }
 
 if (Cfg.nvdope.skip_health == false) then

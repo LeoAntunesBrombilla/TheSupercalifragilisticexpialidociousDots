@@ -120,7 +120,7 @@ Cfg = {
             truezen = false
         },
         extensions = {
-			rust_tools = false,
+            rust_tools = false,
             lua_dev = false,
             yaml = false,
             kitty = false,
@@ -130,6 +130,7 @@ Cfg = {
     },
     mappings = {
         -- syntax: {<vim_mode>, <keybinding>, <command>, <opts>}
+
         -- general
         {"n", "<C-a>", [[<Cmd> %y+<CR>]], {noremap = true, silent = true}},
         -- better window movement
@@ -152,7 +153,7 @@ Cfg = {
         {"i", "<C-BS>", "<C-w>", {noremap = true, silent = true}},
         {"i", "<C-h>", "<C-w>", {noremap = true, silent = true}},
         -- nvim-tree
-        {"n", "<C-e>", "NvimTreeToggle<CR>", {noremap = true, silent = true}},
+        {"n", "<C-e>", ":NvimTreeToggle<CR>", {noremap = true, silent = true}},
         -- bufferline
         {"n", "<PageUp>", [[<Cmd>BufferLineCycleNext<CR>]], {silent = true}},
         {"n", "<PageDown>", [[<Cmd>BufferLineCyclePrev<CR>]], {silent = true}},
@@ -164,11 +165,6 @@ Cfg = {
         {"n", "<S-e>", [[<Cmd>BufferLinePick<CR>]], {silent = true}},
         {"n", "<leader>bd", [[<Cmd>BufferLineSortByDirectory<CR>]], {silent = true}},
         {"n", "<leader>bl", [[<Cmd>BufferLineSortByExtension<CR>]], {silent = true}},
-        --compe
-        {"i", "<Tab>", "v:lua.tab_complete()", {expr = true}},
-        {"s", "<Tab>", "v:lua.tab_complete()", {expr = true}},
-        {"i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}},
-        {"s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true}},
         -- close buffers
         {"n", "<A-q>", [[:Bdelete this<CR>]], {noremap = true, silent = true}},
         -- autopairs
@@ -180,10 +176,15 @@ Cfg = {
         -- highstr
         {"v", "<F3>", ":<c-u>HSHighlight<CR>", {noremap = true, silent = true}},
         {"v", "<F4>", ":<c-u>HSRmHighlight<CR>", {noremap = true, silent = true}},
-		-- comfortable_motion
-		{"n", "<ScrollWheelDown>", ":call comfortable_motion#flick(10)<CR>", {silent = true}},
-		{"n", "<ScrollWheelUp>", ":call comfortable_motion#flick(-10)<CR>", {silent = true}},
-
+        -- truezen
+        {"n", "<leader>zz", ":TZAtaraxis<CR>", {silent = true}},
+        {"n", "<leader>zm", ":TZMinimalist<CR>", {silent = true}},
+        {"n", "<leader>zf", ":TZFocus<CR>", {silent = true}},
+        -- comment
+        {"n", "<leader>/", ":CommentToggle<CR>", {silent = true}},
+        {"v", "<leader>/", ":CommentToggle<CR>", {silent = true}},
+		-- neoformat
+		{"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}}
     },
     abbreviations = {
         {"cnoreabbrev", "W", "w"},
@@ -217,6 +218,28 @@ Cfg = {
             {"FileType", "text", "setlocal wrap spell"}
         }
     },
-    higroups = {},
+
+    highlights = {
+		{"NORMAL", nil, "#111921", nil, nil, nil, nil},
+		-- {"Comment", "#42464e", nil, nil, nil, "italic", nil},
+		-- {"Conditional", nil, nil, nil, nil, "italic", nil},
+		-- {"Character", nil, nil, nil, nil, "undercurl", nil},
+		-- {"SpecialChar", nil, nil, nil, nil, "underline", nil},
+		-- {"Repeat", nil, nil, nil, nil, "italic", nil},
+		-- {"Function", nil, nil, nil, nil, "italic", nil},
+		-- {"Float", nil, nil, nil, nil, "bold", nil},
+
+-- Other
+-- hi_mapper.highlight("DiffAdd", "#81A1C1", "NONE", nil, nil, nil, nil)
+-- hi_mapper.highlight("DiffChange", "#3A3E44", "NONE", nil, nil, nil, nil)
+-- hi_mapper.highlight("DiffModified", "#81A1C1", "NONE", nil, nil, nil, nil)
+-- hi_mapper.highlight("PmenuSel", nil, "#98c379", nil, nil, nil, nil)
+-- hi_mapper.highlight("Pmenu", nil, "#282c34", nil, nil, nil, nil)
+-- hi_mapper.highlight("LineNr", "#42464e", "NONE", nil, nil, nil, nil)
+-- hi_mapper.highlight("StatusLineNC", "#3e4451", "NONE", nil, nil, "underline", nil)
+-- hi_mapper.highlight("SignColumn", nil, "NONE", nil, nil, nil, nil)
+-- hi_mapper.highlight("VertSplit", "#2a2e36", "NONE", nil, nil, nil, nil)
+-- hi_mapper.highlight("EndOfBuffer", "#1e222a", nil, nil, nil, nil, nil)
+	},
     snippets = {}
 }

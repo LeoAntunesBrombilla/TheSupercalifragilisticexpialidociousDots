@@ -1,3 +1,0 @@
-
-
-require'lspconfig'["cmake"].setup {}

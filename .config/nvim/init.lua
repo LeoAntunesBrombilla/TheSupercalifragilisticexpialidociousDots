@@ -1,24 +1,4 @@
---[[
-		   ) (				 _   _ _   _______
-		  (    )			| \ | | | | |  _  \
-		 ____(___			|  \| | | | | | | |___  _ __   ___
-	  _|`--------`|			| . ` | | | | | | / _ \| '_ \ / _ \
-	 (C|          |__		| |\  \ \_/ / |/ / (_) | |_) |  __/
-   /` `\          /  `\		\_| \_/\___/|___/ \___/| .__/ \___|
-   \    `========`    /		                       | |
-	`'--------------'`		                       |_|
-]] --
-
-local cmd = vim.cmd
-local opt = vim.opt
-
-cmd([[
-	syntax off
-	filetype off
-	filetype plugin indent off
-]])
-
-opt.shadafile = "NONE"
+vim.opt.shadafile = "NONE"
 
 local disabled_built_ins = {
     "netrw",
@@ -29,7 +9,7 @@ local disabled_built_ins = {
     "zip",
     "zipPlugin",
     "tar",
-    "tarPlugin", -- 'man',
+    "tarPlugin",
     "getscript",
     "getscriptPlugin",
     "vimball",
@@ -40,37 +20,52 @@ local disabled_built_ins = {
     "spellfile_plugin"
 }
 
+local init_modules = {
+    "nvd_settings",
+    "nvdope.core",
+}
+
+local sys_modules = {
+	"pluginList",
+	"plugins.bufferline",
+	"mappings",
+    "nvdope.runlevel",
+}
+
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
-local sys_modules = {
-    "nvd_settings",
-    "nvdope.core",
-    "nvdope.initialization",
-    "nvdope.runlevel",
-}
-
-for i = 1, #sys_modules, 1 do
-    local ok, res = xpcall(require, debug.traceback, sys_modules[i])
+for i = 1, #init_modules, 1 do
+    local ok, res = xpcall(require, debug.traceback, init_modules[i])
     if not (ok) then
-        print("NVDope [E0]: There was an error loading the module '" .. sys_modules[i] .. "' -->")
+        print("NVDope [E0]: There was an error loading the module '" .. init_modules[i] .. "' -->")
         print(res)
     end
 end
 
-require("nd-modules.nd-vars.init")
-cmd("luafile ~/.config/nvim/nd-settings.lua")
--- require("nd-modules.init")
--- require("nd-plugins.init")
+require "options"
 
--- TODO is there a way to do this without vimscript
-cmd("source ~/.config/nvim/vimscript/functions.vim")
+local async
+async =
+    vim.loop.new_async(
+    vim.schedule_wrap(
+        function()
+			for i = 1, #sys_modules , 1 do
+				local ok, res = xpcall(require, debug.traceback, sys_modules[i])
+				if not (ok) then
+					print("NVDope [E0]: There was an error loading the module '" .. sys_modules[i] .. "' -->")
+					print(res)
+				end
+			end
 
-opt.shadafile = ""
-cmd([[
-	rshada!
-	syntax enable
-	filetype on
-	filetype plugin indent on
-]])
+            require("utils").hideStuff()
+
+            async:close()
+        end
+    )
+)
+
+async:send()
+
+vim.opt.shadafile = ""

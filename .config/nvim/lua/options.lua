@@ -6,7 +6,7 @@ opt.cul = true
 -- disable nvim intro
 opt.shortmess:append("sI")
 
--- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
+-- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 vim.cmd [[let &fcs='eob: ']]
 
 
@@ -28,8 +28,5 @@ function M.has_width_gt(cols)
     -- Check if the windows width is greater than a given number of columns
     return vim.fn.winwidth(0) / 2 > cols
 end
-
--- file extension specific tabbing
--- vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 
 return M

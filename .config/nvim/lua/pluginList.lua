@@ -144,12 +144,10 @@ return packer.startup(
 
         use {"andymass/vim-matchup", event = "CursorMoved"}
 
-        use {
-            "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
-            config = function()
-                require("plugins.others").comment()
-            end
+		use {
+            "tpope/vim-commentary",
+            opt = true,
+            keys = "gc"
         }
 
         use {

@@ -1,10 +1,10 @@
 vim.opt.shadafile = "NONE"
 
-vim.cmd([[
-    syntax off
-    filetype off
-    filetype plugin indent off
-]])
+-- vim.cmd([[
+--     syntax off
+--     filetype off
+--     filetype plugin indent off
+-- ]])
 
 local disabled_built_ins = {
     "netrw",
@@ -28,14 +28,14 @@ local disabled_built_ins = {
 
 local init_modules = {
     "nvd_settings",
-    "nvdope.core",
+    "nvdope.core"
 }
 
 local sys_modules = {
-	"pluginList",
-	"plugins.bufferline",
-	"mappings",
-    "nvdope.runlevel",
+    "pluginList",
+    "plugins.bufferline",
+    "mappings",
+    "nvdope.runlevel"
 }
 
 for _, plugin in pairs(disabled_built_ins) do
@@ -57,16 +57,13 @@ async =
     vim.loop.new_async(
     vim.schedule_wrap(
         function()
-			for i = 1, #sys_modules , 1 do
-				local ok, res = xpcall(require, debug.traceback, sys_modules[i])
-				if not (ok) then
-					print("NVDope [E0]: There was an error loading the module '" .. sys_modules[i] .. "' -->")
-					print(res)
-				end
-			end
-
-            require("utils").hideStuff()
-
+            for i = 1, #sys_modules, 1 do
+                local ok, res = xpcall(require, debug.traceback, sys_modules[i])
+                if not (ok) then
+                    print("NVDope [E0]: There was an error loading the module '" .. sys_modules[i] .. "' -->")
+                    print(res)
+                end
+            end
             async:close()
         end
     )
@@ -76,4 +73,8 @@ async:send()
 
 vim.opt.shadafile = ""
 
--- vim.cmd([[if exists("g:syntax_on") | syntax off | else | syntax enable | endif]])
+-- vim.cmd([[
+-- 	syntax enable
+-- 	filetype on
+-- 	filetype plugin indent on
+-- ]])

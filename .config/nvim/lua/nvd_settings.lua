@@ -183,10 +183,12 @@ Cfg = {
         -- comment
         {"n", "<leader>/", ":CommentToggle<CR>", {silent = true}},
         {"v", "<leader>/", ":CommentToggle<CR>", {silent = true}},
-		-- neoformat
-		{"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}}
+        -- neoformat
+        {"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}}
     },
     abbreviations = {
+		-- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}
+
         {"cnoreabbrev", "W", "w"},
         {"cnoreabbrev", "Q", "q"},
         {"cnoreabbrev", "Wq", "wq"},
@@ -216,19 +218,27 @@ Cfg = {
         },
         _text = {
             {"FileType", "text", "setlocal wrap spell"}
+        },
+        _terminal = {
+            {"TermOpen", "term://*", "setlocal nonumber laststatus=0"}
+        },
+        _nvimtree = {
+            {
+                "BufEnter,BufWinEnter,WinEnter,CmdwinEnter",
+                "*",
+                "if bufname('%') == 'NvimTree' | setlocal laststatus=0 | else | setlocal laststatus=2 | endif"
+            }
         }
     },
-
     highlights = {
-		{"NORMAL", nil, "#111921", nil, nil, nil, nil},
-		-- {"Comment", "#42464e", nil, nil, nil, "italic", nil},
-		-- {"Conditional", nil, nil, nil, nil, "italic", nil},
-		-- {"Character", nil, nil, nil, nil, "undercurl", nil},
-		{"SpecialChar", nil, nil, nil, nil, "underline", nil},
-		-- {"Repeat", nil, nil, nil, nil, "italic", nil},
-		-- {"Function", nil, nil, nil, nil, "italic", nil},
-		-- {"Float", nil, nil, nil, nil, "bold", nil},
-
-	},
+        {"NORMAL", nil, "#111921", nil, nil, nil, nil},
+        {"Comment", "#42464e", nil, nil, nil, "italic", nil},
+        {"Conditional", nil, nil, nil, nil, "italic", nil},
+        {"Character", nil, nil, nil, nil, "undercurl", nil},
+        {"SpecialChar", nil, nil, nil, nil, "underline", nil},
+        {"Repeat", nil, nil, nil, nil, "italic", nil},
+        {"Function", nil, nil, nil, nil, "italic", nil},
+        {"Float", nil, nil, nil, nil, "bold", nil}
+    },
     snippets = {}
 }

@@ -1,6 +1,9 @@
-brave-nightly-bin
+brave
 chrome-gnome-shell
 gnome-shell-pomodoro
 nerd-fonts-complete
 ocs-url
-virtualbox-ext-oracle
+cava
+pfetch
+logmein-hamachi
+chrome-gnome-shell

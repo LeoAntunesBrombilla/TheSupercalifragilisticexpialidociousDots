@@ -22,6 +22,9 @@ Usages:
 	#0: ${THIS} [arg(s)]
 Arguments:
 	-h,--help,-?,?				See this help message.
+	-lp,--link-program			Installs x program or software for x given distro.
+	-ld,--link-dots				Symlinks dotfiles, most of the time to $HOME.
+	-r,--resources				Copies general resources like images.
 EOF
 )
 
@@ -30,8 +33,6 @@ declare -A programs=(
     ["kitty"]="install_kitty"				# ready
     ["neofetch"]="install_neofetch"			# ready
     ["rofi"]="install_rofi"
-    ["awesome"]="install_awesome"
-    ["alacritty"]="install_alacritty"
     ["cava"]="install_cava"
 )
 
@@ -44,13 +45,11 @@ declare -A dots=(
     ["${HOME_DOTS}.ideavimrc"]="${HOME}/.ideavimrc"
 	["${HOME_DOTS}.vimrc"]="${HOME}/.vimrc"
 	["${HOME_DOTS}.shell_aliases"]="${HOME}/.shell_aliases"
-	["$HOME_DOTS.bashrc"]="$HOME/.bashrc"
+	["${HOME_DOTS}.bashrc"]="$HOME/.bashrc"
 	["${HOME_DOTS}.zshrc"]="${HOME}/.zshrc"
 	["${HOME_DOTS}xresources"]="${HOME}/xresources"
 	["${HOME_DOTS}.tmux.conf"]="${HOME}/.tmux.conf"
 )
-
-# supported_distros=("arch" "fedora" "ubuntu")
 
 declare -A supported_distros=(
     ["arch"]="install_arch"
@@ -58,8 +57,6 @@ declare -A supported_distros=(
     ["ubuntu"]="install_ubuntu"
     ["all"]="install_all"
 )
-
-
 
 function complex_heading() {
     prompt -w "${BANNER}"
@@ -163,35 +160,32 @@ function install_nvim() {
 
 	if (assert_file_existence $nvim_destination_path); then
 		prompt -w "WARNING: Another config was found. Creating a backup..."
-		# mkdir -p /tmp/nvim_backups
-		# mv $nvim_destination_path /tmp/nvim_backups
+		mkdir -p /tmp/nvim_backups
+		mv $nvim_destination_path /tmp/nvim_backups
 		prompt -s "OKAY: Previous config was backed up and can be found at '/tmp/nvim_backups'"
 	else
 		prompt -s "OKAY: No other config was found. Proceeding..."
 	fi
 
 	prompt -i "INFO: Creating symlink to config..."
-	# crt_symlink $nvim_original_path $nvim_destination_path
+	crt_symlink $nvim_original_path $nvim_destination_path
 	echo
 
 	prompt -i "INFO: Checking for previous efm-langserver configs..."
 
 	if (assert_file_existence "${USER_CONFIG}efm-langserver"); then
 		prompt -w "WARNING: Another efm-langserver config was found. Deleting it..."
-		# if [[ -L "${USER_CONFIG}efm-langserver" ]]; then
-		# 	rm ${USER_CONFIG}efm-langserver
-		# fi
+		if [[ -L "${USER_CONFIG}efm-langserver" ]]; then
+			rm ${USER_CONFIG}efm-langserver
+		fi
 		prompt -s "OKAY: Previous config was backed up and can be found at '/tmp/efm_langserver_backup'"
 	else
 		prompt -s "OKAY: No other config was found. Proceeding..."
 	fi
 
 	prompt -i "INFO: Creating symlink to efm-langserver config..."
-	# crt_symlink ${nvim_original_path}/external_configs/efm-langserver ${USER_CONFIG}efm-langserver
+	crt_symlink ${nvim_original_path}/external_configs/efm-langserver ${USER_CONFIG}efm-langserver
 	echo
-
-
-
 
 	prompt -i "INFO: Checking for previous global prettierrc config..."
 
@@ -219,9 +213,9 @@ function install_nvim() {
 	fi
 
 	prompt -i "INFO: Installing extra programs (formatters and linters)..."
-	# pip3 install --user flake8
-	# pip3 install --user yapf
-	# npm install -g prettier
+	pip3 install --user flake8
+	pip3 install --user yapf
+	npm install -g prettier
 
 }
 
@@ -238,7 +232,6 @@ function install_kitty() {
 		prompt -w "WARNING: Another Kitty config was found. Creating a backup..."
 		cp -r $kitty_destination_path $kitty_backup_path
 		if [[ -L "${kitty_destination_path}" ]]; then
-			# echo "it is a symlink"
 			rm $kitty_destination_path
 		fi
 		prompt -s "OKAY: Previous config was backed up and can be found at '$kitty_backup_path'"
@@ -314,8 +307,8 @@ function install_all() {
 		prompt -s "OKAY: Luaver is already installed"
 	else
 		prompt -w "WARNING: Luaver is not installed, installing it..."
-		# curl -fsSL https://raw.githubusercontent.com/dhavalkapil/luaver/master/install.sh | sh -s - -r v1.1.0
-		# source $HOME/.bashrc
+		curl -fsSL https://raw.githubusercontent.com/dhavalkapil/luaver/master/install.sh | sh -s - -r v1.1.0
+		source $HOME/.bashrc
 	fi
 
 }
@@ -375,7 +368,7 @@ function install_ubuntu() {
 	complex_heading "Installing Ubuntu packages..."
 }
 
-function assert_program() {
+function assert_programs() {
 
 	user_programs=("$@")
 
@@ -383,7 +376,6 @@ function assert_program() {
 
     for user_program in "${!user_programs[@]}"; do
 		prompt -i "INFO: Checking if the program ${user_programs[$user_program]} is supported..."
-
 
 		if [[ "${supported_distros[@]}" =~ "${user_programs[$user_program]}" ]]; then
 			prompt -s "OKAY: The distro that you are trying to install the packages for is supported!"
@@ -452,7 +444,7 @@ if [[ -n "$1" ]]; then
 					local_programs=${2//[[:blank:]]/}
 					IFS=',' read -ra user_programs <<< "$local_programs"
 
-					assert_program "${user_programs[@]}"
+					assert_programs "${user_programs[@]}"
 				else
 					prompt -e "ERROR: You must provide at least one argument"
 				fi

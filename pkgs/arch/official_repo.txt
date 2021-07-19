@@ -23,6 +23,11 @@ gjs
 peek
 lolcat
 xclip
-shellcheck
 exa
 ffmpeg
+tmux
+nodejs
+npm
+yarn
+shc
+shellcheck

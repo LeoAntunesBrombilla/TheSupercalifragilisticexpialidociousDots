@@ -117,4 +117,4 @@ fg("FloatBorder", black2)
 
 -- set bg color for nvim ( so nvim wont use terminal bg)
 
-bg("Normal", black)
+-- bg("Normal", black)

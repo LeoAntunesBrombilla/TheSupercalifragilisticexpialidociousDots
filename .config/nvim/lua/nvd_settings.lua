@@ -224,22 +224,11 @@ Cfg = {
 		-- {"Comment", "#42464e", nil, nil, nil, "italic", nil},
 		-- {"Conditional", nil, nil, nil, nil, "italic", nil},
 		-- {"Character", nil, nil, nil, nil, "undercurl", nil},
-		-- {"SpecialChar", nil, nil, nil, nil, "underline", nil},
+		{"SpecialChar", nil, nil, nil, nil, "underline", nil},
 		-- {"Repeat", nil, nil, nil, nil, "italic", nil},
 		-- {"Function", nil, nil, nil, nil, "italic", nil},
 		-- {"Float", nil, nil, nil, nil, "bold", nil},
 
--- Other
--- hi_mapper.highlight("DiffAdd", "#81A1C1", "NONE", nil, nil, nil, nil)
--- hi_mapper.highlight("DiffChange", "#3A3E44", "NONE", nil, nil, nil, nil)
--- hi_mapper.highlight("DiffModified", "#81A1C1", "NONE", nil, nil, nil, nil)
--- hi_mapper.highlight("PmenuSel", nil, "#98c379", nil, nil, nil, nil)
--- hi_mapper.highlight("Pmenu", nil, "#282c34", nil, nil, nil, nil)
--- hi_mapper.highlight("LineNr", "#42464e", "NONE", nil, nil, nil, nil)
--- hi_mapper.highlight("StatusLineNC", "#3e4451", "NONE", nil, nil, "underline", nil)
--- hi_mapper.highlight("SignColumn", nil, "NONE", nil, nil, nil, nil)
--- hi_mapper.highlight("VertSplit", "#2a2e36", "NONE", nil, nil, nil, nil)
--- hi_mapper.highlight("EndOfBuffer", "#1e222a", nil, nil, nil, nil, nil)
 	},
     snippets = {}
 }

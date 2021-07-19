@@ -16,13 +16,13 @@ return packer.startup(
 
         use {
             "glepnir/galaxyline.nvim",
-             after = "nvim-base16.lua",
+            after = "nvim-base16.lua",
             config = function()
                 require "plugins.statusline"
             end
         }
 
-         use {
+        use {
             "siduck76/nvim-base16.lua",
             after = "packer.nvim",
             config = function()
@@ -104,7 +104,7 @@ return packer.startup(
 
         use {
             "kyazdani42/nvim-web-devicons",
-              after = "nvim-base16.lua",
+            after = "nvim-base16.lua",
             config = function()
                 require "plugins.icons"
             end
@@ -127,7 +127,6 @@ return packer.startup(
             cmd = "Telescope"
         }
 
-        -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
             after = "plenary.nvim",
@@ -136,7 +135,6 @@ return packer.startup(
             end
         }
 
-        -- misc plugins
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
@@ -157,24 +155,24 @@ return packer.startup(
 
         use {
             "glepnir/dashboard-nvim",
-			event = "BufWinEnter",
+            event = "BufWinEnter",
             setup = function()
                 require "plugins.dashboard"
             end
         }
 
         use {
-			"tweekmonster/startuptime.vim",
-			cmd = "StartupTime"
-		}
+            "tweekmonster/startuptime.vim",
+            cmd = "StartupTime"
+        }
 
         use {
             "Pocco81/AutoSave.nvim",
-			branch = "dev",
-			event = "BufRead",
+            branch = "dev",
+            event = "BufRead",
             config = function()
                 require "plugins.autosave"
-            end,
+            end
         }
 
         use {
@@ -187,14 +185,14 @@ return packer.startup(
 
         use {
             "Pocco81/TrueZen.nvim",
-			branch = "dev",
+            branch = "dev",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
                 require "plugins.zenmode"
             end
         }
 
-		use {
+        use {
             "Pocco81/HighStr.nvim",
             branch = "dev",
             cmd = {"HSHighlight", "HSRmHighlight"},
@@ -212,13 +210,13 @@ return packer.startup(
             end
         }
 
-		use {
+        use {
             "Asheq/close-buffers.vim",
             opt = true,
-            event = "BufRead",
+            event = "BufRead"
         }
 
-		----------------------------=== Extensions ===--------------------------
+        ----------------------------=== Extensions ===--------------------------
         use {
             "simrat39/rust-tools.nvim",
             opt = true,
@@ -260,6 +258,5 @@ return packer.startup(
             opt = true,
             event = "BufRead"
         }
-
     end
 )

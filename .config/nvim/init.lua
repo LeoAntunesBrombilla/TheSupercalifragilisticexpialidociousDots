@@ -1,5 +1,11 @@
 vim.opt.shadafile = "NONE"
 
+vim.cmd([[
+    syntax off
+    filetype off
+    filetype plugin indent off
+]])
+
 local disabled_built_ins = {
     "netrw",
     "netrwPlugin",
@@ -69,3 +75,5 @@ async =
 async:send()
 
 vim.opt.shadafile = ""
+
+-- vim.cmd([[if exists("g:syntax_on") | syntax off | else | syntax enable | endif]])

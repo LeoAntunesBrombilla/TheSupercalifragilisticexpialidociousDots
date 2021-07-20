@@ -1,40 +1,15 @@
 vim.opt.shadafile = "NONE"
 
-local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin"
-}
-
 local init_modules = {
     "nvd_settings",
-    "nvdope.core"
+    "nvdope.core",
 }
 
 local sys_modules = {
-	-- "nvdope.initialization",
-    "pluginList",
+	"nvdope.initialization",
     "plugins.bufferline",
     "nvdope.runlevel"
 }
-
-for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
-end
 
 for i = 1, #init_modules, 1 do
     local ok, res = xpcall(require, debug.traceback, init_modules[i])
@@ -64,4 +39,3 @@ async =
 async:send()
 
 vim.opt.shadafile = ""
-

@@ -11,6 +11,25 @@ Cfg = {
         }
     },
     settings = {
+        disabled_builtin_tools = {
+            "netrw",
+            "netrwPlugin",
+            "netrwSettings",
+            "netrwFileHandlers",
+            "gzip",
+            "zip",
+            "zipPlugin",
+            "tar",
+            "tarPlugin",
+            "getscript",
+            "getscriptPlugin",
+            "vimball",
+            "vimballPlugin",
+            "2html_plugin",
+            "logipat",
+            "rrhelper",
+            "spellfile_plugin"
+        },
         globals = {
             mapleader = " "
         },
@@ -68,7 +87,7 @@ Cfg = {
             foldmethod = "syntax",
             foldenable = false,
             foldlevel = 99,
-			cul = true,
+            cul = true
             -- showtabline = 2, -- always show tabs
         }
     },
@@ -186,19 +205,19 @@ Cfg = {
         {"v", "<leader>/", ":CommentToggle<CR>", {silent = true}},
         -- neoformat
         {"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}},
-		-- sessions
-		{"n", "<Leader>ls", [[<Cmd> SessionLoad<CR>]], {silent = true}},
-		{"n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], {silent = true}},
-		-- telescope
-		{"n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], {silent = true}},
-		{"n", "<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], {silent = true}},
-		{"n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], {silent = true}},
-		{"n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], {silent = true}},
-		{"n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], {silent = true}},
-		{"n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], {silent = true}},
+        -- sessions
+        {"n", "<Leader>ls", [[<Cmd> SessionLoad<CR>]], {silent = true}},
+        {"n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], {silent = true}},
+        -- telescope
+        {"n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], {silent = true}},
+        {"n", "<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], {silent = true}},
+        {"n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], {silent = true}},
+        {"n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], {silent = true}},
+        {"n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], {silent = true}},
+        {"n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], {silent = true}}
     },
     abbreviations = {
-		-- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}
+        -- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}
 
         {"cnoreabbrev", "W", "w"},
         {"cnoreabbrev", "Q", "q"},
@@ -232,7 +251,7 @@ Cfg = {
         },
         _terminal = {
             {"TermOpen", "term://*", "setlocal nonumber laststatus=0"}
-        },
+        }
         -- _nvimtree = {
         --     {
         --         "BufEnter,BufWinEnter,WinEnter,CmdwinEnter",

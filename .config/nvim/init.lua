@@ -44,8 +44,6 @@ for i = 1, #init_modules, 1 do
     end
 end
 
-require "options"
-
 local async
 async =
     vim.loop.new_async(

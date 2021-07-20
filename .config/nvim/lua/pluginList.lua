@@ -121,10 +121,6 @@ return packer.startup(
         }
 
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
-        use {
-            "nvim-telescope/telescope-media-files.nvim",
-            cmd = "Telescope"
-        }
 
         use {
             "lewis6991/gitsigns.nvim",

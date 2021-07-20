@@ -1,11 +1,5 @@
 vim.opt.shadafile = "NONE"
 
--- vim.cmd([[
---     syntax off
---     filetype off
---     filetype plugin indent off
--- ]])
-
 local disabled_built_ins = {
     "netrw",
     "netrwPlugin",
@@ -32,6 +26,7 @@ local init_modules = {
 }
 
 local sys_modules = {
+	-- "nvdope.initialization",
     "pluginList",
     "plugins.bufferline",
     "mappings",
@@ -73,8 +68,3 @@ async:send()
 
 vim.opt.shadafile = ""
 
--- vim.cmd([[
--- 	syntax enable
--- 	filetype on
--- 	filetype plugin indent on
--- ]])

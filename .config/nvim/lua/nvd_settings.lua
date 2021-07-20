@@ -207,7 +207,7 @@ Cfg = {
             {
                 "FileType",
                 "dashboard",
-                "setlocal showtabline=0 nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= "
+                "setlocal showtabline=0 laststatus=0 nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= "
             }
         },
         _markdown = {

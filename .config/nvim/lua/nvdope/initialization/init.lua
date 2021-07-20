@@ -1,4 +1,4 @@
-local present, _ = pcall(require, "nvdope.packer_init")
+local present, _ = pcall(require, "nvdope.initialization.packer_init")
 
 if present then
     packer = require "packer"
@@ -11,6 +11,11 @@ local use = packer.use
 return packer.startup(
     function()
         use {"wbthomason/packer.nvim", event = "VimEnter"}
+
+		----------------------------=== LSP ===--------------------------
+		----------------------------=== Debug ===------------------------
+		----------------------------=== UI ===---------------------------
+		----------------------------=== Tools ===------------------------
 
         use {"akinsho/nvim-bufferline.lua", after = "nvim-base16.lua"}
 
@@ -140,12 +145,6 @@ return packer.startup(
 
         use {"andymass/vim-matchup", event = "CursorMoved"}
 
-		use {
-            "tpope/vim-commentary",
-            opt = true,
-            keys = "gc"
-        }
-
         use {
             "glepnir/dashboard-nvim",
             event = "BufWinEnter",
@@ -154,46 +153,8 @@ return packer.startup(
             end
         }
 
-        use {
-            "tweekmonster/startuptime.vim",
-            cmd = "StartupTime"
-        }
 
-        use {
-            "Pocco81/AutoSave.nvim",
-            branch = "dev",
-            event = "BufRead",
-            config = function()
-                require "plugins.autosave"
-            end
-        }
 
-        use {
-            "karb94/neoscroll.nvim",
-            event = "WinScrolled",
-            config = function()
-                require("plugins.others").neoscroll()
-            end
-        }
-
-        use {
-            "Pocco81/TrueZen.nvim",
-            branch = "dev",
-            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
-            config = function()
-                require "plugins.zenmode"
-            end
-        }
-
-        use {
-            "Pocco81/HighStr.nvim",
-            branch = "dev",
-            cmd = {"HSHighlight", "HSRmHighlight"},
-            keys = {"<F3>", "<F4>"}, -- custome mappings
-            config = function()
-                require "plugins.highstr"
-            end
-        }
 
         use {
             "lukas-reineke/indent-blankline.nvim",
@@ -209,47 +170,113 @@ return packer.startup(
             event = "BufRead"
         }
 
+		----------------------------=== Debug ===--------------------------
+        use {
+            "mfussenegger/nvim-dap",
+            opt = true,
+            event = "VimEnter",
+            config = function()
+                require("nd-plugins.nd-dap.init")
+            end,
+			disable = Cfg.plugins.debug.dap
+        }
+
+        use {
+            "Pocco81/DAPInstall",
+            branch = "dev",
+            opt = true,
+            after = "nvim-dap",
+            config = function()
+                require("nd-plugins.nd-dapinstall.init")
+            end,
+			disable = Cfg.plugins.debug.dap_install
+        }
+
+		----------------------------=== Utils ===-------------------------
+        use {
+            "tweekmonster/startuptime.vim",
+            cmd = "StartupTime",
+			disable = Cfg.plugins.utils.startuptime
+        }
+
+        use {
+            "Pocco81/AutoSave.nvim",
+            branch = "dev",
+            event = "BufRead",
+            config = function()
+                require "plugins.autosave"
+            end,
+			disable = Cfg.plugins.utils.autosave
+        }
+
+		use {
+            "tpope/vim-commentary",
+            opt = true,
+            keys = "gc",
+			disable = Cfg.plugins.utils.commentary
+        }
+
+        use {
+            "karb94/neoscroll.nvim",
+            event = "WinScrolled",
+            config = function()
+                require("plugins.others").neoscroll()
+            end,
+			disable = Cfg.plugins.utils.neoscroll
+        }
+
+        use {
+            "Pocco81/TrueZen.nvim",
+            branch = "dev",
+            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
+            config = function()
+                require "plugins.zenmode"
+            end,
+			disable = Cfg.plugins.utils.truezen
+        }
+
+        use {
+            "Pocco81/HighStr.nvim",
+            branch = "dev",
+            cmd = {"HSHighlight", "HSRmHighlight"},
+            keys = {"<F3>", "<F4>"}, -- custome mappings
+            config = function()
+                require "plugins.highstr"
+            end,
+			disable = Cfg.plugins.utils.highstr
+        }
+
+
         ----------------------------=== Extensions ===--------------------------
+        use {
+            "folke/lua-dev.nvim",
+            opt = true,
+            ft = "lua",
+			disable = Cfg.plugins.extensions.lua_dev
+        }
+
         use {
             "simrat39/rust-tools.nvim",
             opt = true,
-            ft = "rust"
+            ft = "rust",
+			disable = Cfg.plugins.extensions.rust_tools
         }
 
         use {
             "windwp/nvim-ts-autotag",
             opt = true,
             ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
-            config = function()
-                require("nd-plugins.nd-autotag.init")
-            end
-        }
-
-        use {
-            "folke/lua-dev.nvim",
-            opt = true,
-            ft = "lua"
-        }
-
-        use {
-            "cuducos/yaml.nvim",
-            opt = true,
-            ft = "yaml",
-            config = function()
-                require("yaml_nvim").init()
-            end
-        }
-
-        use {
-            "fladson/vim-kitty",
-            opt = true,
-            ft = "kitty"
+            -- config = function()
+            --     require("nd-plugins.nd-autotag.init")
+            -- end,
+			disable = Cfg.plugins.extensions.ts_autotag
         }
 
         use {
             "editorconfig/editorconfig-vim",
             opt = true,
-            event = "BufRead"
+            event = "BufRead",
+			disable = Cfg.plugins.extensions.editorconfig
         }
     end
 )

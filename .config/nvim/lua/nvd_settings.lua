@@ -132,19 +132,15 @@ Cfg = {
         utils = {
             startuptime = false,
             autosave = false,
-            tagbar = false,
-            todo_comments = false,
             commentary = false,
+            neoscroll = false,
+            truezen = false,
             highstr = false,
-            comfortable_motion = false,
-            truezen = false
         },
         extensions = {
-            rust_tools = false,
             lua_dev = false,
-            yaml = false,
-            kitty = false,
-            ts_autotag = false,
+            rust_tools = true,
+            ts_autotag = true,
             editorconfig = false
         }
     },

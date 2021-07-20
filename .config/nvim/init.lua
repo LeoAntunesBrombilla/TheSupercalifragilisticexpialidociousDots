@@ -29,7 +29,6 @@ local sys_modules = {
 	-- "nvdope.initialization",
     "pluginList",
     "plugins.bufferline",
-    "mappings",
     "nvdope.runlevel"
 }
 

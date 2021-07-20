@@ -67,7 +67,8 @@ Cfg = {
             cursorcolumn = false,
             foldmethod = "syntax",
             foldenable = false,
-            foldlevel = 99
+            foldlevel = 99,
+			cul = true,
             -- showtabline = 2, -- always show tabs
         }
     },
@@ -184,7 +185,17 @@ Cfg = {
         {"n", "<leader>/", ":CommentToggle<CR>", {silent = true}},
         {"v", "<leader>/", ":CommentToggle<CR>", {silent = true}},
         -- neoformat
-        {"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}}
+        {"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}},
+		-- sessions
+		{"n", "<Leader>ls", [[<Cmd> SessionLoad<CR>]], {silent = true}},
+		{"n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], {silent = true}},
+		-- telescope
+		{"n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], {silent = true}},
+		{"n", "<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], {silent = true}},
+		{"n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], {silent = true}},
+		{"n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], {silent = true}},
+		{"n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], {silent = true}},
+		{"n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], {silent = true}},
     },
     abbreviations = {
 		-- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}
@@ -222,13 +233,13 @@ Cfg = {
         _terminal = {
             {"TermOpen", "term://*", "setlocal nonumber laststatus=0"}
         },
-        _nvimtree = {
-            {
-                "BufEnter,BufWinEnter,WinEnter,CmdwinEnter",
-                "*",
-                "if bufname('%') == 'NvimTree' | setlocal laststatus=0 | else | setlocal laststatus=2 | endif"
-            }
-        }
+        -- _nvimtree = {
+        --     {
+        --         "BufEnter,BufWinEnter,WinEnter,CmdwinEnter",
+        --         "*",
+        --         "if bufname('%') == 'NvimTree' | setlocal laststatus=0 | endif"
+        --     }
+        -- }
     },
     highlights = {
         {"NORMAL", nil, "#111921", nil, nil, nil, nil},

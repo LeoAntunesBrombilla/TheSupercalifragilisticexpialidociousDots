@@ -1,10 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
-opt.cul = true
-
 -- disable nvim intro
-opt.shortmess:append("sI")
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 vim.cmd [[let &fcs='eob: ']]

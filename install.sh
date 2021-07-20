@@ -37,7 +37,6 @@ declare -A programs=(
 )
 
 declare -A dots=(
-
 	# origin = destinantion
     ["${HOME_DOTS}.gitconfig"]="${HOME}/.gitconfig"
     ["${HOME_DOTS}.inputrc"]="${HOME}/.inputrc"

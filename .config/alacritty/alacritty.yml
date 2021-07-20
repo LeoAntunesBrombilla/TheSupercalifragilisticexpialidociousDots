@@ -1,62 +1,17 @@
-
-
-schemes:
-  remedy_dark: &remedy_dark
-    colors:
-      primary:
-        background: '#282c34'
-        foreground: '#abb2bf'
-        # background: '0x2c2b2a'
-        # foreground: '0xf9e7c4'
-      normal:
-        black:   '0x282a2e'
-        blue:    '0x5f819d'
-        cyan:    '0x5e8d87'
-        green:   '0x8c9440'
-        magenta: '0x85678f'
-        red:     '0xa54242'
-        white:   '0x707880'
-        yellow:  '0xde935f'
-      bright:
-        black:   '0x373b41'
-        blue:    '0x81a2be'
-        cyan:    '0x8abeb7'
-        green:   '0xb5bd68'
-        magenta: '0xb294bb'
-        red:     '0xcc6666'
-        white:   '0xc5c8c6'
-        yellow:  '0xf0c674'
-
-
-# key_bindings:
-#   - { key: V,        mods: Control, action: Paste                  }
-#   - { key: C,        mods: Control, action: Copy                   }
-#   - { key: C,        mods: Control|Shift, chars: "\x03"         }
-
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
-# Import additional configuration files
-#
-# Imports are loaded in order, skipping all missing files, with the importing
-# file being loaded last. If a field is already present in a previous import, it
-# will be replaced.
-#
-# All imports must either be absolute paths starting with `/`, or paths relative
-# to the user's home directory starting with `~/`.
-#import:
-#  - /path/to/alacritty.yml
-
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  # TERM: alacritty
+  # set it to this if on tmux. Follow: https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+  TERM: xterm-256color
+  # TERM: screen-256color
+  # TERM: tmux-256color
 
 # WINIT_HIDPI_FACTOR = 1
 window:
@@ -66,8 +21,12 @@ window:
   # must be at least `2`, while using a value of `0` for columns and lines will
   # fall back to the window manager's recommended size.
   dimensions:
-    columns: 70
-    lines: 20
+    columns: 77
+    lines: 18
+
+  # dimensions:
+  #   columns: 70
+  #   lines: 20
 
   # Window position (changes require restart)
   #
@@ -129,6 +88,77 @@ window:
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
 
+# schemes:
+#   remedy_dark: &remedy_dark
+colors:
+  primary:
+    background: '0x111922'
+    foreground: '0xb8bcb9'
+  cursor:
+    text: '0x00FF00'
+    cursor: '0x00FF00'
+  normal:
+    black:   '0x282a2e'
+    blue:    '0x6c99ba'
+    cyan:    '0xbdd6ff'
+    green:   '0xa4c161'
+    magenta: '0xd096d9'
+    red:     '0xd25252'
+    white:   '0xededec'
+    yellow:  '0xffc56d'
+  bright:
+    black:   '0x535353'
+    blue:    '0x8ab6d9'
+    cyan:    '0xdbf4ff'
+    green:   '0xc1df74'
+    magenta: '0xefb5f7'
+    red:     '0xf00c0c'
+    white:   '0xffffff'
+    yellow:  '0xe1e48a'
+
+# colors:
+#   primary:
+#     background: '0x111922'
+#     foreground: '0xb8bcb9'
+#   cursor:
+#     text: '0xFF261E'
+#     cursor: '0x00FF00'
+#   normal:
+#     black:   '0x282a2e'
+#     blue:    '0x5f819d'
+#     cyan:    '0x5e8d87'
+#     green:   '0x8c9440'
+#     magenta: '0x85678f'
+#     red:     '0xa54242'
+#     white:   '0x707880'
+#     yellow:  '0xde935f'
+#   bright:
+#     black:   '0x373b41'
+#     blue:    '0x81a2be'
+#     cyan:    '0x8abeb7'
+#     green:   '0xb5bd68'
+#     magenta: '0xb294bb'
+#     red:     '0xcc6666'
+#     white:   '0xc5c8c6'
+#     yellow:  '0xf0c674'
+
+
+
+# Import additional configuration files
+#
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+#
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+#import:
+#  - /path/to/alacritty.yml
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -147,7 +177,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: 'Hack Nerd Font'
+    family: 'JetBrainsMono Nerd Font'
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -439,8 +469,10 @@ cursor:
 #   - (Windows) powershell
 shell:
  program: /bin/bash
-#  args:
-#    - --login
+ # args:
+ #   - --command
+ #   - tmux new-session
+   # - tmux
 
 # Startup directory
 #
@@ -463,7 +495,7 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
 
-  url:
+  # url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a
@@ -475,8 +507,8 @@ mouse:
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    launcher:
-     program: xdg-open
+    # launcher:
+     # program: xdg-open
     #  args: []
 
     # URL modifiers
@@ -719,7 +751,7 @@ mouse:
 key_bindings:
   - { key: V,        mods: Control, action: Paste                  }
   - { key: C,        mods: Control, action: Copy                   }
-  - { key: C,        mods: Control|Shift, chars: "\x03"         }
+  - { key: C,        mods: Control|Shift, chars: "\x03"            }
   # - { key: F11,                         action: ToggleFullscreen } # can't "un-toggle" afterwards
   - { key: Plus,           mods: Control,                         action: IncreaseFontSize }
   - { key: Minus,          mods: Control,                         action: DecreaseFontSize }

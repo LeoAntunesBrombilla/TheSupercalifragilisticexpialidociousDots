@@ -95,7 +95,7 @@ colors:
     background: '0x111922'
     foreground: '0xb8bcb9'
   cursor:
-    text: '0x00FF00'
+    text: '0x111922'
     cursor: '0x00FF00'
   normal:
     black:   '0x282a2e'

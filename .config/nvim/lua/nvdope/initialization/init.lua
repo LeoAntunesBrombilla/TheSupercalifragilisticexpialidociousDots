@@ -96,6 +96,9 @@ return packer.startup(
             "folke/twilight.nvim",
             opt = true,
             cmd = {"Twilight", "TwilightEnable", "TwilightDisable"},
+            config = function()
+                require("nvdope.initialization.ui.twilight")
+            end,
             disable = Cfg.plugins.ui.twilight
         }
 

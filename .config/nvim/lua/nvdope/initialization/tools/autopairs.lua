@@ -9,6 +9,6 @@ autopairs.setup()
 autopairs_completion.setup(
     {
         map_cr = true,
-        map_complete = true -- insert () func completion
+        map_complete = true
     }
 )

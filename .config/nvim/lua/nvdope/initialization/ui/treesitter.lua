@@ -4,10 +4,7 @@ if not present then
 end
 
 ts_config.setup {
-    ensure_installed = {
-        "bash",
-        "lua"
-    },
+    ensure_installed = {"bash", "lua", "python", "rust", "html", "css"},
     highlight = {
         enable = true,
         use_languagetree = true

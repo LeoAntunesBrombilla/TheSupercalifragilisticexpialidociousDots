@@ -1,7 +1,6 @@
-local cmd = vim.cmd
+local colors = Cfg.themes[Cfg.nvdope.theme]
 
-local global_theme = "themes/" .. vim.g.nvchad_theme
-local colors = require(global_theme)
+local cmd = vim.cmd
 
 local white = colors.white
 local darker_black = colors.darker_black
@@ -59,6 +58,7 @@ cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 -- line n.o
 -- cmd "hi clear CursorLine"
 -- fg("cursorlinenr", white)
+cmd("hi! CursorLine guibg=#18232e")
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")

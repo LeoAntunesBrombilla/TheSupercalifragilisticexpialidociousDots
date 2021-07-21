@@ -8,7 +8,9 @@ Cfg = {
             cache_path = nil,
             terminal = nil,
             user = nil
-        }
+        },
+		theme = "onedark",
+		colorscheme = "onedark",
     },
     settings = {
         disabled_builtin_tools = {
@@ -27,6 +29,7 @@ Cfg = {
             "vimballPlugin",
             "2html_plugin",
             "logipat",
+            "matchit",
             "rrhelper",
             "spellfile_plugin"
         },
@@ -102,27 +105,28 @@ Cfg = {
             web_devicons = false,
             indent_blankline = false,
             twilight = false,
-            dashboard = false,
+            dashboard = false
         },
         lsp = {
             lspconfig = false,
             lspinstall = false,
-			lspkind = false,
+            lspkind = false,
             language_servers = {}
         },
         tools = {
             compe = false,
-			luasnip = false,
+            luasnip = false,
             friendly_snippets = false,
             neoformat = false,
-			plenary = false,
-			popup = false,
-			telescope = false,
+            plenary = false,
+            popup = false,
+            telescope = false,
             gitsigns = false,
             autopairs = false,
-			matchup = false,
+            matchup = false,
             close_buffers = false,
             pencil = false,
+            vvm = false
         },
         debug = {
             dap = true,
@@ -134,7 +138,7 @@ Cfg = {
             commentary = false,
             neoscroll = false,
             truezen = false,
-            highstr = false,
+            highstr = false
         },
         extensions = {
             lua_dev = false,
@@ -265,5 +269,130 @@ Cfg = {
         {"Function", nil, nil, nil, nil, "italic", nil},
         {"Float", nil, nil, nil, nil, "bold", nil}
     },
-    snippets = {}
+    themes = {
+        onedark = {
+            white = "#abb2bf",
+            darker_black = "#1b1f27",
+            black = "#1e222a", --  nvim bg
+            black2 = "#252931",
+            one_bg = "#282c34", -- real bg of onedark
+            one_bg2 = "#353b45",
+            one_bg3 = "#30343c",
+            grey = "#42464e",
+            grey_fg = "#565c64",
+            grey_fg2 = "#6f737b",
+            light_grey = "#6f737b",
+            red = "#d47d85",
+            baby_pink = "#DE8C92",
+            pink = "#ff75a0",
+            line = "#2a2e36", -- for lines like vertsplit
+            green = "#A3BE8C",
+            vibrant_green = "#7eca9c",
+            nord_blue = "#81A1C1",
+            blue = "#61afef",
+            yellow = "#e7c787",
+            sun = "#EBCB8B",
+            purple = "#b4bbc8",
+            dark_purple = "#c882e7",
+            teal = "#519ABA",
+            orange = "#fca2aa",
+            cyan = "#a3b8ef",
+            statusline_bg = "#22262e",
+            lightbg = "#2d3139",
+            lightbg2 = "#262a32"
+        },
+        gruvbox = {
+            white = "#c7b89d",
+            darker_black = "#1e2122",
+            black = "#222526", --  nvim bg
+            black2 = "#26292a",
+            one_bg = "#2b2e2f",
+            one_bg2 = "#2f3233",
+            one_bg3 = "#313435",
+            grey = "#46494a",
+            grey_fg = "#5d6061",
+            grey_fg2 = "#5b5e5f",
+            light_grey = "#585b5c",
+            red = "#ec6b64",
+            baby_pink = "#ce8196",
+            pink = "#ff75a0",
+            line = "#2c2f30", -- for lines like vertsplit
+            green = "#89b482",
+            vibrant_green = "#a9b665",
+            nord_blue = "#6f8faf",
+            blue = "#6d8dad",
+            yellow = "#d6b676",
+            sun = "#d1b171",
+            purple = "#b4bbc8",
+            dark_purple = "#cc7f94",
+            teal = "#749689",
+            orange = "#e78a4e",
+            cyan = "#82b3a8",
+            statusline_bg = "#252829",
+            lightbg = "#2d3139",
+            lightbg2 = "#262a32"
+        },
+        nord = {
+            white = "#abb2bf",
+            darker_black = "#2a303c",
+            black = "#2E3440", --  nvim bg
+            black2 = "#343a46",
+            one_bg = "#353b47", -- real bg of onedark
+            one_bg2 = "#383e4a",
+            one_bg3 = "#3b414d",
+            grey = "#474d59",
+            grey_fg = "#565c68",
+            grey_fg2 = "#606672",
+            light_grey = "#646a76",
+            red = "#BF616A",
+            baby_pink = "#de878f",
+            pink = "#e89199",
+            line = "#3a404c", -- for lines like vertsplit
+            green = "#A3BE8C",
+            vibrant_green = "#afca98",
+            blue = "#7797b7",
+            nord_blue = "#81A1C1",
+            yellow = "#EBCB8B",
+            sun = "#e1c181",
+            purple = "#aab1be",
+            dark_purple = "##B48EAD",
+            teal = "#6484a4",
+            orange = "#e39a83",
+            cyan = "#9aafe6",
+            statusline_bg = "#333945",
+            lightbg = "#3f4551",
+            lightbg2 = "#393f4b"
+        },
+        tomorrow_night = {
+            white = "#C5C8C2",
+            darker_black = "#191b1d",
+            black = "#1d1f21", -- nvim bg
+            black2 = "#232527",
+            one_bg = "#363a41",
+            one_bg2 = "#353b45",
+            one_bg3 = "#30343c",
+            grey = "#434547",
+            grey_fg = "#545B68",
+            grey_fg2 = "#616875",
+            light_grey = "#676e7b",
+            red = "#cc6666",
+            baby_pink = "#FF6E79",
+            pink = "#ff9ca3",
+            line = "#27292b", -- for lines like vertsplit
+            green = "#a4b595",
+            vibrant_green = "#a3b991",
+            nord_blue = "#728da8",
+            blue = "#6f8dab",
+            yellow = "#d7bd8d",
+            sun = "#e4c180",
+            purple = "#b4bbc8",
+            dark_purple = "#b290ac",
+            teal = "#8abdb6",
+            orange = "#DE935F",
+            cyan = "#70c0b1",
+            statusline_bg = "#212326",
+            lightbg = "#373B41",
+            lightbg2 = "#2D3035"
+        }
+    },
 }

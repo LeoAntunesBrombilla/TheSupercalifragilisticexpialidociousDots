@@ -15,13 +15,13 @@ return packer.startup(
         ----------------------------=== UI ===---------------------------
         use {
             "akinsho/nvim-bufferline.lua",
-            after = "nvim-base16.lua",
+            after = "Base16.nvim",
             disable = Cfg.plugins.ui.bufferline
         }
 
         use {
             "glepnir/galaxyline.nvim",
-            after = "nvim-base16.lua",
+            after = "Base16.nvim",
             config = function()
                 require "plugins.statusline"
             end,
@@ -29,10 +29,10 @@ return packer.startup(
         }
 
         use {
-            "siduck76/nvim-base16.lua",
+            "Pocco81/Base16.nvim",
             after = "packer.nvim",
             config = function()
-                require "theme"
+                require("nvdope.initialization.ui.base16")
             end,
             disable = Cfg.plugins.ui.base16
         }
@@ -41,7 +41,7 @@ return packer.startup(
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
             config = function()
-                require("plugins.others").colorizer()
+                require("nvdope.initialization.ui.colorizer")
             end,
             disable = Cfg.plugins.ui.colorizer
         }
@@ -50,7 +50,7 @@ return packer.startup(
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require "plugins.treesitter"
+                require("nvdope.initialization.ui.treesitter")
             end,
             disable = Cfg.plugins.ui.treesitter
         }
@@ -59,16 +59,16 @@ return packer.startup(
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require "plugins.nvimtree"
+                require("nvdope.initialization.ui.tree")
             end,
             disable = Cfg.plugins.ui.tree
         }
 
         use {
             "kyazdani42/nvim-web-devicons",
-            after = "nvim-base16.lua",
+            after = "Base16.nvim",
             config = function()
-                require "plugins.icons"
+                require("nvdope.initialization.ui.web_devicons")
             end,
             disable = Cfg.plugins.ui.web_devicons
         }
@@ -77,7 +77,7 @@ return packer.startup(
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require("plugins.others").blankline()
+                require("nvdope.initialization.ui.indent_blankline")
             end,
             disable = Cfg.plugins.ui.indent_blankline
         }
@@ -86,7 +86,7 @@ return packer.startup(
             "glepnir/dashboard-nvim",
             event = "BufWinEnter",
             setup = function()
-                require "plugins.dashboard"
+                require("nvdope.initialization.ui.dashboard")
             end,
             disable = Cfg.plugins.ui.dashboard
         }
@@ -118,7 +118,7 @@ return packer.startup(
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
-                require("plugins.others").lspkind()
+                require("nvdope.initialization.lsp.lspkind")
             end,
             disable = Cfg.plugins.lsp.lspkind
         }
@@ -128,7 +128,7 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require "plugins.compe"
+                require("nvdope.initialization.tools.compe")
             end,
             wants = {"LuaSnip"},
             requires = {
@@ -137,7 +137,7 @@ return packer.startup(
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require "plugins.luasnip"
+						require("nvdope.initialization.tools.luasnip")
                     end,
                     disable = Cfg.plugins.tools.luasnip
                 },
@@ -172,7 +172,7 @@ return packer.startup(
             "nvim-telescope/telescope.nvim",
             cmd = "Telescope",
             config = function()
-                require "plugins.telescope"
+                require("nvdope.initialization.tools.telescope")
             end,
             disable = Cfg.plugins.tools.telescope
         }
@@ -188,7 +188,7 @@ return packer.startup(
             "lewis6991/gitsigns.nvim",
             after = "plenary.nvim",
             config = function()
-                require "plugins.gitsigns"
+                require("nvdope.initialization.tools.gitsigns")
             end,
             disable = Cfg.plugins.tools.gitsigns
         }
@@ -197,7 +197,7 @@ return packer.startup(
             "windwp/nvim-autopairs",
             after = "nvim-compe",
             config = function()
-                require "plugins.autopairs"
+                require("nvdope.initialization.tools.autopairs")
             end,
             disable = Cfg.plugins.tools.autopairs
         }
@@ -222,13 +222,20 @@ return packer.startup(
             disable = Cfg.plugins.tools.pencil
         }
 
+        use {
+            "mg979/vim-visual-multi",
+            opt = true,
+            event = "CursorMoved",
+            disable = Cfg.plugins.tools.vvm
+        }
+
         ----------------------------=== Debug ===--------------------------
         use {
             "mfussenegger/nvim-dap",
             opt = true,
             event = "VimEnter",
             config = function()
-                -- require("nd-plugins.nd-dap.init")
+                require("nvdope.initialization.debug.dap")
             end,
             disable = Cfg.plugins.debug.dap
         }
@@ -239,7 +246,7 @@ return packer.startup(
             opt = true,
             after = "nvim-dap",
             config = function()
-                -- require("nd-plugins.nd-dapinstall.init")
+                require("nvdope.initialization.debug.dap_install")
             end,
             disable = Cfg.plugins.debug.dap_install
         }
@@ -256,7 +263,7 @@ return packer.startup(
             branch = "dev",
             event = "BufRead",
             config = function()
-				require("nvdope.initialization.utils.autosave")
+                require("nvdope.initialization.utils.autosave")
             end,
             disable = Cfg.plugins.utils.autosave
         }
@@ -272,7 +279,7 @@ return packer.startup(
             "karb94/neoscroll.nvim",
             event = "WinScrolled",
             config = function()
-				require("nvdope.initialization.utils.neoscroll")
+                require("nvdope.initialization.utils.neoscroll")
             end,
             disable = Cfg.plugins.utils.neoscroll
         }
@@ -282,7 +289,7 @@ return packer.startup(
             branch = "dev",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
-				require("nvdope.initialization.utils.truezen")
+                require("nvdope.initialization.utils.truezen")
             end,
             disable = Cfg.plugins.utils.truezen
         }
@@ -293,7 +300,7 @@ return packer.startup(
             cmd = {"HSHighlight", "HSRmHighlight"},
             keys = {"<F3>", "<F4>"}, -- custome mappings
             config = function()
-				require("nvdope.initialization.utils.highstr")
+                require("nvdope.initialization.utils.highstr")
             end,
             disable = Cfg.plugins.utils.highstr
         }
@@ -318,7 +325,7 @@ return packer.startup(
             opt = true,
             ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
             config = function()
-				require("nvdope.initialization.extensions.ts_autotag")
+                require("nvdope.initialization.extensions.ts_autotag")
             end,
             disable = Cfg.plugins.extensions.ts_autotag
         }

@@ -4,7 +4,7 @@ local runlevel_modules = {
     "abbreviations",
     "mappings",
     "autocmds",
-    "highlights",
+    -- "highlights",
 }
 
 for i = 1, #runlevel_modules, 1 do

@@ -3,8 +3,7 @@ if not present then
     return
 end
 
-local global_theme = "themes/" .. vim.g.nvchad_theme
-local colors = require(global_theme)
+local colors = Cfg.themes[Cfg.nvdope.theme]
 
 icons.setup {
     override = {

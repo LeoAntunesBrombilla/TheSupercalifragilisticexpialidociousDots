@@ -8,8 +8,7 @@ local gls = gl.section
 
 gl.short_line_list = {" "}
 
-local global_theme = "themes/" .. vim.g.nvchad_theme
-local colors = require(global_theme)
+local colors = Cfg.themes[Cfg.nvdope.theme]
 
 gls.left[1] = {
     FirstElement = {

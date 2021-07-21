@@ -23,13 +23,14 @@ return packer.startup(
             "glepnir/galaxyline.nvim",
             after = "Base16.nvim",
             config = function()
-                require "plugins.statusline"
+                require("nvdope.initialization.ui.galaxyline")
             end,
             disable = Cfg.plugins.ui.galaxyline
         }
 
         use {
             "Pocco81/Base16.nvim",
+			branch = "dev",
             after = "packer.nvim",
             config = function()
                 require("nvdope.initialization.ui.base16")

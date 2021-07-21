@@ -11,6 +11,7 @@ Cfg = {
         },
 		theme = "onedark",
 		colorscheme = "onedark",
+		language_servers = {}
     },
     settings = {
         disabled_builtin_tools = {
@@ -111,7 +112,6 @@ Cfg = {
             lspconfig = false,
             lspinstall = false,
             lspkind = false,
-            language_servers = {}
         },
         tools = {
             compe = false,

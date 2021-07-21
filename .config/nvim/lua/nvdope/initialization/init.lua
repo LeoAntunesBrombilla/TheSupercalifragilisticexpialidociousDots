@@ -12,19 +12,20 @@ return packer.startup(
     function()
         use {"wbthomason/packer.nvim", event = "VimEnter"}
 
-		----------------------------=== LSP ===--------------------------
-		----------------------------=== Debug ===------------------------
-		----------------------------=== UI ===---------------------------
-		----------------------------=== Tools ===------------------------
-
-        use {"akinsho/nvim-bufferline.lua", after = "nvim-base16.lua"}
+        ----------------------------=== UI ===---------------------------
+        use {
+            "akinsho/nvim-bufferline.lua",
+            after = "nvim-base16.lua",
+            disable = Cfg.plugins.ui.bufferline
+        }
 
         use {
             "glepnir/galaxyline.nvim",
             after = "nvim-base16.lua",
             config = function()
                 require "plugins.statusline"
-            end
+            end,
+            disable = Cfg.plugins.ui.galaxyline
         }
 
         use {
@@ -32,7 +33,8 @@ return packer.startup(
             after = "packer.nvim",
             config = function()
                 require "theme"
-            end
+            end,
+            disable = Cfg.plugins.ui.base16
         }
 
         use {
@@ -40,7 +42,8 @@ return packer.startup(
             event = "BufRead",
             config = function()
                 require("plugins.others").colorizer()
-            end
+            end,
+            disable = Cfg.plugins.ui.colorizer
         }
 
         use {
@@ -48,12 +51,58 @@ return packer.startup(
             event = "BufRead",
             config = function()
                 require "plugins.treesitter"
-            end
+            end,
+            disable = Cfg.plugins.ui.treesitter
         }
 
         use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function()
+                require "plugins.nvimtree"
+            end,
+            disable = Cfg.plugins.ui.tree
+        }
+
+        use {
+            "kyazdani42/nvim-web-devicons",
+            after = "nvim-base16.lua",
+            config = function()
+                require "plugins.icons"
+            end,
+            disable = Cfg.plugins.ui.web_devicons
+        }
+
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            event = "BufRead",
+            setup = function()
+                require("plugins.others").blankline()
+            end,
+            disable = Cfg.plugins.ui.indent_blankline
+        }
+
+        use {
+            "glepnir/dashboard-nvim",
+            event = "BufWinEnter",
+            setup = function()
+                require "plugins.dashboard"
+            end,
+            disable = Cfg.plugins.ui.dashboard
+        }
+
+        use {
+            "folke/twilight.nvim",
+            opt = true,
+            cmd = {"Twilight", "TwilightEnable", "TwilightDisable"},
+            disable = Cfg.plugins.ui.twilight
+        }
+
+        ----------------------------=== LSP ===--------------------------
+        use {
             "kabouzeid/nvim-lspinstall",
-            event = "BufRead"
+            event = "BufRead",
+            disable = Cfg.plugins.lsp.lspinstall
         }
 
         use {
@@ -61,7 +110,8 @@ return packer.startup(
             after = "nvim-lspinstall",
             config = function()
                 require "plugins.lspconfig"
-            end
+            end,
+            disable = Cfg.plugins.lsp.lspconfig
         }
 
         use {
@@ -69,10 +119,11 @@ return packer.startup(
             event = "BufRead",
             config = function()
                 require("plugins.others").lspkind()
-            end
+            end,
+            disable = Cfg.plugins.lsp.lspkind
         }
 
-        -- load compe in insert mode only
+        ----------------------------=== Tools ===------------------------
         use {
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
@@ -87,52 +138,59 @@ return packer.startup(
                     event = "InsertCharPre",
                     config = function()
                         require "plugins.luasnip"
-                    end
+                    end,
+                    disable = Cfg.plugins.tools.luasnip
                 },
                 {
                     "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
+                    event = "InsertCharPre",
+                    disable = Cfg.plugins.tools.friendly_snippets
                 }
-            }
-        }
-
-        use {"sbdchd/neoformat", cmd = "Neoformat"}
-
-        use {
-            "kyazdani42/nvim-tree.lua",
-            cmd = "NvimTreeToggle",
-            config = function()
-                require "plugins.nvimtree"
-            end
+            },
+            disable = Cfg.plugins.tools.compe
         }
 
         use {
-            "kyazdani42/nvim-web-devicons",
-            after = "nvim-base16.lua",
-            config = function()
-                require "plugins.icons"
-            end
+            "sbdchd/neoformat",
+            cmd = "Neoformat",
+            disable = Cfg.plugins.tools.neoformat
         }
 
-        use {"nvim-lua/plenary.nvim", event = "BufRead"}
-        use {"nvim-lua/popup.nvim", after = "plenary.nvim"}
+        use {
+            "nvim-lua/plenary.nvim",
+            event = "BufRead",
+            disable = Cfg.plugins.tools.plenary
+        }
+
+        use {
+            "nvim-lua/popup.nvim",
+            after = "plenary.nvim",
+            disable = Cfg.plugins.tools.popup
+        }
 
         use {
             "nvim-telescope/telescope.nvim",
             cmd = "Telescope",
             config = function()
                 require "plugins.telescope"
-            end
+            end,
+            disable = Cfg.plugins.tools.telescope
         }
 
-        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+            cmd = "Telescope",
+            disable = Cfg.plugins.tools.telescope
+        }
 
         use {
             "lewis6991/gitsigns.nvim",
             after = "plenary.nvim",
             config = function()
                 require "plugins.gitsigns"
-            end
+            end,
+            disable = Cfg.plugins.tools.gitsigns
         }
 
         use {
@@ -140,45 +198,39 @@ return packer.startup(
             after = "nvim-compe",
             config = function()
                 require "plugins.autopairs"
-            end
+            end,
+            disable = Cfg.plugins.tools.autopairs
         }
 
-        use {"andymass/vim-matchup", event = "CursorMoved"}
-
         use {
-            "glepnir/dashboard-nvim",
-            event = "BufWinEnter",
-            setup = function()
-                require "plugins.dashboard"
-            end
-        }
-
-
-
-
-        use {
-            "lukas-reineke/indent-blankline.nvim",
-            event = "BufRead",
-            setup = function()
-                require("plugins.others").blankline()
-            end
+            "andymass/vim-matchup",
+            event = "CursorMoved",
+            disable = Cfg.plugins.tools.matchup
         }
 
         use {
             "Asheq/close-buffers.vim",
             opt = true,
-            event = "BufRead"
+            event = "BufRead",
+            disable = Cfg.plugins.tools.close_buffers
         }
 
-		----------------------------=== Debug ===--------------------------
+        use {
+            "reedes/vim-pencil",
+            opt = true,
+            cmd = {"Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil"},
+            disable = Cfg.plugins.tools.pencil
+        }
+
+        ----------------------------=== Debug ===--------------------------
         use {
             "mfussenegger/nvim-dap",
             opt = true,
             event = "VimEnter",
             config = function()
-                require("nd-plugins.nd-dap.init")
+                -- require("nd-plugins.nd-dap.init")
             end,
-			disable = Cfg.plugins.debug.dap
+            disable = Cfg.plugins.debug.dap
         }
 
         use {
@@ -187,16 +239,16 @@ return packer.startup(
             opt = true,
             after = "nvim-dap",
             config = function()
-                require("nd-plugins.nd-dapinstall.init")
+                -- require("nd-plugins.nd-dapinstall.init")
             end,
-			disable = Cfg.plugins.debug.dap_install
+            disable = Cfg.plugins.debug.dap_install
         }
 
-		----------------------------=== Utils ===-------------------------
+        ----------------------------=== Utils ===-------------------------
         use {
             "tweekmonster/startuptime.vim",
             cmd = "StartupTime",
-			disable = Cfg.plugins.utils.startuptime
+            disable = Cfg.plugins.utils.startuptime
         }
 
         use {
@@ -204,25 +256,25 @@ return packer.startup(
             branch = "dev",
             event = "BufRead",
             config = function()
-                require "plugins.autosave"
+				require("nvdope.initialization.utils.autosave")
             end,
-			disable = Cfg.plugins.utils.autosave
+            disable = Cfg.plugins.utils.autosave
         }
 
-		use {
+        use {
             "tpope/vim-commentary",
             opt = true,
             keys = "gc",
-			disable = Cfg.plugins.utils.commentary
+            disable = Cfg.plugins.utils.commentary
         }
 
         use {
             "karb94/neoscroll.nvim",
             event = "WinScrolled",
             config = function()
-                require("plugins.others").neoscroll()
+				require("nvdope.initialization.utils.neoscroll")
             end,
-			disable = Cfg.plugins.utils.neoscroll
+            disable = Cfg.plugins.utils.neoscroll
         }
 
         use {
@@ -230,9 +282,9 @@ return packer.startup(
             branch = "dev",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
-                require "plugins.zenmode"
+				require("nvdope.initialization.utils.truezen")
             end,
-			disable = Cfg.plugins.utils.truezen
+            disable = Cfg.plugins.utils.truezen
         }
 
         use {
@@ -241,42 +293,41 @@ return packer.startup(
             cmd = {"HSHighlight", "HSRmHighlight"},
             keys = {"<F3>", "<F4>"}, -- custome mappings
             config = function()
-                require "plugins.highstr"
+				require("nvdope.initialization.utils.highstr")
             end,
-			disable = Cfg.plugins.utils.highstr
+            disable = Cfg.plugins.utils.highstr
         }
-
 
         ----------------------------=== Extensions ===--------------------------
         use {
             "folke/lua-dev.nvim",
             opt = true,
             ft = "lua",
-			disable = Cfg.plugins.extensions.lua_dev
+            disable = Cfg.plugins.extensions.lua_dev
         }
 
         use {
             "simrat39/rust-tools.nvim",
             opt = true,
             ft = "rust",
-			disable = Cfg.plugins.extensions.rust_tools
+            disable = Cfg.plugins.extensions.rust_tools
         }
 
         use {
             "windwp/nvim-ts-autotag",
             opt = true,
             ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
-            -- config = function()
-            --     require("nd-plugins.nd-autotag.init")
-            -- end,
-			disable = Cfg.plugins.extensions.ts_autotag
+            config = function()
+				require("nvdope.initialization.extensions.ts_autotag")
+            end,
+            disable = Cfg.plugins.extensions.ts_autotag
         }
 
         use {
             "editorconfig/editorconfig-vim",
             opt = true,
             event = "BufRead",
-			disable = Cfg.plugins.extensions.editorconfig
+            disable = Cfg.plugins.extensions.editorconfig
         }
     end
 )

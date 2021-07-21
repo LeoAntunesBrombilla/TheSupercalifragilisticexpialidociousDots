@@ -92,42 +92,41 @@ Cfg = {
         }
     },
     plugins = {
+        ui = {
+            bufferline = false,
+            galaxyline = false,
+            base16 = false,
+            colorizer = false,
+            treesitter = false,
+            tree = false,
+            web_devicons = false,
+            indent_blankline = false,
+            twilight = false,
+            dashboard = false,
+        },
         lsp = {
             lspconfig = false,
             lspinstall = false,
-            lspsignature = false,
-            lspsaga = false,
+			lspkind = false,
             language_servers = {}
+        },
+        tools = {
+            compe = false,
+			luasnip = false,
+            friendly_snippets = false,
+            neoformat = false,
+			plenary = false,
+			popup = false,
+			telescope = false,
+            gitsigns = false,
+            autopairs = false,
+			matchup = false,
+            close_buffers = false,
+            pencil = false,
         },
         debug = {
             dap = true,
             dap_install = true
-        },
-        ui = {
-            treesitter = false,
-            web_devicons = false,
-            colorizer = false,
-            galaxyline = false,
-            twilight = false,
-            tree = false,
-            bufferline = false,
-            indent_blankline = false,
-            base16 = false,
-            dashboard = false
-        },
-        tools = {
-            gitsigns = false,
-            compe = false,
-            vsnip = false,
-            telescope = false,
-            friendly_snippets = false,
-            close_buffers = false,
-            neoformat = false,
-            pencil = false,
-            autopairs = false,
-            vvm = false,
-            undotree = false,
-            trouble = true
         },
         utils = {
             startuptime = false,

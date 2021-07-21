@@ -1,4 +1,7 @@
-local high_str = require("high-str")
+local present, high_str = pcall(require, "high-str")
+if not present then
+    return
+end
 
 high_str.setup {
     verbosity = 0,

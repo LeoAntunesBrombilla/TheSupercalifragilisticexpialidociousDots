@@ -4,6 +4,8 @@ if not (present1 or present2) then
     return
 end
 
+local tbl_utils = require("nvdope.utils.tbls")
+
 local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -41,49 +43,31 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- lspInstall + lspconfig
+local servers_prefix = "nvdope.initialization.lsp.language_servers_configs."
 
 local function setup_servers()
     lspinstall.setup()
-    local servers = lspinstall.installed_servers()
 
-    for _, lang in pairs(servers) do
-        if lang ~= "lua" then
-            lspconfig[lang].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-                root_dir = vim.loop.cwd
-            }
-        elseif lang == "lua" then
-            lspconfig[lang].setup {
-                root_dir = vim.loop.cwd,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {"vim"}
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000,
-							checkThirdParty = false,
-                        },
-                        telemetry = {
-                            enable = false
-                        }
-                    }
-                }
-            }
-        end
+    local installed_servers = lspinstall.installed_servers()
+
+    for _, lang in pairs(Cfg.nvdope.language_servers) do
+		if (tbl_utils.has_value(installed_servers, lang)) then
+			local exit_status = pcall(require, servers_prefix .. lang)
+			if (exit_status == false) then -- false = error
+				lspconfig[lang].setup({
+					on_attach = require("nvdope.initialization.lsp.attachments").commmon,
+					capabilities = require("nvdope.initialization.lsp.capabilities").common(),
+					root_dir = vim.loop.cwd
+				})
+			end
+		else
+			print("NVDope [E1]: The language server '" .. lang .. "' does not exist or it is not installed!")
+		end
     end
 end
 
 setup_servers()
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 lspinstall.post_install_hook = function()
     setup_servers() -- reload installed servers
     vim.cmd("bufdo e") -- triggers FileType autocmd that starts the server

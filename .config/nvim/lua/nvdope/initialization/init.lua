@@ -113,7 +113,7 @@ return packer.startup(
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",
             config = function()
-                require "plugins.lspconfig"
+                require("nvdope.initialization.lsp.lspconfig")
             end,
             disable = Cfg.plugins.lsp.lspconfig
         }

@@ -11,7 +11,11 @@ Cfg = {
         },
 		theme = "onedark",
 		colorscheme = "onedark",
-		language_servers = {}
+		language_servers = {
+			"efm",
+			"lua",
+			"bash",
+		}
     },
     settings = {
         disabled_builtin_tools = {

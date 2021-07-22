@@ -7,7 +7,6 @@ local init_modules = {
 
 local sys_modules = {
 	"nvdope.initialization",
-	"nvdope.initialization.ui.bufferline",
     "nvdope.runlevel"
 }
 

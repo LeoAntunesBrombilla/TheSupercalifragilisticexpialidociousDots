@@ -340,5 +340,8 @@ return packer.startup(
             event = "BufRead",
             disable = Cfg.plugins.extensions.editorconfig
         }
+
+		require("nvdope.initialization.ui.bufferline")
     end
 )
+

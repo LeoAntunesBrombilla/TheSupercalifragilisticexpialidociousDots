@@ -9,8 +9,8 @@ Cfg = {
             terminal = nil,
             user = nil
         },
-		theme = "onedark",
-		colorscheme = "onedark",
+		theme = "onedark", -- ui
+		colorscheme = "onedark", -- syntax
 		language_servers = {
 			"efm",
 			"lua",
@@ -175,7 +175,7 @@ Cfg = {
         -- ctrl+backspace to delete word
         {"i", "<C-BS>", "<C-w>", {noremap = true, silent = true}},
         {"i", "<C-h>", "<C-w>", {noremap = true, silent = true}},
-        -- nvim-tree
+        -- nvimtree
         {"n", "<C-e>", ":NvimTreeToggle<CR>", {noremap = true, silent = true}},
         -- bufferline
         {"n", "<PageUp>", [[<Cmd>BufferLineCycleNext<CR>]], {silent = true}},
@@ -264,6 +264,8 @@ Cfg = {
         -- }
     },
     highlights = {
+		-- syntax: {<group>, <guifg>, <guibg>, <ctermfg>, <ctermbg>, <attr>, <guisp>}
+	
         {"NORMAL", nil, "#111921", nil, nil, nil, nil},
         {"Comment", "#42464e", nil, nil, nil, "italic", nil},
         {"Conditional", nil, nil, nil, nil, "italic", nil},
@@ -271,7 +273,8 @@ Cfg = {
         {"SpecialChar", nil, nil, nil, nil, "underline", nil},
         {"Repeat", nil, nil, nil, nil, "italic", nil},
         {"Function", nil, nil, nil, nil, "italic", nil},
-        {"Float", nil, nil, nil, nil, "bold", nil}
+        {"Float", nil, nil, nil, nil, "bold", nil},
+		{"CursorLine", nil, "#18232e", nil, nil, nil, nil}
     },
     themes = {
         onedark = {
@@ -400,3 +403,85 @@ Cfg = {
         }
     },
 }
+
+local function hook_theme()
+	-- syntax: {<group>, <guifg>, <guibg>, <ctermfg>, <ctermbg>, <attr>, <guisp>}
+	-- Cfg.highlights[#Cfg.highlights+1] = {"", nil, nil, nil, nil, nil, nil}
+
+	local thm = Cfg.themes[Cfg.nvdope.theme]
+
+	-- misc
+	Cfg.highlights[#Cfg.highlights+1] = {"LineNr", thm.grey, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"Comment", thm.grey_fg, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimInternalError", thm.red, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"VertSplit", thm.line, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"EndOfBuffer", thm.black, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"StatusLineNC", thm.line, nil, nil, nil, "underline", nil} -- make inactive statusline a thin line
+
+	-- indent_blankline
+	Cfg.highlights[#Cfg.highlights+1] = {"IndentBlanklineChar", thm.line, nil, nil, nil, nil, nil}
+
+	-- pmenu
+	Cfg.highlights[#Cfg.highlights+1] = {"Pmenu", nil, thm.one_bg, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"PmenuSbar", nil, thm.one_bg2, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"PmenuSel", nil, thm.green, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"PmenuThumb", nil, thm.nord_blue, nil, nil, nil, nil}
+
+	-- gitsings
+	Cfg.highlights[#Cfg.highlights+1] = {"DiffAdd", thm.nord_blue, "NONE", nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"DiffChange", thm.grey_fg, "NONE", nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"DiffModified", thm.nord_blue, "NONE", nil, nil, nil, nil}
+
+	-- nvimtree
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeFolderIcon", thm.blue, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeFolderName", thm.blue, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeOpenedFolderName", thm.blue, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeEmptyFolderName", thm.blue, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeIndentMarker", thm.one_bg2, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeVertSplit", thm.darker_black, thm.darker_black, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeEndOfBuffer", thm.darker_black, nil, nil, nil, nil, nil}
+
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeRootFolder", thm.darker_black, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeNormal", nil, thm.darker_black, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeStatuslineNc", thm.darker_black, thm.darker_black, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"NvimTreeWindowPicker", thm.red, thm.black2, nil, nil, nil, nil}
+
+	-- telescope
+	Cfg.highlights[#Cfg.highlights+1] = {"TelescopeBorder", thm.line, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"TelescopePromptBorder", thm.line, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"TelescopeResultsBorder", thm.line, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"TelescopePreviewBorder", thm.line, nil, nil, nil, nil, nil}
+
+	-- native lsp
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsSignError", thm.red, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsVirtualTextError", thm.red, nil, nil, nil, nil, nil}
+
+	-- warnings
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsSignWarning", thm.yellow, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsVirtualTextWarning", thm.yellow, nil, nil, nil, nil, nil}
+
+	-- info
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsSignInformation", thm.green, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsVirtualTextInformation", thm.green, nil, nil, nil, nil, nil}
+
+	-- hint
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsSignHint", thm.purple, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"LspDiagnosticsVirtualTextHint", thm.purple, nil, nil, nil, nil, nil}
+
+	-- dashboard
+	Cfg.highlights[#Cfg.highlights+1] = {"DashboardHeader", thm.grey_fg, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"DashboardCenter", thm.grey_fg, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"DashboardShortcut", thm.grey_fg, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"DashboardFooter", thm.grey_fg, nil, nil, nil, nil, nil}
+
+	-- packer (floating win)
+	Cfg.highlights[#Cfg.highlights+1] = {"NormalFloat", nil, thm.black2, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"FloatBorder", nil, thm.black2, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"FloatBorder", thm.black2, nil, nil, nil, nil, nil}
+end
+
+local function run_hooks()
+	hook_theme()
+end
+
+run_hooks()

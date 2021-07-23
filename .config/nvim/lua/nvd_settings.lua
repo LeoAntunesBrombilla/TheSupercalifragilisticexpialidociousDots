@@ -116,6 +116,7 @@ Cfg = {
             lspconfig = false,
             lspinstall = false,
             lspkind = false,
+			lspsaga = false,
         },
         tools = {
             compe = false,
@@ -203,13 +204,10 @@ Cfg = {
         {"n", "<leader>zz", ":TZAtaraxis<CR>", {silent = true}},
         {"n", "<leader>zm", ":TZMinimalist<CR>", {silent = true}},
         {"n", "<leader>zf", ":TZFocus<CR>", {silent = true}},
-        -- comment
-        {"n", "<leader>/", ":CommentToggle<CR>", {silent = true}},
-        {"v", "<leader>/", ":CommentToggle<CR>", {silent = true}},
         -- neoformat
         {"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}},
         -- sessions
-        {"n", "<Leader>ls", [[<Cmd> SessionLoad<CR>]], {silent = true}},
+        {"n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], {silent = true}},
         {"n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], {silent = true}},
         -- telescope
         {"n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], {silent = true}},
@@ -217,7 +215,24 @@ Cfg = {
         {"n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], {silent = true}},
         {"n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], {silent = true}},
         {"n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], {silent = true}},
-        {"n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], {silent = true}}
+        {"n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], {silent = true}},
+		-- lspsaga
+        {"n", "<Leader>ldc", [[<Cmd>Lspsaga show_cursor_diagnostics<CR>]], {silent = true}},
+        {"n", "<Leader>ldl", [[<Cmd>Lspsaga show_line_diagnostics<CR>]], {silent = true}},
+        {"n", "<Leader>dr", [[<Cmd>Lspsaga diagnostic_jump_next<CR>]], {silent = true}},
+        {"n", "<Leader>de", [[<Cmd>Lspsaga diagnostic_jump_prev<CR>]], {silent = true}},
+        {"n", "<Leader>lp", [[<Cmd>Lspsaga preview_definition<CR>]], {silent = true}},
+        {"n", "<Leader>lr", [[<Cmd>Lspsaga rename<CR>]], {silent = true}},
+        {"n", "<Leader>la", [[<Cmd>Lspsaga code_action<CR>]], {silent = true}},
+        {"n", "<Leader>lf", [[<Cmd>Lspsaga lsp_finder<CR>]], {silent = true}},
+        {"n", "<Leader>li", [[<Cmd>Lspsaga implement<CR>]], {silent = true}},
+        {"n", "<Leader>ls", [[<Cmd>Lspsaga signature_help<CR>]], {silent = true}},
+        {"n", "<Leader>lh", [[<Cmd>Lspsaga hover_doc<CR>]], {silent = true}},
+		-- native lsp
+        {"n", "<Leader>al", [[<Cmd>LspStart<CR>]], {silent = true}},
+        {"n", "<Leader>dl", [[<Cmd>LspStop<CR>]], {silent = true}},
+        {"n", "<Leader>rl", [[<Cmd>LspRestart<CR>]], {silent = true}},
+        {"n", "<Leader>il", [[<Cmd>LspInfo<CR>]], {silent = true}},
     },
     abbreviations = {
         -- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}

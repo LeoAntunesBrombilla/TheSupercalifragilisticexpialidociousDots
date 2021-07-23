@@ -126,6 +126,15 @@ return packer.startup(
             end,
             disable = Cfg.plugins.lsp.lspkind
         }
+		
+		use {
+			"glepnir/lspsaga.nvim",
+			event = "BufRead",
+			config = function ()
+				require("nvdope.initialization.lsp.lspsaga")
+			end,
+			disable = Cfg.plugins.lsp.lspsaga
+		}
 
         ----------------------------=== Tools ===------------------------
         use {

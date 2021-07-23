@@ -9,8 +9,8 @@ Cfg = {
             terminal = nil,
             user = nil
         },
-		theme = "onedark", -- ui
-		colorscheme = "onedark", -- syntax
+		theme = "onedark", -- ui; must match a theme at Cfg.themes
+		colorscheme = "onedark", -- syntax; must match a colorscheme from Base16.nvim
 		language_servers = {
 			"efm",
 			"lua",
@@ -265,9 +265,7 @@ Cfg = {
     },
     highlights = {
 		-- syntax: {<group>, <guifg>, <guibg>, <ctermfg>, <ctermbg>, <attr>, <guisp>}
-	
-        {"NORMAL", nil, "#111921", nil, nil, nil, nil},
-        {"Comment", "#42464e", nil, nil, nil, "italic", nil},
+
         {"Conditional", nil, nil, nil, nil, "italic", nil},
         {"Character", nil, nil, nil, nil, "undercurl", nil},
         {"SpecialChar", nil, nil, nil, nil, "underline", nil},
@@ -280,7 +278,7 @@ Cfg = {
         onedark = {
             white = "#abb2bf",
             darker_black = "#1b1f27",
-            black = "#1e222a", --  nvim bg
+            black = "#111921", --  nvim bg
             black2 = "#252931",
             one_bg = "#282c34", -- real bg of onedark
             one_bg2 = "#353b45",
@@ -411,8 +409,9 @@ local function hook_theme()
 	local thm = Cfg.themes[Cfg.nvdope.theme]
 
 	-- misc
+	Cfg.highlights[#Cfg.highlights+1] = {"NORMAL", nil, thm.black, nil, nil, nil, nil}
 	Cfg.highlights[#Cfg.highlights+1] = {"LineNr", thm.grey, nil, nil, nil, nil, nil}
-	Cfg.highlights[#Cfg.highlights+1] = {"Comment", thm.grey_fg, nil, nil, nil, nil, nil}
+	Cfg.highlights[#Cfg.highlights+1] = {"Comment", thm.grey_fg, nil, nil, nil, "italic", nil}
 	Cfg.highlights[#Cfg.highlights+1] = {"NvimInternalError", thm.red, nil, nil, nil, nil, nil}
 	Cfg.highlights[#Cfg.highlights+1] = {"VertSplit", thm.line, nil, nil, nil, nil, nil}
 	Cfg.highlights[#Cfg.highlights+1] = {"EndOfBuffer", thm.black, nil, nil, nil, nil, nil}

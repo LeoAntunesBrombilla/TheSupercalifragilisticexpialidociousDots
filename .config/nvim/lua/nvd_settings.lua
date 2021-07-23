@@ -15,6 +15,7 @@ Cfg = {
 			"efm",
 			"lua",
 			"bash",
+			"vim",
 		}
     },
     settings = {
@@ -267,9 +268,9 @@ Cfg = {
         _text = {
             {"FileType", "text", "setlocal wrap spell"}
         },
-        _terminal = {
-            {"TermOpen", "term://*", "setlocal nonumber laststatus=0"}
-        }
+        -- _terminal = {
+        --     {"TermOpen", "term://*", "setlocal nonumber laststatus=0"}
+        -- }
         -- _nvimtree = {
         --     {
         --         "BufEnter,BufWinEnter,WinEnter,CmdwinEnter",

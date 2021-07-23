@@ -1,3 +1,5 @@
+vim.cmd [[let &fcs='eob: ']]
+
 for _, tool in pairs(Cfg.settings.disabled_builtin_tools) do
     vim.g["loaded_" .. tool] = 1
 end

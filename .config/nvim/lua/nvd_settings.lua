@@ -60,7 +60,7 @@ Cfg = {
             guicursor = {"i-c-ci:ver25", "o-v-ve:hor20", "cr-sm-n-r:block"},
             backspace = {"indent", "eol", "start"}, -- table
             iskeyword = {"-"},
-            shortmess = {c = true}, --table insert
+            shortmess = {c = true, I = true, s = true}, -- no ins-completion-menu (c), intro (I) or "search hit BOTTOM, continuing at TOP" messages
             listchars = [[tab:› ,trail:•,extends:#,nbsp:.]], -- table
             matchpairs = {"<:>"}, --table insert
             termguicolors = true, -- set term gui colors (most terminals support this)

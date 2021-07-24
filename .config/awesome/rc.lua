@@ -210,8 +210,8 @@ awful.mouse.append_global_mousebindings({
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
+    -- awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    --           {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -272,7 +272,7 @@ awful.keyboard.append_global_keybindings({
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "n",
+    awful.key({ modkey, "Control" }, "s",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -401,7 +401,7 @@ client.connect_signal("request::default_keybindings", function()
                 c:raise()
             end,
             {description = "toggle fullscreen", group = "client"}),
-        awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+        awful.key({ modkey,			}, "d",      function (c) c:kill()                         end,
                 {description = "close", group = "client"}),
         awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
                 {description = "toggle floating", group = "client"}),
@@ -411,26 +411,26 @@ client.connect_signal("request::default_keybindings", function()
                 {description = "move to screen", group = "client"}),
         awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
                 {description = "toggle keep on top", group = "client"}),
-        awful.key({ modkey,           }, "n",
+        awful.key({ modkey,           }, "s",
             function (c)
                 -- The client currently has the input focus, so it cannot be
                 -- minimized, since minimized clients can't have the focus.
                 c.minimized = true
             end ,
             {description = "minimize", group = "client"}),
-        awful.key({ modkey,           }, "m",
+        awful.key({ modkey,           }, "a",
             function (c)
                 c.maximized = not c.maximized
                 c:raise()
             end ,
             {description = "(un)maximize", group = "client"}),
-        awful.key({ modkey, "Control" }, "m",
+        awful.key({ modkey, "Control" }, "a",
             function (c)
                 c.maximized_vertical = not c.maximized_vertical
                 c:raise()
             end ,
             {description = "(un)maximize vertically", group = "client"}),
-        awful.key({ modkey, "Shift"   }, "m",
+        awful.key({ modkey, "Shift"   }, "a",
             function (c)
                 c.maximized_horizontal = not c.maximized_horizontal
                 c:raise()
@@ -483,7 +483,7 @@ ruled.client.connect_signal("request::rules", function()
     ruled.client.append_rule {
         id         = "titlebars",
         rule_any   = { type = { "normal", "dialog" } },
-        properties = { titlebars_enabled = true      }
+        properties = { titlebars_enabled = false      }
     }
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -558,3 +558,5 @@ client.connect_signal("mouse::enter", function(c)
     c:activate { context = "mouse_enter", raise = false }
 end)
 
+-- Autostart applications
+awful.spawn.with_shell("picom")

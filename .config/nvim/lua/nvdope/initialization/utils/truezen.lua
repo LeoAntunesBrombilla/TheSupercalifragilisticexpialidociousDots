@@ -30,7 +30,7 @@ true_zen.setup {
             ideal_writing_area_width = {30, 90, "max"},
             just_do_it_for_me = true,
             keep_default_fold_fillchars = true,
-            custome_bg = "",
+			custom_bg = {"none", ""},
             bg_configuration = true,
 			quit = "untoggle",
             affected_higroups = {

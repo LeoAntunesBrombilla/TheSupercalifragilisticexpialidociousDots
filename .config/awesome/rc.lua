@@ -560,3 +560,6 @@ end)
 
 -- Autostart applications
 awful.spawn.with_shell("picom")
+
+-- this won't work because it must be spawed with a script or something
+awful.spawn.with_shell([[eval $(gnome-keyring-daemon --start) && export SSH_AUTH_SOCK]])

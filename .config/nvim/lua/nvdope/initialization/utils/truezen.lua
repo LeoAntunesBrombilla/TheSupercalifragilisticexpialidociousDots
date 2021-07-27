@@ -56,6 +56,7 @@ true_zen.setup {
         gitsigns = false,
         nvim_bufferline = true,
         limelight = false,
+		twilight = false,
         vim_airline = false,
         vim_powerline = false,
         vim_signify = false,

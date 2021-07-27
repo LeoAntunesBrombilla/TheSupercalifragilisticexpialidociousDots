@@ -15,6 +15,7 @@ Arguments:
 	tm				~/.tmux.conf'
 	al				~/.config/alacritty/alacritty.yml'
 	sa				~/.shell_aliases'
+	aw				~/.config/awesome/rc.lua
 
 Flags:
 	-h,--help		Show this help message.
@@ -37,6 +38,8 @@ function assert_file () {
 		nvim $HOME/.shell_aliases
 	elif [[ "$file" == "al" ]]; then
 		nvim $HOME/.config/alacritty/alacritty.yml
+	elif [[ "$file" == "aw" ]]; then
+		nvim $HOME/.config/awesome/rc.lua
 	else
 		echo -e "Error: file not recognized.\nType '$this_script -h' or '$this_script --help' for help"
 	fi

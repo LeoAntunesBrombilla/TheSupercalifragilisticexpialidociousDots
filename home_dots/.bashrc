@@ -274,6 +274,14 @@ if [ -e "${_MY_CARGO}" ]; then
 fi
 unset _MY_CARGO
 
+_MY_GOLANG="$(which go)"
+if [ -e "${_MY_GOLANG}" ]; then
+	export GOPATH="$HOME/go"
+	export GOBIN="$GOPATH/bin"
+	export PATH=$PATH:$GOBIN
+fi
+unset _MY_GOLANG
+
 local_bin="$HOME/.local/bin"
 
 export PATH=$PATH:$local_bin

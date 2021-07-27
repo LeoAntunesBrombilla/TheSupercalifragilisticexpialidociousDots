@@ -150,7 +150,8 @@ Cfg = {
             lua_dev = false,
             rust_tools = true,
             ts_autotag = true,
-            editorconfig = false
+            editorconfig = false,
+			kitty = false,
         }
     },
     mappings = {

@@ -333,6 +333,13 @@ return packer.startup(
             disable = Cfg.plugins.extensions.rust_tools
         }
 
+		use {
+            "fladson/vim-kitty",
+            opt = true,
+            ft = "kitty",
+            disable = Cfg.plugins.extensions.kitty
+        }
+
         use {
             "windwp/nvim-ts-autotag",
             opt = true,

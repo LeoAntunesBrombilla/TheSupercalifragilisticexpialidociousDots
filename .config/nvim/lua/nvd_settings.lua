@@ -216,6 +216,11 @@ Cfg = {
         {"n", "<leader>zz", ":TZAtaraxis<CR>", {silent = true}},
         {"n", "<leader>zm", ":TZMinimalist<CR>", {silent = true}},
         {"n", "<leader>zf", ":TZFocus<CR>", {silent = true}},
+		-- luasnip
+		{"i", "<C-s>", [[<Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ]], {silent = true, expr = true}},
+		{"s", "<C-s>", [[<cmd>lua require('luasnip').jump(1)<Cr>]], {silent = true}},
+		{"i", "<C-e>", [[<cmd>lua require'luasnip'.jump(-1)<Cr>]], {silent = true, noremap = true}},
+		{"s", "<C-e>", [[<cmd>lua require('luasnip').jump(-1)<Cr>]], {silent = true, noremap = true}},
         -- neoformat
         {"n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], {silent = true}},
         -- sessions

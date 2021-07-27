@@ -16,6 +16,16 @@ Cfg = {
 			"lua",
 			"bash",
 			"vim",
+			"go",
+		},
+		treesitter_parsers = {
+			"bash",
+			"lua",
+			"go",
+			"python",
+			"rust",
+			"html",
+			"javascript",
 		}
     },
     settings = {

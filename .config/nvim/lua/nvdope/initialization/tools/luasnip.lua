@@ -3,4 +3,11 @@ if not present then
     return
 end
 
-require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.config.set_config (
+    {
+        history = true,
+        updateevents = "InsertLeave"
+    }
+)
+
+require('luasnip.loaders.from_vscode').load()

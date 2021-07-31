@@ -134,6 +134,7 @@ Cfg = {
             luasnip = false,
             friendly_snippets = false,
             neoformat = false,
+			merelyfmt = false,
             plenary = false,
             popup = false,
             telescope = false,

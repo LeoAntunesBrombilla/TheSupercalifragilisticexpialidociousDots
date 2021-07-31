@@ -49,6 +49,7 @@ return packer.startup(
 
         use {
             "nvim-treesitter/nvim-treesitter",
+			branch = "0.5-compat",
             event = "BufRead",
             config = function()
                 require("nvdope.initialization.ui.treesitter")
@@ -167,6 +168,18 @@ return packer.startup(
             "sbdchd/neoformat",
             cmd = "Neoformat",
             disable = Cfg.plugins.tools.neoformat
+        }
+
+        use {
+            "Pocco81/MerelyFmt.nvim",
+			branch = "dev",
+            cmd = {"MFInstall", "MFUninstall", "MFList"},
+            disable = Cfg.plugins.tools.merelyfmt,
+			config = function ()
+				require("merelyfmt").setup {
+					installation_path = vim.fn.stdpath("data") .. "/merelyfmt/",
+				}
+			end
         }
 
         use {
@@ -310,7 +323,7 @@ return packer.startup(
         use {
             "Pocco81/HighStr.nvim",
             branch = "dev",
-            cmd = {"HSHighlight", "HSRmHighlight"},
+            cmd = {"HSHighlight", "HSRmHighlight", "HSImport", "HSExport"},
             keys = {"<F3>", "<F4>"}, -- custome mappings
             config = function()
                 require("nvdope.initialization.utils.highstr")

@@ -5,6 +5,7 @@ end
 
 high_str.setup {
     verbosity = 0,
+	saving_path = "/tmp/highstr/",
     highlight_colors = {
         -- color_id = {"bg_hex_code",<"fg_hex_code"/"smart">}
         color_0 = {"#0c0d0e", "smart"}, -- Chartreuse yellow

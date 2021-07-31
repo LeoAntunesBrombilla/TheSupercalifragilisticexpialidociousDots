@@ -128,6 +128,7 @@ Cfg = {
             lspinstall = false,
             lspkind = false,
 			lspsaga = false,
+			lspsignature = false,
         },
         tools = {
             compe = false,

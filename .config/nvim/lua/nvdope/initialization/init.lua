@@ -136,6 +136,14 @@ return packer.startup(
 			end,
 			disable = Cfg.plugins.lsp.lspsaga
 		}
+		use {
+			"ray-x/lsp_signature.nvim",
+			event = "BufRead",
+			config = function ()
+				require("nvdope.initialization.lsp.lspsignature")
+			end,
+			disable = Cfg.plugins.lsp.lspsignature
+		}
 
         ----------------------------=== Tools ===------------------------
         use {

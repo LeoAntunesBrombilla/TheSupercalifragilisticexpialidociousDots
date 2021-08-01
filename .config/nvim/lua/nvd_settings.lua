@@ -160,6 +160,7 @@ Cfg = {
         },
         extensions = {
             lua_dev = false,
+			go = false,
             rust_tools = true,
             ts_autotag = true,
             editorconfig = false,

@@ -214,7 +214,10 @@ return packer.startup(
         use {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",
-            cmd = "Telescope",
+			after = "telescope.nvim",
+			config = function ()
+				require("telescope").load_extension("fzf")
+			end,
             disable = Cfg.plugins.tools.telescope
         }
 
@@ -359,6 +362,16 @@ return packer.startup(
             opt = true,
             ft = "kitty",
             disable = Cfg.plugins.extensions.kitty
+        }
+
+		use {
+            "ray-x/go.nvim",
+            opt = true,
+            ft = "go",
+            config = function()
+				require('go').setup()
+            end,
+            disable = Cfg.plugins.extensions.go
         }
 
         use {

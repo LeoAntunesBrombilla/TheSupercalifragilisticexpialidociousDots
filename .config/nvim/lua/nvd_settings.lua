@@ -249,10 +249,10 @@ Cfg = {
         {"n", "<Leader>ss", [[<Cmd>Lspsaga signature_help<CR>]], {silent = true}},
         {"n", "<Leader>sh", [[<Cmd>Lspsaga hover_doc<CR>]], {silent = true}},
 		-- native lsp
-        {"n", "<Leader>al", [[<Cmd>LspStart<CR>]], {silent = true}},
-        {"n", "<Leader>dl", [[<Cmd>LspStop<CR>]], {silent = true}},
-        {"n", "<Leader>rl", [[<Cmd>LspRestart<CR>]], {silent = true}},
-        {"n", "<Leader>il", [[<Cmd>LspInfo<CR>]], {silent = true}},
+        {"n", "<Leader>la", [[<Cmd>LspStart<CR>]], {silent = true}},
+        {"n", "<Leader>ls", [[<Cmd>LspStop<CR>]], {silent = true}},
+        {"n", "<Leader>lr", [[<Cmd>LspRestart<CR>]], {silent = true}},
+        {"n", "<Leader>li", [[<Cmd>LspInfo<CR>]], {silent = true}},
     },
     abbreviations = {
         -- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}

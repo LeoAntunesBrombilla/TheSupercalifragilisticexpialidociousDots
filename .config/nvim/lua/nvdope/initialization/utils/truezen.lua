@@ -35,7 +35,7 @@ true_zen.setup {
             bg_configuration = true,
 			quit = "untoggle",
             affected_higroups = {
-                NonText = {},
+                NonText = "ignore",
                 FoldColumn = {},
                 ColorColumn = {},
                 VertSplit = {},

@@ -31,5 +31,6 @@ npm
 yarn
 shc
 shellcheck
+shfmt
 mlocate
 trash-cli

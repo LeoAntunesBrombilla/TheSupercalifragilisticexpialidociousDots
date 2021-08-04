@@ -292,16 +292,6 @@ Cfg = {
         _text = {
             {"FileType", "text", "setlocal wrap spell"}
         }
-        -- _terminal = {
-        --     {"TermOpen", "term://*", "setlocal nonumber laststatus=0"}
-        -- }
-        -- _nvimtree = {
-        --     {
-        --         "BufEnter,BufWinEnter,WinEnter,CmdwinEnter",
-        --         "*",
-        --         "if bufname('%') == 'NvimTree' | setlocal laststatus=0 | endif"
-        --     }
-        -- }
     },
     highlights = {
         -- syntax: {<group>, <guifg>, <guibg>, <ctermfg>, <ctermbg>, <attr>, <guisp>}

@@ -14,8 +14,21 @@ return packer.startup(
 
         ----------------------------=== UI ===---------------------------
         use {
+            "Pocco81/Base16.nvim",
+			branch = "dev",
+            after = "packer.nvim",
+            config = function()
+                require("nvdope.initialization.ui.base16")
+            end,
+            disable = Cfg.plugins.ui.base16
+        }
+
+        use {
             "akinsho/nvim-bufferline.lua",
             after = "Base16.nvim",
+			config = function ()
+				require("nvdope.initialization.ui.bufferline")
+			end,
             disable = Cfg.plugins.ui.bufferline
         }
 
@@ -26,16 +39,6 @@ return packer.startup(
                 require("nvdope.initialization.ui.galaxyline")
             end,
             disable = Cfg.plugins.ui.galaxyline
-        }
-
-        use {
-            "Pocco81/Base16.nvim",
-			branch = "dev",
-            after = "packer.nvim",
-            config = function()
-                require("nvdope.initialization.ui.base16")
-            end,
-            disable = Cfg.plugins.ui.base16
         }
 
         use {
@@ -390,8 +393,6 @@ return packer.startup(
             event = "BufRead",
             disable = Cfg.plugins.extensions.editorconfig
         }
-
-		require("nvdope.initialization.ui.bufferline")
     end
 )
 

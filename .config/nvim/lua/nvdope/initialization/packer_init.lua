@@ -1,3 +1,4 @@
+vim.cmd("packadd packer.nvim")
 local present, packer = pcall(require, "packer")
 
 if not present then
@@ -17,6 +18,7 @@ if not present then
         }
     )
 
+    vim.cmd("packadd packer.nvim")
     present, packer = pcall(require, "packer")
 
     if present then

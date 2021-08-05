@@ -25,8 +25,8 @@ true_zen.setup {
         ataraxis = {
             left_padding = 32,
             right_padding = 32,
-            top_padding = 2,
-            bottom_padding = 2,
+            top_padding = 1,
+            bottom_padding = 1,
             ideal_writing_area_width = {30, 90, "max"},
             just_do_it_for_me = true,
             keep_default_fold_fillchars = true,

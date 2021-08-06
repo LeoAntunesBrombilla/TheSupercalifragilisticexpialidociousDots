@@ -50,12 +50,12 @@ else
 fi
 #----personal info----#
 
-u_name="#Name: Sebastian"
+u_name="#Name: test"
 personal_i1=$(cat << EOF
 #----------↓↓----------#
 $u_name
 #Nickname: $USER
-#Gmail: sebastiancadavid5758@gmail.com
+#Gmail: testcadavid5758@gmail.com
 #GitHub: @$USER
 #----------↓↓----------#
 EOF

@@ -3,18 +3,18 @@ require "lspconfig"["efm"].setup {
 	capabilities = require("nvdope.initialization.lsp.capabilities").common(),
     filetypes = {
         "lua",
-		"go",
-        -- "python",
-        -- "json",
-        "javascriptreact",
-        -- "javascript",
-        "typescript",
-        "typescriptreact",
+		-- "go", -- not recommended
+        -- "python", -- not recommended
+        -- "json", -- not recommended
+        -- "javascriptreact",
+        -- "javascript", -- maybbe?
+        -- "typescript",
+        -- "typescriptreact",
         "sh",
         "html",
         "css",
         "yaml",
         "markdown",
-        "vue"
+        -- "vue"
     },
 }

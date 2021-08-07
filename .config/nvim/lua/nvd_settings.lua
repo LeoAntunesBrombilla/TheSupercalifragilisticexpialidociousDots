@@ -213,8 +213,8 @@ Cfg = {
         -- tagbar
         {"n", "<A-w>", "TagbarToggle<CR>", {noremap = true, silent = true}},
         -- highstr
-        {"v", "<F3>", ":<c-u>HSHighlight<CR>", {noremap = true, silent = true}},
-        {"v", "<F4>", ":<c-u>HSRmHighlight<CR>", {noremap = true, silent = true}},
+        {"v", "<leader>h", ":<c-u>HSHighlight<CR>", {noremap = true, silent = true}},
+        {"v", "<leader>n", ":<c-u>HSRmHighlight<CR>", {noremap = true, silent = true}},
         -- truezen
         {"n", "<leader>zz", ":TZAtaraxis<CR>", {silent = true}},
         {"n", "<leader>zm", ":TZMinimalist<CR>", {silent = true}},

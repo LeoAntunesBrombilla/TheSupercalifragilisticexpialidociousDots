@@ -478,14 +478,15 @@ local function hook_theme()
     Cfg.highlights[#Cfg.highlights + 1] = {"EndOfBuffer", thm.black, nil, nil, nil, nil, nil}
     Cfg.highlights[#Cfg.highlights + 1] = {"StatusLineNC", thm.line, nil, nil, nil, "underline", nil} -- make inactive statusline a thin line
 
-    -- indent_blankline
-    Cfg.highlights[#Cfg.highlights + 1] = {"IndentBlanklineChar", thm.line, nil, nil, nil, nil, nil}
 
     -- pmenu
     Cfg.highlights[#Cfg.highlights + 1] = {"Pmenu", nil, thm.one_bg, nil, nil, nil, nil}
     Cfg.highlights[#Cfg.highlights + 1] = {"PmenuSbar", nil, thm.one_bg2, nil, nil, nil, nil}
     Cfg.highlights[#Cfg.highlights + 1] = {"PmenuSel", nil, thm.green, nil, nil, nil, nil}
     Cfg.highlights[#Cfg.highlights + 1] = {"PmenuThumb", nil, thm.nord_blue, nil, nil, nil, nil}
+
+    -- indent_blankline
+    Cfg.highlights[#Cfg.highlights + 1] = {"IndentBlanklineChar", thm.line, nil, nil, nil, nil, nil}
 
     -- gitsings
     Cfg.highlights[#Cfg.highlights + 1] = {"DiffAdd", thm.nord_blue, "NONE", nil, nil, nil, nil}
@@ -546,6 +547,10 @@ local function hook_theme()
     Cfg.highlights[#Cfg.highlights + 1] = {"NormalFloat", nil, thm.black2, nil, nil, nil, nil}
     Cfg.highlights[#Cfg.highlights + 1] = {"FloatBorder", nil, thm.black2, nil, nil, nil, nil}
     Cfg.highlights[#Cfg.highlights + 1] = {"FloatBorder", thm.black2, nil, nil, nil, nil, nil}
+
+	-- floating windows
+    Cfg.highlights[#Cfg.highlights + 1] = {"NormalFloat", nil, "NONE", nil, nil, nil, nil}
+    Cfg.highlights[#Cfg.highlights + 1] = {"FloatBorder", thm.blue, "NONE", nil, nil, nil, nil}
 end
 
 local function run_hooks()

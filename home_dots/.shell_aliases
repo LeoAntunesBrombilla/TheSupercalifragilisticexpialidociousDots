@@ -60,6 +60,8 @@ alias nbuscore='echo -e "\033[4 q"'     #not blinking underscore
 #-------------------=== Python ===-------------------------------
 alias pthn="python3.8"
 
+#-------------------=== Go ===-----------------------------------
+alias goi="go mod init test"
 
 #-------------------=== Java ===-------------------------------
 # visit this links in case you want to install java:
@@ -67,7 +69,6 @@ alias pthn="python3.8"
 
 alias cjava='update-alternatives --config java' #change java version
 alias scjava='sudo update-alternatives --config java' #change java version
-
 
 #-------------------=== aliases ===-------------------------------
 #terminal aliases

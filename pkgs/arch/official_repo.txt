@@ -34,3 +34,4 @@ shellcheck
 shfmt
 mlocate
 trash-cli
+cowsay

@@ -142,6 +142,7 @@ return packer.startup(
 		use {
 			"ray-x/lsp_signature.nvim",
 			event = "BufRead",
+			commit = "4f9fadffe1dea21cd465f5acbf00f702fca5580b",
 			config = function ()
 				require("nvdope.initialization.lsp.lspsignature")
 			end,

@@ -34,6 +34,7 @@ true_zen.setup {
 			custom_bg = {"none", ""},
             bg_configuration = true,
 			quit = "untoggle",
+			ignore_floating_windows = true,
             affected_higroups = {
                 NonText = "ignore",
                 FoldColumn = {},

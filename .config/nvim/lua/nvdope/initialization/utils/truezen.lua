@@ -62,7 +62,8 @@ true_zen.setup {
         vim_powerline = false,
         vim_signify = false,
         express_line = false,
-        lualine = false
+        lualine = false,
+		lightline = false
     },
     misc = {
         on_off_commands = true,

@@ -147,8 +147,8 @@ Cfg = {
             vvm = false
         },
         debug = {
-            dap = true,
-            dap_install = true
+            dap = false,
+            dap_install = false
         },
         utils = {
             startuptime = false,

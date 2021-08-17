@@ -275,21 +275,21 @@ return packer.startup(
             "mfussenegger/nvim-dap",
             opt = true,
             event = "VimEnter",
-            config = function()
-                require("nvdope.initialization.debug.dap")
-            end,
+            -- config = function()
+            --     require("nvdope.initialization.debug.dap")
+            -- end,
             disable = Cfg.plugins.debug.dap
         }
 
         use {
-            "Pocco81/DAPInstall",
+            "Pocco81/DAPInstall.nvim",
             branch = "dev",
             opt = true,
             after = "nvim-dap",
-            config = function()
-                require("nvdope.initialization.debug.dap_install")
-            end,
-            disable = Cfg.plugins.debug.dap_install
+            -- config = function()
+            --     require("nvdope.initialization.debug.dap_install")
+            -- end,
+            -- disable = Cfg.plugins.debug.dap_install
         }
 
         ----------------------------=== Utils ===-------------------------
@@ -307,6 +307,14 @@ return packer.startup(
                 require("nvdope.initialization.utils.autosave")
             end,
             disable = Cfg.plugins.utils.autosave
+        }
+
+        use {
+            "akinsho/nvim-toggleterm.lua",
+            event = "BufRead",
+            config = function()
+				require("toggleterm").setup()
+            end,
         }
 
         use {

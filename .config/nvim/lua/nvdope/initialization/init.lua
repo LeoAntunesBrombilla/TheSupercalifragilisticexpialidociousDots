@@ -18,47 +18,7 @@ return packer.startup(
             branch = "dev",
             after = "nvim-bufferline.lua", -- becuase catppuccino overrides highlights and not the other way around
             config = function()
-                require("catppuccino").setup(
-                    {
-                        colorscheme = "neon_latte",
-                        transparency = false,
-                        styles = {
-                            comments = "italic",
-                            fuctions = "italic",
-                            keywords = "italic",
-                            strings = "NONE",
-                            variables = "NONE"
-                        },
-                        integrations = {
-                            treesitter = true,
-                            native_lsp = {
-                                enabled = true,
-                                styles = {
-                                    errors = "italic",
-                                    hints = "italic",
-                                    warnings = "italic",
-                                    information = "italic"
-                                }
-                            },
-                            lsp_trouble = false,
-                            lsp_saga = true,
-                            gitgutter = false,
-                            gitsigns = true,
-                            telescope = true,
-                            nvimtree = true,
-                            which_key = false,
-                            indent_blankline = true,
-                            dashboard = true,
-                            neogit = false,
-                            vim_sneak = false,
-                            fern = false,
-                            barbar = false,
-                            bufferline = true,
-							markdown = true,
-                        }
-                    }
-                )
-                require("catppuccino").load()
+                require("nvdope.initialization.ui.catppuccino")
             end,
             disable = Cfg.plugins.ui.base16
         }

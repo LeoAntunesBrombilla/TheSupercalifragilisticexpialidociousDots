@@ -77,7 +77,7 @@ _G.packer_plugins = {
   },
   ["Catppuccino.nvim"] = {
     after = { "galaxyline.nvim", "nvim-web-devicons" },
-    config = { "\27LJ\1\2ˆ\4\0\0\5\0\f\0\0204\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0003\2\4\0:\2\5\0013\2\6\0003\3\a\0003\4\b\0:\4\5\3:\3\t\2:\2\n\1>\0\2\0014\0\0\0%\1\1\0>\0\2\0027\0\v\0>\0\1\1G\0\1\0\tload\17integrations\15native_lsp\1\0\4\16information\vitalic\rwarnings\vitalic\verrors\vitalic\nhints\vitalic\1\0\1\fenabled\2\1\0\16\15treesitter\2\14vim_sneak\1\rgitsigns\2\14which_key\1\14dashboard\2\rnvimtree\2\16lsp_trouble\1\rmarkdown\2\15bufferline\2\vbarbar\1\21indent_blankline\2\rlsp_saga\2\tfern\1\14telescope\2\vneogit\1\14gitgutter\1\vstyles\1\0\5\rcomments\vitalic\14variables\tNONE\rfuctions\vitalic\rkeywords\vitalic\fstrings\tNONE\1\0\2\17transparency\1\16colorscheme\15neon_latte\nsetup\16catppuccino\frequire\0" },
+    config = { "\27LJ\1\2D\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0)nvdope.initialization.ui.catppuccino\frequire\0" },
     load_after = {
       ["nvim-bufferline.lua"] = true
     },
@@ -407,9 +407,9 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

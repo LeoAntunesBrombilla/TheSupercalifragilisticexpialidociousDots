@@ -14,27 +14,67 @@ return packer.startup(
 
         ----------------------------=== UI ===---------------------------
         use {
-            "Pocco81/Base16.nvim",
-			branch = "dev",
-            after = "packer.nvim",
+            "Pocco81/Catppuccino.nvim",
+            branch = "dev",
+            after = "nvim-bufferline.lua", -- becuase catppuccino overrides highlights and not the other way around
             config = function()
-                require("nvdope.initialization.ui.base16")
+                require("catppuccino").setup(
+                    {
+                        colorscheme = "neon_latte",
+                        transparency = false,
+                        styles = {
+                            comments = "italic",
+                            fuctions = "italic",
+                            keywords = "italic",
+                            strings = "NONE",
+                            variables = "NONE"
+                        },
+                        integrations = {
+                            treesitter = true,
+                            native_lsp = {
+                                enabled = true,
+                                styles = {
+                                    errors = "italic",
+                                    hints = "italic",
+                                    warnings = "italic",
+                                    information = "italic"
+                                }
+                            },
+                            lsp_trouble = false,
+                            lsp_saga = true,
+                            gitgutter = false,
+                            gitsigns = true,
+                            telescope = true,
+                            nvimtree = true,
+                            which_key = false,
+                            indent_blankline = true,
+                            dashboard = true,
+                            neogit = false,
+                            vim_sneak = false,
+                            fern = false,
+                            barbar = false,
+                            bufferline = true,
+							markdown = true,
+                        }
+                    }
+                )
+                require("catppuccino").load()
             end,
             disable = Cfg.plugins.ui.base16
         }
 
         use {
             "akinsho/nvim-bufferline.lua",
-            after = "Base16.nvim",
-			config = function ()
-				require("nvdope.initialization.ui.bufferline")
-			end,
+            after = "packer.nvim",
+            config = function()
+                require("nvdope.initialization.ui.bufferline")
+            end,
             disable = Cfg.plugins.ui.bufferline
         }
 
         use {
             "glepnir/galaxyline.nvim",
-            after = "Base16.nvim",
+            after = "Catppuccino.nvim",
             config = function()
                 require("nvdope.initialization.ui.galaxyline")
             end,
@@ -52,7 +92,7 @@ return packer.startup(
 
         use {
             "nvim-treesitter/nvim-treesitter",
-			branch = "0.5-compat",
+            branch = "0.5-compat",
             event = "BufRead",
             config = function()
                 require("nvdope.initialization.ui.treesitter")
@@ -71,7 +111,7 @@ return packer.startup(
 
         use {
             "kyazdani42/nvim-web-devicons",
-            after = "Base16.nvim",
+            after = "Catppuccino.nvim",
             config = function()
                 require("nvdope.initialization.ui.web_devicons")
             end,
@@ -130,24 +170,24 @@ return packer.startup(
             end,
             disable = Cfg.plugins.lsp.lspkind
         }
-		
-		use {
-			"glepnir/lspsaga.nvim",
-			event = "BufRead",
-			config = function ()
-				require("nvdope.initialization.lsp.lspsaga")
-			end,
-			disable = Cfg.plugins.lsp.lspsaga
-		}
-		use {
-			"ray-x/lsp_signature.nvim",
-			event = "BufRead",
-			commit = "4f9fadffe1dea21cd465f5acbf00f702fca5580b",
-			config = function ()
-				require("nvdope.initialization.lsp.lspsignature")
-			end,
-			disable = Cfg.plugins.lsp.lspsignature
-		}
+
+        use {
+            "glepnir/lspsaga.nvim",
+            event = "BufRead",
+            config = function()
+                require("nvdope.initialization.lsp.lspsaga")
+            end,
+            disable = Cfg.plugins.lsp.lspsaga
+        }
+        use {
+            "ray-x/lsp_signature.nvim",
+            event = "BufRead",
+            commit = "4f9fadffe1dea21cd465f5acbf00f702fca5580b",
+            config = function()
+                require("nvdope.initialization.lsp.lspsignature")
+            end,
+            disable = Cfg.plugins.lsp.lspsignature
+        }
 
         ----------------------------=== Tools ===------------------------
         use {
@@ -163,7 +203,7 @@ return packer.startup(
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-						require("nvdope.initialization.tools.luasnip")
+                        require("nvdope.initialization.tools.luasnip")
                     end,
                     disable = Cfg.plugins.tools.luasnip
                 },
@@ -184,14 +224,14 @@ return packer.startup(
 
         use {
             "Pocco81/MerelyFmt.nvim",
-			branch = "dev",
+            branch = "dev",
             cmd = {"MFInstall", "MFUninstall", "MFList"},
             disable = Cfg.plugins.tools.merelyfmt,
-			config = function ()
-				require("merelyfmt").setup {
-					installation_path = vim.fn.stdpath("data") .. "/merelyfmt/",
-				}
-			end
+            config = function()
+                require("merelyfmt").setup {
+                    installation_path = vim.fn.stdpath("data") .. "/merelyfmt/"
+                }
+            end
         }
 
         use {
@@ -218,10 +258,10 @@ return packer.startup(
         use {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",
-			after = "telescope.nvim",
-			config = function ()
-				require("telescope").load_extension("fzf")
-			end,
+            after = "telescope.nvim",
+            config = function()
+                require("telescope").load_extension("fzf")
+            end,
             disable = Cfg.plugins.tools.telescope
         }
 
@@ -285,7 +325,7 @@ return packer.startup(
             "Pocco81/DAPInstall.nvim",
             branch = "dev",
             opt = true,
-            after = "nvim-dap",
+            after = "nvim-dap"
             -- config = function()
             --     require("nvdope.initialization.debug.dap_install")
             -- end,
@@ -313,8 +353,8 @@ return packer.startup(
             "akinsho/nvim-toggleterm.lua",
             event = "BufRead",
             config = function()
-				require("toggleterm").setup()
-            end,
+                require("toggleterm").setup()
+            end
         }
 
         use {
@@ -369,19 +409,19 @@ return packer.startup(
             disable = Cfg.plugins.extensions.rust_tools
         }
 
-		use {
+        use {
             "fladson/vim-kitty",
             opt = true,
             ft = "kitty",
             disable = Cfg.plugins.extensions.kitty
         }
 
-		use {
+        use {
             "ray-x/go.nvim",
             opt = true,
             ft = "go",
             config = function()
-				require('go').setup()
+                require("go").setup()
             end,
             disable = Cfg.plugins.extensions.go
         }
@@ -404,4 +444,3 @@ return packer.startup(
         }
     end
 )
-

@@ -16,11 +16,13 @@ Cfg = {
             "lua",
             "bash",
             "vim",
-            "go"
+            "go",
+			"cpp",
         },
         treesitter_parsers = {
             "bash",
             "lua",
+			"c",
             "go",
             "python",
             "rust",
@@ -302,7 +304,7 @@ Cfg = {
         {"Repeat", nil, nil, nil, nil, "italic", nil},
         {"Function", nil, nil, nil, nil, "italic", nil},
         {"Float", nil, nil, nil, nil, "bold", nil},
-        {"CursorLine", nil, "#18232e", nil, nil, nil, nil}
+        -- {"CursorLine", nil, "#18232e", nil, nil, nil, nil}
     },
     themes = {
         onedark = {
@@ -557,4 +559,4 @@ local function run_hooks()
     hook_theme()
 end
 
-run_hooks()
+-- run_hooks()

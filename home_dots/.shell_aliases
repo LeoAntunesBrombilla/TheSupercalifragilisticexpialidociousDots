@@ -200,8 +200,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # =============================================================================
 # LUA
 # =============================================================================
-
-#-------------------=== aliases ===-------------------------------
 alias lau="lua"
 alias ual="lua"
 alias aul="lua"
@@ -268,4 +266,5 @@ alias icat="kitty +kitten icat"
 alias load="kill -USR1 $(pidof st)"
 alias use="xrdb merge"
 alias appit="/usr/local/bin/appimagetool-x86_64.AppImage"
+alias pls="sudo"
 

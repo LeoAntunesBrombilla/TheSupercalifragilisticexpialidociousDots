@@ -9,7 +9,7 @@ catppuccino.setup(
         transparency = false,
         styles = {
             comments = "italic",
-            fuctions = "italic",
+            functions = "italic",
             keywords = "italic",
             strings = "NONE",
             variables = "NONE"

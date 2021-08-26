@@ -30,7 +30,10 @@ catppuccino.setup(
             gitgutter = false,
             gitsigns = true,
             telescope = true,
-            nvimtree = true,
+			nvimtree = {
+				enabled = true,
+				show_root = false,
+			},
             which_key = false,
             indent_blankline = true,
             dashboard = true,

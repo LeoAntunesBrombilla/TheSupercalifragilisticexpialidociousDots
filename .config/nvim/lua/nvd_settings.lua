@@ -27,7 +27,9 @@ Cfg = {
             "python",
             "rust",
             "html",
-            "javascript"
+            "javascript",
+			"toml",
+			"json"
         }
     },
     settings = {

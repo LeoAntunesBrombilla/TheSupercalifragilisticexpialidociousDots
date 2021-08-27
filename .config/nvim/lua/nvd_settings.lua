@@ -18,6 +18,7 @@ Cfg = {
             "vim",
             "go",
 			"cpp",
+			"typescript"
         },
         treesitter_parsers = {
             "bash",
@@ -28,6 +29,7 @@ Cfg = {
             "rust",
             "html",
             "javascript",
+			"typescript",
 			"toml",
 			"json"
         }

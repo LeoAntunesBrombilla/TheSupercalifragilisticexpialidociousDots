@@ -1,406 +1,405 @@
 local present, _ = pcall(require, "nvdope.initialization.packer_init")
 
 if present then
-    packer = require "packer"
+	packer = require("packer")
 else
-    return false
+	return false
 end
 
 local use = packer.use
 
-return packer.startup(
-    function()
-        use {"wbthomason/packer.nvim", event = "VimEnter"}
+return packer.startup(function()
+	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
-        ----------------------------=== UI ===---------------------------
-        use {
-            "Pocco81/Catppuccino.nvim",
-            branch = "dev",
-            after = "nvim-bufferline.lua", -- becuase catppuccino overrides highlights and not the other way around
-            config = function()
-                require("nvdope.initialization.ui.catppuccino")
-            end,
-            disable = Cfg.plugins.ui.base16
-        }
+	----------------------------=== UI ===---------------------------
+	use({
+		"Pocco81/Catppuccino.nvim",
+		branch = "dev",
+		after = "nvim-bufferline.lua", -- becuase catppuccino overrides highlights and not the other way around
+		config = function()
+			require("nvdope.initialization.ui.catppuccino")
+		end,
+		disable = Cfg.plugins.ui.base16,
+	})
 
-        use {
-            "akinsho/nvim-bufferline.lua",
-            after = "packer.nvim",
-            config = function()
-                require("nvdope.initialization.ui.bufferline")
-            end,
-            disable = Cfg.plugins.ui.bufferline
-        }
+	use({
+		"akinsho/nvim-bufferline.lua",
+		after = "packer.nvim",
+		config = function()
+			require("nvdope.initialization.ui.bufferline")
+		end,
+		disable = Cfg.plugins.ui.bufferline,
+	})
 
-        use {
-            "glepnir/galaxyline.nvim",
-            after = "Catppuccino.nvim",
-            config = function()
-                require("nvdope.initialization.ui.galaxyline")
-            end,
-            disable = Cfg.plugins.ui.galaxyline
-        }
+	use({
+		"glepnir/galaxyline.nvim",
+		after = "Catppuccino.nvim",
+		config = function()
+			require("nvdope.initialization.ui.galaxyline")
+		end,
+		disable = Cfg.plugins.ui.galaxyline,
+	})
 
-        use {
-            "norcalli/nvim-colorizer.lua",
-            event = "BufRead",
-            config = function()
-                require("nvdope.initialization.ui.colorizer")
-            end,
-            disable = Cfg.plugins.ui.colorizer
-        }
+	use({
+		"norcalli/nvim-colorizer.lua",
+		event = "BufRead",
+		config = function()
+			require("nvdope.initialization.ui.colorizer")
+		end,
+		disable = Cfg.plugins.ui.colorizer,
+	})
 
-        use {
-            "nvim-treesitter/nvim-treesitter",
-            branch = "0.5-compat",
-            event = "BufRead",
-            config = function()
-                require("nvdope.initialization.ui.treesitter")
-            end,
-            disable = Cfg.plugins.ui.treesitter
-        }
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		branch = "0.5-compat",
+		event = "BufRead",
+		config = function()
+			require("nvdope.initialization.ui.treesitter")
+		end,
+		disable = Cfg.plugins.ui.treesitter,
+	})
 
-        use {
-            "kyazdani42/nvim-tree.lua",
-            cmd = "NvimTreeToggle",
-            config = function()
-                require("nvdope.initialization.ui.tree")
-            end,
-            disable = Cfg.plugins.ui.tree
-        }
+	use({
+		"kyazdani42/nvim-tree.lua",
+		cmd = "NvimTreeToggle",
+		config = function()
+			require("nvdope.initialization.ui.tree")
+		end,
+		disable = Cfg.plugins.ui.tree,
+	})
 
-        use {
-            "kyazdani42/nvim-web-devicons",
-            after = "Catppuccino.nvim",
-            config = function()
-                require("nvdope.initialization.ui.web_devicons")
-            end,
-            disable = Cfg.plugins.ui.web_devicons
-        }
+	use({
+		"kyazdani42/nvim-web-devicons",
+		after = "Catppuccino.nvim",
+		config = function()
+			require("nvdope.initialization.ui.web_devicons")
+		end,
+		disable = Cfg.plugins.ui.web_devicons,
+	})
 
-        use {
-            "lukas-reineke/indent-blankline.nvim",
-            event = "BufRead",
-            setup = function()
-                require("nvdope.initialization.ui.indent_blankline")
-            end,
-            disable = Cfg.plugins.ui.indent_blankline
-        }
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufRead",
+		setup = function()
+			require("nvdope.initialization.ui.indent_blankline")
+		end,
+		disable = Cfg.plugins.ui.indent_blankline,
+	})
 
-        use {
-            "glepnir/dashboard-nvim",
-            event = "BufWinEnter",
-            setup = function()
-                require("nvdope.initialization.ui.dashboard")
-            end,
-            disable = Cfg.plugins.ui.dashboard
-        }
+	use({
+		"glepnir/dashboard-nvim",
+		event = "BufWinEnter",
+		setup = function()
+			require("nvdope.initialization.ui.dashboard")
+		end,
+		disable = Cfg.plugins.ui.dashboard,
+	})
 
-        use {
-            "folke/twilight.nvim",
-            opt = true,
-            cmd = {"Twilight", "TwilightEnable", "TwilightDisable"},
-            config = function()
-                require("nvdope.initialization.ui.twilight")
-            end,
-            disable = Cfg.plugins.ui.twilight
-        }
+	use({
+		"folke/twilight.nvim",
+		opt = true,
+		cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
+		config = function()
+			require("nvdope.initialization.ui.twilight")
+		end,
+		disable = Cfg.plugins.ui.twilight,
+	})
 
-        ----------------------------=== LSP ===--------------------------
-        use {
-            "kabouzeid/nvim-lspinstall",
-            event = "BufRead",
-            disable = Cfg.plugins.lsp.lspinstall
-        }
+	----------------------------=== LSP ===--------------------------
+	use({
+		"kabouzeid/nvim-lspinstall",
+		event = "BufRead",
+		disable = Cfg.plugins.lsp.lspinstall,
+	})
 
-        use {
-            "neovim/nvim-lspconfig",
-            after = "nvim-lspinstall",
-            config = function()
-                require("nvdope.initialization.lsp.lspconfig")
-            end,
-            disable = Cfg.plugins.lsp.lspconfig
-        }
+	use({
+		"neovim/nvim-lspconfig",
+		after = "nvim-lspinstall",
+		config = function()
+			require("nvdope.initialization.lsp.lspconfig")
+		end,
+		disable = Cfg.plugins.lsp.lspconfig,
+	})
 
-        use {
-            "onsails/lspkind-nvim",
-            event = "BufRead",
-            config = function()
-                require("nvdope.initialization.lsp.lspkind")
-            end,
-            disable = Cfg.plugins.lsp.lspkind
-        }
+	use({
+		"onsails/lspkind-nvim",
+		event = "BufRead",
+		config = function()
+			require("nvdope.initialization.lsp.lspkind")
+		end,
+		disable = Cfg.plugins.lsp.lspkind,
+	})
 
-        use {
-            "glepnir/lspsaga.nvim",
-            event = "BufRead",
-            config = function()
-                require("nvdope.initialization.lsp.lspsaga")
-            end,
-            disable = Cfg.plugins.lsp.lspsaga
-        }
-        use {
-            "ray-x/lsp_signature.nvim",
-            event = "BufRead",
-            commit = "4f9fadffe1dea21cd465f5acbf00f702fca5580b",
-            config = function()
-                require("nvdope.initialization.lsp.lspsignature")
-            end,
-            disable = Cfg.plugins.lsp.lspsignature
-        }
+	use({
+		"glepnir/lspsaga.nvim",
+		event = "BufRead",
+		config = function()
+			require("nvdope.initialization.lsp.lspsaga")
+		end,
+		disable = Cfg.plugins.lsp.lspsaga,
+	})
+	use({
+		"ray-x/lsp_signature.nvim",
+		event = "BufRead",
+		commit = "4f9fadffe1dea21cd465f5acbf00f702fca5580b",
+		config = function()
+			require("nvdope.initialization.lsp.lspsignature")
+		end,
+		disable = Cfg.plugins.lsp.lspsignature,
+	})
 
-        ----------------------------=== Tools ===------------------------
-        use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
-            config = function()
-                require("nvdope.initialization.tools.compe")
-            end,
-            wants = {"LuaSnip"},
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require("nvdope.initialization.tools.luasnip")
-                    end,
-                    disable = Cfg.plugins.tools.luasnip
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre",
-                    disable = Cfg.plugins.tools.friendly_snippets
-                }
-            },
-            disable = Cfg.plugins.tools.compe
-        }
+	----------------------------=== Tools ===------------------------
+	use({
+		"hrsh7th/nvim-compe",
+		event = "InsertEnter",
+		config = function()
+			require("nvdope.initialization.tools.compe")
+		end,
+		wants = { "LuaSnip" },
+		requires = {
+			{
+				"L3MON4D3/LuaSnip",
+				wants = "friendly-snippets",
+				event = "InsertCharPre",
+				config = function()
+					require("nvdope.initialization.tools.luasnip")
+				end,
+				disable = Cfg.plugins.tools.luasnip,
+			},
+		},
+		disable = Cfg.plugins.tools.compe,
+	})
 
-        use {
-            "sbdchd/neoformat",
-            cmd = "Neoformat",
-            disable = Cfg.plugins.tools.neoformat
-        }
+	use({
+		"rafamadriz/friendly-snippets",
+		event = "VimEnter",
+		disable = Cfg.plugins.tools.friendly_snippets,
+	})
 
-        use {
-            "Pocco81/MerelyFmt.nvim",
-            branch = "dev",
-            cmd = {"MFInstall", "MFUninstall", "MFList"},
-            disable = Cfg.plugins.tools.merelyfmt,
-            config = function()
-                require("merelyfmt").setup {
-                    installation_path = vim.fn.stdpath("data") .. "/merelyfmt/"
-                }
-            end
-        }
+	use({
+		"sbdchd/neoformat",
+		cmd = "Neoformat",
+		disable = Cfg.plugins.tools.neoformat,
+	})
 
-        use {
-            "nvim-lua/plenary.nvim",
-            event = "BufRead",
-            disable = Cfg.plugins.tools.plenary
-        }
+	use({
+		"Pocco81/MerelyFmt.nvim",
+		branch = "dev",
+		cmd = { "MFInstall", "MFUninstall", "MFList" },
+		disable = Cfg.plugins.tools.merelyfmt,
+		config = function()
+			require("merelyfmt").setup({
+				installation_path = vim.fn.stdpath("data") .. "/merelyfmt/",
+			})
+		end,
+	})
 
-        use {
-            "nvim-lua/popup.nvim",
-            after = "plenary.nvim",
-            disable = Cfg.plugins.tools.popup
-        }
+	use({
+		"nvim-lua/plenary.nvim",
+		event = "BufRead",
+		disable = Cfg.plugins.tools.plenary,
+	})
 
-        use {
-            "nvim-telescope/telescope.nvim",
-            cmd = "Telescope",
-            config = function()
-                require("nvdope.initialization.tools.telescope")
-            end,
-            disable = Cfg.plugins.tools.telescope
-        }
+	use({
+		"nvim-lua/popup.nvim",
+		after = "plenary.nvim",
+		disable = Cfg.plugins.tools.popup,
+	})
 
-        use {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-            after = "telescope.nvim",
-            config = function()
-                require("telescope").load_extension("fzf")
-            end,
-            disable = Cfg.plugins.tools.telescope
-        }
+	use({
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		config = function()
+			require("nvdope.initialization.tools.telescope")
+		end,
+		disable = Cfg.plugins.tools.telescope,
+	})
 
-        use {
-            "lewis6991/gitsigns.nvim",
-            after = "plenary.nvim",
-            config = function()
-                require("nvdope.initialization.tools.gitsigns")
-            end,
-            disable = Cfg.plugins.tools.gitsigns
-        }
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+		after = "telescope.nvim",
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
+		disable = Cfg.plugins.tools.telescope,
+	})
 
-        use {
-            "windwp/nvim-autopairs",
-            after = "nvim-compe",
-            config = function()
-                require("nvdope.initialization.tools.autopairs")
-            end,
-            disable = Cfg.plugins.tools.autopairs
-        }
+	use({
+		"lewis6991/gitsigns.nvim",
+		after = "plenary.nvim",
+		config = function()
+			require("nvdope.initialization.tools.gitsigns")
+		end,
+		disable = Cfg.plugins.tools.gitsigns,
+	})
 
-        use {
-            "andymass/vim-matchup",
-            event = "CursorMoved",
-            disable = Cfg.plugins.tools.matchup
-        }
+	use({
+		"windwp/nvim-autopairs",
+		after = "nvim-compe",
+		config = function()
+			require("nvdope.initialization.tools.autopairs")
+		end,
+		disable = Cfg.plugins.tools.autopairs,
+	})
 
-        use {
-            "Asheq/close-buffers.vim",
-            opt = true,
-            event = "BufRead",
-            disable = Cfg.plugins.tools.close_buffers
-        }
+	use({
+		"andymass/vim-matchup",
+		event = "CursorMoved",
+		disable = Cfg.plugins.tools.matchup,
+	})
 
-        use {
-            "reedes/vim-pencil",
-            opt = true,
-            cmd = {"Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil"},
-            disable = Cfg.plugins.tools.pencil
-        }
+	use({
+		"Asheq/close-buffers.vim",
+		opt = true,
+		event = "BufRead",
+		disable = Cfg.plugins.tools.close_buffers,
+	})
 
-        use {
-            "mg979/vim-visual-multi",
-            opt = true,
-            event = "CursorMoved",
-            disable = Cfg.plugins.tools.vvm
-        }
+	use({
+		"reedes/vim-pencil",
+		opt = true,
+		cmd = { "Pencil", "NoPencil", "TogglePencil", "SoftPencil", "HardPencil" },
+		disable = Cfg.plugins.tools.pencil,
+	})
 
-        ----------------------------=== Debug ===--------------------------
-        use {
-            "mfussenegger/nvim-dap",
-            opt = true,
-            event = "VimEnter",
-            -- config = function()
-            --     require("nvdope.initialization.debug.dap")
-            -- end,
-            disable = Cfg.plugins.debug.dap
-        }
+	use({
+		"mg979/vim-visual-multi",
+		opt = true,
+		event = "CursorMoved",
+		disable = Cfg.plugins.tools.vvm,
+	})
 
-        use {
-            "Pocco81/DAPInstall.nvim",
-            branch = "dev",
-            opt = true,
-            after = "nvim-dap"
-            -- config = function()
-            --     require("nvdope.initialization.debug.dap_install")
-            -- end,
-            -- disable = Cfg.plugins.debug.dap_install
-        }
+	----------------------------=== Debug ===--------------------------
+	use({
+		"mfussenegger/nvim-dap",
+		opt = true,
+		event = "VimEnter",
+		-- config = function()
+		--     require("nvdope.initialization.debug.dap")
+		-- end,
+		disable = Cfg.plugins.debug.dap,
+	})
 
-        ----------------------------=== Utils ===-------------------------
-        use {
-            "tweekmonster/startuptime.vim",
-            cmd = "StartupTime",
-            disable = Cfg.plugins.utils.startuptime
-        }
+	use({
+		"Pocco81/DAPInstall.nvim",
+		branch = "dev",
+		opt = true,
+		after = "nvim-dap",
+		-- config = function()
+		--     require("nvdope.initialization.debug.dap_install")
+		-- end,
+		-- disable = Cfg.plugins.debug.dap_install
+	})
 
-        use {
-            "Pocco81/AutoSave.nvim",
-            branch = "dev",
-            event = "BufRead",
-            config = function()
-                require("nvdope.initialization.utils.autosave")
-            end,
-            disable = Cfg.plugins.utils.autosave
-        }
+	----------------------------=== Utils ===-------------------------
+	use({
+		"tweekmonster/startuptime.vim",
+		cmd = "StartupTime",
+		disable = Cfg.plugins.utils.startuptime,
+	})
 
-        use {
-            "akinsho/nvim-toggleterm.lua",
-            event = "BufRead",
-            config = function()
-                require("toggleterm").setup()
-            end
-        }
+	use({
+		"Pocco81/AutoSave.nvim",
+		branch = "dev",
+		event = "BufRead",
+		config = function()
+			require("nvdope.initialization.utils.autosave")
+		end,
+		disable = Cfg.plugins.utils.autosave,
+	})
 
-        use {
-            "tpope/vim-commentary",
-            opt = true,
-            keys = "gc",
-            disable = Cfg.plugins.utils.commentary
-        }
+	use({
+		"akinsho/nvim-toggleterm.lua",
+		event = "BufRead",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
 
-        use {
-            "karb94/neoscroll.nvim",
-            event = "WinScrolled",
-            config = function()
-                require("nvdope.initialization.utils.neoscroll")
-            end,
-            disable = Cfg.plugins.utils.neoscroll
-        }
+	use({
+		"tpope/vim-commentary",
+		opt = true,
+		keys = "gc",
+		disable = Cfg.plugins.utils.commentary,
+	})
 
-        use {
-            "Pocco81/TrueZen.nvim",
-            branch = "dev",
-            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
-            config = function()
-                require("nvdope.initialization.utils.truezen")
-            end,
-            disable = Cfg.plugins.utils.truezen
-        }
+	use({
+		"karb94/neoscroll.nvim",
+		event = "WinScrolled",
+		config = function()
+			require("nvdope.initialization.utils.neoscroll")
+		end,
+		disable = Cfg.plugins.utils.neoscroll,
+	})
 
-        use {
-            "Pocco81/HighStr.nvim",
-            branch = "dev",
-            cmd = {"HSHighlight", "HSRmHighlight", "HSImport", "HSExport"},
-            keys = {"<F3>", "<F4>"}, -- custome mappings
-            config = function()
-                require("nvdope.initialization.utils.highstr")
-            end,
-            disable = Cfg.plugins.utils.highstr
-        }
+	use({
+		"Pocco81/TrueZen.nvim",
+		branch = "dev",
+		cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus" },
+		config = function()
+			require("nvdope.initialization.utils.truezen")
+		end,
+		disable = Cfg.plugins.utils.truezen,
+	})
 
-        ----------------------------=== Extensions ===--------------------------
-        use {
-            "folke/lua-dev.nvim",
-            opt = true,
-            ft = "lua",
-            disable = Cfg.plugins.extensions.lua_dev
-        }
+	use({
+		"Pocco81/HighStr.nvim",
+		branch = "dev",
+		cmd = { "HSHighlight", "HSRmHighlight", "HSImport", "HSExport" },
+		keys = { "<F3>", "<F4>" }, -- custome mappings
+		config = function()
+			require("nvdope.initialization.utils.highstr")
+		end,
+		disable = Cfg.plugins.utils.highstr,
+	})
 
-        use {
-            "simrat39/rust-tools.nvim",
-            opt = true,
-            ft = "rust",
-            disable = Cfg.plugins.extensions.rust_tools
-        }
+	----------------------------=== Extensions ===--------------------------
+	use({
+		"folke/lua-dev.nvim",
+		opt = true,
+		ft = "lua",
+		disable = Cfg.plugins.extensions.lua_dev,
+	})
 
-        use {
-            "fladson/vim-kitty",
-            opt = true,
-            ft = "kitty",
-            disable = Cfg.plugins.extensions.kitty
-        }
+	use({
+		"simrat39/rust-tools.nvim",
+		opt = true,
+		ft = "rust",
+		disable = Cfg.plugins.extensions.rust_tools,
+	})
 
-        use {
-            "ray-x/go.nvim",
-            opt = true,
-            ft = "go",
-            config = function()
-                require("go").setup()
-            end,
-            disable = Cfg.plugins.extensions.go
-        }
+	use({
+		"fladson/vim-kitty",
+		opt = true,
+		ft = "kitty",
+		disable = Cfg.plugins.extensions.kitty,
+	})
 
-        use {
-            "windwp/nvim-ts-autotag",
-            opt = true,
-            ft = {"html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue"},
-            config = function()
-                require("nvdope.initialization.extensions.ts_autotag")
-            end,
-            disable = Cfg.plugins.extensions.ts_autotag
-        }
+	use({
+		"ray-x/go.nvim",
+		opt = true,
+		ft = "go",
+		config = function()
+			require("go").setup()
+		end,
+		disable = Cfg.plugins.extensions.go,
+	})
 
-        use {
-            "editorconfig/editorconfig-vim",
-            opt = true,
-            event = "BufRead",
-            disable = Cfg.plugins.extensions.editorconfig
-        }
-    end
-)
+	use({
+		"windwp/nvim-ts-autotag",
+		opt = true,
+		ft = { "html", "xml", "xhtml", "phtml", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
+		config = function()
+			require("nvdope.initialization.extensions.ts_autotag")
+		end,
+		disable = Cfg.plugins.extensions.ts_autotag,
+	})
+
+	use({
+		"editorconfig/editorconfig-vim",
+		opt = true,
+		event = "BufRead",
+		disable = Cfg.plugins.extensions.editorconfig,
+	})
+end)

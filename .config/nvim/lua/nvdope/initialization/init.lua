@@ -354,6 +354,16 @@ return packer.startup(function()
 		disable = Cfg.plugins.utils.highstr,
 	})
 
+	use({
+		"folke/todo-comments.nvim",
+		after = "Catppuccino.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("nvdope.initialization.utils.todocomments")
+		end,
+		disable = Cfg.plugins.utils.todocomments,
+	})
+
 	----------------------------=== Extensions ===--------------------------
 	use({
 		"folke/lua-dev.nvim",

@@ -85,7 +85,7 @@ Cfg = {
 			swapfile = false, -- creates a swapfile
 			shell = "bash",
 			cmdheight = 1, -- more space in the neovim command line for displaying messages
-			signcolumn = "no", -- always show the sign column, otherwise it would shift the text each time
+			signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 			tabstop = 4, -- insert 2 spaces for a tab
 			shiftwidth = 4, -- the number of spaces inserted for each indentation
 			softtabstop = 4,
@@ -514,16 +514,15 @@ local function hook_theme()
 	Cfg.highlights[#Cfg.highlights + 1] = { "NvimTreeOpenedFolderName", thm.blue, nil, nil, nil, nil, nil }
 	Cfg.highlights[#Cfg.highlights + 1] = { "NvimTreeEmptyFolderName", thm.blue, nil, nil, nil, nil, nil }
 	Cfg.highlights[#Cfg.highlights + 1] = { "NvimTreeIndentMarker", thm.one_bg2, nil, nil, nil, nil, nil }
-	Cfg.highlights[#Cfg.highlights + 1] =
-		{
-			"NvimTreeVertSplit",
-			thm.darker_black,
-			thm.darker_black,
-			nil,
-			nil,
-			nil,
-			nil,
-		}
+	Cfg.highlights[#Cfg.highlights + 1] = {
+		"NvimTreeVertSplit",
+		thm.darker_black,
+		thm.darker_black,
+		nil,
+		nil,
+		nil,
+		nil,
+	}
 	Cfg.highlights[#Cfg.highlights + 1] = { "NvimTreeEndOfBuffer", thm.darker_black, nil, nil, nil, nil, nil }
 
 	Cfg.highlights[#Cfg.highlights + 1] = { "NvimTreeRootFolder", thm.darker_black, nil, nil, nil, nil, nil }

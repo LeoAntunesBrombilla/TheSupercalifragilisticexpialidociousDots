@@ -4,7 +4,7 @@ if not present then
 end
 
 catppuccino.setup({
-	colorscheme = "neon_latte",
+	colorscheme = "dark_catppuccino",
 	transparency = false,
 	styles = {
 		comments = "italic",

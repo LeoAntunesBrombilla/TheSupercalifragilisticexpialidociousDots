@@ -160,7 +160,6 @@ return packer.startup(function()
 			{
 				"L3MON4D3/LuaSnip",
 				wants = "friendly-snippets",
-				event = "InsertCharPre",
 				config = function()
 					require("nvdope.initialization.tools.luasnip")
 				end,

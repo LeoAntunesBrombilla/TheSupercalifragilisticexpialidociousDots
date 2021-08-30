@@ -10,7 +10,7 @@ Cfg = {
 			user = nil,
 		},
 		theme = "onedark", -- ui; must match a theme at Cfg.themes (depracated)
-		colorscheme = "dark_catppuccino", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
+		colorscheme = "neon_latte", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
 		language_servers = {
 			"efm",
 			"lua",
@@ -94,6 +94,7 @@ Cfg = {
 			showcmd = true,
 			showmode = false, -- we don't need to see things like -- INSERT -- anymore
 			mouse = "a", -- allow the mouse to be used in neovim
+			mousemodel = "popup", -- Sets the model to use for the mouse.  The name mostly specifies what the right mouse button is used for:
 			number = true, -- set numbered lines
 			relativenumber = false, -- set relative numbered lines
 			numberwidth = 2, -- set number column width to 2 {default 4}

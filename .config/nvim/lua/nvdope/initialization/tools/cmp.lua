@@ -58,7 +58,7 @@ cmp.setup(
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[Lua]",
                     buffer = "[Buf]",
-                    luasnip = "[LS]",
+                    luasnip = "[Snp]",
                     latex_symbols = "[Ltx]"
                 })[entry.source.name]
 

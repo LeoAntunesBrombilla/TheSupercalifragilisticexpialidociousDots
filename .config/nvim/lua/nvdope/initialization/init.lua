@@ -58,7 +58,7 @@ return packer.startup(function()
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		branch = "0.5-compat",
-		event = "BufRead",
+		event = "VimEnter",
 		config = function()
 			require("nvdope.initialization.ui.treesitter")
 		end,
@@ -159,6 +159,7 @@ return packer.startup(function()
 	--------> nvim-cmp + luasnips + friendly_snippets
 	use({
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		config = function()
 			require("nvdope.initialization.tools.cmp")
 		end,
@@ -387,6 +388,11 @@ return packer.startup(function()
 			require("nvdope.initialization.utils.todocomments")
 		end,
 		disable = Cfg.plugins.utils.todocomments,
+	})
+
+	use ({
+		"kvngvikram/rightclick-macros",
+		event = "VimEnter"
 	})
 
 	----------------------------=== Extensions ===--------------------------

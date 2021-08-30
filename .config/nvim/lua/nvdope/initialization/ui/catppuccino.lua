@@ -4,7 +4,7 @@ if not present then
 end
 
 catppuccino.setup({
-	colorscheme = "dark_catppuccino",
+	colorscheme = Cfg.nvdope.colorscheme,
 	transparency = false,
 	styles = {
 		comments = "italic",

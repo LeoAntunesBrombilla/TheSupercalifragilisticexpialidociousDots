@@ -9,8 +9,8 @@ Cfg = {
 			terminal = nil,
 			user = nil,
 		},
-		theme = "onedark", -- ui; must match a theme at Cfg.themes
-		colorscheme = "onedark", -- syntax; must match a colorscheme from Base16.nvim
+		theme = "onedark", -- ui; must match a theme at Cfg.themes (depracated)
+		colorscheme = "dark_catppuccino", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
 		language_servers = {
 			"efm",
 			"lua",

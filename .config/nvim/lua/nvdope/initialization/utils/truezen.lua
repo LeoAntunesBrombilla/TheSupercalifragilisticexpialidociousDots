@@ -52,7 +52,7 @@ true_zen.setup {
     },
     integrations = {
         vim_gitgutter = false,
-        galaxyline = true,
+        galaxyline = false,
         tmux = true,
         gitsigns = false,
         nvim_bufferline = true,

@@ -137,7 +137,7 @@ Cfg = {
 			lspsignature = false,
 		},
 		tools = {
-			compe = false,
+			cmp = false,
 			luasnip = false,
 			friendly_snippets = false,
 			neoformat = false,

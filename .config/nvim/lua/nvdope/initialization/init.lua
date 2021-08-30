@@ -149,31 +149,60 @@ return packer.startup(function()
 	})
 
 	----------------------------=== Tools ===------------------------
+
+	--------> nvim-cmp + luasnips + friendly_snippets
 	use({
-		"hrsh7th/nvim-compe",
-		event = "InsertEnter",
+		"hrsh7th/nvim-cmp",
 		config = function()
-			require("nvdope.initialization.tools.compe")
+			require("nvdope.initialization.tools.cmp")
 		end,
-		wants = { "LuaSnip" },
-		requires = {
-			{
-				"L3MON4D3/LuaSnip",
-				wants = "friendly-snippets",
-				config = function()
-					require("nvdope.initialization.tools.luasnip")
-				end,
-				disable = Cfg.plugins.tools.luasnip,
-			},
-		},
-		disable = Cfg.plugins.tools.compe,
+		disable = Cfg.plugins.tools.cmp,
+	})
+
+	use({
+		"L3MON4D3/LuaSnip",
+		wants = "friendly-snippets",
+		after = "nvim-cmp",
+		config = function()
+			require("nvdope.initialization.tools.luasnip")
+		end,
+		disable = Cfg.plugins.tools.luasnip,
+	})
+
+	use({
+		"saadparwaiz1/cmp_luasnip",
+		after = "LuaSnip",
+	})
+
+	use({
+		"hrsh7th/cmp-nvim-lua",
+		after = "cmp_luasnip",
+	})
+
+	use({
+		"hrsh7th/cmp-nvim-lsp",
+		after = "cmp-nvim-lua",
+	})
+
+	use({
+		"hrsh7th/cmp-buffer",
+		after = "cmp-nvim-lsp",
 	})
 
 	use({
 		"rafamadriz/friendly-snippets",
-		event = "VimEnter",
-		disable = Cfg.plugins.tools.friendly_snippets,
+		after = "cmp-buffer",
 	})
+
+	use({
+		"windwp/nvim-autopairs",
+		after = "nvim-cmp",
+		config = function()
+			require("nvdope.initialization.tools.autopairs")
+		end,
+		disable = Cfg.plugins.tools.autopairs,
+	})
+	--------> nvim-cmp + luasnips + friendly_snippets
 
 	use({
 		"sbdchd/neoformat",
@@ -231,15 +260,6 @@ return packer.startup(function()
 			require("nvdope.initialization.tools.gitsigns")
 		end,
 		disable = Cfg.plugins.tools.gitsigns,
-	})
-
-	use({
-		"windwp/nvim-autopairs",
-		after = "nvim-compe",
-		config = function()
-			require("nvdope.initialization.tools.autopairs")
-		end,
-		disable = Cfg.plugins.tools.autopairs,
 	})
 
 	use({

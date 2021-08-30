@@ -120,7 +120,7 @@ Cfg = {
 	plugins = {
 		ui = {
 			bufferline = false,
-			galaxyline = false,
+			feline = false,
 			base16 = false,
 			colorizer = false,
 			treesitter = false,
@@ -158,7 +158,6 @@ Cfg = {
 			dap_install = false,
 		},
 		utils = {
-			startuptime = false,
 			autosave = false,
 			commentary = false,
 			neoscroll = false,

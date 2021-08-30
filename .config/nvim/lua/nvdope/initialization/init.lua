@@ -7,7 +7,7 @@ else
 end
 
 local use = packer.use
-require('impatient')
+require("impatient")
 
 return packer.startup(function()
 	use({
@@ -38,12 +38,12 @@ return packer.startup(function()
 	})
 
 	use({
-		"glepnir/galaxyline.nvim",
+		"famiu/feline.nvim",
 		after = "Catppuccino.nvim",
 		config = function()
-			require("nvdope.initialization.ui.galaxyline")
+			require("nvdope.initialization.ui.feline")
 		end,
-		disable = Cfg.plugins.ui.galaxyline,
+		disable = Cfg.plugins.ui.feline,
 	})
 
 	use({
@@ -157,23 +157,24 @@ return packer.startup(function()
 	----------------------------=== Tools ===------------------------
 
 	--------> nvim-cmp + luasnips + friendly_snippets
-	use({
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		config = function()
-			require("nvdope.initialization.tools.cmp")
-		end,
-		disable = Cfg.plugins.tools.cmp,
-	})
 
 	use({
 		"L3MON4D3/LuaSnip",
-		wants = "friendly-snippets",
-		after = "nvim-cmp",
+		event = "VimEnter",
 		config = function()
 			require("nvdope.initialization.tools.luasnip")
 		end,
 		disable = Cfg.plugins.tools.luasnip,
+	})
+
+	use({
+		"hrsh7th/nvim-cmp",
+		after = "LuaSnip",
+		wants = "friendly-snippets",
+		config = function()
+			require("nvdope.initialization.tools.cmp")
+		end,
+		disable = Cfg.plugins.tools.cmp,
 	})
 
 	use({
@@ -198,7 +199,7 @@ return packer.startup(function()
 
 	use({
 		"rafamadriz/friendly-snippets",
-		after = "cmp-buffer",
+		-- after = "LuaSnip",
 	})
 
 	use({
@@ -320,12 +321,6 @@ return packer.startup(function()
 
 	----------------------------=== Utils ===-------------------------
 	use({
-		"tweekmonster/startuptime.vim",
-		cmd = "StartupTime",
-		disable = Cfg.plugins.utils.startuptime,
-	})
-
-	use({
 		"Pocco81/AutoSave.nvim",
 		branch = "dev",
 		event = "BufRead",
@@ -390,9 +385,9 @@ return packer.startup(function()
 		disable = Cfg.plugins.utils.todocomments,
 	})
 
-	use ({
+	use({
 		"kvngvikram/rightclick-macros",
-		event = "VimEnter"
+		event = "VimEnter",
 	})
 
 	----------------------------=== Extensions ===--------------------------

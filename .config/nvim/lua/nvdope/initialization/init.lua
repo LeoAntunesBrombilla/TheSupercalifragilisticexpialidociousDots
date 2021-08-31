@@ -158,17 +158,19 @@ return packer.startup(function()
 
 	--------> nvim-cmp + luasnips + friendly_snippets
 	use({
-		"hrsh7th/nvim-cmp",
+		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
+		wants = "friendly-snippets",
 		config = function()
-			require("nvdope.initialization.tools.cmp")
+			require("nvdope.initialization.tools.luasnip")
 		end,
 	})
 
 	use({
-		"L3MON4D3/LuaSnip",
-		wants = "friendly-snippets",
+		"hrsh7th/nvim-cmp",
+		after = "LuaSnip",
 		config = function()
-			require("nvdope.initialization.tools.luasnip")
+			require("nvdope.initialization.tools.cmp")
 		end,
 	})
 
@@ -197,6 +199,7 @@ return packer.startup(function()
 		after = "cmp-buffer",
 	})
 
+	-- misc plugins
 	use({
 		"windwp/nvim-autopairs",
 		after = "nvim-cmp",
@@ -204,6 +207,7 @@ return packer.startup(function()
 			require("nvdope.initialization.tools.autopairs")
 		end,
 	})
+
 	--------> nvim-cmp + luasnips + friendly_snippets
 
 	use({

@@ -157,24 +157,19 @@ return packer.startup(function()
 	----------------------------=== Tools ===------------------------
 
 	--------> nvim-cmp + luasnips + friendly_snippets
-
-	use({
-		"L3MON4D3/LuaSnip",
-		event = "VimEnter",
-		config = function()
-			require("nvdope.initialization.tools.luasnip")
-		end,
-		disable = Cfg.plugins.tools.luasnip,
-	})
-
 	use({
 		"hrsh7th/nvim-cmp",
-		after = "LuaSnip",
-		wants = "friendly-snippets",
 		config = function()
 			require("nvdope.initialization.tools.cmp")
 		end,
-		disable = Cfg.plugins.tools.cmp,
+	})
+
+	use({
+		"L3MON4D3/LuaSnip",
+		wants = "friendly-snippets",
+		config = function()
+			require("nvdope.initialization.tools.luasnip")
+		end,
 	})
 
 	use({
@@ -199,7 +194,7 @@ return packer.startup(function()
 
 	use({
 		"rafamadriz/friendly-snippets",
-		-- after = "LuaSnip",
+		after = "cmp-buffer",
 	})
 
 	use({
@@ -208,7 +203,6 @@ return packer.startup(function()
 		config = function()
 			require("nvdope.initialization.tools.autopairs")
 		end,
-		disable = Cfg.plugins.tools.autopairs,
 	})
 	--------> nvim-cmp + luasnips + friendly_snippets
 

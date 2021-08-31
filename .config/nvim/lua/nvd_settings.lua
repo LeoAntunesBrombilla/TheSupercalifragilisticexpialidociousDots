@@ -290,6 +290,8 @@ Cfg = {
 
 		_general = {
 			{ "VimLeave", "*", "set guicursor=a:ver24" }, -- use if on tmux
+			-- { "InsertCharPre", "*", [[PackerLoad cmp_luasnip]] }, -- use if on tmux
+			-- { "InsertCharPre", "*", [[lua require("luasnip/loaders/from_vscode").load()]] }
 		},
 		_dashboard = {
 			{ "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },

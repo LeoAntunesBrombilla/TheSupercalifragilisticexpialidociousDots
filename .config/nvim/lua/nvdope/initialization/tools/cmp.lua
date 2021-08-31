@@ -43,6 +43,10 @@ end
 
 vim.opt.completeopt = "menuone,noselect"
 
+-- require("luasnip/loaders/from_vscode")._luasnip_vscode_lazy_load()
+-- require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip/loaders/from_vscode").load()
+
 cmp.setup(
     {
         snippet = {
@@ -109,3 +113,4 @@ cmp.setup(
         }
     }
 )
+

@@ -114,7 +114,7 @@ return packer.startup(function()
 	----------------------------=== LSP ===--------------------------
 	use({
 		"kabouzeid/nvim-lspinstall",
-		event = "BufRead",
+		after = "Catppuccino.nvim",
 		disable = Cfg.plugins.lsp.lspinstall,
 	})
 
@@ -158,37 +158,36 @@ return packer.startup(function()
 
 	--------> nvim-cmp + luasnips + friendly_snippets
 	use({
+		"hrsh7th/nvim-cmp",
+		event = "BufWinEnter",
+		config = function()
+			require("nvdope.initialization.tools.cmp")
+		end,
+		disable = Cfg.plugins.tools.compe,
+	})
+
+	use({
 		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
+		after = "nvim-cmp",
 		wants = "friendly-snippets",
 		config = function()
 			require("nvdope.initialization.tools.luasnip")
 		end,
-	})
-
-	use({
-		"hrsh7th/nvim-cmp",
-		after = "LuaSnip",
-		config = function()
-			require("nvdope.initialization.tools.cmp")
-		end,
+		disable = Cfg.plugins.tools.luasnip,
 	})
 
 	use({
 		"saadparwaiz1/cmp_luasnip",
 		after = "LuaSnip",
 	})
-
 	use({
 		"hrsh7th/cmp-nvim-lua",
 		after = "cmp_luasnip",
 	})
-
 	use({
 		"hrsh7th/cmp-nvim-lsp",
 		after = "cmp-nvim-lua",
 	})
-
 	use({
 		"hrsh7th/cmp-buffer",
 		after = "cmp-nvim-lsp",
@@ -196,16 +195,17 @@ return packer.startup(function()
 
 	use({
 		"rafamadriz/friendly-snippets",
-		after = "cmp-buffer",
+		event = "VimEnter",
+		disable = Cfg.plugins.tools.friendly_snippets,
 	})
 
-	-- misc plugins
 	use({
 		"windwp/nvim-autopairs",
 		after = "nvim-cmp",
 		config = function()
 			require("nvdope.initialization.tools.autopairs")
 		end,
+		disable = Cfg.plugins.tools.autopairs,
 	})
 
 	--------> nvim-cmp + luasnips + friendly_snippets

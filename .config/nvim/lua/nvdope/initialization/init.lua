@@ -167,6 +167,9 @@ return packer.startup(function()
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "VimEnter",
+		setup = function()
+			vim.cmd([[set nolist]])
+		end,
 		config = function()
 			require("nvdope.initialization.tools.cmp")
 		end,

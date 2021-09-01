@@ -236,15 +236,15 @@ Cfg = {
 		{ "n", "<leader>zm", ":TZMinimalist<CR>", { silent = true } },
 		{ "n", "<leader>zf", ":TZFocus<CR>", { silent = true } },
 		-- luasnip
-		{
-			"i",
-			"<C-s>",
-			[[<Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ]],
-			{ silent = true, expr = true },
-		},
-		{ "s", "<C-s>", [[<cmd>lua require('luasnip').jump(1)<Cr>]], { silent = true } },
-		{ "i", "<C-e>", [[<cmd>lua require'luasnip'.jump(-1)<Cr>]], { silent = true, noremap = true } },
-		{ "s", "<C-e>", [[<cmd>lua require('luasnip').jump(-1)<Cr>]], { silent = true, noremap = true } },
+		-- {
+		-- 	"i",
+		-- 	"<C-s>",
+		-- 	[[<Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ]],
+		-- 	{ silent = true, expr = true },
+		-- },
+		-- { "s", "<C-s>", [[<cmd>lua require('luasnip').jump(1)<Cr>]], { silent = true } },
+		-- { "i", "<C-e>", [[<cmd>lua require'luasnip'.jump(-1)<Cr>]], { silent = true, noremap = true } },
+		-- { "s", "<C-e>", [[<cmd>lua require('luasnip').jump(-1)<Cr>]], { silent = true, noremap = true } },
 		-- neoformat
 		{ "n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], { silent = true } },
 		-- sessions
@@ -578,8 +578,21 @@ local function hook_theme()
 	Cfg.highlights[#Cfg.highlights + 1] = { "FloatBorder", thm.blue, "NONE", nil, nil, nil, nil }
 end
 
-local function run_hooks()
-	hook_theme()
+local function hook_packer()
+	local cmd = vim.cmd
+cmd "silent! command PackerClean lua require 'nvdope.initialization.init' require('packer').clean()"
+cmd "silent! command PackerCompile lua require 'nvdope.initialization.init' require('packer').compile()"
+cmd "silent! command PackerInstall lua require 'nvdope.initialization.init' require('packer').install()"
+cmd "silent! command PackerStatus lua require 'nvdope.initialization.init' require('packer').status()"
+cmd "silent! command PackerSync lua require 'nvdope.initialization.init' require('packer').sync()"
+cmd "silent! command PackerUpdate lua require 'nvdope.initialization.init' require('packer').update()"
+cmd "silent! command PackerProfile lua require 'nvdope.initialization.init' require('packer').profile_output()"
+cmd [[command! -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<q-args>)]]
 end
 
--- run_hooks()
+local function run_hooks()
+	hook_packer()
+	--hook_theme()
+end
+
+run_hooks()

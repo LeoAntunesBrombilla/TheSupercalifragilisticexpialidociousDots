@@ -1,8 +1,6 @@
-local present, _ = pcall(require, "nvdope.initialization.packer_init")
+local present, packer = pcall(require, "nvdope.initialization.packer_init")
 
-if present then
-	packer = require("packer")
-else
+if not present then
 	return false
 end
 
@@ -15,13 +13,17 @@ return packer.startup(function()
 		rocks = "mpack",
 	})
 
+	use({
+		"nvim-lua/plenary.nvim",
+	})
+
 	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
 	----------------------------=== UI ===---------------------------
 	use({
 		"Pocco81/Catppuccino.nvim",
 		branch = "dev",
-		after = "nvim-bufferline.lua", -- becuase catppuccino overrides highlights and not the other way around
+		after = "bufferline.nvim", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
 			require("nvdope.initialization.ui.catppuccino")
 		end,
@@ -29,8 +31,17 @@ return packer.startup(function()
 	})
 
 	use({
-		"akinsho/nvim-bufferline.lua",
+		"kyazdani42/nvim-web-devicons",
 		after = "packer.nvim",
+		config = function()
+			require("nvdope.initialization.ui.web_devicons")
+		end,
+		disable = Cfg.plugins.ui.web_devicons,
+	})
+
+	use({
+		"akinsho/bufferline.nvim",
+		after = "nvim-web-devicons",
 		config = function()
 			require("nvdope.initialization.ui.bufferline")
 		end,
@@ -39,11 +50,19 @@ return packer.startup(function()
 
 	use({
 		"famiu/feline.nvim",
-		after = "Catppuccino.nvim",
+		after = "nvim-web-devicons",
 		config = function()
 			require("nvdope.initialization.ui.feline")
 		end,
 		disable = Cfg.plugins.ui.feline,
+	})
+
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufRead",
+		setup = function()
+			require("nvdope.initialization.ui.indent_blankline")
+		end,
 	})
 
 	use({
@@ -52,17 +71,14 @@ return packer.startup(function()
 		config = function()
 			require("nvdope.initialization.ui.colorizer")
 		end,
-		disable = Cfg.plugins.ui.colorizer,
 	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		branch = "0.5-compat",
-		event = "VimEnter",
+		event = "BufRead",
 		config = function()
 			require("nvdope.initialization.ui.treesitter")
 		end,
-		disable = Cfg.plugins.ui.treesitter,
 	})
 
 	use({
@@ -75,21 +91,12 @@ return packer.startup(function()
 	})
 
 	use({
-		"kyazdani42/nvim-web-devicons",
-		after = "Catppuccino.nvim",
+		"lewis6991/gitsigns.nvim",
+		after = "plenary.nvim",
 		config = function()
-			require("nvdope.initialization.ui.web_devicons")
+			require("nvdope.initialization.tools.gitsigns")
 		end,
-		disable = Cfg.plugins.ui.web_devicons,
-	})
-
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
-		setup = function()
-			require("nvdope.initialization.ui.indent_blankline")
-		end,
-		disable = Cfg.plugins.ui.indent_blankline,
+		disable = Cfg.plugins.tools.gitsigns,
 	})
 
 	use({
@@ -144,6 +151,7 @@ return packer.startup(function()
 		end,
 		disable = Cfg.plugins.lsp.lspsaga,
 	})
+
 	use({
 		"ray-x/lsp_signature.nvim",
 		event = "BufRead",
@@ -156,38 +164,38 @@ return packer.startup(function()
 
 	----------------------------=== Tools ===------------------------
 
-	--------> nvim-cmp + luasnips + friendly_snippets
 	use({
 		"hrsh7th/nvim-cmp",
-		event = "BufWinEnter",
+		event = "VimEnter",
 		config = function()
 			require("nvdope.initialization.tools.cmp")
 		end,
-		disable = Cfg.plugins.tools.compe,
 	})
 
 	use({
 		"L3MON4D3/LuaSnip",
-		after = "nvim-cmp",
 		wants = "friendly-snippets",
+		after = "nvim-cmp",
 		config = function()
 			require("nvdope.initialization.tools.luasnip")
 		end,
-		disable = Cfg.plugins.tools.luasnip,
 	})
 
 	use({
 		"saadparwaiz1/cmp_luasnip",
 		after = "LuaSnip",
 	})
+
 	use({
 		"hrsh7th/cmp-nvim-lua",
 		after = "cmp_luasnip",
 	})
+
 	use({
 		"hrsh7th/cmp-nvim-lsp",
 		after = "cmp-nvim-lua",
 	})
+
 	use({
 		"hrsh7th/cmp-buffer",
 		after = "cmp-nvim-lsp",
@@ -195,8 +203,7 @@ return packer.startup(function()
 
 	use({
 		"rafamadriz/friendly-snippets",
-		event = "VimEnter",
-		disable = Cfg.plugins.tools.friendly_snippets,
+		after = "cmp-buffer",
 	})
 
 	use({
@@ -205,33 +212,12 @@ return packer.startup(function()
 		config = function()
 			require("nvdope.initialization.tools.autopairs")
 		end,
-		disable = Cfg.plugins.tools.autopairs,
 	})
-
-	--------> nvim-cmp + luasnips + friendly_snippets
 
 	use({
 		"sbdchd/neoformat",
 		cmd = "Neoformat",
 		disable = Cfg.plugins.tools.neoformat,
-	})
-
-	use({
-		"Pocco81/MerelyFmt.nvim",
-		branch = "dev",
-		cmd = { "MFInstall", "MFUninstall", "MFList" },
-		disable = Cfg.plugins.tools.merelyfmt,
-		config = function()
-			require("merelyfmt").setup({
-				installation_path = vim.fn.stdpath("data") .. "/merelyfmt/",
-			})
-		end,
-	})
-
-	use({
-		"nvim-lua/plenary.nvim",
-		event = "BufRead",
-		disable = Cfg.plugins.tools.plenary,
 	})
 
 	use({
@@ -260,18 +246,11 @@ return packer.startup(function()
 	})
 
 	use({
-		"lewis6991/gitsigns.nvim",
-		after = "plenary.nvim",
-		config = function()
-			require("nvdope.initialization.tools.gitsigns")
-		end,
-		disable = Cfg.plugins.tools.gitsigns,
-	})
-
-	use({
 		"andymass/vim-matchup",
-		event = "CursorMoved",
-		disable = Cfg.plugins.tools.matchup,
+		opt = true,
+		setup = function()
+			require("nvdope.utils.packer").lazy_load("vim-matchup")
+		end,
 	})
 
 	use({
@@ -295,29 +274,8 @@ return packer.startup(function()
 		disable = Cfg.plugins.tools.vvm,
 	})
 
-	----------------------------=== Debug ===--------------------------
-	use({
-		"mfussenegger/nvim-dap",
-		opt = true,
-		event = "VimEnter",
-		-- config = function()
-		--     require("nvdope.initialization.debug.dap")
-		-- end,
-		disable = Cfg.plugins.debug.dap,
-	})
-
-	use({
-		"Pocco81/DAPInstall.nvim",
-		branch = "dev",
-		opt = true,
-		after = "nvim-dap",
-		-- config = function()
-		--     require("nvdope.initialization.debug.dap_install")
-		-- end,
-		-- disable = Cfg.plugins.debug.dap_install
-	})
-
 	----------------------------=== Utils ===-------------------------
+
 	use({
 		"Pocco81/AutoSave.nvim",
 		branch = "dev",

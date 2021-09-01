@@ -8,16 +8,26 @@ local use = packer.use
 require("impatient")
 
 return packer.startup(function()
+
+	----------------------------=== CORE/DEPENDENCIES ===---------------------------
 	use({
 		"lewis6991/impatient.nvim",
 		rocks = "mpack",
 	})
 
+	use({ "wbthomason/packer.nvim", event = "VimEnter" })
+
 	use({
 		"nvim-lua/plenary.nvim",
+		event = "BufRead",
+		disable = Cfg.plugins.tools.plenary,
 	})
 
-	use({ "wbthomason/packer.nvim", event = "VimEnter" })
+	use({
+		"nvim-lua/popup.nvim",
+		after = "plenary.nvim",
+		disable = Cfg.plugins.tools.popup,
+	})
 
 	----------------------------=== UI ===---------------------------
 	use({
@@ -221,12 +231,6 @@ return packer.startup(function()
 		"sbdchd/neoformat",
 		cmd = "Neoformat",
 		disable = Cfg.plugins.tools.neoformat,
-	})
-
-	use({
-		"nvim-lua/popup.nvim",
-		after = "plenary.nvim",
-		disable = Cfg.plugins.tools.popup,
 	})
 
 	use({

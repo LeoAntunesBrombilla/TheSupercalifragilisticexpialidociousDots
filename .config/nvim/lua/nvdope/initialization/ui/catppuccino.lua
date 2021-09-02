@@ -6,6 +6,7 @@ end
 catppuccino.setup({
 	colorscheme = Cfg.nvdope.colorscheme,
 	transparency = false,
+	term_colors = false,
 	styles = {
 		comments = "italic",
 		functions = "italic",
@@ -43,6 +44,7 @@ catppuccino.setup({
 		bufferline = true,
 		markdown = true,
 		lightspeed = false,
+		ts_rainbow = false,
 	},
 })
 

@@ -10,7 +10,7 @@ Cfg = {
 			user = nil,
 		},
 		theme = "onedark", -- ui; (depracated?)
-		colorscheme = "soft_manilo", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
+		colorscheme = "dark_catppuccino", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
 		language_servers = {
 			"efm",
 			"lua",
@@ -163,6 +163,7 @@ Cfg = {
 			neoscroll = false,
 			truezen = false,
 			highstr = false,
+			undotree = false,
 			todocomments = false,
 		},
 		extensions = {
@@ -225,7 +226,7 @@ Cfg = {
 		-- autopairs
 		{ "i", "<CR>", "v:lua.MUtils.completion_confirm()", { expr = true, noremap = true } },
 		-- undotree
-		{ "n", "<F5>", "UndotreeToggle<CR>", { noremap = true, silent = true } },
+		{ "n", "<leader>ut", ":UndotreeToggle<CR>", { noremap = true, silent = true } },
 		-- tagbar
 		{ "n", "<A-w>", "TagbarToggle<CR>", { noremap = true, silent = true } },
 		-- highstr
@@ -580,14 +581,16 @@ end
 
 local function hook_packer()
 	local cmd = vim.cmd
-cmd "silent! command PackerClean lua require 'nvdope.initialization.init' require('packer').clean()"
-cmd "silent! command PackerCompile lua require 'nvdope.initialization.init' require('packer').compile()"
-cmd "silent! command PackerInstall lua require 'nvdope.initialization.init' require('packer').install()"
-cmd "silent! command PackerStatus lua require 'nvdope.initialization.init' require('packer').status()"
-cmd "silent! command PackerSync lua require 'nvdope.initialization.init' require('packer').sync()"
-cmd "silent! command PackerUpdate lua require 'nvdope.initialization.init' require('packer').update()"
-cmd "silent! command PackerProfile lua require 'nvdope.initialization.init' require('packer').profile_output()"
-cmd [[command! -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<q-args>)]]
+	cmd("silent! command PackerClean lua require 'nvdope.initialization.init' require('packer').clean()")
+	cmd("silent! command PackerCompile lua require 'nvdope.initialization.init' require('packer').compile()")
+	cmd("silent! command PackerInstall lua require 'nvdope.initialization.init' require('packer').install()")
+	cmd("silent! command PackerStatus lua require 'nvdope.initialization.init' require('packer').status()")
+	cmd("silent! command PackerSync lua require 'nvdope.initialization.init' require('packer').sync()")
+	cmd("silent! command PackerUpdate lua require 'nvdope.initialization.init' require('packer').update()")
+	cmd("silent! command PackerProfile lua require 'nvdope.initialization.init' require('packer').profile_output()")
+	cmd(
+		[[command! -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<q-args>)]]
+	)
 end
 
 local function run_hooks()

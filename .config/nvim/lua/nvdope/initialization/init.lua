@@ -180,6 +180,7 @@ return packer.startup(function()
 		config = function()
 			require("nvdope.initialization.tools.luasnip")
 		end,
+		disable = Cfg.plugins.tools.luasnip,
 	})
 
 	use({
@@ -188,6 +189,7 @@ return packer.startup(function()
 		config = function()
 			require("nvdope.initialization.tools.cmp")
 		end,
+		disable = Cfg.plugins.tools.cmp,
 	})
 
 	use({
@@ -367,6 +369,12 @@ return packer.startup(function()
 			require("nvdope.initialization.utils.highstr")
 		end,
 		disable = Cfg.plugins.utils.highstr,
+	})
+
+	use({
+		"mbbill/undotree",
+		cmd = { "UndotreeToggle" },
+		disable = Cfg.plugins.utils.undotree,
 	})
 
 	use({

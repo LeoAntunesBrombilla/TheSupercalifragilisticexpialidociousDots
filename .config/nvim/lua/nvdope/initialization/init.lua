@@ -8,7 +8,6 @@ local use = packer.use
 require("impatient")
 
 return packer.startup(function()
-
 	----------------------------=== CORE/DEPENDENCIES ===---------------------------
 	use({
 		"lewis6991/impatient.nvim",
@@ -70,6 +69,7 @@ return packer.startup(function()
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
+		commit = "a702f809ce85b16a83c44016bf10fe5a5765e98d",
 		setup = function()
 			require("nvdope.initialization.ui.indent_blankline")
 		end,
@@ -176,7 +176,7 @@ return packer.startup(function()
 
 	use({
 		"hrsh7th/nvim-cmp",
-		event = "VimEnter",
+		event = "InsertEnter",
 		setup = function()
 			vim.cmd([[set nolist]])
 		end,
@@ -279,6 +279,31 @@ return packer.startup(function()
 		opt = true,
 		event = "CursorMoved",
 		disable = Cfg.plugins.tools.vvm,
+	})
+
+	----------------------------=== Debug ===--------------------------
+	use({
+		"mfussenegger/nvim-dap",
+		opt = true,
+		event = "VimEnter",
+		-- config = function()
+		--     require("nvdope.initialization.debug.dap")
+		-- end,
+		disable = Cfg.plugins.debug.dap,
+	})
+
+	use({
+		"Pocco81/DAPInstall.nvim",
+		after = "nvim-dap",
+		branch = "dev",
+		config = function()
+			local dap_install = require("dap-install")
+
+			dap_install.setup({
+				installation_path = "~/Music/",
+				verbosely_call_debuggers = false,
+			})
+		end,
 	})
 
 	----------------------------=== Utils ===-------------------------

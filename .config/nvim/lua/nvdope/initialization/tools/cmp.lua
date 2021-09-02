@@ -38,7 +38,6 @@ local function get_kind(kind_item)
 	else
 		return lspkind.presets.default[kind_item]
 	end
-
 end
 
 vim.opt.completeopt = "menuone,noselect"
@@ -60,10 +59,12 @@ cmp.setup(
                 vim_item.menu =
                     ({
                     nvim_lsp = "[LSP]",
-                    nvim_lua = "[Lua]",
-                    buffer = "[Buf]",
                     luasnip = "[Snp]",
-                    latex_symbols = "[Ltx]"
+                    buffer = "[Buf]",
+                    nvim_lua = "[Lua]",
+					path = "[Pth]",
+					calc = "[Clc]",
+					emoji = "[Emj]",
                 })[entry.source.name]
 
                 return vim_item
@@ -108,8 +109,11 @@ cmp.setup(
             -- this also affects the order in the completion menu
             {name = "luasnip"},
             {name = "nvim_lsp"},
+			{name = "calc"},
+			{name = "path"},
             {name = "buffer"},
-            {name = "nvim_lua"}
+            {name = "nvim_lua"},
+			{name = "emoji"}
         }
     }
 )

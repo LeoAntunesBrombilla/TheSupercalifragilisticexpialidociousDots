@@ -68,7 +68,7 @@ return packer.startup(function()
 
 	use({
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
+		after = "Catppuccino.nvim",
 		commit = "a702f809ce85b16a83c44016bf10fe5a5765e98d",
 		setup = function()
 			require("nvdope.initialization.ui.indent_blankline")
@@ -175,6 +175,14 @@ return packer.startup(function()
 	----------------------------=== Tools ===------------------------
 
 	use({
+		"L3MON4D3/LuaSnip",
+		requires = { "rafamadriz/friendly-snippets" },
+		config = function()
+			require("nvdope.initialization.tools.luasnip")
+		end,
+	})
+
+	use({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		config = function()
@@ -183,37 +191,38 @@ return packer.startup(function()
 	})
 
 	use({
-		"L3MON4D3/LuaSnip",
-		wants = "friendly-snippets",
+		"hrsh7th/cmp-nvim-lsp",
 		after = "nvim-cmp",
-		config = function()
-			require("nvdope.initialization.tools.luasnip")
-		end,
 	})
 
 	use({
 		"saadparwaiz1/cmp_luasnip",
-		after = "LuaSnip",
-	})
-
-	use({
-		"hrsh7th/cmp-nvim-lua",
-		after = "cmp_luasnip",
-	})
-
-	use({
-		"hrsh7th/cmp-nvim-lsp",
-		after = "cmp-nvim-lua",
+		after = "nvim-cmp",
 	})
 
 	use({
 		"hrsh7th/cmp-buffer",
-		after = "cmp-nvim-lsp",
+		after = "nvim-cmp",
 	})
 
 	use({
-		"rafamadriz/friendly-snippets",
-		after = "cmp-buffer",
+		"hrsh7th/cmp-emoji",
+		after = "nvim-cmp",
+	})
+
+	use({
+		"hrsh7th/cmp-calc",
+		after = "nvim-cmp",
+	})
+
+	use({
+		"hrsh7th/cmp-path",
+		after = "nvim-cmp",
+	})
+
+	use({
+		"hrsh7th/cmp-nvim-lua",
+		after = "nvim-cmp",
 	})
 
 	use({

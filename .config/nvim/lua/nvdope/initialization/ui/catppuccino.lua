@@ -42,6 +42,7 @@ catppuccino.setup({
 		barbar = false,
 		bufferline = true,
 		markdown = true,
+		lightspeed = false,
 	},
 })
 catppuccino.load()

@@ -3,7 +3,7 @@ vim.opt.shadafile = "NONE"
 local sys_modules = {
     "nvd_settings",
     "nvdope.core",
-	-- "nvdope.initialization",
+	-- "nvdope.initialization", -- packer.nvim already compiles this
     "nvdope.runlevel",
 }
 

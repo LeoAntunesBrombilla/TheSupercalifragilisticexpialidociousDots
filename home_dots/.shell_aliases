@@ -224,6 +224,7 @@ alias e='nvim'
 alias fe='exa -l -a --icons --sort=size --colour=auto --time-style=long-iso -F'
 alias ffe='fe'
 alias ef='fe'
+alias f='fe'
 alias fl='exa -F'
 
 #-------------------=== w/ Vim ===-------------------------------

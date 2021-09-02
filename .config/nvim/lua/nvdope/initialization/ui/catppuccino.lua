@@ -45,4 +45,5 @@ catppuccino.setup({
 		lightspeed = false,
 	},
 })
+
 catppuccino.load()

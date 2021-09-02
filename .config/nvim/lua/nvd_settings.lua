@@ -10,7 +10,7 @@ Cfg = {
 			user = nil,
 		},
 		theme = "onedark", -- ui; (depracated?)
-		colorscheme = "dark_catppuccino", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
+		colorscheme = "soft_manilo", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
 		language_servers = {
 			"efm",
 			"lua",

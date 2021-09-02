@@ -3,7 +3,7 @@ if not present then
     return
 end
 
-require("twilight").setup {
+twilight.setup {
     dimming = {
         alpha = 0.25, -- amount of dimming
         color = {"Normal", "#ffffff"}

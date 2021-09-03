@@ -388,6 +388,15 @@ return packer.startup(function()
 	})
 
 	use({
+		"folke/trouble.nvim",
+		after = "Catppuccino.nvim",
+		config = function()
+			require("nvdope.initialization.utils.trouble")
+		end,
+		disable = Cfg.plugins.utils.trouble,
+	})
+
+	use({
 		"kvngvikram/rightclick-macros",
 		event = "VimEnter",
 	})

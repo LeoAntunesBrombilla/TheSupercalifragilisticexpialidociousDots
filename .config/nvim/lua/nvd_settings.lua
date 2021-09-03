@@ -165,6 +165,7 @@ Cfg = {
 			highstr = false,
 			undotree = false,
 			todocomments = false,
+			trouble = false,
 		},
 		extensions = {
 			lua_dev = false,

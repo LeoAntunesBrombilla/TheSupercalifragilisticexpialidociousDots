@@ -76,7 +76,7 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/AutoSave.nvim"
   },
   ["Catppuccino.nvim"] = {
-    after = { "indent-blankline.nvim", "todo-comments.nvim", "nvim-lspinstall" },
+    after = { "indent-blankline.nvim", "trouble.nvim", "todo-comments.nvim", "nvim-lspinstall" },
     config = { "\27LJ\1\2D\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0)nvdope.initialization.ui.catppuccino\frequire\0" },
     load_after = {
       ["bufferline.nvim"] = true
@@ -403,6 +403,15 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/todo-comments.nvim"
   },
+  ["trouble.nvim"] = {
+    config = { "\27LJ\1\2C\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0(nvdope.initialization.utils.trouble\frequire\0" },
+    load_after = {
+      ["Catppuccino.nvim"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/trouble.nvim"
+  },
   ["twilight.nvim"] = {
     commands = { "Twilight", "TwilightEnable", "TwilightDisable" },
     config = { "\27LJ\1\2A\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0&nvdope.initialization.ui.twilight\frequire\0" },
@@ -490,8 +499,8 @@ time([[Defining lazy-load commands]], false)
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
 vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

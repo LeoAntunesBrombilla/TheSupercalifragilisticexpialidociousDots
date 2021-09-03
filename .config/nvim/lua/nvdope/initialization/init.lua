@@ -422,6 +422,14 @@ return packer.startup(function()
 	})
 
 	use({
+		"phaazon/hop.nvim",
+		after = "Catppuccino.nvim",
+		config = function()
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	})
+
+	use({
 		"fladson/vim-kitty",
 		opt = true,
 		ft = "kitty",

@@ -45,6 +45,7 @@ catppuccino.setup({
 		markdown = true,
 		lightspeed = false,
 		ts_rainbow = false,
+		hop = true,
 	},
 })
 

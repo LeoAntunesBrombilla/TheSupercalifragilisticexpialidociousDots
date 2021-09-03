@@ -223,6 +223,11 @@ return packer.startup(function()
 	})
 
 	use({
+		"f3fora/cmp-spell",
+		after = "nvim-cmp",
+	})
+
+	use({
 		"hrsh7th/cmp-nvim-lua",
 		after = "nvim-cmp",
 	})

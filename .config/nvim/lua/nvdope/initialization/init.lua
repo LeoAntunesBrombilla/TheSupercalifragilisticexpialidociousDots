@@ -5,7 +5,7 @@ if not present then
 end
 
 local use = packer.use
-require("impatient")
+pcall(require, "impatient")
 
 return packer.startup(function()
 	----------------------------=== CORE/DEPENDENCIES ===---------------------------

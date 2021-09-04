@@ -18,12 +18,18 @@ catppuccino.setup({
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
-			styles = {
+			virtual_text = {
 				errors = "italic",
 				hints = "italic",
 				warnings = "italic",
 				information = "italic",
 			},
+			underlines = {
+				errors = "underline",
+				hints = "underline",
+				warnings = "underline",
+				information = "underline",
+			}
 		},
 		lsp_trouble = false,
 		lsp_saga = true,
@@ -35,7 +41,10 @@ catppuccino.setup({
 			show_root = false,
 		},
 		which_key = false,
-		indent_blankline = true,
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = false,
+		},
 		dashboard = true,
 		neogit = false,
 		vim_sneak = false,

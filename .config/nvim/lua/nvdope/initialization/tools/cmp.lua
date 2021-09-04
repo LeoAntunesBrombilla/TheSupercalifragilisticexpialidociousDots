@@ -62,7 +62,6 @@ cmp.setup({
 				nvim_lua = "[Lua]",
 				path = "[Pth]",
 				calc = "[Clc]",
-				spell = "[Spl]",
 				emoji = "[Emj]",
 			})[entry.source.name]
 
@@ -107,7 +106,6 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
-		{ name = "spell" },
 		{ name = "emoji" },
 	},
 })

@@ -11,7 +11,7 @@ local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
-  local should_profile = true
+  local should_profile = false
   if should_profile then
     local hrtime = vim.loop.hrtime
     profile_info = {}
@@ -84,15 +84,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/Catppuccino.nvim"
-  },
-  ["DAPInstall.nvim"] = {
-    config = { "\27LJ\1\2u\0\0\3\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\1\2\0003\2\3\0>\1\2\1G\0\1\0\1\0\2\29verbosely_call_debuggers\1\22installation_path\r~/Music/\nsetup\16dap-install\frequire\0" },
-    load_after = {
-      ["nvim-dap"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/DAPInstall.nvim"
   },
   ["HighStr.nvim"] = {
     commands = { "HSHighlight", "HSRmHighlight", "HSImport", "HSExport" },
@@ -244,6 +235,7 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/impatient.nvim"
   },
   ["indent-blankline.nvim"] = {
+    config = { "\27LJ\1\2I\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0.nvdope.initialization.ui.indent_blankline\frequire\0" },
     load_after = {
       ["Catppuccino.nvim"] = true
     },
@@ -253,6 +245,9 @@ _G.packer_plugins = {
   },
   ["lsp_signature.nvim"] = {
     config = { "\27LJ\1\2F\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0+nvdope.initialization.lsp.lspsignature\frequire\0" },
+    load_after = {
+      ["nvim-lspconfig"] = true
+    },
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/lsp_signature.nvim"
@@ -296,7 +291,7 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "nvim-autopairs", "cmp-calc", "cmp-nvim-lua", "cmp-emoji", "cmp-buffer", "cmp-path", "cmp_luasnip" },
+    after = { "cmp-nvim-lsp", "nvim-autopairs", "cmp-calc", "cmp-emoji", "cmp-path", "cmp_luasnip", "cmp-buffer", "cmp-nvim-lua" },
     config = { "\27LJ\1\2?\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0$nvdope.initialization.tools.cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -308,13 +303,8 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
   },
-  ["nvim-dap"] = {
-    after = { "DAPInstall.nvim" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-dap"
-  },
   ["nvim-lspconfig"] = {
+    after = { "lsp_signature.nvim" },
     config = { "\27LJ\1\2C\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0(nvdope.initialization.lsp.lspconfig\frequire\0" },
     load_after = {
       ["nvim-lspinstall"] = true
@@ -465,18 +455,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Setup for: vim-matchup
-time([[Setup for vim-matchup]], true)
-try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\16vim-matchup\14lazy_load\24nvdope.utils.packer\frequire\0", "setup", "vim-matchup")
-time([[Setup for vim-matchup]], false)
--- Setup for: indent-blankline.nvim
-time([[Setup for indent-blankline.nvim]], true)
-try_loadstring("\27LJ\1\2I\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0.nvdope.initialization.ui.indent_blankline\frequire\0", "setup", "indent-blankline.nvim")
-time([[Setup for indent-blankline.nvim]], false)
 -- Setup for: dashboard-nvim
 time([[Setup for dashboard-nvim]], true)
 try_loadstring("\27LJ\1\2B\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0'nvdope.initialization.ui.dashboard\frequire\0", "setup", "dashboard-nvim")
 time([[Setup for dashboard-nvim]], false)
+-- Setup for: vim-matchup
+time([[Setup for vim-matchup]], true)
+try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\16vim-matchup\14lazy_load\24nvdope.utils.packer\frequire\0", "setup", "vim-matchup")
+time([[Setup for vim-matchup]], false)
 -- Config for: LuaSnip
 time([[Config for LuaSnip]], true)
 try_loadstring("\27LJ\1\2C\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0(nvdope.initialization.tools.luasnip\frequire\0", "config", "LuaSnip")
@@ -507,9 +493,9 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -523,11 +509,11 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-visual-multi'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-treesitter', 'AutoSave.nvim', 'nvim-toggleterm.lua', 'lspkind-nvim', 'close-buffers.vim', 'lspsaga.nvim', 'nvim-colorizer.lua', 'editorconfig-vim', 'plenary.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'AutoSave.nvim', 'lspkind-nvim', 'editorconfig-vim', 'lspsaga.nvim', 'close-buffers.vim', 'nvim-colorizer.lua', 'nvim-toggleterm.lua', 'plenary.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au WinScrolled * ++once lua require("packer.load")({'neoscroll.nvim'}, { event = "WinScrolled *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'rightclick-macros', 'nvim-dap', 'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim', 'rightclick-macros'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

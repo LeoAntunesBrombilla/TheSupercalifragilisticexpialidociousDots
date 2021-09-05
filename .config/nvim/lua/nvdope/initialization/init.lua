@@ -70,7 +70,7 @@ return packer.startup(function()
 		"lukas-reineke/indent-blankline.nvim",
 		after = "Catppuccino.nvim",
 		commit = "a702f809ce85b16a83c44016bf10fe5a5765e98d",
-		setup = function()
+		config = function()
 			require("nvdope.initialization.ui.indent_blankline")
 		end,
 	})
@@ -164,8 +164,7 @@ return packer.startup(function()
 
 	use({
 		"ray-x/lsp_signature.nvim",
-		event = "BufRead",
-		commit = "4f9fadffe1dea21cd465f5acbf00f702fca5580b",
+		after = "nvim-lspconfig",
 		config = function()
 			require("nvdope.initialization.lsp.lspsignature")
 		end,
@@ -290,29 +289,29 @@ return packer.startup(function()
 	})
 
 	----------------------------=== Debug ===--------------------------
-	use({
-		"mfussenegger/nvim-dap",
-		opt = true,
-		event = "VimEnter",
+	-- use({
+	-- 	"mfussenegger/nvim-dap",
+	-- 	opt = true,
+	-- 	event = "VimEnter",
 		-- config = function()
 		--     require("nvdope.initialization.debug.dap")
 		-- end,
-		disable = Cfg.plugins.debug.dap,
-	})
+		-- disable = Cfg.plugins.debug.dap,
+	-- })
 
-	use({
-		"Pocco81/DAPInstall.nvim",
-		after = "nvim-dap",
-		branch = "dev",
-		config = function()
-			local dap_install = require("dap-install")
+	-- use({
+	-- 	"Pocco81/DAPInstall.nvim",
+	-- 	after = "nvim-dap",
+	-- 	branch = "dev",
+	-- 	config = function()
+	-- 		local dap_install = require("dap-install")
 
-			dap_install.setup({
-				installation_path = "~/Music/",
-				verbosely_call_debuggers = false,
-			})
-		end,
-	})
+	-- 		dap_install.setup({
+	-- 			installation_path = "~/Music/",
+	-- 			verbosely_call_debuggers = false,
+	-- 		})
+	-- 	end,
+	-- })
 
 	----------------------------=== Utils ===-------------------------
 
@@ -364,7 +363,7 @@ return packer.startup(function()
 		"Pocco81/HighStr.nvim",
 		branch = "dev",
 		cmd = { "HSHighlight", "HSRmHighlight", "HSImport", "HSExport" },
-		keys = { "<F3>", "<F4>" }, -- custome mappings
+		keys = { "<F3>", "<F4>" }, -- custom mappings
 		config = function()
 			require("nvdope.initialization.utils.highstr")
 		end,

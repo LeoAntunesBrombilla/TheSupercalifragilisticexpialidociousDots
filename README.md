@@ -28,6 +28,12 @@ Here are some details about my setup:
 + **Term Prompt**: [MiniPrompt](https://github.com/Pocco81/MiniPrompt)
 + **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 
+# Dope Configs
+
+## NvDope
+
+NvDope is an extensible NeoVim config aiming to be eye-candy, user friendly and powerful:
+
 # Legacy
 
 I tend to change my software from time to time, that's why there are some "legacy" configs for some apps that I've used in the past but still keep in case I ever need them again:

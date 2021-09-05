@@ -186,7 +186,7 @@ alias dicts="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
 # Terminal General
 # =============================================================================
 alias so='source'
-alias thisd='xdg-open .'    # open current directory in file explorer
+# alias thisd='xdg-open .'    # open current directory in file explorer
 alias tuf_info='sudo dmidecode | grep "BIOS Inf\|Board Inf" -A 3'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

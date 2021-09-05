@@ -24,7 +24,7 @@ Here are some details about my setup:
 + **Shell**: [bash](https://github.com/bminor/bash)
 + **Editor**: [Neovim](https://github.com/neovim/neovim/)
 + **Browser**: [Brave Nightly](https://brave.com/)
-+ **Terminal**: [Alacritty](https://github.com/alacritty/alacritty)
++ **Terminal**: [Kitty](https://github.com/kovidgoyal/kitty)
 + **Term Prompt**: [MiniPrompt](https://github.com/Pocco81/MiniPrompt)
 + **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 
@@ -84,12 +84,9 @@ $ nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
 
 I tend to change my software from time to time, that's why there are some "legacy" configs for some apps that I've used in the past but still keep in case I ever need them again:
 
-+ Kitty
++ Alacritty
 + ST
 
 # TODO
-+ Add tmux to the screenshots
++ Add screenshots for Tmux
 + And functionality for generating symlinks
-+ Add installer for Nvim (properly implemented)
-+ Finish installer script
-

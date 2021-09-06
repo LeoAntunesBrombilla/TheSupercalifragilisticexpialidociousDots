@@ -60,7 +60,6 @@ cmp.setup({
 				luasnip = "[Snp]",
 				buffer = "[Buf]",
 				nvim_lua = "[Lua]",
-				path = "[Pth]",
 				calc = "[Clc]",
 				emoji = "[Emj]",
 			})[entry.source.name]
@@ -103,7 +102,6 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "calc" },
-		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "emoji" },

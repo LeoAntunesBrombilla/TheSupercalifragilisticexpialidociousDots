@@ -216,10 +216,10 @@ return packer.startup(function()
 		after = "nvim-cmp",
 	})
 
-	use({
-		"hrsh7th/cmp-path",
-		after = "nvim-cmp",
-	})
+	-- use({
+		-- "hrsh7th/cmp-path",
+		-- after = "nvim-cmp",
+	-- })
 
 	use({
 		"hrsh7th/cmp-nvim-lua",

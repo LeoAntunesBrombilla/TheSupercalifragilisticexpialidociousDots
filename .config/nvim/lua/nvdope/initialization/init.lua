@@ -293,10 +293,10 @@ return packer.startup(function()
 	-- 	"mfussenegger/nvim-dap",
 	-- 	opt = true,
 	-- 	event = "VimEnter",
-		-- config = function()
-		--     require("nvdope.initialization.debug.dap")
-		-- end,
-		-- disable = Cfg.plugins.debug.dap,
+	-- 	config = function()
+	-- 	    require("nvdope.initialization.debug.dap")
+	-- 	end,
+	-- 	disable = Cfg.plugins.debug.dap,
 	-- })
 
 	-- use({
@@ -305,11 +305,7 @@ return packer.startup(function()
 	-- 	branch = "dev",
 	-- 	config = function()
 	-- 		local dap_install = require("dap-install")
-
-	-- 		dap_install.setup({
-	-- 			installation_path = "~/Music/",
-	-- 			verbosely_call_debuggers = false,
-	-- 		})
+	-- 		dap_install.setup()
 	-- 	end,
 	-- })
 
@@ -413,14 +409,6 @@ return packer.startup(function()
 		opt = true,
 		ft = "rust",
 		disable = Cfg.plugins.extensions.rust_tools,
-	})
-
-	use({
-		"phaazon/hop.nvim",
-		after = "Catppuccino.nvim",
-		config = function()
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-		end,
 	})
 
 	use({

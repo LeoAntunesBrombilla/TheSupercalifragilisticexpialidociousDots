@@ -46,12 +46,19 @@ local statusline_style = icon_styles["default"]
 
 -- Initialize the components table
 local components = {
-   left = { active = {}, inactive = {} },
-   mid = { active = {}, inactive = {} },
-   right = { active = {}, inactive = {} },
+    active = {},
+    inactive = {}
 }
 
-components.left.active[1] = {
+-- Initialize left, mid and right
+table.insert(components.active, {})
+table.insert(components.active, {})
+table.insert(components.active, {})
+table.insert(components.inactive, {})
+table.insert(components.inactive, {})
+table.insert(components.inactive, {})
+
+components.active[1][1] = {
    provider = statusline_style.main_icon,
 
    hl = {
@@ -65,7 +72,7 @@ components.left.active[1] = {
    } },
 }
 
-components.left.active[2] = {
+components.active[1][2] = {
    provider = statusline_style.right,
 
    hl = {
@@ -74,7 +81,7 @@ components.left.active[2] = {
    },
 }
 
-components.left.active[3] = {
+components.active[1][3] = {
    provider = function()
       local filename = vim.fn.expand "%:t"
       local extension = vim.fn.expand "%:e"
@@ -93,7 +100,7 @@ components.left.active[3] = {
    right_sep = { str = statusline_style.right, hl = { fg = colors.lightbg, bg = colors.lightbg2 } },
 }
 
-components.left.active[4] = {
+components.active[1][4] = {
    provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       return "  " .. dir_name .. " "
@@ -109,7 +116,7 @@ components.left.active[4] = {
    } },
 }
 
-components.left.active[5] = {
+components.active[1][5] = {
    provider = "git_diff_added",
    hl = {
       fg = colors.grey_fg2,
@@ -118,7 +125,7 @@ components.left.active[5] = {
    icon = " ",
 }
 -- diffModfified
-components.left.active[6] = {
+components.active[1][6] = {
    provider = "git_diff_changed",
    hl = {
       fg = colors.grey_fg2,
@@ -127,7 +134,7 @@ components.left.active[6] = {
    icon = "   ",
 }
 -- diffRemove
-components.left.active[7] = {
+components.active[1][7] = {
    provider = "git_diff_removed",
    hl = {
       fg = colors.grey_fg2,
@@ -136,7 +143,7 @@ components.left.active[7] = {
    icon = "  ",
 }
 
-components.left.active[8] = {
+components.active[1][8] = {
    provider = "diagnostic_errors",
    enabled = function()
       return lsp.diagnostics_exist "Error"
@@ -145,7 +152,7 @@ components.left.active[8] = {
    icon = "  ",
 }
 
-components.left.active[9] = {
+components.active[1][9] = {
    provider = "diagnostic_warnings",
    enabled = function()
       return lsp.diagnostics_exist "Warning"
@@ -154,7 +161,7 @@ components.left.active[9] = {
    icon = "  ",
 }
 
-components.left.active[10] = {
+components.active[1][10] = {
    provider = "diagnostic_hints",
    enabled = function()
       return lsp.diagnostics_exist "Hint"
@@ -163,7 +170,7 @@ components.left.active[10] = {
    icon = "  ",
 }
 
-components.left.active[11] = {
+components.active[1][11] = {
    provider = "diagnostic_info",
    enabled = function()
       return lsp.diagnostics_exist "Information"
@@ -172,7 +179,7 @@ components.left.active[11] = {
    icon = "  ",
 }
 
-components.mid.active[1] = {
+components.active[2][1] = {
    provider = function()
       local Lsp = vim.lsp.util.get_progress_messages()[1]
       if Lsp then
@@ -205,7 +212,7 @@ components.mid.active[1] = {
    hl = { fg = colors.green },
 }
 
-components.right.active[1] = {
+components.active[3][1] = {
    provider = function()
       if next(vim.lsp.buf_get_clients()) ~= nil then
          return "  LSP"
@@ -216,7 +223,7 @@ components.right.active[1] = {
    hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
 
-components.right.active[2] = {
+components.active[3][2] = {
    -- taken from: https://github.com/hoob3rt/lualine.nvim/blob/master/lua/lualine/components/branch.lua
    provider = function()
       local git_branch = ""
@@ -274,7 +281,7 @@ components.right.active[2] = {
    },
 }
 
-components.right.active[3] = {
+components.active[3][3] = {
    provider = " " .. statusline_style.left,
    hl = {
       fg = colors.one_bg2,
@@ -312,7 +319,7 @@ local chad_mode_hl = function()
    }
 end
 
-components.right.active[4] = {
+components.active[3][4] = {
    provider = statusline_style.left,
    hl = function()
       return {
@@ -322,7 +329,7 @@ components.right.active[4] = {
    end,
 }
 
-components.right.active[5] = {
+components.active[3][5] = {
    provider = statusline_style.vi_mode_icon,
    hl = function()
       return {
@@ -332,14 +339,14 @@ components.right.active[5] = {
    end,
 }
 
-components.right.active[6] = {
+components.active[3][6] = {
    provider = function()
       return " " .. mode_colors[vim.fn.mode()][1] .. " "
    end,
    hl = chad_mode_hl,
 }
 
-components.right.active[7] = {
+components.active[3][7] = {
    provider = statusline_style.left,
    hl = {
       fg = colors.grey,
@@ -347,7 +354,7 @@ components.right.active[7] = {
    },
 }
 
-components.right.active[8] = {
+components.active[3][8] = {
    provider = statusline_style.left,
    hl = {
       fg = colors.green,
@@ -355,7 +362,7 @@ components.right.active[8] = {
    },
 }
 
-components.right.active[9] = {
+components.active[3][9] = {
    provider = statusline_style.position_icon,
    hl = {
       fg = colors.black,
@@ -363,7 +370,7 @@ components.right.active[9] = {
    },
 }
 
-components.right.active[10] = {
+components.active[3][10] = {
    provider = function()
       local current_line = vim.fn.line "."
       local total_line = vim.fn.line "$"

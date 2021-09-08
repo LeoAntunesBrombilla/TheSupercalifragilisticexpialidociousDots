@@ -197,15 +197,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/start/friendly-snippets"
   },
-  ["gitsigns.nvim"] = {
-    config = { "\27LJ\1\2D\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0)nvdope.initialization.tools.gitsigns\frequire\0" },
-    load_after = {
-      ["plenary.nvim"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
-  },
   ["go.nvim"] = {
     config = { "\27LJ\1\0020\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\ago\frequire\0" },
     loaded = false,
@@ -273,7 +264,7 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "nvim-autopairs", "cmp-nvim-lua", "cmp-calc", "cmp-emoji", "cmp_luasnip", "cmp-buffer" },
+    after = { "cmp-nvim-lsp", "cmp-nvim-lua", "nvim-autopairs", "cmp-calc", "cmp-emoji", "cmp_luasnip", "cmp-buffer" },
     config = { "\27LJ\1\2?\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0$nvdope.initialization.tools.cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -340,7 +331,7 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["plenary.nvim"] = {
-    after = { "gitsigns.nvim", "popup.nvim" },
+    after = { "popup.nvim" },
     loaded = false,
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/plenary.nvim"
@@ -475,9 +466,9 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

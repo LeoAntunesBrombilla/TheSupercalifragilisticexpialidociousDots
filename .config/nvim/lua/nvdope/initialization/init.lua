@@ -100,14 +100,14 @@ return packer.startup(function()
 		disable = Cfg.plugins.ui.tree,
 	})
 
-	use({
-		"lewis6991/gitsigns.nvim",
-		after = "plenary.nvim",
-		config = function()
-			require("nvdope.initialization.tools.gitsigns")
-		end,
-		disable = Cfg.plugins.tools.gitsigns,
-	})
+	-- use({
+	-- 	"lewis6991/gitsigns.nvim",
+	-- 	after = "plenary.nvim",
+	-- 	config = function()
+	-- 		require("nvdope.initialization.tools.gitsigns")
+	-- 	end,
+	-- 	disable = Cfg.plugins.tools.gitsigns,
+	-- })
 
 	use({
 		"glepnir/dashboard-nvim",
@@ -184,6 +184,7 @@ return packer.startup(function()
 
 	use({
 		"hrsh7th/nvim-cmp",
+		commit = "b6b15d5f6e46643462b5e62269e7babdab17331c",
 		event = "InsertEnter",
 		config = function()
 			require("nvdope.initialization.tools.cmp")

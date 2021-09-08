@@ -36,13 +36,12 @@ true_zen.setup {
 			quit = "untoggle",
 			ignore_floating_windows = true,
             affected_higroups = {
-                NonText = "ignore",
-                FoldColumn = {},
-                ColorColumn = {},
-                VertSplit = {},
-                StatusLine = {},
-                StatusLineNC = {},
-                SignColumn = {}
+				FoldColumn = true,
+				ColorColumn = true,
+				VertSplit = true,
+				StatusLine = true,
+				StatusLineNC = true,
+				SignColumn = true,
             }
         },
         focus = {

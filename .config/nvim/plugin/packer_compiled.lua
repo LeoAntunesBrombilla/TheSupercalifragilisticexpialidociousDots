@@ -165,6 +165,15 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua"
   },
+  ["cmp-path"] = {
+    after_files = { "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/cmp-path"
+  },
   cmp_luasnip = {
     after_files = { "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
     load_after = {
@@ -264,7 +273,7 @@ _G.packer_plugins = {
     path = "/home/sebas5758/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "cmp-nvim-lua", "nvim-autopairs", "cmp-calc", "cmp-emoji", "cmp_luasnip", "cmp-buffer" },
+    after = { "cmp-nvim-lsp", "nvim-autopairs", "cmp-nvim-lua", "cmp-calc", "cmp-emoji", "cmp-path", "cmp_luasnip", "cmp-buffer" },
     config = { "\27LJ\1\2?\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0$nvdope.initialization.tools.cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -466,8 +475,8 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <F4> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F4>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <F3> <cmd>lua require("packer.load")({'HighStr.nvim'}, { keys = "<lt>F3>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'vim-commentary'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
@@ -482,11 +491,11 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-visual-multi'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'AutoSave.nvim', 'lspkind-nvim', 'editorconfig-vim', 'lspsaga.nvim', 'nvim-colorizer.lua', 'close-buffers.vim', 'nvim-toggleterm.lua', 'plenary.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'AutoSave.nvim', 'lspkind-nvim', 'lspsaga.nvim', 'close-buffers.vim', 'nvim-colorizer.lua', 'nvim-toggleterm.lua', 'editorconfig-vim', 'plenary.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au WinScrolled * ++once lua require("packer.load")({'neoscroll.nvim'}, { event = "WinScrolled *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'rightclick-macros', 'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim', 'rightclick-macros'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

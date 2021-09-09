@@ -184,7 +184,6 @@ return packer.startup(function()
 
 	use({
 		"hrsh7th/nvim-cmp",
-		commit = "b6b15d5f6e46643462b5e62269e7babdab17331c",
 		event = "InsertEnter",
 		config = function()
 			require("nvdope.initialization.tools.cmp")
@@ -217,10 +216,10 @@ return packer.startup(function()
 		after = "nvim-cmp",
 	})
 
-	-- use({
-		-- "hrsh7th/cmp-path",
-		-- after = "nvim-cmp",
-	-- })
+	use({
+		"hrsh7th/cmp-path",
+		after = "nvim-cmp",
+	})
 
 	use({
 		"hrsh7th/cmp-nvim-lua",

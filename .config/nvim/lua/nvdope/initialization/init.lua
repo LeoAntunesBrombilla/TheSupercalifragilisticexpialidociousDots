@@ -289,25 +289,22 @@ return packer.startup(function()
 	})
 
 	----------------------------=== Debug ===--------------------------
-	-- use({
-	-- 	"mfussenegger/nvim-dap",
-	-- 	opt = true,
-	-- 	event = "VimEnter",
-	-- 	config = function()
-	-- 	    require("nvdope.initialization.debug.dap")
-	-- 	end,
-	-- 	disable = Cfg.plugins.debug.dap,
-	-- })
+	use({
+		"mfussenegger/nvim-dap",
+		opt = true,
+		event = "VimEnter",
+		disable = Cfg.plugins.debug.dap,
+	})
 
-	-- use({
-	-- 	"Pocco81/DAPInstall.nvim",
-	-- 	after = "nvim-dap",
-	-- 	branch = "dev",
-	-- 	config = function()
-	-- 		local dap_install = require("dap-install")
-	-- 		dap_install.setup()
-	-- 	end,
-	-- })
+	use({
+		"Pocco81/DAPInstall.nvim",
+		after = "nvim-dap",
+		branch = "dev",
+		config = function()
+			require("nvdope.initialization.debug.dap_install")
+		end,
+		disable = Cfg.plugins.debug.dap_install,
+	})
 
 	----------------------------=== Utils ===-------------------------
 

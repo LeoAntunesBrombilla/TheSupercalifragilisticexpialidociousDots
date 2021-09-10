@@ -58,4 +58,4 @@ catppuccino.setup({
 	},
 })
 
-catppuccino.load()
+vim.cmd[[colorscheme catppuccino]]

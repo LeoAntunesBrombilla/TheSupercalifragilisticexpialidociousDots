@@ -42,6 +42,7 @@ return packer.startup(function()
 	use({
 		"kyazdani42/nvim-web-devicons",
 		after = "packer.nvim",
+		commit = "c8ce86df2ee0f5bb455c4188c8a4c77d3c9ef714",
 		config = function()
 			require("nvdope.initialization.ui.web_devicons")
 		end,

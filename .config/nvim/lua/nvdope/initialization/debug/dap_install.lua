@@ -5,7 +5,7 @@ end
 
 dap_install.setup()
 
-local dbg_list = require("dap-install.debuggers_list").debuggers
+local dbg_list = require("dap-install.core.debuggers_list").debuggers
 
 for debugger, _ in pairs(dbg_list) do
 	dap_install.config(debugger, {})

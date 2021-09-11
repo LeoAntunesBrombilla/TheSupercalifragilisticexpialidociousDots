@@ -15,6 +15,7 @@ Cfg = {
 			"efm",
 			"lua",
 			"bash",
+			"json",
 			"vim",
 			"go",
 			"cpp",

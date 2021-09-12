@@ -16,7 +16,6 @@ local icon_styles = {
 		vi_mode_icon = " ",
 		position_icon = " ",
 	},
-
 	block = {
 		left = " ",
 		right = " ",
@@ -24,7 +23,6 @@ local icon_styles = {
 		vi_mode_icon = "  ",
 		position_icon = "  ",
 	},
-
 	round = {
 		left = "",
 		right = "",
@@ -32,7 +30,6 @@ local icon_styles = {
 		vi_mode_icon = " ",
 		position_icon = " ",
 	},
-
 	slant = {
 		left = " ",
 		right = " ",
@@ -60,21 +57,21 @@ table.insert(components.inactive, {})
 
 components.active[1][1] = {
 	provider = statusline_style.main_icon,
-
 	hl = {
 		fg = colors.statusline_bg,
 		bg = colors.nord_blue,
 	},
-
-	right_sep = { str = statusline_style.right, hl = {
-		fg = colors.nord_blue,
-		bg = colors.one_bg2,
-	} },
+	right_sep = {
+		str = statusline_style.right,
+		hl = {
+			fg = colors.nord_blue,
+			bg = colors.one_bg2,
+		},
+	},
 }
 
 components.active[1][2] = {
 	provider = statusline_style.right,
-
 	hl = {
 		fg = colors.one_bg2,
 		bg = colors.lightbg,
@@ -96,7 +93,6 @@ components.active[1][3] = {
 		fg = colors.white,
 		bg = colors.lightbg,
 	},
-
 	right_sep = { str = statusline_style.right, hl = { fg = colors.lightbg, bg = colors.lightbg2 } },
 }
 
@@ -105,15 +101,17 @@ components.active[1][4] = {
 		local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 		return "  " .. dir_name .. " "
 	end,
-
 	hl = {
 		fg = colors.grey_fg2,
 		bg = colors.lightbg2,
 	},
-	right_sep = { str = statusline_style.right, hi = {
-		fg = colors.lightbg2,
-		bg = colors.statusline_bg,
-	} },
+	right_sep = {
+		str = statusline_style.right,
+		hi = {
+			fg = colors.lightbg2,
+			bg = colors.statusline_bg,
+		},
+	},
 }
 
 components.active[1][5] = {
@@ -383,7 +381,6 @@ components.active[3][10] = {
 		local result, _ = math.modf((current_line / total_line) * 100)
 		return " " .. result .. "%% "
 	end,
-
 	hl = {
 		fg = colors.green,
 		bg = colors.one_bg,
@@ -398,8 +395,10 @@ properties.force_inactive.filetypes = { "NvimTree", "Outline", "packer", "lsp_ut
 properties.force_inactive.buftypes = { "terminal" }
 
 require("feline").setup({
-	default_bg = colors.statusline_bg,
-	default_fg = colors.fg,
 	components = components,
-	properties = properties,
+	colors = {
+		bg = colors.statusline_bg,
+		fg = colors.fg,
+	},
+	-- properties = properties,
 })

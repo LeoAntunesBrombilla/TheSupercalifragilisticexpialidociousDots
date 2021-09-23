@@ -160,6 +160,7 @@ Cfg = {
 		},
 		utils = {
 			autosave = false,
+			bufresize = false,
 			commentary = false,
 			neoscroll = false,
 			truezen = false,

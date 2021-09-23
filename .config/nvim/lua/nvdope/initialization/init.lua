@@ -320,11 +320,13 @@ return packer.startup(function()
 	})
 
 	use({
-		"akinsho/nvim-toggleterm.lua",
-		event = "BufRead",
+		"kwkarlwang/bufresize.nvim",
+		event = "VimEnter",
+		commit = "0d300e66fb553ad8c0bc5eaaf0f14c2dcba374e7",
 		config = function()
-			require("toggleterm").setup()
+			require("nvdope.initialization.utils.bufresize")
 		end,
+		disable = Cfg.plugins.utils.bufresize,
 	})
 
 	use({

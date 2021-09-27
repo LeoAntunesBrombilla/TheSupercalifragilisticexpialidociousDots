@@ -16,10 +16,10 @@ bufresize.setup({
 			{ "n", "<leader>w|", "<C-w>|", opts },
 			{ "n", "<leader>wo", "<C-w>|<C-w>_", opts },
 		},
-		trigger_events = { "BufWinEnter", "WinEnter" },
+		trigger_events = { "BufWinEnter", "WinEnter", "VimResized" },
 	},
 	resize = {
 		keys = {},
-		trigger_events = { "VimResized" },
+		trigger_events = { "VimResized", "VimLeave", "VimResume" },
 	},
 })

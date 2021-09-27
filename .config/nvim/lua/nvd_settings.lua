@@ -58,6 +58,7 @@ Cfg = {
 		},
 		globals = {
 			mapleader = " ",
+			did_load_filetypes = 1
 		},
 		global_options = {
 			t_Co = "256",

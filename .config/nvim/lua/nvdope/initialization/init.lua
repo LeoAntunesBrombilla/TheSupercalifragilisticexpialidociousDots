@@ -14,6 +14,8 @@ return packer.startup(function()
 		rocks = "mpack",
 	})
 
+	use("nathom/filetype.nvim")
+
 	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
 	use({
@@ -334,6 +336,12 @@ return packer.startup(function()
 		opt = true,
 		keys = "gc",
 		disable = Cfg.plugins.utils.commentary,
+	})
+
+	use({
+		"rcarriga/nvim-notify",
+		opt = true,
+		event = "VimEnter",
 	})
 
 	use({

@@ -44,16 +44,16 @@ local statusline_style = icon_styles["default"]
 -- Initialize the components table
 local components = {
 	active = {},
-	inactive = {},
+	-- inactive = {},
 }
 
 -- Initialize left, mid and right
 table.insert(components.active, {})
 table.insert(components.active, {})
 table.insert(components.active, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
+-- table.insert(components.inactive, {})
+-- table.insert(components.inactive, {})
+-- table.insert(components.inactive, {})
 
 components.active[1][1] = {
 	provider = statusline_style.main_icon,
@@ -387,12 +387,12 @@ components.active[3][10] = {
 	},
 }
 
-components.inactive[1][1] = { provider = "file_info", type = "unique", left_sep = " " }
+-- components.inactive[1][1] = { provider = "file_info", type = "unique", left_sep = " " }
 -- components.inactive[1][1] = { provider = "line_percentage", right_sep = " " }
 
-local properties = { force_inactive = { filetypes = {}, buftypes = {}, bufnames = {} } }
-properties.force_inactive.filetypes = { "NvimTree", "Outline", "packer", "lsp_util_locations_list" }
-properties.force_inactive.buftypes = { "terminal" }
+-- local properties = { force_inactive = { filetypes = {}, buftypes = {}, bufnames = {} } }
+-- properties.force_inactive.filetypes = { "NvimTree", "Outline", "packer", "lsp_util_locations_list" }
+-- properties.force_inactive.buftypes = { "terminal" }
 
 require("feline").setup({
 	components = components,

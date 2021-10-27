@@ -3,6 +3,8 @@ if not present then
 	return
 end
 
+vim.opt.completeopt = "menuone,noselect"
+
 local kind_icons = {
 	Text = "",
 	Method = "",
@@ -40,18 +42,12 @@ local function get_kind(kind_item)
 	end
 end
 
-vim.opt.completeopt = "menuone,noselect"
-
--- require("luasnip/loaders/from_vscode")._luasnip_vscode_lazy_load()
--- require("luasnip/loaders/from_vscode").lazy_load()
--- require("luasnip/loaders/from_vscode").load()
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end,
-	},
+cmp.setup {
+   snippet = {
+      expand = function(args)
+         require("luasnip").lsp_expand(args.body)
+      end,
+   },
 	formatting = {
 		format = function(entry, vim_item)
 			vim_item.kind = string.format("%s %s", get_kind(vim_item.kind), vim_item.kind)
@@ -74,14 +70,14 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
+		-- ["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		}),
 		["<Tab>"] = function(fallback)
-			if vim.fn.pumvisible() == 1 then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
+			if cmp.visible() then
+				cmp.select_next_item()
 			elseif require("luasnip").expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
 			else
@@ -89,8 +85,8 @@ cmp.setup({
 			end
 		end,
 		["<S-Tab>"] = function(fallback)
-			if vim.fn.pumvisible() == 1 then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
+			if cmp.visible() then
+				cmp.select_prev_item()
 			elseif require("luasnip").jumpable(-1) then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
 			else
@@ -108,4 +104,4 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "emoji" },
 	},
-})
+}

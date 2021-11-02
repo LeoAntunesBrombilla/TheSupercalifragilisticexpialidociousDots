@@ -1,11 +1,10 @@
-local present, catppuccino = pcall(require, "catppuccino")
+local present, katppuccino = pcall(require, "katppuccino")
 if not present then
 	return
 end
 
-catppuccino.setup({
-	colorscheme = Cfg.nvdope.colorscheme,
-	transparency = false,
+katppuccino.setup({
+	transparent_background = false,
 	term_colors = false,
 	styles = {
 		comments = "italic",
@@ -58,4 +57,4 @@ catppuccino.setup({
 	},
 })
 
-vim.cmd[[colorscheme catppuccino]]
+vim.cmd[[colorscheme katppuccino]]

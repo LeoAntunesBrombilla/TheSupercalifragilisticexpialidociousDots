@@ -9,8 +9,8 @@ Cfg = {
 			terminal = nil,
 			user = nil,
 		},
-		theme = "onedark", -- ui; (depracated?)
-		colorscheme = "neon_latte", -- syntax & ui; must match a colorscheme (AKA flavor) from Catppuccino.nvim
+		theme = "katppuccino", -- ui; (depracated?)
+		colorscheme = "neon_latte", -- syntax & ui; must match a colorscheme (AKA flavor) from katppuccino.nvim
 		language_servers = {
 			"efm",
 			"lua",
@@ -358,6 +358,37 @@ Cfg = {
 			statusline_bg = "#22262e",
 			lightbg = "#2d3139",
 			lightbg2 = "#262a32",
+		},
+		katppuccino = {
+			white = "#F2F2F7",
+			darker_black = "#1b1f27",
+			black = "#0E171C", --  nvim bg
+			black2 = "#252931",
+			one_bg = "#282c34", -- real bg of onedark
+			one_bg2 = "#353b45",
+			one_bg3 = "#30343c",
+			grey = "#42464e",
+			grey_fg = "#565c64",
+			grey_fg2 = "#6f737b",
+			light_grey = "#6f737b",
+			red = "#E28D8D",
+			baby_pink = "#E28D8D",
+			pink = "#ff75a0",
+			line = "#2a2e36", -- for lines like vertsplit
+			green = "#ADD692",
+			vibrant_green = "#ADD692",
+			nord_blue = "#81A1C1",
+			blue = "#61afef",
+			yellow = "#E3DAA3",
+			sun = "#E3DAA3",
+			purple = "#b4bbc8",
+			dark_purple = "#c882e7",
+			teal = "#519ABA",
+			orange = "#fca2aa",
+			cyan = "#a3b8ef",
+			statusline_bg = "#312C44",
+			lightbg = "#3e4058",
+			lightbg2 = "#201C2B",
 		},
 		nocturn = {
 			white = "#b5bcc9",

@@ -33,7 +33,7 @@ return packer.startup(function()
 	----------------------------=== UI ===---------------------------
 	use({
 		"Pocco81/Catppuccino.nvim",
-		branch = "dev",
+		branch = "dev-remaster",
 		after = "bufferline.nvim", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
 			require("nvdope.initialization.ui.catppuccino")
@@ -80,7 +80,7 @@ return packer.startup(function()
 
 	use({
 		"norcalli/nvim-colorizer.lua",
-		event = "BufRead",
+		after = "Catppuccino.nvim",
 		config = function()
 			require("nvdope.initialization.ui.colorizer")
 		end,

@@ -82,6 +82,7 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
 alias ........="cd ../../../../../../.."
+alias j="zoxide"
 #date formats
 alias simple_date='date +"%d-%m-%y"'
 

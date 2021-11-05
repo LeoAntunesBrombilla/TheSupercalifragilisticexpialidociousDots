@@ -36,7 +36,7 @@ return packer.startup(function()
 		branch = "dev-remaster",
 		after = "bufferline.nvim", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
-			require("nvdope.initialization.ui.catppuccino")
+			require("nvdope.initialization.ui.catppuccin")
 		end,
 		disable = Cfg.plugins.ui.base16,
 	})

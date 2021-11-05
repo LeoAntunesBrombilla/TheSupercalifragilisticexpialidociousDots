@@ -1,9 +1,9 @@
-local present, katppuccino = pcall(require, "katppuccino")
+local present, catppuccin = pcall(require, "catppuccin")
 if not present then
 	return
 end
 
-katppuccino.setup({
+catppuccin.setup({
 	transparent_background = false,
 	term_colors = false,
 	styles = {
@@ -57,4 +57,4 @@ katppuccino.setup({
 	},
 })
 
-vim.cmd[[colorscheme katppuccino]]
+vim.cmd[[colorscheme catppuccin]]

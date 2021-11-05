@@ -1,6 +1,6 @@
 local M = {}
 
-function M.commmon(client, bufnr)
+function M.common(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     local opts = {noremap = true, silent = true}

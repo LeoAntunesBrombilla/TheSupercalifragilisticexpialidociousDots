@@ -133,18 +133,16 @@ return packer.startup(function()
 
 	----------------------------=== LSP ===--------------------------
 	use({
-		"kabouzeid/nvim-lspinstall",
+		"williamboman/nvim-lsp-installer",
 		after = "Catppuccino.nvim",
 		disable = Cfg.plugins.lsp.lspinstall,
-	})
-
-	use({
-		"neovim/nvim-lspconfig",
-		after = "nvim-lspinstall",
+		requires = {
+			"folke/lua-dev.nvim",
+			"neovim/nvim-lspconfig",
+		},
 		config = function()
 			require("nvdope.initialization.lsp.lspconfig")
 		end,
-		disable = Cfg.plugins.lsp.lspconfig,
 	})
 
 	use({
@@ -167,7 +165,7 @@ return packer.startup(function()
 
 	use({
 		"ray-x/lsp_signature.nvim",
-		after = "nvim-lspconfig",
+		after = "nvim-lsp-installer",
 		config = function()
 			require("nvdope.initialization.lsp.lspsignature")
 		end,

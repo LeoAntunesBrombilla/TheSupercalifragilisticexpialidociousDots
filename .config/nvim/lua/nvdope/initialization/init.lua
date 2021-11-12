@@ -32,8 +32,8 @@ return packer.startup(function()
 
 	----------------------------=== UI ===---------------------------
 	use({
-		"Pocco81/Catppuccino.nvim",
-		branch = "dev-remaster",
+		"catppuccin/nvim",
+		as = "catppuccin",
 		after = "bufferline.nvim", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
 			require("nvdope.initialization.ui.catppuccin")
@@ -71,7 +71,7 @@ return packer.startup(function()
 
 	use({
 		"lukas-reineke/indent-blankline.nvim",
-		after = "Catppuccino.nvim",
+		after = "catppuccin",
 		commit = "a702f809ce85b16a83c44016bf10fe5a5765e98d",
 		config = function()
 			require("nvdope.initialization.ui.indent_blankline")
@@ -80,7 +80,7 @@ return packer.startup(function()
 
 	use({
 		"norcalli/nvim-colorizer.lua",
-		after = "Catppuccino.nvim",
+		after = "catppuccin",
 		config = function()
 			require("nvdope.initialization.ui.colorizer")
 		end,
@@ -134,7 +134,7 @@ return packer.startup(function()
 	----------------------------=== LSP ===--------------------------
 	use({
 		"williamboman/nvim-lsp-installer",
-		after = "Catppuccino.nvim",
+		after = "catppuccin",
 		disable = Cfg.plugins.lsp.lspinstall,
 		requires = {
 			"folke/lua-dev.nvim",
@@ -380,7 +380,7 @@ return packer.startup(function()
 
 	use({
 		"folke/todo-comments.nvim",
-		after = "Catppuccino.nvim",
+		after = "catppuccin",
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			require("nvdope.initialization.utils.todocomments")
@@ -390,7 +390,7 @@ return packer.startup(function()
 
 	use({
 		"folke/trouble.nvim",
-		after = "Catppuccino.nvim",
+		after = "catppuccin",
 		config = function()
 			require("nvdope.initialization.utils.trouble")
 		end,

@@ -8,11 +8,12 @@ alias 2tree='git log --all --decorate --graph'
 
 alias ggs="git status"
 alias ggch="git checkout"
-alias ggcm="git commit -am"
-alias ggsh="git push origin"
-alias ggll="git pull origin"
 alias ggpc="git push origin $(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
-alias ggaa="git add -A"
+alias gta="git add -A"
+alias gtps="git push origin"
+alias gtpl="git pull origin"
+alias gtc="git commit -am"
+
 
 alias ggremote="git remote -v"  # check all remotes
 alias ggbranch="git branch -v"  # check all branches
@@ -83,6 +84,7 @@ alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
 alias ........="cd ../../../../../../.."
 alias j="zoxide"
+alias c="cd"
 #date formats
 alias simple_date='date +"%d-%m-%y"'
 
@@ -269,4 +271,5 @@ alias load="kill -USR1 $(pidof st)"
 alias use="xrdb merge"
 alias appit="/usr/local/bin/appimagetool-x86_64.AppImage"
 alias pls="sudo"
+alias clr="clear"
 

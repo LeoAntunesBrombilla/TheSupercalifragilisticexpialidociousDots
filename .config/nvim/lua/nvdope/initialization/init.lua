@@ -30,6 +30,12 @@ return packer.startup(function()
 		disable = Cfg.plugins.tools.popup,
 	})
 
+	use({
+		"kdheepak/lazygit.nvim",
+		after = "plenary.nvim",
+		disable = Cfg.plugins.tools.popup,
+	})
+
 	----------------------------=== UI ===---------------------------
 	use({
 		"catppuccin/nvim",

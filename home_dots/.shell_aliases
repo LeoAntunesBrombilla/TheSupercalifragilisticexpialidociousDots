@@ -1,3 +1,4 @@
+# vim:ft=sh
 # =============================================================================
 # GitHub & Git
 # =============================================================================
@@ -272,4 +273,3 @@ alias use="xrdb merge"
 alias appit="/usr/local/bin/appimagetool-x86_64.AppImage"
 alias pls="sudo"
 alias clr="clear"
-

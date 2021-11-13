@@ -75,6 +75,7 @@ local function setup_servers()
 			["bashls"] = function()
 				return vim.tbl_deep_extend("force", default_opts, {
 					root_dir = vim.loop.cwd,
+					filetypes = { "sh" },
 				})
 			end,
 			["sumneko_lua"] = function()
@@ -107,7 +108,7 @@ local function setup_servers()
 			end,
 			["efm"] = function()
 				return vim.tbl_deep_extend("force", default_opts, {
-
+					root_dir = vim.loop.cwd,
 					filetypes = {
 						"lua",
 						-- "go", -- not recommended
@@ -123,6 +124,9 @@ local function setup_servers()
 						"yaml",
 						"markdown",
 						-- "vue"
+					},
+					settings = {
+						rootMarkers = { ".git/" },
 					},
 				})
 			end,

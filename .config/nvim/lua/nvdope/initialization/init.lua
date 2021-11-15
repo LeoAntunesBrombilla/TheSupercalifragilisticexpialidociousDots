@@ -214,6 +214,12 @@ return packer.startup(function()
 	})
 
 	use({
+		"tzachar/cmp-tabnine",
+		run = "./install.sh",
+		after = "nvim-cmp"
+	})
+
+	use({
 		"hrsh7th/cmp-emoji",
 		after = "nvim-cmp",
 	})

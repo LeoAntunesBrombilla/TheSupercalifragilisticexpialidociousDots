@@ -21,7 +21,7 @@ alias odf='source /usr/local/bin/MiniPrompt*/scripts/on_da_fly.sh'
 # xrdb merge ~/xresources
 
 #-------------------=== vars ===-------------------------------
-MINIPROMPT_ENABLED=true
+MINIPROMPT_ENABLED=false
 
 #-------------------=== resources ===-------------------------------
 
@@ -331,3 +331,6 @@ printf '%b' '\033[5 q'
 # \033[2 q			#not blinking block
 # \033[3 q			#blinking underscore
 # \033[4 q			#not blinking underscore
+source /usr/local/bin/miniprompt
+alias mp="source /usr/local/bin/miniprompt"
+# . '/tmp/test6/node_modules/promptless/promptless.sh'

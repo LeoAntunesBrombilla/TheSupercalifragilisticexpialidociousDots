@@ -209,7 +209,7 @@ alias ual="lua"
 alias aul="lua"
 alias wlua="rlwrap lua"
 alias xampp='gksu /opt/lampp/manager-linux-x64.run'
-alias mp='mvn package'
+# alias mp='mvn package'
 alias wq='wmctrl -r 'Alacritty' -b toggle,fullscreen'
 
 # =============================================================================

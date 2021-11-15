@@ -78,6 +78,12 @@ local function setup_servers()
 					filetypes = { "sh" },
 				})
 			end,
+			["cmake"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					-- root_dir = vim.loop.cwd,
+					filetypes = { "cmake", "make" }
+				})
+			end,
 			["sumneko_lua"] = function()
 				-- return require("lua-dev").setup({
 				-- lspconfig = default_opts,

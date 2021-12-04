@@ -206,6 +206,7 @@ holder.builtin.cmp = {
 			calc = "[Clc]",
 			cmp_tabnine = "[Tbn]",
 			luasnip = "[Snp]",
+			npm = "[Npm]",
 			buffer = "[Buf]",
 		},
 		duplicates = {
@@ -236,6 +237,7 @@ holder.builtin.cmp = {
 		{ name = "path" },
 		{ name = "luasnip" },
 		{ name = "cmp_tabnine" },
+		{ name = 'npm', keyword_length = 4 },
 		{ name = "nvim_lua" },
 		{ name = "buffer" },
 		{ name = "calc" },

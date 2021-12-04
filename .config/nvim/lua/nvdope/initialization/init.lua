@@ -14,7 +14,7 @@ return packer.startup(function()
 		rocks = "mpack",
 	})
 
-	use("nathom/filetype.nvim")
+	use({"nathom/filetype.nvim", commit = "c6227dcafb918d13f904fa1584a3cab4f8c36936"})
 
 	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
@@ -40,10 +40,74 @@ return packer.startup(function()
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
+		branch = "dev-rc",
 		after = "bufferline.nvim", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
 			require("nvdope.initialization.ui.catppuccin")
 		end,
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"rose-pine/neovim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"BeyondMagic/arcoiris-nvim-theme",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"AlphaTechnolog/onedarker.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"Mofiqul/dracula.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"Mofiqul/vscode.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		config = function()
+			vim.g.vscode_style = "dark"
+		end,
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"Mangeshrex/uwu.vim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"Th3Whit3Wolf/onebuddy",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"FrenzyExists/aquarium-vim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"embark-theme/vim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"EdenEast/nightfox.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
 		disable = Cfg.plugins.ui.base16,
 	})
 
@@ -216,6 +280,11 @@ return packer.startup(function()
 	use({
 		"tzachar/cmp-tabnine",
 		run = "./install.sh",
+		after = "nvim-cmp"
+	})
+
+	use({
+		"David-Kunz/cmp-npm",
 		after = "nvim-cmp"
 	})
 

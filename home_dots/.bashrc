@@ -331,6 +331,13 @@ printf '%b' '\033[5 q'
 # \033[2 q			#not blinking block
 # \033[3 q			#blinking underscore
 # \033[4 q			#not blinking underscore
-source /usr/local/bin/miniprompt
-alias mp="source /usr/local/bin/miniprompt"
-# . '/tmp/test6/node_modules/promptless/promptless.sh'
+# alias mp="source /usr/lib/node_modules/miniprompt/miniprompt"
+# mp
+
+# alias mp="source /home/pocco81/code/github_p/MiniPrompt/miniprompt"
+alias mp="source miniprompt"
+mp
+# PS1='$(printf "%*s\r%s" $(( COLUMNS-1 )) "[$(git branch 2>/dev/null | grep '^*' | sed s/..//)] $(date +%H:%M:%S)" "heipei@wavefront:$PWD$ ")'
+
+# eval "$(starship init bash)"
+

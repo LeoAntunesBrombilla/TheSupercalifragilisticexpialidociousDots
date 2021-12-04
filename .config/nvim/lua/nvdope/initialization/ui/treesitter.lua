@@ -4,7 +4,7 @@ if not present then
 end
 
 ts_config.setup {
-    ensure_installed = Cfg.nvdope.treesitter_parsers,
+    ensure_installed = "maintained",
     highlight = {
         enable = true,
         use_languagetree = true

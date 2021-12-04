@@ -21,15 +21,21 @@ lspinstall.settings({
 })
 
 local function setup_handlers()
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = {
-			-- prefix = "",
-			prefix = "",
-			spacing = 0,
-		},
+	-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	-- 	virtual_text = {
+	-- 		-- prefix = "",
+	-- 		prefix = "",
+	-- 		spacing = 0,
+	-- 	},
+	-- 	underline = true,
+	-- 	signs = true,
+	-- 	update_in_insert = true,
+	-- })
+	vim.diagnostic.config({
 		signs = true,
 		underline = true,
-		update_in_insert = true,
+		virtual_text = true,
+		update_in_insert = true
 	})
 end
 
@@ -78,10 +84,28 @@ local function setup_servers()
 					filetypes = { "sh" },
 				})
 			end,
+			["cssls"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					root_dir = vim.loop.cwd,
+					filetypes = { "css", "scss", "less" },
+					settings = {
+						css = {
+							validate = true,
+						},
+						less = {
+							validate = true,
+						},
+						scss = {
+							validate = true,
+						},
+					},
+					single_file_support = true,
+				})
+			end,
 			["cmake"] = function()
 				return vim.tbl_deep_extend("force", default_opts, {
 					-- root_dir = vim.loop.cwd,
-					filetypes = { "cmake", "make" }
+					filetypes = { "cmake", "make" },
 				})
 			end,
 			["sumneko_lua"] = function()
@@ -142,6 +166,11 @@ local function setup_servers()
 					filetypes = { "go", "gomod" },
 				})
 			end,
+			["rust_analyzer"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					filetypes = { "rust" },
+				})
+			end,
 		}
 
 		server:setup(server_opts[server.name] and server_opts[server.name]() or default_opts)
@@ -151,11 +180,10 @@ end
 setup_handlers()
 setup_servers()
 
--- replace the default lsp diagnostic letters with prettier symbols
-vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultWarning" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "LspDiagnosticsDefaultInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", numhl = "LspDiagnosticsDefaultHint" })
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- suppress error messages from lang servers
 vim.notify = function(msg, log_level, _opts)

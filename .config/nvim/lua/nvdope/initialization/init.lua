@@ -49,6 +49,21 @@ return packer.startup(function()
 	})
 
 	use({
+		"folke/tokyonight.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		config = function()
+			vim.g.tokyonight_style = "night"
+		end,
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"katawful/kat.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
 		"rose-pine/neovim",
 		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
 		disable = Cfg.plugins.ui.base16,

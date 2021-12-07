@@ -40,7 +40,7 @@ return packer.startup(function()
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
-		branch = "dev-rc",
+		branch = "dev",
 		after = "bufferline.nvim", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
 			require("nvdope.initialization.ui.catppuccin")

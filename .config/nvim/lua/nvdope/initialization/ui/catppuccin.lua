@@ -31,6 +31,7 @@ catppuccin.setup({
 			}
 		},
 		lsp_trouble = false,
+		cmp = true,
 		lsp_saga = true,
 		gitgutter = false,
 		gitsigns = true,

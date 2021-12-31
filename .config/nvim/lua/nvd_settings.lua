@@ -92,14 +92,14 @@ Cfg = {
 			shiftwidth = 4, -- the number of spaces inserted for each indentation
 			softtabstop = 4,
 			list = true,
-			wrap = true, -- display lines as one long line
+			wrap = false, -- display lines as one long line
 			showcmd = true,
 			showmode = false, -- we don't need to see things like -- INSERT -- anymore
 			mouse = "a", -- allow the mouse to be used in neovim
 			mousemodel = "popup", -- Sets the model to use for the mouse.  The name mostly specifies what the right mouse button is used for:
 			number = true, -- set numbered lines
 			relativenumber = false, -- set relative numbered lines
-			numberwidth = 2, -- set number column width to 2 {default 4}
+			numberwidth = 4, -- set number column width to 2 {default 4}
 			lazyredraw = true,
 			scrolloff = 8, -- is one of my fav
 			modelines = 0,
@@ -262,6 +262,8 @@ Cfg = {
 		{ "n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], { silent = true } },
 		{ "n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], { silent = true } },
 		{ "n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], { silent = true } },
+		-- colorizer
+		{ "n", "<Leader>cl", [[<Cmd>ColorizerReloadAllBuffers<CR>]], { silent = true } },
 		-- lspsaga
 		{ "n", "<Leader>sdc", [[<Cmd>Lspsaga show_cursor_diagnostics<CR>]], { silent = true } },
 		{ "n", "<Leader>sdl", [[<Cmd>Lspsaga show_line_diagnostics<CR>]], { silent = true } },
@@ -306,9 +308,9 @@ Cfg = {
 				"setlocal showtabline=0 laststatus=0 nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
 			},
 		},
-		_markdown = {
-			{ "FileType", "markdown", "setlocal wrap spell" },
-		},
+		-- _markdown = { -- this will enable wrap on MD files
+		-- 	{ "FileType", "markdown", "setlocal wrap spell" },
+		-- },
 		_lsp = {
 			{ "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
 		},
@@ -386,7 +388,7 @@ Cfg = {
 			teal = "#519ABA",
 			orange = "#fca2aa",
 			cyan = "#a3b8ef",
-			statusline_bg = "#312C44",
+			statusline_bg = "#332E41",
 			lightbg = "#3e4058",
 			lightbg2 = "#201C2B",
 		},

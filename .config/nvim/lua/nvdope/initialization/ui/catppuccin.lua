@@ -4,14 +4,14 @@ if not present then
 end
 
 catppuccin.setup({
-	transparent_background = false,
+	transparent_background = true,
 	term_colors = false,
 	styles = {
 		comments = "italic",
 		functions = "italic",
 		keywords = "italic",
 		strings = "NONE",
-		variables = "NONE",
+		variables = "italic",
 	},
 	integrations = {
 		treesitter = true,

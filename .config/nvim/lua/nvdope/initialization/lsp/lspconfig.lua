@@ -35,7 +35,7 @@ local function setup_handlers()
 		signs = true,
 		underline = true,
 		virtual_text = true,
-		update_in_insert = true
+		update_in_insert = true,
 	})
 end
 
@@ -169,6 +169,27 @@ local function setup_servers()
 			["rust_analyzer"] = function()
 				return vim.tbl_deep_extend("force", default_opts, {
 					filetypes = { "rust" },
+				})
+			end,
+			["pyright"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					filetypes = { "python" },
+					settings = {
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+								useLibraryCodeForTypes = true,
+							},
+						},
+					},
+					single_file_support = true,
+				})
+			end,
+			["jdtls"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					filetypes = { "java" },
+					single_file_support = true,
 				})
 			end,
 		}

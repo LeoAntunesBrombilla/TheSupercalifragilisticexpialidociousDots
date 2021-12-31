@@ -49,11 +49,42 @@ return packer.startup(function()
 	})
 
 	use({
+		"shaunsingh/nord.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use {
+		"ellisonleao/gruvbox.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		requires = {"rktjmp/lush.nvim"},
+		disable = Cfg.plugins.ui.base16,
+	}
+
+	use({
+		"ray-x/aurora",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"haishanh/night-owl.vim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
 		"folke/tokyonight.nvim",
 		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
 		config = function()
 			vim.g.tokyonight_style = "night"
 		end,
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"rebelot/kanagawa.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
 		disable = Cfg.plugins.ui.base16,
 	})
 
@@ -77,6 +108,12 @@ return packer.startup(function()
 
 	use({
 		"AlphaTechnolog/onedarker.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
+		"joshdick/onedark.vim",
 		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
 		disable = Cfg.plugins.ui.base16,
 	})
@@ -111,6 +148,7 @@ return packer.startup(function()
 	use({
 		"FrenzyExists/aquarium-vim",
 		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		branch = "develop",
 		disable = Cfg.plugins.ui.base16,
 	})
 
@@ -180,6 +218,11 @@ return packer.startup(function()
 	})
 
 	use({
+		"nvim-treesitter/playground",
+		after = "nvim-treesitter",
+	})
+
+	use({
 		"kyazdani42/nvim-tree.lua",
 		cmd = "NvimTreeToggle",
 		config = function()
@@ -188,14 +231,14 @@ return packer.startup(function()
 		disable = Cfg.plugins.ui.tree,
 	})
 
-	-- use({
-	-- 	"lewis6991/gitsigns.nvim",
-	-- 	after = "plenary.nvim",
-	-- 	config = function()
-	-- 		require("nvdope.initialization.tools.gitsigns")
-	-- 	end,
-	-- 	disable = Cfg.plugins.tools.gitsigns,
-	-- })
+	use({
+		"lewis6991/gitsigns.nvim",
+		after = "plenary.nvim",
+		config = function()
+			require("nvdope.initialization.tools.gitsigns")
+		end,
+		disable = Cfg.plugins.tools.gitsigns,
+	})
 
 	use({
 		"glepnir/dashboard-nvim",

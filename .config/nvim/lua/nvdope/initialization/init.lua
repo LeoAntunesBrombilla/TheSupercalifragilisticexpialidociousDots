@@ -14,7 +14,7 @@ return packer.startup(function()
 		rocks = "mpack",
 	})
 
-	use({"nathom/filetype.nvim", commit = "c6227dcafb918d13f904fa1584a3cab4f8c36936"})
+	use({ "nathom/filetype.nvim", commit = "c6227dcafb918d13f904fa1584a3cab4f8c36936" })
 
 	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
@@ -36,6 +36,14 @@ return packer.startup(function()
 		disable = Cfg.plugins.tools.popup,
 	})
 
+	use({
+		"rcarriga/nvim-notify",
+		after = "packer.nvim",
+		config = function()
+			require("nvdope.initialization.ui.notify")
+		end,
+	})
+
 	----------------------------=== UI ===---------------------------
 	use({
 		"catppuccin/nvim",
@@ -54,12 +62,18 @@ return packer.startup(function()
 		disable = Cfg.plugins.ui.base16,
 	})
 
-	use {
+	use({
+		"altercation/vim-colors-solarized",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
 		"ellisonleao/gruvbox.nvim",
 		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
-		requires = {"rktjmp/lush.nvim"},
+		requires = { "rktjmp/lush.nvim" },
 		disable = Cfg.plugins.ui.base16,
-	}
+	})
 
 	use({
 		"ray-x/aurora",
@@ -338,12 +352,12 @@ return packer.startup(function()
 	use({
 		"tzachar/cmp-tabnine",
 		run = "./install.sh",
-		after = "nvim-cmp"
+		after = "nvim-cmp",
 	})
 
 	use({
 		"David-Kunz/cmp-npm",
-		after = "nvim-cmp"
+		after = "nvim-cmp",
 	})
 
 	use({
@@ -473,12 +487,6 @@ return packer.startup(function()
 		opt = true,
 		keys = "gc",
 		disable = Cfg.plugins.utils.commentary,
-	})
-
-	use({
-		"rcarriga/nvim-notify",
-		opt = true,
-		event = "VimEnter",
 	})
 
 	use({

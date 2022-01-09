@@ -4,7 +4,7 @@ if not present then
 end
 
 catppuccin.setup({
-	transparent_background = true,
+	transparent_background = false,
 	term_colors = false,
 	styles = {
 		comments = "italic",
@@ -55,6 +55,7 @@ catppuccin.setup({
 		lightspeed = false,
 		ts_rainbow = false,
 		hop = true,
+		notify = true,
 	},
 })
 

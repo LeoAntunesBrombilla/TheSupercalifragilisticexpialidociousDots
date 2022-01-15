@@ -281,6 +281,8 @@ Cfg = {
 		{ "n", "<Leader>ls", [[<Cmd>LspStop<CR>]], { silent = true } },
 		{ "n", "<Leader>lr", [[<Cmd>LspRestart<CR>]], { silent = true } },
 		{ "n", "<Leader>li", [[<Cmd>LspInfo<CR>]], { silent = true } },
+		-- clipboard
+		{ "n", "<F5>", [[<Cmd>%y+<CR>]], { silent = true } },
 	},
 	abbreviations = {
 		-- syntax: {<abbreviation_type>, <abbreviation>, <to_abbreviate>}

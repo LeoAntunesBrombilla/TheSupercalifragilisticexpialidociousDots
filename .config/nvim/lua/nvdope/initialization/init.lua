@@ -14,7 +14,7 @@ return packer.startup(function()
 		rocks = "mpack",
 	})
 
-	use({ "nathom/filetype.nvim", commit = "c6227dcafb918d13f904fa1584a3cab4f8c36936" })
+	use({ "nathom/filetype.nvim" })
 
 	use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
@@ -562,6 +562,12 @@ return packer.startup(function()
 		opt = true,
 		ft = "rust",
 		disable = Cfg.plugins.extensions.rust_tools,
+	})
+
+	use({
+		"vim-crystal/vim-crystal",
+		opt = true,
+		ft = "crystal",
 	})
 
 	use({

@@ -63,6 +63,12 @@ return packer.startup(function()
 	})
 
 	use({
+		"afreidz/colors.nvim",
+		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
+		disable = Cfg.plugins.ui.base16,
+	})
+
+	use({
 		"altercation/vim-colors-solarized",
 		after = "catppuccin", -- becuase catppuccino overrides highlights and not the other way around
 		disable = Cfg.plugins.ui.base16,
@@ -199,7 +205,7 @@ return packer.startup(function()
 
 	use({
 		"famiu/feline.nvim",
-		after = "nvim-web-devicons",
+		after = "catppuccin",
 		config = function()
 			require("nvdope.initialization.ui.feline")
 		end,

@@ -108,6 +108,19 @@ local function setup_servers()
 					filetypes = { "cmake", "make" },
 				})
 			end,
+			["ccls"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					filetypes = { "c", "cpp", "objc", "objcpp" },
+					offset_encoding = "utf-32",
+					single_file_support = true,
+				})
+			end,
+			["clangd"] = function()
+				return vim.tbl_deep_extend("force", default_opts, {
+					filetypes = { "c", "cpp", "objc", "objcpp" },
+					single_file_support = true,
+				})
+			end,
 			["sumneko_lua"] = function()
 				-- return require("lua-dev").setup({
 				-- lspconfig = default_opts,

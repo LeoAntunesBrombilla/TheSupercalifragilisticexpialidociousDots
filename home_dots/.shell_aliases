@@ -1,9 +1,14 @@
+#!/bin/bash
 # vim:ft=sh
 # =============================================================================
 # GitHub & Git
 # =============================================================================
 
+#-------------------=== Dotdrop ===-------------------------------
+alias de="dotdrop"
+
 #-------------------=== Git ===-------------------------------
+alias gt='git'
 alias 1tree='git log --all --decorate --oneline --graph'
 alias 2tree='git log --all --decorate --graph'
 
@@ -19,6 +24,8 @@ alias gtc="git commit -am"
 alias ggremote="git remote -v"  # check all remotes
 alias ggbranch="git branch -v"  # check all branches
 
+#-------------------=== YADM ===-------------------------------
+alias yad="yadm"
 
 #-------------------=== Xclip ===-------------------------------
 alias 'c=xclip' #copy
